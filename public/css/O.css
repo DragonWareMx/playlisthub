@@ -5,6 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    transition: ease-in-out 0.3s;
 }
 .ico_title_o{
     width: 100%;
@@ -29,22 +30,25 @@
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     width: 331px;
-    height: 252px;
+    height: 265px;
     margin-bottom: 30px;
     margin-left: 15px;
     margin-right: 15px;
+    transition: ease-in-out 0.3s;
 }
 .div_profile_image_o{
     width: 90px;
     height: 90px;
     margin-left: auto;
     margin-right: auto;
+    transition: ease-in-out 0.3s;
 }
 .img_circle_o{
     width: 100%;
     height: 100%;
     margin-top:3px;
     clip-path: circle(45% at 50% 50%);
+    transition: ease-in-out 0.3s;
 }
 .heart_profile_o{
     color: #8177F5;
@@ -52,6 +56,7 @@
     margin-left:-25px;
     margin-top: 70px;
     position: absolute;
+    transition: ease-in-out 0.3s;
 }
 .item_subtitle_o{
     font-family: 'Roboto', sans-serif;
@@ -61,6 +66,8 @@
     line-height: 18px;
     color: #5C5C5C;
     text-align: center;
+    transition: ease-in-out 0.3s;
+    height:30px;
 }
 .item_title_o{
     font-family: 'Roboto', sans-serif;
@@ -70,6 +77,7 @@
     line-height: 18px;
     color: #5C5C5C;
     margin-top: 5px;
+    transition: ease-in-out 0.3s;
 }
 .item_text_o{
     font-family: 'Roboto', sans-serif;
@@ -79,24 +87,37 @@
     line-height: 15px;
     color: #595959;
     margin-top: 3px;
+    transition: ease-in-out 0.3s;
 }
 .stars_favoritos_o{
     color:#8177F5;
     font-size: 16px;
     margin-top: -2.5px;
+    transition: ease-in-out 0.3s;
 }
 .display_flex_o{
     display: flex;
 }
 .a_profile_o{
     font-family: Roboto;
+    text-decoration: none;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
-    margin-top: 3px;
     line-height: 14px;
     color: #8177F5;
-    margin-right:0px ;
+    margin-left: auto;
+    transition: ease-in-out 0.3s;
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+.a_profile_o:hover{
+    text-decoration: none;
+    transition: ease-in-out 0.3s;
+    background-size: 100% 2px;
 }
 .div_width100_right{
     text-align: right;
@@ -104,4 +125,229 @@
     width: 100%;
     align-content: center;
     text-justify: right;
+}
+@media (max-width:1475px){
+    .div_90_o{
+        justify-content: space-evenly;
+        transition: ease-in-out 0.3s;
+    }
+}
+
+@media (max-width:1074px){
+    .div_90_o{
+        width: 100%;
+        justify-content: space-evenly;
+        transition: ease-in-out 0.3s;
+    }
+}
+@media (max-width:993px){
+    .div_90_o{
+        width: 100%;
+        justify-content: space-between;
+        transition: ease-in-out 0.3s;
+    }
+    .div_item_fav_o{
+        width: 281px;/*-50px*/
+        height: 218px;/*-47px*/
+        margin-bottom: 30px;
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        transition: ease-in-out 0.3s;
+    }
+    .div_profile_image_o{
+        width: 60px;
+        height: 60px;
+        transition: ease-in-out 0.3s;
+    }
+    .heart_profile_o{
+        font-size: 17px;
+        margin-left:-20px;
+        margin-top: 45px;
+        transition: ease-in-out 0.3s;
+    }
+    .item_subtitle_o{
+        font-size: 13px;
+        transition: ease-in-out 0.3s;
+        height:30px;
+    }
+    .item_title_o{
+        font-size: 12px;
+        transition: ease-in-out 0.3s;
+        margin-top: 2px;
+    }
+    .item_text_o{
+        font-size: 11px;
+        margin-top: 1px;
+        transition: ease-in-out 0.3s;
+    }
+    .stars_favoritos_o{
+        font-size: 12px;
+        margin-top: -1.8px;
+        transition: ease-in-out 0.3s;
+    }
+}
+
+@media(max-width:863px){
+    .div_item_fav_o{
+        width: 221px;/*-60px*/
+        height: 185px;/*-30px*/
+        transition: ease-in-out 0.3s;
+    }
+    .div_profile_image_o{
+        width: 40px;
+        height: 40px;
+        transition: ease-in-out 0.3s;
+    }
+    .heart_profile_o{
+        font-size: 13px;
+        margin-left:-12px;
+        margin-top: 30px;
+        transition: ease-in-out 0.3s;
+    }
+    .item_subtitle_o{
+        font-size: 12px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        height:30px;
+    }
+    .item_title_o{
+        font-size: 11px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .item_text_o{
+        font-size: 11px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .stars_favoritos_o{
+        font-size: 11px;
+        margin-top: 0px;
+        transition: ease-in-out 0.3s;
+    }
+    .a_profile_o{
+       margin-top: -4px;
+        transition: ease-in-out 0.3s;
+    }
+}
+@media (max-width:623px){
+    .div_item_fav_o{
+        width: 200px;/*-60px*/
+        height: 181px;/*-30px*/
+        transition: ease-in-out 0.3s;
+    }
+    .item_subtitle_o{
+        height:30px;
+        transition: ease-in-out 0.3s;
+    }
+}
+@media (max-width:581px){
+    .div_90_o{
+        width: 90%;
+        justify-content: space-around;
+        transition: ease-in-out 0.3s;
+    }
+    .div_item_fav_o{
+        width: 250px;
+        height: 215px;
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        transition: ease-in-out 0.3s;
+    }
+    .div_profile_image_o{
+        width: 60px;
+        height: 60px;
+        transition: ease-in-out 0.3s;
+    }
+    .heart_profile_o{
+        font-size: 18px;
+        margin-left:-18px;
+        margin-top: 45px;
+        transition: ease-in-out 0.3s;
+    }
+    .item_subtitle_o{
+        font-size: 13px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        height:30px;
+    }
+    .item_title_o{
+        font-size: 13px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .item_text_o{
+        font-size: 13px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .stars_favoritos_o{
+        font-size: 15px;
+        margin-top: 0px;
+        transition: ease-in-out 0.3s;
+    }
+    .a_profile_o{
+       margin-top: 0px;
+       font-size: 12px;
+        transition: ease-in-out 0.3s;
+    }    
+}
+@media (max-width:380px){
+    .div_90_o{
+        width: 100%;
+        transition: ease-in-out 0.3s;
+    }
+    .div_item_fav_o{
+        width: 100%;
+        height: 225x;
+        margin-left: 0px;
+        margin-right: 0px;
+        transition: ease-in-out 0.3s;
+    }
+    .div_profile_image_o{
+        width: 55px;
+        height: 55px;
+        transition: ease-in-out 0.3s;
+    }
+    .heart_profile_o{
+        font-size: 16px;
+        margin-left:-18px;
+        margin-top: 40px;
+        transition: ease-in-out 0.3s;
+    }
+    .item_subtitle_o{
+        font-size: 12px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        height:30px;
+    }
+    .item_title_o{
+        font-size: 12px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .item_text_o{
+        font-size: 12px;
+        transition: ease-in-out 0.3s;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .stars_favoritos_o{
+        font-size: 13px;
+        margin-top: 0px;
+        transition: ease-in-out 0.3s;
+    }
+    .a_profile_o{
+       margin-top: 0px;
+       font-size: 12px;
+        transition: ease-in-out 0.3s;
+    }    
 }

@@ -26,7 +26,7 @@
     <hr class="hr_100_o">
     <div class="div_item_fav_o">
         <div class="div_profile_image_o">
-            <img class="img_circle_o" src="https://i.scdn.co/image/ab6775700000ee85b5d374d281b9e510eda15fdf" alt="">
+            <img class="img_circle_o" src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-1/p320x320/16997700_10154128987076923_6833035134277844412_n.jpg?_nc_cat=101&_nc_sid=0c64ff&_nc_ohc=WytsLSVsHMYAX-7lfYL&_nc_ht=scontent-ort2-2.xx&tp=6&oh=1795899c29806ac6bfa43c97f96cecb5&oe=5F6A5B6E" alt="">
             <i class="fas fa-heart heart_profile_o"></i>
         </div>
         <div class="item_subtitle_o">{{Str::limit('Nombre completo del curador', 37)}}</div>
@@ -41,7 +41,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
             </div>
         </div>
-        <div class="div_width100_right"><a class="a_profile_o" href="#">Ver perfil</a></div>
+        <div class="div_width100_right"><a class="a_profile_o sm-link" href="#">Ver perfil</a></div>
     </div>
     <div class="div_item_fav_o">
         
