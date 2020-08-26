@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
+
 Route::get('/', function () {
     return view('welcome');
 });

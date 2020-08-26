@@ -1,0 +1,107 @@
+.div_90_o{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ico_title_o{
+    width: 100%;
+    display: flex;
+}
+.p_title_o{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5A5A5A;
+}
+.hr_100_o{
+    width: 100%;
+    border: 1px solid #D0D0D0;
+}
+.div_item_fav_o{
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 331px;
+    height: 252px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.div_profile_image_o{
+    width: 90px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img_circle_o{
+    width: 100%;
+    height: 100%;
+    margin-top:3px;
+    clip-path: circle(45% at 50% 50%);
+}
+.heart_profile_o{
+    color: #8177F5;
+    font-size: 20px;
+    margin-left:-25px;
+    margin-top: 70px;
+    position: absolute;
+}
+.item_subtitle_o{
+    font-family: 'Roboto', sans-serif;
+    font-style: Normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5C5C5C;
+    text-align: center;
+}
+.item_title_o{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5C5C5C;
+    margin-top: 5px;
+}
+.item_text_o{
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    color: #595959;
+    margin-top: 3px;
+}
+.stars_favoritos_o{
+    color:#8177F5;
+    font-size: 16px;
+    margin-top: -2.5px;
+}
+.display_flex_o{
+    display: flex;
+}
+.a_profile_o{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 3px;
+    line-height: 14px;
+    color: #8177F5;
+    margin-right:0px ;
+}
+.div_width100_right{
+    text-align: right;
+    display: flex;
+    width: 100%;
+    align-content: center;
+    text-justify: right;
+}
