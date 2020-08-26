@@ -6725,6 +6725,9 @@ a.close.disabled {
 
 .bg-primary {
   background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2ffff 100%) !important;
+  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
+  border-right: 2px solid transparent; 
+  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
 }
 
 a.bg-primary:hover,
@@ -11173,10 +11176,6 @@ a:focus {
   }
 }
 
-.topbar.navbar-light .navbar-nav .nav-item .nav-link {
-  color: #d1d3e2;
-}
-
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
   color: #b7b9cc;
 }
@@ -11489,7 +11488,7 @@ a:focus {
 }
 
 .sidebar-light hr.sidebar-divider {
-  border-top: 1px solid #eaecf4;
+  border-top: 2px solid #eaecf4;
 }
 
 .sidebar-light .sidebar-heading {
@@ -11545,7 +11544,7 @@ a:focus {
 }
 
 .sidebar-dark hr.sidebar-divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(57, 4, 78, 0.35);
 }
 
 .sidebar-dark .sidebar-heading {
@@ -11573,7 +11572,7 @@ a:focus {
 }
 
 .sidebar-dark .nav-item .nav-link[data-toggle=collapse]::after {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .sidebar-dark .nav-item.active .nav-link {
@@ -14038,4 +14037,24 @@ a:focus * {
   top: 1px;
   left: 24px;
   width: 192px;
+}
+
+.nav-link span{
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #3F3F3F;
+}
+
+.username{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #000000 !important;
 }

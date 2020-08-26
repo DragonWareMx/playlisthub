@@ -20,7 +20,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('temaGestor/css/app.css')}}" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
    {{-- JQuery bugeado --}}
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
    {{-- Fuentes--}}
@@ -45,18 +45,15 @@
         </div>
       </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
         <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: black"></i>
+            <i class="fas fa-home" style="color: #3F3F3F"></i>
           <span>Inicio</span></a>
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      {{-- <hr class="sidebar-divider"> --}}
 
       <!-- Heading -->
       {{-- <div class="sidebar-heading">
@@ -67,8 +64,8 @@
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-book" style="color: black"></i>
-          <span>Libros</span>
+            <i class="fas fa-book" style="color: #3F3F3F"></i>
+          <span>Perfil</span>
         </a>
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -86,8 +83,8 @@
 
       <li class="nav-item {{ Request::path() ==  'sgtepetate/perfil' ? 'active' : ''  }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-user-edit" style="color: black"></i>
-          <span>Autores</span>
+            <i class="fas fa-user-edit" style="color: #3F3F3F"></i>
+          <span>Campañas</span>
         </a>
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -103,68 +100,30 @@
       <!-- Nav Item - Bitacora Collapse blog -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-pencil-alt" style="color: black"></i>
-          <span>Blogs</span>
+            <i class="fas fa-pencil-alt" style="color: #3F3F3F"></i>
+          <span>Favoritos</span>
         </a>
-        <div id="collapseBitacora" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Ver Blogs</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="#">Nuevo Blog</a>
-          </div>
-        </div>
       </li>
 
       <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-clone" style="color: black"></i>
-          <span>Sliders</span>
+          <i class="fas fa-clone" style="color: #3F3F3F"></i>
+          <span>Reviews</span>
         </a>
-        <div id="collapseSliders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="#">Ver Sliders</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Categorías:</h6>
-            <a class="collapse-item" href="#">Agregar Banner Libro</a>
-            <a class="collapse-item" href="#">Agregar Banner Autor</a>
-          </div>
-        </div>
       </li>
 
       <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">
         <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: black"></i>
-          <span>Ventas</span></a>
+            <i class="fas fa-home" style="color: #3F3F3F"></i>
+          <span>Referencias</span></a>
       </li>
 
-       <!-- Nav Item - Inventario Collapse cupones -->
-      
-       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCupones" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-percentage" style="color: black"></i>
-          <span>Cupones</span>
-        </a>
-        <div id="collapseCupones" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Ver Cupones</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="#">Agregar Cupón</a>
-          </div>
-        </div>
-      </li>
-      
-
-      
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
 
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
         <a class="nav-link" href="#">
-            <i class="fas fa-chart-pie" style="color: black"></i>
+            <i class="fas fa-chart-pie" style="color: #3F3F3F"></i>
           <span>Resumen</span></a>
       </li>
 
@@ -197,10 +156,53 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-counter" style="color: black">1</span>
+                {{-- @else 
+                <span class="badge badge-danger badge-counter">{{$nnoti}}</span>
+                @endif --}}
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
+                <h6 class="dropdown-header" style="background-color:#181A2C">
+                  Notificaciones
+                </h6>
+                
+                <a class="dropdown-item d-flex align-items-center" href="">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-bell-slash" style="color: #3F3F3F"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500"></div>
+                    <span class="font-weight-bold">No tienes notificaciones!</span>
+                  </div>
+                </a>
+                
+                <a class="dropdown-item d-flex align-items-center" href="/sgtepetate/revisarpedido/">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-concierge-bell text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">13/07/2020</div>
+                    <span class="font-weight-bold">Nuevo pedido registrado: <br> Orden #1</span>
+                  </div>
+                </a>
+                
+              </div>
+            </li>
+            
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Pancho Pantera</span>
+                <span class="mr-2 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
                 <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/ico/icons-user.png')}}">
               </a>
               <!-- Dropdown - User Information -->
@@ -244,7 +246,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; uno4cinco 2020</span>
+            <span>Copyright &copy; Playlisthub 2020</span>
           </div>
         </div>
       </footer>
