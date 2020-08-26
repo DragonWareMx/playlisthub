@@ -11,7 +11,7 @@
 
   <title>Inicio | Editorial uno4cinco</title>
 
-  <link rel="icon" href="{{asset('/img/ico/puerta.png')}}" type="image/icon type">
+  <link rel="icon" href="{{asset('/img/logos/ico-playlist.png')}}" type="image/icon type">
 
 
   <!-- Custom fonts for this template-->
@@ -36,7 +36,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion menu-lateral" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#c96dd8">
@@ -175,7 +175,7 @@
                 <a class="dropdown-item d-flex align-items-center" href="">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
-                      <i class="fas fa-bell-slash" style="color: #3F3F3F"></i>
+                      <i class="fas fa-bell-slash text-white" ></i>
                     </div>
                   </div>
                   <div>

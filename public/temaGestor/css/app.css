@@ -6724,10 +6724,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2ffff 100%) !important;
-  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
-  border-right: 2px solid transparent; 
-  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
+  background: radial-gradient(50% 50% at 50% 50%, #8177F5 0%, #8177F5 100%) !important;
 }
 
 a.bg-primary:hover,
@@ -13657,373 +13654,6 @@ a:focus * {
           text-decoration: none solid #185741;
 }
 
-@media screen and (max-width: 1000px) {
-  .body_estanqueMenor {
-    background: url("/img/gestor/gestionTruchas/aguaEP2.png");
-    background-size: cover;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center center;
-       object-position: center center;
-  }
-}
-
-@media screen and (max-width: 524px) {
-  .body_estanqueMenor {
-    background: url("/img/gestor/gestionTruchas/aguaEP3.png");
-    background-size: cover;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center center;
-       object-position: center center;
-  }
-
-  .body_estanqueMayor {
-    background: url("/img/gestor/gestionTruchas/aguaEG2.png");
-    background-size: cover;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center center;
-       object-position: center center;
-  }
-}
-
-@media screen and (max-width: 455px) {
-  .txt_headerGT {
-    font-size: 14px;
-  }
-
-  .estanqueMenor {
-    width: 100%;
-  }
-
-  .body_estanqueMenor {
-    background: url("/img/gestor/gestionTruchas/aguaEP2.png");
-    background-size: cover;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center center;
-       object-position: center center;
-  }
-}
-
-@media screen and (max-width: 405px) {
-  .body_estanqueMayor {
-    background: url();
-  }
-}
-
-@media screen and (max-width: 1050px) {
-  .botonesPagGT {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    float: center;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .botonesPagGT {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .chart-containerEnfermedades {
-    width: 100%;
-    height: 400px !important;
-  }
-
-  .mortalidadTable {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .chart-containerEnfermedades {
-    width: 100%;
-    height: 250px !important;
-  }
-}
-
-@media screen and (max-width: 413px) {
-  .noresponsiveA {
-    display: none;
-  }
-
-  .responsiveA {
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .div_sintomas {
-    width: 100%;
-  }
-
-  .div_diagnostico {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 445px) {
-  .div_sintomas label {
-    font-size: 14px;
-  }
-
-  .textoAclaracion {
-    font-size: 14px;
-  }
-
-  .resultadoDiagnostico {
-    height: 250px;
-    overflow-y: scroll;
-  }
-
-  .div_diagnostico p {
-    font-size: 14px;
-  }
-
-  .AD span {
-    font-size: 14px;
-  }
-
-  .btn-consultarDiagnostico {
-    width: 40%;
-    float: right;
-    margin-top: 5%;
-  }
-
-  .modalEstanque div {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .btn-consultarDiagnostico {
-    width: 45%;
-    float: right;
-    margin-top: 5%;
-  }
-
-  .txt-tituloS {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .txt-tituloCM {
-    font-size: 15px;
-    width: 80%;
-  }
-
-  .txt-CausaMuerte {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .txt-CausaMuerte {
-    font-size: 12px;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  input[type=checkbox] + label .fa-check {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    color: transparent;
-    border: solid #7cccc3 0.1rem;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-
-  /* caja no marcada */
-
-  input[type=checkbox]:checked + label .fa-check {
-    position: relative;
-    border: solid #7cccc3 0.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    cursor: pointer;
-    color: #207558;
-    width: 20px;
-    height: 20px;
-  }
-
-  .sintomaSingle {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  .listaSintomas {
-    width: 100%;
-  }
-
-  .sintomaSingle {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  input[type=checkbox] + label .fa-check {
-    display: flex;
-    align-items: right;
-    justify-content: right;
-    vertical-align: middle;
-    color: transparent;
-    border: solid #7cccc3 0.1rem;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-  }
-
-  /* caja no marcada */
-
-  input[type=checkbox]:checked + label .fa-check {
-    border: solid #7cccc3 0.1rem;
-    display: flex;
-    align-items: right;
-    justify-content: right;
-    vertical-align: middle;
-    cursor: pointer;
-    color: #207558;
-    width: 15px;
-    height: 15px;
-  }
-}
-
-.num_tablaBitacora {
-  background-color: #d97c3f;
-  color: white;
-}
-
-.usuario_tablaBitacora {
-  background-color: #3fb3a4;
-  color: white;
-}
-
-.fecha_tablaBitacora {
-  background-color: #efce4a;
-  color: white;
-}
-
-.actividad_tablaBitacora {
-  background-color: #a671bd;
-  color: white;
-}
-
-.descripcion_tablaBitacora {
-  background-color: #5CBE86;
-  color: white;
-}
-
-.editar_tablaBitacora {
-  background-color: #A1A1A1;
-  color: white;
-}
-
-.divTarjetasACT {
-  width: 100%;
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.tarjetaACT {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  padding: 0.5rem;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  height: 70px;
-  width: 18%;
-  border-radius: 5px;
-  font-weight: regular;
-  font-size: 14px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  border: none;
-  border-bottom: solid #C8C8C8 0.2rem;
-  background-color: #3fb3a4;
-}
-
-.tarjetaACT :hover {
-  border-bottom: solid #207558 0.2rem;
-  transition: all 0.5s;
-  color: #207558;
-}
-
-.tarjetaACT :focus {
-  border-bottom: solid #207558 0.2rem;
-  transition: all 0.5s;
-  color: #207558;
-}
-
-@media (max-width: 1050px) {
-  .tarjetaACT {
-    width: 25%;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 790px) {
-  .tarjetaACT {
-    width: 35%;
-  }
-}
-
-@media (max-width: 480px) {
-  .tarjetaACT {
-    width: 45%;
-    height: 75px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #tbactividades table {
-    width: 100%;
-  }
-
-  #tbactividades thead {
-    display: none;
-  }
-
-  #tbactividades tr:nth-of-type(2n) {
-    background-color: inherit;
-  }
-
-  #tbactividades tr td:first-child {
-    background: #f0f0f0;
-    font-weight: bold;
-    font-size: 1.3em;
-  }
-
-  #tbactividades tbody td {
-    display: block;
-    text-align: center;
-  }
-
-  #tbactividades tbody td:before {
-    content: attr(data-th);
-    display: block;
-    text-align: center;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .imgMenuGestor{
     width: 63px !important;
@@ -14058,3 +13688,34 @@ a:focus * {
 
   color: #000000 !important;
 }
+
+.menu-lateral{
+  background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2ffff 100%) !important;
+  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
+  border-right: 2px solid transparent; 
+  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
+}
+
+.menu-lateral:before, .menu-lateral:after{
+  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
+  border-right: 2px solid transparent; 
+  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
+  animation: gradient 7s ease infinite;
+  }
+
+  @keyframes gradient{
+    0%{
+      background-position:0% 200%;	
+    }
+    50%{
+      background-position:200% 0%;
+    }
+    100% {
+      background-position:0% 330%;
+    }
+  }
+
+  .menu-lateral:after{
+    filter: brightness(1.4);
+    filter:blur(15px);
+    }
