@@ -12242,11 +12242,6 @@ body.sidebar-toggled footer.sticky-footer {
   margin-right: auto;
 }
 
-.imgMenuGestor {
-  width: 100%;
-  height: auto;
-}
-
 .contenidoDGPerfil {
   width: 90%;
   height: -webkit-fit-content;
@@ -12489,8 +12484,12 @@ a:focus * {
 }
 
 .imgMenuGestor {
-  width: 100%;
-  height: auto;
+  /* width: 100%;
+  height: auto; */
+  position: absolute;
+  top: 1px;
+  left: 24px;
+  width: 192px;
 }
 
 .contenidoDGPerfil {
@@ -13659,345 +13658,6 @@ a:focus * {
           text-decoration: none solid #185741;
 }
 
-.aGT {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.abtnGT:hover {
-  text-decoration: underline;
-}
-
-.abtnGT img {
-  width: 65px;
-  height: 65px;
-}
-
-.abtnGT img:hover {
-  opacity: 0.8;
-}
-
-.kebab {
-  z-index: 2;
-  color: #9c9a9a;
-  width: 30px;
-  height: 20px;
-  text-align: center;
-}
-
-.kebab :hover {
-  color: #3f3f3f;
-}
-
-.opcionesEstanque {
-  width: 100%;
-  list-style: none;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.seleccionop {
-  height: 40px;
-  margin-bottom: 4%;
-  display: flex;
-  vertical-align: middle;
-}
-
-.seleccionop:hover {
-  background-color: rgba(172, 169, 169, 0.7);
-  cursor: pointer;
-}
-
-.seleccionop:hover .opcionesEstanque {
-  color: white;
-}
-
-.headerGT {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.txt_headerGT {
-  color: #5a5c69;
-  font-size: 16px;
-  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-weight: 700;
-  font-style: normal;
-}
-
-.div_estanquesGT {
-  margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.estanqueMayor {
-  width: 100%;
-  border-bottom: solid #207558 0.3rem;
-}
-
-.body_estanqueMayor {
-  background: url("/img/gestor/gestionTruchas/aguaEG.png");
-  background-size: cover;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
-}
-
-.estanqueMenor {
-  width: 47%;
-  border-left: solid #207558 0.3rem;
-}
-
-.body_estanqueMenor {
-  background: url("/img/gestor/gestionTruchas/aguaEP.png");
-  background-size: cover;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
-}
-
-.estanqueMenor:hover {
-  border-right: solid #207558 0.1rem;
-  border-top: solid #207558 0.1em;
-  transition: 0.1s ease-out;
-  cursor: pointer;
-  color: #5a5c69;
-}
-
-.estanqueMayor:hover {
-  border-left: solid #207558 0.1rem;
-  border-right: solid #207558 0.1rem;
-  border-top: solid #207558 0.1rem;
-  transition: 0.1s ease-out;
-  cursor: pointer;
-  color: #5a5c69;
-}
-
-.modalEstanque {
-  border-bottom: solid #207558 0.3rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-}
-
-.modalEstanque div {
-  width: 50%;
-}
-
-.inputModalE {
-  border: none;
-  color: #908796;
-  width: auto;
-  height: 25%;
-  font-size: 16px;
-  vertical-align: bottom;
-  margin-top: 0px;
-  background-color: transparent;
-}
-
-.pModalE {
-  margin-bottom: 0px;
-}
-
-.btnAproximacion {
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.AD {
-  background-color: #207558;
-}
-
-.responsiveA {
-  display: none;
-}
-
-.chart-containerEnfermedades {
-  width: 45%;
-  height: 350px !important;
-}
-
-.text-nombreEnfermedad {
-  background-color: transparent;
-  border: none;
-  color: #858796;
-  font-weight: bold;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  outline: none;
-}
-
-.contenido-AP {
-  background-color: transparent;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  display: flex;
-}
-
-.div_sintomas {
-  width: 55%;
-  float: left;
-  border-right: solid #858796 0.1rem;
-}
-
-.txt-tituloS {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  text-align: center;
-  background-color: #009f8a;
-  opacity: 0.5;
-  color: white;
-  padding: 2px;
-  font-size: 20px;
-}
-
-.listaSintomas {
-  height: 350px;
-  width: 98%;
-  overflow-y: auto;
-}
-
-.sintomaSingle {
-  width: 98%;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid #7cccc3 0.1rem;
-}
-
-/* Estado inicial, caja no marcada */
-
-input[type=checkbox] + label .fa-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  color: transparent;
-  border: solid #7cccc3 0.1rem;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-}
-
-/* caja no marcada */
-
-input[type=checkbox]:checked + label .fa-check {
-  position: relative;
-  border: solid #7cccc3 0.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  cursor: pointer;
-  color: #207558;
-  width: 28px;
-  height: 28px;
-}
-
-.btn-consultarDiagnostico {
-  width: 30%;
-  height: 15%;
-  float: right;
-  margin-right: 3%;
-  margin-top: 5%;
-}
-
-.div_diagnostico {
-  width: 45%;
-  float: right;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.diagnostivo-txt {
-  width: 85%;
-  margin-right: auto;
-  margin-left: auto;
-  font-size: 20px;
-}
-
-.resultadoDiagnostico {
-  border: solid #7cccc3 0.2rem;
-  border-radius: 3px;
-  background-color: white;
-  width: 85%;
-  height: 40%;
-  margin-right: auto;
-  margin-left: auto;
-  color: #858796;
-  resize: none;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  font-weight: lighter;
-  overflow-y: scroll;
-}
-
-.resultadoTratamiento {
-  width: 85%;
-  height: 40%;
-  margin-right: auto;
-  margin-left: auto;
-  color: #858796;
-  resize: none;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  font: lighter;
-  font-weight: lighter;
-  overflow-x: scroll;
-}
-
-.ArchivarConsulta {
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #7cccc3;
-}
-
-.ArchivarConsulta:hover {
-  background-color: #54a39a;
-}
-
-.txt-tituloCM {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  text-align: center;
-  color: white;
-  padding: 2px;
-  font-size: 17px;
-  background-color: #7cccc3;
-}
-
-.txt-CausaMuerte {
-  width: 100%;
-  border-bottom: solid #cdcdcd 0.1rem;
-}
-
-.mortalidadTable {
-  width: 50%;
-}
-
 @media screen and (max-width: 1000px) {
   .body_estanqueMenor {
     background: url("/img/gestor/gestionTruchas/aguaEP2.png");
@@ -14369,9 +14029,13 @@ input[type=checkbox]:checked + label .fa-check {
   .imgMenuGestor{
     width: 63px !important;
     height: 19px !important;
+    position:  relative !important;
   }
 }
 
 .logo-movil{
-  
+  position: absolute;
+  top: 1px;
+  left: 24px;
+  width: 192px;
 }
