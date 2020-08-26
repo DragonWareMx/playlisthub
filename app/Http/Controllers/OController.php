@@ -10,4 +10,8 @@ class OController extends Controller
     {
         return view ('musico.favoritos');
     }
+    public function campanas()
+    {
+        return view ('musico.campanas');
+    }
 }
