@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Inicio | Editorial uno4cinco</title>
+  <title>Playlisthub</title>
 
   <link rel="icon" href="{{asset('/img/logos/ico-playlist.png')}}" type="image/icon type">
 
@@ -44,7 +44,7 @@
           <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" >
         </div>
       </a>
-
+      <br>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
@@ -153,7 +153,8 @@
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
+                {{-- <i class="fas fa-bell fa-fw"></i> --}}
+                <img src="{{ asset('/img/iconos/bell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
                 <span class="badge badge-counter" style="color: black">1</span>
                 {{-- @else 
@@ -197,7 +198,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
-                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/ico/icons-user.png')}}">
+                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/iconos/perfil.png')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

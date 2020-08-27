@@ -11051,7 +11051,7 @@ a:focus {
 }
 
 .topbar #sidebarToggleTop:hover {
-  background-color: #eaecf4;
+  background-color: #edeaf4;
 }
 
 .topbar #sidebarToggleTop:active {
@@ -11528,7 +11528,7 @@ a:focus {
 }
 
 .sidebar-light #sidebarToggle::after {
-  color: #b7b9cc;
+  color: #4955ff;
 }
 
 .sidebar-light #sidebarToggle:hover {
@@ -11594,7 +11594,7 @@ a:focus {
 }
 
 .sidebar-dark #sidebarToggle:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(123, 24, 252, 0.25)
 }
 
 .sidebar-dark.toggled #sidebarToggle::after {
@@ -13664,6 +13664,7 @@ a:focus * {
     width: 63px !important;
     height: 19px !important;
     position:  relative !important;
+    left: 0px !important;
   }
 }
 
