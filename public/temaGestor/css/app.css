@@ -13691,37 +13691,18 @@ a:focus * {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-
   color: #000000 !important;
 }
 
 .menu-lateral{
   background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2ffff 100%) !important;
-  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
-  border-right: 2px solid transparent; 
   border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
+  -webkit-box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
+    -moz-box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
+    box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
 }
+  
 
-.menu-lateral:before, .menu-lateral:after{
-  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25) !important;
-  border-right: 2px solid transparent; 
-  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
-  animation: gradient 7s ease infinite;
-  }
-
-  @keyframes gradient{
-    0%{
-      background-position:0% 200%;	
-    }
-    50%{
-      background-position:200% 0%;
-    }
-    100% {
-      background-position:0% 330%;
-    }
-  }
-
-  .menu-lateral:after{
-    filter: brightness(1.4);
-    filter:blur(15px);
-    }
+.sidebar.toggled .nav-item .nav-link span{
+  padding-left: 0px !important;
+}

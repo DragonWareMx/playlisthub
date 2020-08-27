@@ -127,6 +127,12 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
+      <li class="nav-item" style="position: fixed; bottom: 0px;display:block">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+            <img src="{{ asset('/img/iconos/salir.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Cerrar Sesión</span>
+        </a>
+      </li>
     </ul>
     <!-- End of Sidebar -->
 
@@ -148,7 +154,7 @@
           </button>
 
           <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto mr-4">
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -197,7 +203,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
                 <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/iconos/perfil.png')}}">
               </a>
               <!-- Dropdown - User Information -->
