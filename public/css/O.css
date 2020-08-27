@@ -11,6 +11,47 @@
     width: 100%;
     display: flex;
 }
+.ico_title60_o{
+    width: 60%;
+    display: flex;
+    transition: ease-in-out 0.3s;
+}
+.img_ico_title_o{
+    width: 18px;
+    height: 18px;
+    transition: ease-in-out 0.3s;
+}
+.a_agregar_o{
+    background: #F2F1FF;
+    border: 1px solid #8177F5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 125px;
+    height: 36px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: ease-in-out 0.3s;
+}
+.img_a_agregar_o{
+    width: 12px;
+    height: 12px;
+    transition: ease-in-out 0.3s;
+}
+.txt_a_o{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8177F5;
+    transition: ease-in-out 0.3s;
+}
+.a_agregar_o:hover{
+    transition: ease-in-out 0.2s;
+    text-decoration: none;
+    width: 135px;
+}
 .p_title_o{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -125,6 +166,61 @@
     width: 100%;
     align-content: center;
     text-justify: right;
+}
+.div_campanas_actuales_o{
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 25px;
+}
+.div_item_campana_o{
+    display: flex;
+    width: 331px;
+    height: 235px;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-bottom: 30px;
+    float: left;
+    margin-right: 30px;
+}
+.img_item_campana_o{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 93px;
+    border-radius: 5px;
+    background-color:gray;
+    padding-top: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.campanas_encabezado_cancion_o{
+    width: 60%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+.campanas_encabezado_artista_o{
+    width: 60%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+.img_sp_logo_o{
+    display: flex;
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    margin-top:-65px;
 }
 @media (max-width:1475px){
     .div_90_o{
