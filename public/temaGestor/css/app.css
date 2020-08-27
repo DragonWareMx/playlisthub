@@ -456,7 +456,6 @@ h6,
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -11579,7 +11578,7 @@ a:focus {
 
 .sidebar-dark .nav-item.active .barra-active {
   visibility: visible !important;
-  border-top: 2px solid #8177F5;
+  border-top: 1.5px solid #8177F5 !important;
 }
 
 .sidebar-dark .nav-item.active .nav-link i {

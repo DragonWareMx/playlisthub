@@ -47,16 +47,21 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
-        <a class="nav-link" href="#">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="{{ route('inicio') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
-          <span style="padding-left: 10px">Inicio</span></a>
+          <span style="padding-left: 10px">Inicio</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
       
       <li class="nav-item">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Perfil</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="#">Ver todo</a> 
@@ -71,7 +76,7 @@
       </li>
       
 
-      <li class="nav-item active">
+      <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
@@ -80,7 +85,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#">uno4cinco</a>
+              <a class="collapse-item" href="{{ route('campanas') }}">Campañas</a>
               <a class="collapse-item" href="#">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
@@ -89,24 +94,31 @@
           </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">           
+      <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="{{ route('favoritos') }}">           
             <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Favoritos</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
       <li class="nav-item">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="#">
           <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
           <span style="padding-left: 10px">Reviews</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
       <li class="nav-item "">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="#">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Referencias</span></a>
+          <span style="padding-left: 10px">Referencias</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
       <hr class="sidebar-divider d-none d-md-block">
