@@ -46,26 +46,16 @@
       </a>
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
+      <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
         <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: #3F3F3F"></i>
-          <span>Inicio</span></a>
+            <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
+          <span style="padding-left: 10px">Inicio</span></a>
       </li>
-
-      <!-- Divider -->
-      {{-- <hr class="sidebar-divider"> --}}
-
-      <!-- Heading -->
-      {{-- <div class="sidebar-heading">
-        
-      </div> --}}
-
-      <!-- Nav Item - Usuarios Collapse Menu -->
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-book" style="color: #3F3F3F"></i>
-          <span>Perfil</span>
+            <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Perfil</span>
         </a>
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -81,10 +71,10 @@
       </li>
       
 
-      <li class="nav-item {{ Request::path() ==  'sgtepetate/perfil' ? 'active' : ''  }}">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-user-edit" style="color: #3F3F3F"></i>
-          <span>Campañas</span>
+            <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Campañas</span>
         </a>
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -99,32 +89,25 @@
 
       <!-- Nav Item - Bitacora Collapse blog -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-pencil-alt" style="color: #3F3F3F"></i>
-          <span>Favoritos</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">           
+            <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Favoritos</span>
         </a>
       </li>
 
       <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-clone" style="color: #3F3F3F"></i>
-          <span>Reviews</span>
+          <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
+          <span style="padding-left: 10px">Reviews</span>
         </a>
       </li>
 
       <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">
         <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: #3F3F3F"></i>
-          <span>Referencias</span></a>
-      </li>
-
-
-      <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-chart-pie" style="color: #3F3F3F"></i>
-          <span>Resumen</span></a>
+            <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Referencias</span></a>
       </li>
 
       <hr class="sidebar-divider d-none d-md-block">
@@ -306,7 +289,6 @@
   <script src="{{asset('temaGestor/js/demo/datatables-demo.js')}}"></script>
   <script src="{{asset('temaGestor/vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{asset('temaGestor/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-  <script src={{asset('temaGestor/jquery/jquery-3.4.1.min.js')}}></script>
 
 </body>
 

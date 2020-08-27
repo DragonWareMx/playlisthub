@@ -11573,11 +11573,11 @@ a:focus {
 }
 
 .sidebar-dark .nav-item.active .nav-link {
-  color: #fff;
+  color: rgb(146, 13, 13);
 }
 
 .sidebar-dark .nav-item.active .nav-link i {
-  color: #fff;
+  color: rgb(56, 12, 12);
 }
 
 .sidebar-dark #sidebarToggle {
