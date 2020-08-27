@@ -11573,7 +11573,13 @@ a:focus {
 }
 
 .sidebar-dark .nav-item.active .nav-link {
-  color: rgb(146, 13, 13);
+  color: rgb(201, 9, 9);
+  
+}
+
+.sidebar-dark .nav-item.active .barra-active {
+  visibility: visible !important;
+  border-top: 2px solid #8177F5;
 }
 
 .sidebar-dark .nav-item.active .nav-link i {

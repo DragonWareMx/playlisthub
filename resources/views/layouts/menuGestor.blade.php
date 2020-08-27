@@ -72,10 +72,12 @@
       
 
       <li class="nav-item active">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Campañas</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="#">uno4cinco</a>
@@ -87,23 +89,20 @@
           </div>
       </li>
 
-      <!-- Nav Item - Bitacora Collapse blog -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">           
+        <a class="nav-link" href="#">           
             <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Favoritos</span>
         </a>
       </li>
 
-      <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="#">
           <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
           <span style="padding-left: 10px">Reviews</span>
         </a>
       </li>
 
-      <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">
         <a class="nav-link" href="#">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
