@@ -16,5 +16,13 @@
         <div class="p_title_o">&nbsp;&nbsp;Campaña "Nombre de la canción"</div>
     </div>
     <hr class="hr_100_o">
+    <div class="div_campana_info_o">
+        <div class="campana_info_0" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27349e3b7e85829da2fbc68bc46');
+        background-size: contain;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -webkit-background-size: cover;">
+        </div>
+    </div>
 </div>
 @endsection
