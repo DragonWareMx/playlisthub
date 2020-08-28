@@ -1,0 +1,49 @@
+.txt-infoNombrePM{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+}
+.div_infoPerfilM{
+    display:flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.div_fotoPerfilM{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 12%;
+}
+.div_txtPM{
+    padding-top: 4%;
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+}
+.div_fotoPerfilM img{ 
+    padding:10%;
+    width: 100%;
+    border-radius: 50%;
+}
+.txt-infoUserP{
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+}
+.txt-informacionP{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5C5C5C;
+}
