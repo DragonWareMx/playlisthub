@@ -35,3 +35,7 @@ Route::get('/', function () {
 Route::get('/prueba',function(){
     return view('inicio');
 })->name('inicio');
+
+Route::get('/iniciar-sesion',function(){
+    return view('login.inicioSesion');
+})->name('login');
