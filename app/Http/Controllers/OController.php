@@ -14,4 +14,8 @@ class OController extends Controller
     {
         return view ('musico.campanas');
     }
+    public function campana($id)
+    {
+        return view ('musico.campana');
+    }
 }

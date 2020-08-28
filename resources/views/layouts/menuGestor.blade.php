@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Inicio | Editorial uno4cinco</title>
+  <title>Playlisthub</title>
 
   <link rel="icon" href="{{asset('/img/logos/ico-playlist.png')}}" type="image/icon type">
 
@@ -44,29 +44,24 @@
           <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" >
         </div>
       </a>
-
+      <br>
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: #3F3F3F"></i>
-          <span>Inicio</span></a>
+      <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="{{ route('inicio') }}">
+            <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
+          <span style="padding-left: 10px">Inicio</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
-
-      <!-- Divider -->
-      {{-- <hr class="sidebar-divider"> --}}
-
-      <!-- Heading -->
-      {{-- <div class="sidebar-heading">
-        
-      </div> --}}
-
-      <!-- Nav Item - Usuarios Collapse Menu -->
       
       <li class="nav-item">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-book" style="color: #3F3F3F"></i>
-          <span>Perfil</span>
+            <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Perfil</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="#">Ver todo</a> 
@@ -81,14 +76,16 @@
       </li>
       
 
-      <li class="nav-item {{ Request::path() ==  'sgtepetate/perfil' ? 'active' : ''  }}">
+      <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-user-edit" style="color: #3F3F3F"></i>
-          <span>Campañas</span>
+            <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Campañas</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#">uno4cinco</a>
+              <a class="collapse-item" href="{{ route('campanas') }}">Campañas</a>
               <a class="collapse-item" href="#">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
@@ -97,34 +94,31 @@
           </div>
       </li>
 
-      <!-- Nav Item - Bitacora Collapse blog -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-pencil-alt" style="color: #3F3F3F"></i>
-          <span>Favoritos</span>
+      <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="{{ route('favoritos') }}">           
+            <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Favoritos</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
-      <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-clone" style="color: #3F3F3F"></i>
-          <span>Reviews</span>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="#">
+          <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
+          <span style="padding-left: 10px">Reviews</span>
         </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
-      <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="#">
-            <i class="fas fa-home" style="color: #3F3F3F"></i>
-          <span>Referencias</span></a>
-      </li>
-
-
-      <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-chart-pie" style="color: #3F3F3F"></i>
-          <span>Resumen</span></a>
+            <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Referencias</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
       <hr class="sidebar-divider d-none d-md-block">
@@ -133,6 +127,12 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
+      <li class="nav-item" style="position: fixed; bottom: 0px;display:block">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+            <img src="{{ asset('/img/iconos/salir.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Cerrar Sesión</span>
+        </a>
+      </li>
     </ul>
     <!-- End of Sidebar -->
 
@@ -154,12 +154,13 @@
           </button>
 
           <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto mr-4">
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
+                {{-- <i class="fas fa-bell fa-fw"></i> --}}
+                <img src="{{ asset('/img/iconos/bell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
                 <span class="badge badge-counter" style="color: black">1</span>
                 {{-- @else 
@@ -202,8 +203,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
-                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/ico/icons-user.png')}}">
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
+                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/iconos/perfil.png')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -306,7 +307,6 @@
   <script src="{{asset('temaGestor/js/demo/datatables-demo.js')}}"></script>
   <script src="{{asset('temaGestor/vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{asset('temaGestor/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-  <script src={{asset('temaGestor/jquery/jquery-3.4.1.min.js')}}></script>
 
 </body>
 
