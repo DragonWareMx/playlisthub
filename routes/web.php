@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
+Route::get('/campana/{id}', 'OController@campana')->name('campana');
 
 //Rutas CURADOR
 Route::get('/ranking', function () {

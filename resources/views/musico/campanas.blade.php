@@ -41,7 +41,7 @@
             <div class="campana_text_o">{{Str::limit('Nombre de la playlist', 48)}}</div>
             <div class="campana_title_o">FECHA DE TÉRMINO</div>
             <div class="campana_text_o">20-Agosto-2020</div>
-            <a class="a_campana_o" href="#">Más info.</a>
+            <a class="a_campana_o" href="{{route('campana', ['id'=>1])}}">Más info.</a>
         </div>
         <div class="div_item_campana_o">
             
@@ -82,7 +82,7 @@
             <div class="campana_text_o">{{Str::limit('Nombre de la playlist', 48)}}</div>
             <div class="campana_title_o">FECHA DE TÉRMINO</div>
             <div class="campana_text_o">20-Agosto-2020</div>
-            <a class="a_campana_o" href="#">Más info.</a>
+            <a class="a_campana_o" href="{{route('campana', ['id'=>1])}}">Más info.</a>
             <a class="a_campana_o" href="#">Renovar</a>
         </div>
 
