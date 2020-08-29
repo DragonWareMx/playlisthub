@@ -1,11 +1,53 @@
-.txt-infoNombrePM{
+.div_CabeceraApartado{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-bottom: solid .1rem gray;
+    display: flex;
+}
+
+.div_tituloApartado{
+    width: 80%;
+    height: 45px;
+}
+
+.div_tituloApartado p{
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: bold;
+    font-weight: 300;
     font-size: 18px;
     line-height: 21px;
-    color: #5C5C5C;
+    color: #5A5A5A;
+    margin-bottom: 10px;
 }
+
+.resize_tituloApartado {
+    width: 90%;
+}
+
+.div_CabeceraApartado a{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    width: 20%;
+    padding-top: 0.8%;
+    text-align: center;
+    background: #F2F1FF;
+    border: 1px solid #8177F5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.img_ico_title_o{
+    width: 18px;
+    height: 18px;
+    transition: ease-in-out 0.3s;
+}
+
 .div_infoPerfilM{
     display:flex;
     width: 90%;
@@ -14,23 +56,48 @@
     background: #FFFFFF;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+    padding: 1%;
 }
+
 .div_fotoPerfilM{
     margin-top: auto;
     margin-bottom: auto;
-    width: 12%;
+    width: 15%;
 }
+
 .div_txtPM{
     padding-top: 4%;
-    width: 88%;
+    width: 85%;
     display: flex;
     flex-direction: column;
+    padding-left: 2%;
 }
+
 .div_fotoPerfilM img{ 
     padding:10%;
     width: 100%;
     border-radius: 50%;
 }
+
+.div_fotoPerfilM a{
+    font-size: 13px;
+    color:#8177f5;
+    text-align: center;
+    text-decoration: underline;
+    width: 100%;
+    margin-left: 18%;
+    padding-bottom: 40%;
+}
+
+.txt-infoNombrePM{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+}
+
 .txt-infoUserP{
     font-family: 'Roboto';
     font-style: italic;
@@ -38,7 +105,9 @@
     font-size: 18px;
     line-height: 21px;
     color: #5C5C5C;
+    margin-top: -10px;
 }
+
 .txt-informacionP{
     font-family: Roboto;
     font-style: normal;
@@ -46,4 +115,85 @@
     font-size: 16px;
     line-height: 19px;
     color: #5C5C5C;
+    margin-top: -15px;
+}
+
+.div_campanasAP{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div_eliminarCuenta{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.div_eliminarCuenta a{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color: #8177F5;
+    margin-bottom: 40px;
+}
+
+.div_Ajustes{
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2%;
+}
+.txt-descAjustes{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5C5C5C; 
+}
+.div_Ajustes a{
+    text-decoration-line: underline;
+    color: #8177F5;
+}
+
+.div_Ajustes_item{
+    display: flex;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #D0D0D0;
+    padding-bottom: 2%;
+    padding-top: 1%;
+
+}
+.div_Ajustes_name{
+    width: 30%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4C4C4C;
+}
+.div_Ajustes_valor{
+    width: 70%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5C5C5C;
+}
+.div_Ajustes_item:hover{
+    cursor: pointer;
+    border-bottom: 2px solid #D0D0D0;
+
+
 }

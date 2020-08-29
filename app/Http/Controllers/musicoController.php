@@ -10,4 +10,9 @@ class musicoController extends Controller
     {
         return view ('musico.perfilMusico');
     }
+
+    public function administrar()
+    {
+        return view ('administrarCuenta');
+    }
 }

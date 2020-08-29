@@ -17,6 +17,9 @@ Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campana/{id}', 'OController@campana')->name('campana');
 
+Route::get('/perfil', 'musicoController@perfil')->name('perfil-musico');
+Route::get('/administrar-cuenta', 'musicoController@administrar')->name('administrar-cuenta');
+
 //Rutas CURADOR
 Route::get('/ranking', function () {
     return view('curador.ranking');
