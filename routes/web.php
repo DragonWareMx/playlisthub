@@ -39,3 +39,8 @@ Route::get('/prueba',function(){
 Route::get('/iniciar-sesion',function(){
     return view('login.inicioSesion');
 })->name('login');
+
+/*---------------- COMBO WOMBO 4 ----------------*/
+Route::get('/reviews', function () {
+    return view('musico.reviews');
+});

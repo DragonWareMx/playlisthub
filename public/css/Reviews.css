@@ -1,0 +1,194 @@
+.review_calificacion{
+    box-sizing: border-box;
+
+    width: fit-content;
+    height: 36px;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    align-items: center;
+    transition: ease-in-out 0.3s;
+    margin-top:-6px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.review_calificacion .review_calificacion_item{
+    display: flex;
+    justify-content: space-evenly;
+    width: fit-content;
+}
+
+.review_calificacion .review_calificacion_item_margin{
+    margin-left: 23px;
+}
+
+.review_calificacion .review_calificacion_item .img_review{
+    width: 19px;
+    height: 19px;
+    margin-right: 5px;
+
+    transition: ease-in-out 0.3s;
+}
+
+.review_calificacion .review_calificacion_item .p_review{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 21px;
+    color: #5A5A5A;
+
+    transition: ease-in-out 0.3s;
+
+    text-decoration: none;
+}
+
+.review_calificacion .review_calificacion_item .p_review_bold{
+    font-weight: bold;
+}
+
+/*--------- lista de reviews ---------*/
+
+.reviews_list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 25px;
+}
+
+.reviews_list .review_item{
+    width: 100%;
+    max-width: 1056px;
+    height: 151px;
+
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 1%;
+
+    display: table;
+}
+
+.reviews_list .review_item .review_img{
+    display: table-cell;
+
+    width: 83px;
+
+}
+
+.reviews_list .review_item .review_img img{
+    width: 59px;
+    height: 59px;
+    margin-left: 18px;
+    margin-right: 6px;
+    margin-top: 16px;
+}
+
+.reviews_list .review_item .review_content{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.reviews_list .review_item .review_content .review_content_names{
+    width: 100%;
+    display: table;
+}
+
+.reviews_list .review_item .review_content .review_content_names .review_content_names_name{
+    padding-top: 16px;
+
+    display: table-cell;
+    
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.reviews_list .review_item .review_content .review_content_names .review_content_names_name .m_r{
+    width: fit-content;
+    margin-left: auto;
+
+    font-weight: 300;
+
+    margin-right: 39px;
+}
+
+.reviews_list .review_item .review_content .review_content_sd{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.reviews_list .review_item .review_content .review_content_score,
+.reviews_list .review_item .review_content .review_content_date
+{
+    width: fit-content;
+    line-height: 17px;
+
+    margin-top: 8px;
+}
+
+.reviews_list .review_item .review_content .review_content_date{
+    margin-left: 18px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 23px;
+
+    color: #5C5C5C;
+
+}
+
+.reviews_list .review_item .review_content .review_content_score img{
+    width: 17px;
+    height: 17px;
+}
+
+.reviews_list .review_item .review_content .review_content_review{
+    margin-top: 15px;
+    margin-right: 42px;
+    margin-bottom: 16px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+
+    text-align: justify;
+    
+    color: #5C5C5C;
+}
+
+@media(max-width: 475px){
+    .review_calificacion{
+        width: 100%;
+        display: block;
+        justify-content: space-evenly;
+        margin: 0px;
+        margin-top: 10px;
+    }
+
+    .review_calificacion_item_margin{
+        margin-left: 0px;
+    }
+    
+    .ico_title60_o{
+        width: 100%;
+    }
+}
