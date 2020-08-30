@@ -182,7 +182,7 @@
                 <div class="review_content_names">
                     <div class="review_content_names_name">Nombre completo del curador</div>
                     <div class="review_content_names_name">
-                        <div class="m_r">Nombre de la canción del review</div>
+                        <div class="m_r">Nombre de la canción de la campaña</div>
                     </div>
                 </div>
                 {{-- CALIFICACION Y FECHA --}}
@@ -196,6 +196,7 @@
                         <img src="img/iconos/op.png" alt="">
                     </div>
                     <div class="review_content_date">17 de junio de 2020</div>
+                    <div class="review_content_date"><b>Playlist</b> Nombre de la playlist</div>
                 </div>
                 {{-- REVIEW --}}
                 <div class="review_content_review">
@@ -216,7 +217,7 @@
                 <div class="review_content_names">
                     <div class="review_content_names_name">Nombre completo del curador</div>
                     <div class="review_content_names_name">
-                        <div class="m_r">Nombre de la canción del review</div>
+                        <div class="m_r">Nombre de la canción de la campaña</div>
                     </div>
                 </div>
                 {{-- CALIFICACION Y FECHA --}}
@@ -230,6 +231,7 @@
                         <img src="img/iconos/op.png" alt="">
                     </div>
                     <div class="review_content_date">17 de junio de 2020</div>
+                    <div class="review_content_date"><b>Playlist</b> Nombre de la playlist</div>
                 </div>
                 {{-- REVIEW --}}
                 <div class="review_content_review">
@@ -250,7 +252,7 @@
                 <div class="review_content_names">
                     <div class="review_content_names_name">Nombre completo del curador</div>
                     <div class="review_content_names_name">
-                        <div class="m_r">Nombre de la canción del review</div>
+                        <div class="m_r">Nombre de la canción de la campaña</div>
                     </div>
                 </div>
                 {{-- CALIFICACION Y FECHA --}}
@@ -264,6 +266,7 @@
                         <img src="img/iconos/op.png" alt="">
                     </div>
                     <div class="review_content_date">17 de junio de 2020</div>
+                    <div class="review_content_date"><b>Playlist</b> Nombre de la playlist</div>
                 </div>
                 {{-- REVIEW --}}
                 <div class="review_content_review">
