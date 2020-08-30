@@ -26,6 +26,16 @@
     width: fit-content;
 }
 
+.review_calificacion .review_calificacion_item a{
+    color: blue !important;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    margin-right: 80px;
+}
+
 .review_calificacion .review_calificacion_item_margin{
     margin-left: 23px;
 }
@@ -175,6 +185,58 @@
     color: #5C5C5C;
 }
 
+@media(max-width: 600px){
+    .reviews_list .review_item .review_content .review_content_names{
+        width: fit-content;
+        margin-left: 21px;
+        margin-right: 21px;
+    }
+
+    .reviews_list .review_item .review_content .review_content_names .review_content_names_name{
+        display: table-row;
+    }
+
+    .reviews_list .review_item .review_content .review_content_names .review_content_names_name .m_r{
+        margin-left: 0px;
+        margin-right: auto;
+        padding-top: 8px;
+    }
+
+    .reviews_list .review_item .review_img{
+        display: table-row;
+        width: 100%;
+        text-align: center;
+    }
+
+    .reviews_list .review_item .review_content{
+        display: table-row;
+        vertical-align: top;
+    }
+
+    .reviews_list .review_item .review_img img{
+        margin: auto;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .reviews_list .review_item .review_content .review_content_review{
+        margin-top: 15px;
+        margin-left: 21px;
+        margin-right: 21px;
+        margin-bottom: 16px;
+    }
+
+    .reviews_list .review_item .review_content .review_content_sd{
+        display: inline;
+    }
+
+    .reviews_list .review_item .review_content .review_content_score,
+    .reviews_list .review_item .review_content .review_content_date
+    {
+        margin-left: 21px;
+    }
+}
+
 @media(max-width: 475px){
     .review_calificacion{
         width: 100%;
@@ -184,11 +246,22 @@
         margin-top: 10px;
     }
 
-    .review_calificacion_item_margin{
+    .review_calificacion .review_calificacion_item_margin{
         margin-left: 0px;
     }
     
     .ico_title60_o{
         width: 100%;
+    }
+}
+
+@media(max-width: 360px){
+    .reviews_list .review_item .review_content .review_content_review{
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviews_list .review_item .review_content .review_content_names .review_content_names_name{        
+        font-size: 14px;
+        line-height: 16px;
     }
 }

@@ -15,7 +15,7 @@
 <div class="div_90_o" style="max-width: 1059px;">
     {{-- REVIEWS RECIBIDAS --}}
     <div class="ico_title60_o">
-        <img class="img_ico_title_o" src="img/iconos/op.png" alt="">
+        <img class="img_ico_title_o" src="img/iconos/reviews.png" alt="">
         <div class="p_title_o">&nbsp;&nbsp;Reviews recibidas</div>
     </div>
 
@@ -63,9 +63,9 @@
                 <div class="review_content_sd">
                     {{-- ESTRELLAS --}}
                     <div class="review_content_score">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                     </div>
@@ -157,7 +157,7 @@
     <div href="#" class="review_calificacion" style="margin-top:30px;">
         {{-- CALIFICACION --}}
         <div class="review_calificacion_item">
-            <a href="#">pendientes</a>
+            <a href="#">Pendientes</a>
         </div>
 
         <div class="review_calificacion_item review_calificacion_item_margin">
@@ -189,9 +189,9 @@
                 <div class="review_content_sd">
                     {{-- ESTRELLAS --}}
                     <div class="review_content_score">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
+                        <img src="img/iconos/reviews.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                     </div>
