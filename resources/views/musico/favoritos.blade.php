@@ -27,7 +27,7 @@
     <div class="div_item_fav_o">
         <div class="div_profile_image_o">
             <img class="img_circle_o" src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-1/p320x320/16997700_10154128987076923_6833035134277844412_n.jpg?_nc_cat=101&_nc_sid=0c64ff&_nc_ohc=WytsLSVsHMYAX-7lfYL&_nc_ht=scontent-ort2-2.xx&tp=6&oh=1795899c29806ac6bfa43c97f96cecb5&oe=5F6A5B6E" alt="">
-            <i class="fas fa-heart heart_profile_o"></i>
+            <img class="heart_profile_o" src="img/iconos/marcadofav.png" alt="">
         </div>
         <div class="item_subtitle_o">{{Str::limit('Nombre completo del curador', 37)}}</div>
         <div class="item_title_o">PAÍS</div>

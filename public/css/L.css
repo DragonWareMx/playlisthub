@@ -10,16 +10,30 @@ body{
     font: bold 16px sans-serif;
     padding: 40px 40px 50px 40px;
     background-color:  #8177F5;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.footer-logos{
+.footer-logos-derecha{
+    margin-left: 8px;
+    text-decoration: none;
+}
+.footer-logos-izquierda{
     margin-right: 8px;
-    margin-left: 20px;
+    margin-left: auto;
     text-decoration: none;
 }
 
-.footer-body{
-    width: 100%;
+.footer-left{
+    width: 50% !important;
+    display: flex;
+    
+}
+
+.footer-right{
+    width: 50% !important;
+    display: flex;
+    
 }
 
 .footer-text{
