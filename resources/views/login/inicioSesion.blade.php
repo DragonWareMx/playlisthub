@@ -12,14 +12,14 @@
     Iniciar sesion
     <div style="width: 100%;height:500px;background-color:khaki">
     </div>
-    <footer class="footer-main">  
+    <footer class="footer-main">   
         <div class="footer-left">
-            <a href="" class="footer-logos">
+            <a href="" class="footer-logos-izquierda">
                 <img src="{{ asset('/img/iconos/facebook.png') }}" width="36px" height="36px">        
             </a>
         </div>
         <div class="footer-right">
-            <a href="" class="footer-logos">
+            <a href="" class="footer-logos-derecha">
                 <img src="{{ asset('/img/iconos/instagram.png') }}" width="36px" height="36px"> 
             </a> 
         </div>
