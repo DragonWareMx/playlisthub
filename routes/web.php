@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campana/{id}', 'OController@campana')->name('campana');
+Route::get('/crear-paso-1','Ocontroller@crearCampana1')->name('crearCampana1');
 
 Route::get('/perfil', 'musicoController@perfil')->name('perfil-musico');
 Route::get('/administrar-cuenta', 'musicoController@administrar')->name('administrar-cuenta');

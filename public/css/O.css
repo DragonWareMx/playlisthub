@@ -360,6 +360,85 @@
     margin-top: 10px;
     margin-right: 0px;
 }
+.normalizar_letra{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #5C5C5C;
+}
+.input_crearCampana{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(92, 92, 92, 0.47);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5C5C5C;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    transition: ease-in-out 0.3s;
+}
+.input_crearCampana:focus{
+    border: none;
+    outline: none;
+    border-bottom:1px solid #8177F5;
+    transition: ease-in-out 0.3s;
+}
+#crearCampana_50{
+    width: 50%;
+}
+.crearCampana_botones{
+    width: 100%;
+    display: flex;
+}
+.a_cancelar_o{
+    margin-left: auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8177F5;
+    width: 104px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out 0.3s;
+}
+.a_cancelar_o:hover{
+    text-decoration: none;
+    color: black;
+    transition: ease-in-out 0.3s;
+}
+.a_continuar_o{
+    float:right;
+    background: #8177F5;
+    border-radius: 5px;
+    width: 104px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    transition: ease-in-out 0.3s;
+}
+.a_continuar_o:hover{
+    text-decoration: none;
+    color: black;
+    transition: ease-in-out 0.3s;
+    width: 109px;
+}
 .lds-spinner {
     display: inline-block;
     width: 40px;
@@ -461,6 +540,9 @@
     .campana_info_3_status{
         margin-right: 20px;
         transition: ease-in-out 0.3s;
+    }
+    .a_continuar_o{
+        margin-right: 20px;
     }
 }
 @media (max-width:1074px){
@@ -633,6 +715,7 @@
     }
     .campana_info_1{
         width: 60%;
+        margin-top:20px;
     }
     .campana_info_2{
         width: 60%;
@@ -656,6 +739,13 @@
     }
     .campana_estatus_o{
         margin-bottom: 20px;
+    }
+    .input_crearCampana{
+        width: 90%;
+    }
+    .crearCampana_botones{
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
 }
 @media (max-width:792px){
@@ -817,7 +907,14 @@
     }
     .txt_a_o{
         font-size: 12px;
-    }    
+    }
+    .crearCampana_botones{
+        display: flex;
+        justify-content: space-around;
+    }
+    .a_cancelar_o{
+        margin: 0px;
+    }
 }
 @media (max-width:491px){
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
@@ -850,6 +947,12 @@
     .campana_info_3_status{
         margin: 0px;
     }
+    .input_crearCampana{
+        margin-left: 15px;
+    }
+    #crearCampana_50{
+        width: 100%;
+    }
 }
 @media (max-width:438px){
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
@@ -868,6 +971,11 @@
         width: 80px;
         height: 26px;
         font-size: 12px;
+    }
+    .a_cancelar_o,.a_continuar_o{
+        font-size: 14px;
+        min-width: 75;
+        height: 30px;
     }
 }
 @media (max-width:385px){

@@ -18,4 +18,8 @@ class OController extends Controller
     {
         return view ('musico.campana');
     }
+    public function crearCampana1()
+    {
+        return view ('musico.crearCampana1');
+    }
 }

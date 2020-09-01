@@ -15,7 +15,7 @@
         <img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">
         <div class="p_title_o">&nbsp;&nbsp;Campañas actuales</div>
     </div>
-    <a href="#" class="a_agregar_o">
+    <a href="{{Route('crearCampana1')}}" class="a_agregar_o">
         <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
         <div class="txt_a_o">Agregar</div>
     </a>

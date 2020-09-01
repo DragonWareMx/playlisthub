@@ -41,7 +41,7 @@
             <div class="vercampana_txt_o">Nombre completo de la playlists</div>
             <div class="vercampana_title_o">NOMBRE DEL CURADOR</div>
             <a class="vercampana_a_o" href="#">Nombre completo del curador</a>
-            <div class="vercampana_title_o">FECHA DE INICIO</div>
+            <div class="vercampana_title_o">FECHA DE TERMINO</div>
             <div class="vercampana_txt_o">25-Agosto-2020</div>
         </div>
         <div class="campana_info_3">
