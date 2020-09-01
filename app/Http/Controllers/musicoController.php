@@ -15,4 +15,9 @@ class musicoController extends Controller
     {
         return view ('administrarCuenta');
     }
+
+    public function nombreUpdate()
+    {
+        return view ('AdministrarCuenta.nombreUpdate');
+    }
 }

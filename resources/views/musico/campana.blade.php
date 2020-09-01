@@ -17,11 +17,8 @@
     </div>
     <hr class="hr_100_o">
     <div class="div_campana_info_o">
-        <div class="campana_info_0" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27349e3b7e85829da2fbc68bc46');
-        background-size: contain;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        -webkit-background-size: cover;">
+        <div class="campana_info_0">
+            <img class="campana_info_3_img" src="https://i.scdn.co/image/ab67616d0000b27349e3b7e85829da2fbc68bc46" alt="">
         </div>
         <div class="campana_info_1">
             <div class="vercampana_title_o">NOMBRE DE LA CANCION</div>
@@ -31,7 +28,7 @@
             <div class="vercampana_title_o">NOMBRE DEL ARTISTA</div>
             <div class="vercampana_txt_o">Nombre del artista</div>
             <div class="vercampana_title_o">LINK DEL ARTISTA</div>
-            <div class="vercampana_txt_o">https://linkdeplaylisthub/artista.com</div>
+            <div class="vercampana_txt_o">{{Str::limit('https://linkdelartista/playlisthub.com', 27 )}}</div>
             <div class="vercampana_title_o">FECHA DE INICIO</div>
             <div class="vercampana_txt_o">25-Agosto-2020</div>
         </div>
@@ -49,10 +46,15 @@
         </div>
         <div class="campana_info_3">
             <img class="campana_info_3_img" src="https://i.scdn.co/image/ab67616d0000b27349e3b7e85829da2fbc68bc46" alt="">
+        </div>
+        <div class="campana_estatus_o" style="display:none">
             <div class="campana_info_3_status">
                 <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>   
                 <div class="vercampana_txt_status">En espera de revisión</div>
             </div>
+        </div>
+        <div class="campana_estatus_o">
+            <a class="campana_estatus_renovar_o campana_info_3_status" href="#">Renovar</a>
         </div>
     </div>
 </div>

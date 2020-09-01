@@ -19,7 +19,7 @@ Route::get('/campana/{id}', 'OController@campana')->name('campana');
 
 Route::get('/perfil', 'musicoController@perfil')->name('perfil-musico');
 Route::get('/administrar-cuenta', 'musicoController@administrar')->name('administrar-cuenta');
-
+Route::get('/nombre', 'musicoController@nombreUpdate')->name('nombre-update');
 //Rutas CURADOR
 Route::get('/ranking', function () {
     return view('curador.ranking');

@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">Es posible que cierta información sea visible para otras personas que usan los servicios de Playlishub. <a href="#">Más información</a></p>
+    <p class="txt-descAjustes">Es posible que cierta información sea visible para otras personas que usan los servicios de Playlishub. <a target="blank" href="https://playlisthub.io/aviso-de-privacidad/">Más información</a></p>
     <div class="div_Ajustes_item">
         <div class="div_Ajustes_name">
         FOTO
@@ -136,8 +136,10 @@
     </div>
 </div>
 
-
+<br>
 <div class="div_eliminarCuenta">
     <a href="#"><i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Eliminar cuenta</a>
+    <a href="{{route('perfil-musico')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
 </div>
+<br>
 @endsection
