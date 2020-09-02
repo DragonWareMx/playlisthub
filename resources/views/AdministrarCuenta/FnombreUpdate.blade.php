@@ -13,19 +13,19 @@
 @section('contenido')
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre de facturación</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR NOMBRE</p>
+    <p class="txt-descAjustes">EDITAR NOMBRE DE FACTURACIÓN</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         NOMBRE
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="text" name="Fnombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>

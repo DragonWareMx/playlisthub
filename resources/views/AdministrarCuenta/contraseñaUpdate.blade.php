@@ -13,19 +13,31 @@
 @section('contenido')
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Contraseña</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR NOMBRE</p>
+    <p class="txt-descAjustes">EDITAR CONTRASEÑA</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
-        NOMBRE
+        CONTRASEÑA ACTUAL
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="password" name="pass" class="input_Ajustes_valor" id="" value="" required style=" width:30%; background-color:#f1f1f1;">
+    </div>
+    <div class="div_Ajustes_itemUP">
+        <div class="div_Ajustes_name">
+        NUEVA CONTRASEÑA
+        </div>
+        <input type="password" name="newpass" class="input_Ajustes_valor" id="" value="" required style="width:30%; background-color:#f1f1f1; ">
+    </div>
+    <div class="div_Ajustes_itemUP">
+        <div class="div_Ajustes_name">
+        CONFIRMAR CONTRASEÑA
+        </div>
+        <input type="password" name="confpass" class="input_Ajustes_valor" id="" value="" required style="width:30%; background-color:#f1f1f1; ">
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>

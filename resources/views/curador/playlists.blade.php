@@ -15,18 +15,18 @@
 @section('contenido')
 <div class="div_90_o">
     <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/campanas.png" alt="" style=""> &nbsp;&nbsp;Tus playlists activas
+        <img class="logo_ranking" src="img/iconos/campanas.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_title"> playlists activas </span>
     </div>
     <div class="btn_addPlaylist" data-toggle="modal" data-target="#addModal">
-         <img class="logo_plus" src="img/iconos/plus.png" alt="" style=""> &nbsp;&nbsp;Agregar
+         <img class="logo_plus" src="img/iconos/plus.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_hide">Agregar</span>
     </div>
     <hr class="hr_100_o">
     <!--tabla playlists-->
     <div class="div_content">
         <div class="table_head">
-           <div class="img_playlist"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head">GÉNERO</div> <div class="txt_row_head">NIVEL</div> 
-            <div class="txt_row_head">SEGUIDORES</div> <div class="txt_row_head">GANANCIAS</div> 
+           <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
+            <div class="txt_row_head">GÉNERO</div> <div class="txt_row_head row_hide">NIVEL</div> 
+            <div class="txt_row_head row_hide">SEGUIDORES</div> <div class="txt_row_head row_hide">GANANCIAS</div> 
         </div>
         
     
@@ -34,15 +34,15 @@
     <hr class="hr_100_o">
         <div class="table_row">
             <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre</div> <div class="txt_row_play">rock</div> <div class="txt_row_play">nivel 10</div>
-              <div class="txt_row_play">1000</div> <div class="txt_row_play">$5,300</div>
+            <div class="txt_row_play">nombre</div> <div class="txt_row_play row_hide2">rock</div> <div class="txt_row_play row_hide">nivel 10</div>
+              <div class="txt_row_play row_hide">1000</div> <div class="txt_row_play row_hide">$5,300</div>
         </div>
     <!--este es de prueba-->
         <hr class="hr_100_o">
         <div class="table_row">
             <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre</div> <div class="txt_row_play">rock</div> <div class="txt_row_play">nivel 10</div>
-              <div class="txt_row_play">1000</div> <div class="txt_row_play">$5,300</div>
+            <div class="txt_row_play">nombre</div> <div class="txt_row_play row_hide2">rock</div> <div class="txt_row_play row_hide">nivel 10</div>
+              <div class="txt_row_play row_hide">1000</div> <div class="txt_row_play row_hide">$5,300</div>
         </div>
 
     </div>
@@ -50,16 +50,16 @@
     
 
     <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/match.png" alt=""> &nbsp;&nbsp;Canciones con match
+        <img class="logo_ranking" src="img/iconos/match.png" alt=""> &nbsp;&nbsp;<span class="txt_title">Canciones con match</span>
     </div>
     <a class="item_right" href="#">Solicitudes</a>
     <hr class="hr_100_o">
     <!--tabla canciones con match-->
     <div class="div_content">
         <div class="table_head">
-           <div class="img_playlist"></div> <div class="txt_row_head">NOMBRE DE LA CANCIÓN</div> 
-           <div class="txt_row_head">PLAYLIST</div> <div class="txt_row_head">ARTISTA</div>  
-           <div class="txt_row_head">TOKENS</div> <div class="txt_row_head">MÚSICO</div> 
+           <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA CANCIÓN</div> 
+           <div class="txt_row_head">PLAYLIST</div> <div class="txt_row_head row_hide">ARTISTA</div>  
+           <div class="txt_row_head row_hide">TOKENS</div> <div class="txt_row_head row_hide">MÚSICO</div> 
         </div>
         
     
@@ -67,8 +67,9 @@
     <hr class="hr_100_o">
         <div class="table_row">
             <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre muy largo alv</div> <div class="txt_row_play">nombre más que largo mucho mucho mucho</div> <div class="txt_row_play">nombre</div>  
-            <div class="txt_row_play">2</div> <div class="txt_row_play">nombre</div> 
+            <div class="txt_row_play">nombre muy largo alv</div> <div class="txt_row_play row_hide2">nombre más que largo mucho mucho mucho</div> 
+            <div class="txt_row_play row_hide">nombre</div>  
+            <div class="txt_row_play row_hide">2</div> <div class="txt_row_play row_hide">nombre</div> 
         </div>
     </div>
 </div>
@@ -94,7 +95,7 @@
 
             <!--se hacen con un for-->
             <div id="1" class="div_playlist_modal">
-                <div><img class="img_playlist" src="img/unnamed.jpg" alt=""></div>  
+                <div><img class="img_modal" src="img/unnamed.jpg" alt=""></div>  
                 <div class="txt_row">Nombre de la playlist muy largo pero muy largo ala verga muy muy muy </div> <div class="txt_row">2,000 seguidores (nivel 10)</div>
             </div>
 

@@ -93,7 +93,16 @@
 }
 .img_playlist{
     width: 102px;
+    height: 102px;
     border-radius: 5px;
+}
+.img_modal{
+    width: 102px;
+    height: 102px;
+    border-radius: 5px;
+}
+.img_vacia{
+    width: 102px;
 }
 .txt_row{
     width: 35%;
@@ -258,4 +267,154 @@
     border:150px;
     padding: 15px;
     transition: ease-in-out 0.3s;
+}
+
+@media (max-width:1472px){
+    .txt_row_play{
+        width: 10%;
+        margin-top:25px;
+    }
+    .txt_row_head{
+        width: 10%;
+    }
+}
+@media (max-width:1300px){
+    .table_head{
+        Font-size: 10px;
+    }
+    .table_row{
+        Font-size: 10px;
+    }
+    .img_playlist{
+        width: 68px;
+        height: 68px;
+    }
+    .img_modal{
+        width: 68px;
+        height: 68px;
+    }
+    .img_vacia{
+        width: 68px;
+    }
+    .txt_row_play{
+        width: 17%;
+        margin-top:15px;
+    }
+    .txt_row_head{
+        width: 17%;
+    }
+    .div_playlist_modal{
+        height: 83px;
+        Font-size: 10px;
+        padding: 5px;
+    }
+    .txt_row{
+        width: 35%;
+        margin-top:20px;
+    }
+    
+}
+@media (max-width:991px){
+    .botones_modal{
+        padding-left:10%;
+    }
+}
+
+@media (max-width:842px){
+    .table_head{
+        Font-size: 9px;
+    }
+    .table_row{
+        Font-size: 9px;
+    }
+    .txt_row_play{
+        width: 10%;
+        margin-top:15px;
+    }
+    .txt_row_head{
+        width: 10%;
+    }
+}
+@media (max-width:680px){
+    
+    .row_hide{
+        display: none;
+    }
+    .table_head{
+        Font-size: 15px;
+    }
+    .table_row{
+        Font-size: 15px;
+    }
+    .txt_row_play{
+        width: 33%;
+        margin-top:15px;
+    }
+    .txt_row_head{
+        width: 33%;
+    }
+
+}
+@media (max-width:530px){
+    .p_title_o{
+        font-size: 15px;
+    }
+    .item_right{
+        font-size: 15px;
+    }
+    .txt_hide{
+        display:none;
+    }
+    .btn_addPlaylist{
+        border:none;
+        width:30px;
+    }
+    .btn_addPlaylist:hover{
+        border:none;
+        width:50px;
+    }
+}
+@media (max-width:450px){
+    
+    .table_head{
+        display:none;
+    }
+    .img_playlist{
+        width: 100%;
+        height: auto;
+    }
+    .row_hide2{
+        display:none;
+    }
+    .txt_row_play{
+        width: 100%;
+    }
+    .btn_modal_cancel, .btn_modal_add{
+        width: 98px;
+        padding: 7px;
+        margin:7px;
+        Font-size: 11px;
+    }
+    .botones_modal{
+        padding-left: 20%;
+    }
+    .logo_spotify{
+        width: 72px;
+    }
+}
+@media(max-width:380px){
+  .txt_title{
+      display:none;
+  }
+  .logo_ranking{
+      width: 30px;
+  }
+  .botones_modal{
+      padding-left: 10%;
+  }
+  .txt_modal_center, .txt_modal_left{
+      font-size: 12px;
+  }
+
+
 }

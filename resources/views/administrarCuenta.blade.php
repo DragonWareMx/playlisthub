@@ -18,65 +18,77 @@
 </div>
 <div class="div_Ajustes">
     <p class="txt-descAjustes">Es posible que cierta información sea visible para otras personas que usan los servicios de Playlishub. <a target="blank" href="https://playlisthub.io/aviso-de-privacidad/">Más información</a></p>
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        FOTO
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('foto-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            FOTO
+            </div>
+            <div class="div_Ajustes_valor">
+            Agrega una foto para personalizar tu cuenta
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        Agrega una foto para personalizar tu cuenta
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        NOMBRE
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('nombre-update')}}">
+        <div class="div_Ajustes_item" >
+            <div class="div_Ajustes_name">
+            NOMBRE
+            </div>
+            <div class="div_Ajustes_valor">
+            Nombre completo del usuario
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        Nombre completo del usuario
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        GÉNERO
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('genero-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            GÉNERO
+            </div>
+            <div class="div_Ajustes_valor">
+            Femenino
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        Femenino
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        FECHA DE NACIMIENTO
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('fecNac-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            FECHA DE NACIMIENTO
+            </div>
+            <div class="div_Ajustes_valor">
+            02 - Agosto - 1999
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        02 - Agosto - 1999
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        PAÍS DE RESIDENCIA
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('pais-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            PAÍS DE RESIDENCIA
+            </div>
+            <div class="div_Ajustes_valor">
+            México
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        México
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        CORREO ELECTRÓNICO
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('correo-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            CORREO ELECTRÓNICO
+            </div>
+            <div class="div_Ajustes_valor">
+            correo@ejemplo.com
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        correo@ejemplo.com
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
 </div>
 
@@ -87,15 +99,17 @@
     </div>
 </div>
 <div class="div_Ajustes">
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        CONTRASEÑA
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('contraseña-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            CONTRASEÑA
+            </div>
+            <div class="div_Ajustes_valor">
+            ***********
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        ***********
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 </div>
 
 
@@ -105,35 +119,41 @@
     </div>
 </div>
 <div class="div_Ajustes">
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        NOMBRE
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fnombre-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            NOMBRE
+            </div>
+            <div class="div_Ajustes_valor">
+            Nombre completo
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        Nombre completo
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        NOMBRE DE LA COMPAÑÍA (Opcional)
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fcompañia-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            NOMBRE DE LA COMPAÑÍA (Opcional)
+            </div>
+            <div class="div_Ajustes_valor">
+            Nombre de la compañía
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        Nombre de la compañía
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 
-    <div class="div_Ajustes_item">
-        <div class="div_Ajustes_name">
-        DIRECCIÓN
+    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fdireccion-update')}}">
+        <div class="div_Ajustes_item">
+            <div class="div_Ajustes_name">
+            DIRECCIÓN
+            </div>
+            <div class="div_Ajustes_valor">
+            País, estado, ciudad y código postal
+            </div>
+            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-        <div class="div_Ajustes_valor">
-        País, estado, ciudad y código postal
-        </div>
-        <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-    </div>
+    </a>
 </div>
 
 <br>

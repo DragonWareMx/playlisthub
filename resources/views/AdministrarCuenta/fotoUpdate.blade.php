@@ -13,19 +13,20 @@
 @section('contenido')
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Foto de perfil</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR NOMBRE</p>
+    <p class="txt-descAjustes">EDITAR FOTO DE PERFIL</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
-        <div class="div_Ajustes_name">
-        NOMBRE
+        <div class="div_fotoPerfilM">
+            <img src="" alt="Imagen"> 
+            {{-- cargar imagen actual --}}
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="file" name="imagen" class="input_Ajustes_valor" id="imagen" value="al" required style="padding: 8%; padding-left:1%">
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>
@@ -39,5 +40,6 @@
     <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
 </div>
 <br>
+
 
 @endsection
