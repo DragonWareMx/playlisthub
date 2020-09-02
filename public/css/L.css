@@ -8,7 +8,7 @@ html,body{
     width: 100%;
     text-align: center;
     justify-content: center;
-    font: bold 16px sans-serif;
+    font:  16px sans-serif;
     padding: 40px 40px 50px 40px;
     background-color:  #8177F5;
     display: flex;
@@ -29,12 +29,14 @@ html,body{
     width: 50% !important;
     display: flex;
     
+    margin-top: 10px;
 }
 
 .footer-right{
     width: 50% !important;
     display: flex;
     
+    margin-top: 10px;
 }
 
 .footer-text{
@@ -50,7 +52,8 @@ html,body{
 
 .principal-screen{
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    min-height: 100%;
     background-color: #FFFFFF;
 }
 
@@ -306,4 +309,95 @@ html,body{
 .form-element input:focus,
 .form-element input:hover{
     border: 1px solid #B595F8;
+}
+
+.msg-spoty-approved{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #1AB26B;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 27px;
+    margin-bottom: 23px;
+}
+
+.button-spoty{
+    border: 2px solid #1DD05D;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 8px;
+    cursor: pointer;
+
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.button-spoty img{
+    width: 119px;
+    height: 36px;
+    padding: 26px 32px 26px 32px;
+}
+
+.espacio-inter{
+    margin-top: 28px;
+    width: 100%;
+    height: 1px;
+}
+
+.texto-inicio-sesion{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    width: 40%;
+    margin-right: auto;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: auto;
+    color: #1DD05D;
+}
+
+.registro-login{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+
+    background: #000000;
+    border-radius: 5px;
+
+    height: 39px;
+    width: 174px;
+    margin-bottom: 0;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.login-text4{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+
+    color: #2F2F2F;
+
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18px;
+    margin-bottom: 42px;
 }
