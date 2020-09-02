@@ -50,7 +50,7 @@
         </div>
         <div class="crearCampana_botones">
             <a class="a_cancelar_o" href="{{Route('crearCampana2')}}">Regresar</a>
-            <a class="a_continuar_o" href="#">Continuar</a>
+            <a class="a_continuar_o" href="#">Confirmar</a>
         </div>
     </div>
 </div>
