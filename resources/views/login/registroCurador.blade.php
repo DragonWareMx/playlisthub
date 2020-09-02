@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('/css/L.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
-
+    <link rel="icon" href="{{asset('/img/logos/ico-playlist.png')}}" type="image/icon type">
 </head>
 <body>
     <div class="principal-screen">
@@ -29,8 +29,8 @@
 
         <div class="cuadro-formulario">
             <div style="width:100%; align-content:center;margin-top:-25px">
-                <button class="login-button">Ingresar</button>
-                <button class="login-button active">Registrarme</button>
+                <button class="login-button">Músico</button>
+                <button class="login-button active">Curador</button>
             </div>
             <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
             <form class="login-form" action="">
@@ -95,6 +95,7 @@
         </div>
 
         <p class="login-text4">Al hacer clic en "Registrarme", aceptas nuestros Términos y condiciones, asi como el Aviso de privacidad. Es posible que te enviemos notificaciones por correo electrónico.</p>
+        <div class="espacio-inter" style="margin-top:42px"></div>
     </div>
 
     <footer class="footer-main">   

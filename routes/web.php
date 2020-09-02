@@ -54,9 +54,25 @@ Route::get('/prueba',function(){
     return view('inicio');
 })->name('inicio');
 
-Route::get('/iniciar-sesion',function(){
-    return view('login.inicioSesion');
+Route::get('/registro-curador',function(){
+    return view('login.registroCurador');
+})->name('register-curador');
+
+Route::get('/registro-curador-no',function(){
+    return view('login.registroCuradorNo');
+})->name('register-curador-no');
+
+Route::get('/registro-musico',function(){
+    return view('login.registroMusico');
+})->name('register-musico');
+
+Route::get('/login',function(){
+    return view('login.login');
 })->name('login');
+
+Route::get('/forgot',function(){
+    return view('login.recuperarContra');
+})->name('forgotpass');
 
 /*---------------- COMBO WOMBO 4 ----------------*/
 Route::get('/reviews', function () {
