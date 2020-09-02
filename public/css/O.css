@@ -382,6 +382,14 @@
     margin-top: 0px;
     transition: ease-in-out 0.3s;
 }
+.crearCampana_pasos{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5A5A5A;
+}
 .input_crearCampana:focus{
     border: none;
     outline: none;
@@ -416,6 +424,7 @@
     transition: ease-in-out 0.3s;
 }
 .a_continuar_o{
+    border: none;
     float:right;
     background: #8177F5;
     border-radius: 5px;
@@ -438,6 +447,20 @@
     color: black;
     transition: ease-in-out 0.3s;
     width: 109px;
+}
+.div_encabezado_sel_play{
+    width: 85%;
+    font-family: Roboto;
+    background-color: orchid;
+    margin-top:0px ;
+}
+.encabezado_play_1{
+    font-family: Roboto;
+    font-style: bold;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #5C5C5C;
 }
 .lds-spinner {
     display: inline-block;
@@ -714,11 +737,11 @@
         width: 40%;
     }
     .campana_info_1{
-        width: 60%;
+        width: 55%;
         margin-top:20px;
     }
     .campana_info_2{
-        width: 60%;
+        width: 55%;
         float: right;
         margin-left: auto;
     }
@@ -976,6 +999,9 @@
         font-size: 14px;
         min-width: 75;
         height: 30px;
+    }
+    .crearCampana_pasos{
+        font-size: 12px;
     }
 }
 @media (max-width:385px){

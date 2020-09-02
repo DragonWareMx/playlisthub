@@ -27,8 +27,6 @@
             <div class="vercampana_txt_o">https://linkdespotify.com</div>
             <div class="vercampana_title_o">NOMBRE DEL ARTISTA</div>
             <div class="vercampana_txt_o">Nombre del artista</div>
-            <div class="vercampana_title_o">LINK DEL ARTISTA</div>
-            <div class="vercampana_txt_o">{{Str::limit('https://linkdelartista/playlisthub.com', 27 )}}</div>
             <div class="vercampana_title_o">FECHA DE INICIO</div>
             <div class="vercampana_txt_o">25-Agosto-2020</div>
         </div>

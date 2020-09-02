@@ -22,4 +22,12 @@ class OController extends Controller
     {
         return view ('musico.crearCampana1');
     }
+    public function crearCampana2(request $request)
+    {
+        return view ('musico.crearCampana2');
+    }
+    public function crearCampana3()
+    {
+        return view ('musico.crearCampana3');
+    }
 }
