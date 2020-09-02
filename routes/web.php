@@ -21,8 +21,20 @@ Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
 Route::post('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
 
 Route::get('/perfil', 'musicoController@perfil')->name('perfil-musico');
-Route::get('/administrar-cuenta', 'musicoController@administrar')->name('administrar-cuenta');
-Route::get('/nombre', 'musicoController@nombreUpdate')->name('nombre-update');
+
+/*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
+Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');
+Route::get('/nombreUpdate', 'cuentaController@nombreUpdate')->name('nombre-update');
+Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('contraseña-update');
+Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
+Route::get('/fechaUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
+Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
+Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');
+Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
+Route::get('/FcompañiaUpdate', 'cuentaController@FcompañiaUpdate')->name('Fcompañia-update');
+Route::get('/FdireccionUpdate', 'cuentaController@FdireccionUpdate')->name('Fdireccion-update');
+Route::get('/FnombreUpdate', 'cuentaController@FnombreUpdate')->name('Fnombre-update');
+
 //Rutas CURADOR
 Route::get('/ranking', function () {
     return view('curador.ranking');

@@ -13,19 +13,19 @@
 @section('contenido')
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Correo electrónico</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR NOMBRE</p>
+    <p class="txt-descAjustes">EDITAR CORREO ELECTRÓNICO</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
-        NOMBRE
+        CORREO
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="email" name="correo" class="input_Ajustes_valor" id="" value="correo@ejemplo.com" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>

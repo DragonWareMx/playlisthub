@@ -13,19 +13,40 @@
 @section('contenido')
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Dirección de facturación</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR NOMBRE</p>
+    <p class="txt-descAjustes">EDITAR DIRECCIÓN DE FACTURACIÓN</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
-        NOMBRE
+        PAÍS
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="text" name="Fpais" class="input_Ajustes_valor" id="" value="Pais actual" required>
+    </div>
+
+    <div class="div_Ajustes_itemUP">
+        <div class="div_Ajustes_name">
+        ESTADO
+        </div>
+        <input type="text" name="estado" class="input_Ajustes_valor" id="" value="Estado actual" required>
+    </div>
+
+    <div class="div_Ajustes_itemUP">
+        <div class="div_Ajustes_name">
+        CIUDAD
+        </div>
+        <input type="text" name="ciudad" class="input_Ajustes_valor" id="" value="Ciudad actual" required>
+    </div>
+
+    <div class="div_Ajustes_itemUP">
+        <div class="div_Ajustes_name">
+        CÓDIGO POSTAL
+        </div>
+        <input type="text" name="codigop" class="input_Ajustes_valor" id="" value="58770" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>
