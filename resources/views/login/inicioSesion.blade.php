@@ -28,6 +28,10 @@
         <p class="login-text3">¿Ya tienes una cuenta? <a href="">Ingresar aquí</a></p>
 
         <div class="cuadro-formulario">
+            <div style="width:100%; align-content:center;margin-top:-25px">
+                <button class="login-button">Ingresar</button>
+                <button class="login-button active">Registrarme</button>
+            </div>
             <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
             <form class="login-form" action="">
                 <div class="form-element">
@@ -40,37 +44,81 @@
                     <span>CORREO ELÉCTRONICO</span>
                     <input type="text" name="" id="">
                 </div>
-                <div class="form-element" style="margin-top: 29px">
+                <div class="espacio-inter"></div>
+                <div class="form-element">
                     <span>¿CUÁNTOS SEGUIDORES TIENE TU PLAYLIST MÁS GRANDE DE SPOTIFY?</span>
                     <select name="" id="">
                         <option value="Mexico" selected>15</option>
                     </select>
                 </div>
+                <div class="espacio-inter" style="margin-top: 1px"></div>
+                <p class="msg-spoty-approved">
+                    ¡Excelente! Parece que calificas para convertirte en curador de Playlisthub <br>
+                    Continúa llenando los siguientes campos.
+                </p>
+                <div class="form-element">
+                    <span>NOMBRE COMPLETO</span>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="form-element">
+                    <span>GÉNERO</span>
+                    <select name="" id="">
+                        <option value="Mexico" selected>Hombre</option>
+                        <option value="Mexico" selected>Mujer</option>
+                        <option value="Mexico" selected>Otro</option>
+                    </select>
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>CONTRASEÑA</span>
+                    <input type="password" name="" id="">
+                </div>
+                <div class="form-element">
+                    <span>CONFIRMAR CONTRASEÑA</span>
+                    <input type="password" name="" id="">
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>FECHA NACIMIENTO</span>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
+                    <a href="" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
+                    <p class="texto-inicio-sesion">Sesión iniciada con éxito</p>
+                </div>
+                <div class="form-element">
+                    <button class="registro-login">Registrarme</button>
+                </div>
             </form>
         </div>
+
+        <p class="login-text4">Al hacer clic en "Registrarme", aceptas nuestros Términos y condiciones, asi como el Aviso de privacidad. Es posible que te enviemos notificaciones por correo electrónico.</p>
     </div>
+
     <footer class="footer-main">   
         <div class="footer-left">
-            <a href="" class="footer-logos-izquierda">
+            <a href="" class="footer-logos-izquierda" style="margin-left: auto;margin-right:55px">
                 <img src="{{ asset('/img/iconos/facebook.png') }}" width="36px" height="36px">        
             </a>
         </div>
         <div class="footer-right">
-            <a href="" class="footer-logos-derecha">
+            <a href="" class="footer-logos-derecha" style="margin-left: 55px;margin-right:auto">
                 <img src="{{ asset('/img/iconos/instagram.png') }}" width="36px" height="36px"> 
             </a> 
         </div>
         <div class="footer-left">
-            <span class="footer-text" style="margin-left: auto;margin-right:10px">Ingresar</span>
+            <span class="footer-text" style="margin-left: auto;margin-right:45px;font-weight: bold;">Ingresar</span>
         </div>
         <div class="footer-right">
-            <span class="footer-text" style="margin-left: 10px;margin-right:auto">Aplicar</span>
+            <span class="footer-text" style="margin-left: 45px;margin-right:auto;font-weight: bold;">Aplicar</span>
         </div>
         <div class="footer-left">
-            <span class="footer-text" style="margin-left: auto;margin-right:10px">Aviso de privacidad</span>
+            <span class="footer-text" style="margin-left: auto;margin-right:25px">Aviso de privacidad</span>
         </div>
         <div class="footer-right">
-            <span class="footer-text" style="margin-left: 10px;margin-right:auto">Términos y condiciones</span>    
+            <span class="footer-text" style="margin-left: 25px;margin-right:auto">Términos y condiciones</span>    
         </div> 
         <div class="footer-left">
             <span class="footer-text" style="margin-left: auto;margin-right:10px">Copyright © 2020 Playlisthub</span>
