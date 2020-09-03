@@ -77,7 +77,7 @@
 .reviews_list .review_item{
     width: 100%;
     max-width: 1056px;
-    height: 151px;
+    min-height: 151px;
 
     background: #FFFFFF;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
@@ -127,6 +127,10 @@
     line-height: 19px;
 }
 
+.reviews_list .review_item .review_content .review_content_names .review_content_names_name a{
+    color: #858796;
+}
+
 .reviews_list .review_item .review_content .review_content_names .review_content_names_name .m_r{
     width: fit-content;
     margin-left: auto;
@@ -162,6 +166,10 @@
 
     color: #5C5C5C;
 
+}
+
+.reviews_list .review_item .review_content .review_content_date a{
+    color: #5C5C5C;
 }
 
 .reviews_list .review_item .review_content .review_content_score img{
