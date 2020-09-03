@@ -75,7 +75,8 @@
 
 .div_fotoPerfilM img{ 
     padding:10%;
-    width: 100%;
+    width: 150px;
+    height:150px;
     border-radius: 50%;
 }
 
@@ -256,6 +257,21 @@
     border: solid .1rem #8177F5;
     transition: all ease 0.3s;
 }
+
+.error{
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: normal;
+    color:#8177F5;
+}
+.marcarFav{
+    display: block;
+}
+.desmarcarFav{
+    display: none;
+}
+
+
 
 /* RESPONSIVIDAD */
 @media (max-width:600px){

@@ -67,7 +67,7 @@
             <a class="collapse-item" href="{{route('perfil-musico')}}">Ver perfil</a> 
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="#">Administrar cuenta</a>
+            <a class="collapse-item" href="{{route('administrar-cuenta')}}">Administrar cuenta</a>
             </div>
         </div>
       </li>
@@ -83,10 +83,9 @@
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{ route('campanas') }}">Campañas</a>
-              <a class="collapse-item" href="#">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="#">Agregar autor</a>
+            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
             </div>
           </div>
       </li>
@@ -206,11 +205,7 @@
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-clipboard-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Resumen
-                </a>
-                <div class="dropdown-divider"></div>
+                {{-- <div class="dropdown-divider"></div> --}}
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cerrar Sesión

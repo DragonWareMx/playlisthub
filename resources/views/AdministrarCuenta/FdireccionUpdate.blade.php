@@ -25,7 +25,35 @@
         <div class="div_Ajustes_name">
         PAÍS
         </div>
-        <input type="text" name="Fpais" class="input_Ajustes_valor" id="" value="Pais actual" required>
+        <select name="pais" size=1  class="input_Ajustes_valor"OnChange="javascript:pais();" required> 
+            <option  selected="selected" value="1">México</option>
+            <option value="2">Argentina</option>
+            <option value="3">Bolivia</option>
+            <option value="4">Brasil</option>
+            <option value="5">Chile</option>
+            <option value="6">Colombia</option>
+            <option value="7">Costa Rica</option>
+            <option value="8">Cuba</option>
+            <option value="9">Ecuador</option>
+            <option value="10">El Salvador</option>
+            <option value="11">Guayana Francesa</option>
+            <option value="12">Granada</option>
+            <option value="13">Guatemala</option>
+            <option value="14">Guayana</option>
+            <option value="15">Haití</option>
+            <option value="16">Honduras</option>
+            <option value="17">Jamaica</option>
+            <option value="18">México</option>
+            <option value="19">Nicaragua</option>
+            <option value="20">Paraguay</option>
+            <option value="21">Panamá</option>
+            <option value="22">Perú</option>
+            <option value="23">Puerto Rico</option>
+            <option value="24">República Dominicana</option>
+            <option value="25">Surinam</option>
+            <option value="26">Uruguay</option>
+            <option value="27">Venezuela </option>
+    </select>
     </div>
 
     <div class="div_Ajustes_itemUP">

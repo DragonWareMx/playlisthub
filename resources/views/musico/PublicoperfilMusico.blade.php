@@ -18,19 +18,19 @@
         <div class="div_tituloApartado">
             <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
         </div>
-    <a href="{{route('administrar-cuenta')}}" style="color: #8177F5"><i class="fas fa-cog"></i>&nbsp;&nbsp;Administrar tu cuenta</a>
+        <a class="marcarFav" href="#" style="color: #8177F5; border:none; background-color:transparent"><i style="color: #b1b1b1" class="fas fa-heart"></i>&nbsp;&nbsp;Añadir a favoritos</a>
+        <a class="desmarcarFav" href="#" style="color: #8177F5; border:none; background-color:transparent"><i class="fas fa-heart"></i>&nbsp;&nbsp;Desmarcar de favoritos</a>
     </div>
 
     <div class="div_infoPerfilM">
         <div class="div_fotoPerfilM">
             <img src="/img/cat.jpg">
-        <a href="{{route('foto-update')}}"><i class="fas fa-pencil-alt"></i>&nbsp;Cambiar foto</a>
         </div>
         <div class="div_txtPM">
             <p class="txt-infoNombrePM">Nombre completo del usuario</p>
             <p class="txt-infoUserP">Músico</p>
             <p class="txt-informacionP">México</p>   
-            <p class="txt-informacionP">correoelectrónico@ejemplo.com</p>
+            <p class="txt-informacionP">Fecha en que se unió a playlisthub</p>
         </div>
     </div>
 
@@ -38,7 +38,6 @@
         <div class="div_tituloApartado resize_tituloApartado">
             <p><img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">&nbsp;&nbsp;Campañas actuales</p>
         </div>
-        <a href="#" style="color: #8177F5; width:10%"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
     </div>
 
     <div class="div_campanasAP">

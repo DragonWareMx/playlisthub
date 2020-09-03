@@ -23,10 +23,10 @@
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_fotoPerfilM">
-            <img src="" alt="Imagen"> 
+            <img src="/img/unnamed.jpg" alt="Imagen" id="imagenPrevisualizacion"> 
             {{-- cargar imagen actual --}}
         </div>
-        <input type="file" name="imagen" class="input_Ajustes_valor" id="imagen" value="al" required style="padding: 8%; padding-left:1%">
+        <input type="file" name="imagen" class="input_Ajustes_valor" id="seleccionArchivos" accept="image/*" value="al" required style="padding: 8%; padding-left:1%">
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>
@@ -41,5 +41,25 @@
 </div>
 <br>
 
+<script>
+const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
+  $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
 
+// Escuchar cuando cambie
+$seleccionArchivos.addEventListener("change", () => {
+  // Los archivos seleccionados, pueden ser muchos o uno
+  const archivos = $seleccionArchivos.files;
+  // Si no hay archivos salimos de la función y quitamos la imagen
+  if (!archivos || !archivos.length) {
+    $imagenPrevisualizacion.src = "";
+    return;
+  }
+  // Ahora tomamos el primer archivo, el cual vamos a previsualizar
+  const primerArchivo = archivos[0];
+  // Lo convertimos a un objeto de tipo objectURL
+  const objectURL = URL.createObjectURL(primerArchivo);
+  // Y a la fuente de la imagen le ponemos el objectURL
+  $imagenPrevisualizacion.src = objectURL;
+});
+</script>
 @endsection
