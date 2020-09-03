@@ -12,7 +12,7 @@
 @section('contenido')
 <div class="div_90_o">
     <div class="p_title_o">
-        <img class="logo_ganancias" src="img/iconos/ganancias.png" alt="" style=""> &nbsp;&nbsp;Ganancias totales
+        <img class="logo_ganancias" src="img/iconos/ganancias.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_title">Ganancias totales</span>
     </div>
     <hr class="hr_100_o">
 
@@ -22,19 +22,24 @@
     </div>
 
     <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/ranking.png" alt=""> &nbsp;&nbsp;Ganancias por playlists
+        <img class="logo_ranking" src="img/iconos/ranking.png" alt=""> &nbsp;&nbsp;
+        <span class="txt_title">Ganancias por playlists</span>    
     </div>
     <hr class="hr_100_o">
 
     <div class="div_content">
         <div class="table_head">
-           <div></div> <div>GANANCIAS</div> <div>NOMBRE DE LA PLAYLIST</div> <div>GÉNERO</div>  <div>SEGUIDORES</div> 
+           <div class="img_vacia"></div> <div class="txt_row_head">GANANCIAS</div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div> 
+           <div class="txt_row_head row_hide">GÉNERO</div>  <div class="txt_row_head row_hide">SEGUIDORES</div> 
         </div>
-        <hr class="hr_100_o">
+        
     
     <!--estos divs se crean con un foreach-->
+        <hr class="hr_100_o">
         <div class="table_row">
-            <img src="" alt=""> <div>$</div> <div>nombre</div> <div>rock</div>  <div>1000</div> 
+            <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
+            <div class="txt_row_play">$</div> <div class="txt_row_play row_hide2">nombre</div> 
+            <div class="txt_row_play row_hide">rock</div>  <div class="txt_row_play row_hide">1000</div> 
         </div>
     </div>
 </div>
