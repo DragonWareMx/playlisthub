@@ -327,6 +327,21 @@ html,body{
     margin-bottom: 23px;
 }
 
+.msg-spoty-denied{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #8177F5;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 27px;
+    margin-bottom: 23px;
+}
+
 .button-spoty{
     border: 2px solid #1DD05D;
     box-sizing: border-box;
@@ -365,6 +380,22 @@ html,body{
     color: #1DD05D;
 }
 
+.texto-inicio-sesion.error{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #8177F5;
+
+    width: 40%;
+    margin-right: auto;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: auto;
+}
+
 .registro-login{
     font-family: Roboto;
     font-style: normal;
@@ -399,5 +430,121 @@ html,body{
     margin-left: auto;
     margin-right: auto;
     margin-top: 18px;
-    margin-bottom: 42px;
+}
+
+
+/* COSAS DEL LOGIN */
+.cuadro-formulario-login{
+    background: #FFFFFF;
+    border: 1px solid #B595F8;
+    box-sizing: border-box;
+
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.form-element.login{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.link-forgot{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #8177F5;
+
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inicio-sesionbtn{
+    background-color: #000000;
+    border-radius: 5px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+
+    margin-top: 21px;
+    margin-bottom: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 0px 10px 0px;
+    width: 40%;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+}
+
+.inicio-spotybtn{
+    background-color: #1AB26B;
+    border-radius: 5px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+
+    margin-top: 21px;
+    margin-bottom: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 7px 0px 7px 0px;
+
+    cursor: pointer;
+    width: 40%;
+    height: 40px;
+    border: none;
+}
+
+.inicio-spotybtn img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.login-text-opcion{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #4A4A4A;
+
+    margin: 10px auto 4px auto;
+}
+
+.cuadro-formulario-login hr{
+    border: 1px solid #DBDBDB;
+    width: 50%;
+}
+
+.text-forgot{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #5C5C5C;
+
+    width: 80%;
+    margin: 0px auto 0px auto;
 }

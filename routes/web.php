@@ -15,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
+Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
+Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');
 Route::get('/campana/{id}', 'OController@campana')->name('campana');
 Route::get('/crear-paso-1','Ocontroller@crearCampana1')->name('crearCampana1');
 Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
-Route::post('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
+Route::get('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
+Route::get('/tokens','Ocontroller@tokens')->name('tokens');
 
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
 Route::get('/idMusico', 'musicoController@perfilPublico')->name('perfil-musico-publico');
@@ -57,9 +60,25 @@ Route::get('/prueba',function(){
     return view('inicio');
 })->name('inicio');
 
-Route::get('/iniciar-sesion',function(){
-    return view('login.inicioSesion');
+Route::get('/registro-curador',function(){
+    return view('login.registroCurador');
+})->name('register-curador');
+
+Route::get('/registro-curador-no',function(){
+    return view('login.registroCuradorNo');
+})->name('register-curador-no');
+
+Route::get('/registro-musico',function(){
+    return view('login.registroMusico');
+})->name('register-musico');
+
+Route::get('/login',function(){
+    return view('login.login');
 })->name('login');
+
+Route::get('/forgot',function(){
+    return view('login.recuperarContra');
+})->name('forgotpass');
 
 /*---------------- COMBO WOMBO 4 ----------------*/
 Route::get('/reviews', function () {
