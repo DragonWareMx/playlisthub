@@ -34,6 +34,9 @@
     transition: ease-in-out 0.3s;
     margin-top:-6px;
 }
+.a_agregar_o:focus{
+    border:none;
+}
 .img_a_agregar_o{
     width: 12px;
     height: 12px;
@@ -163,6 +166,14 @@
     background-size: 0% 2px;
     transition: background-size .3s;
 }
+.a_menu_o{
+    color: #5A5A5A;
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
 .a_profile_o{
     font-family: Roboto;
     text-decoration: none;
@@ -179,7 +190,7 @@
     background-size: 0% 2px;
     transition: background-size .3s;
 }
-.a_profile_o:hover,.a_campana_o:hover{
+.a_profile_o:hover,.a_campana_o:hover,.a_derecha_o:hover,.a_menu_o:hover{
     text-decoration: none;
     transition: ease-in-out 0.3s;
     background-size: 100% 2px;
@@ -193,11 +204,34 @@
 }
 .div_campanas_actuales_o{
     width: 100%;
-    height: 300px;
-    overflow-y: scroll;
+    min-height: 300px;  
     display: flex;
     flex-wrap: wrap;
     padding-top: 25px;
+    justify-content: space-between;
+}
+.div_campanas_actuales_2{
+    width: 100%;
+    min-height: 300px;  
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 25px;  
+}
+.a_derecha_o{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #8177F5;
+    display: flex;
+    margin-left: auto;
+    transition: ease-in-out 0.3s;
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
 }
 .div_item_campana_o{
     width: 310px;
@@ -262,6 +296,23 @@
     color: #5C5C5C;
     margin-bottom:20px;
 }
+.div_tokens_o{
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5C5C5C;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+    margin-bottom: 30px;
+}
 .vercampana_title_o{
     font-style: italic;
     font-weight: bold;
@@ -305,6 +356,86 @@
     border-radius: 5px;
     font-family: Roboto;
     color: #5C5C5C;
+}
+.div_100_o{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item_comprar_token{
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 265px;
+    height: 277px;
+    float: left;
+    margin-bottom: 20px;
+    padding-top:30px;
+    padding-bottom:30px;
+    padding-left: 38px;
+    padding-right: 38px;
+}
+.item_token_encabezado{
+    width: 100%;
+    height: 70px;
+    border: 1px solid #8177F5;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.item_txt_black{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #000000;
+    margin-bottom:5px;
+}
+.item_txt_gray{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #5A5A5A;
+    margin-bottom:5px;
+}
+.btn_comprar_token{
+    background: #8177F5;
+    border-radius: 5px;
+    border: none;
+    width: 129px;
+    height: 36px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: ease-in-out 0.2s;
+}
+.btn_comprar_token:hover{
+    width: 137px;
+    transition: ease-in-out 0.2s;
+    color: black;
 }
 .campana_info_1{
     width: 30%;
@@ -454,6 +585,62 @@
     background-color: orchid;
     margin-top:0px ;
 }
+.encabezado_paso_2{
+    width: 100%;
+    display: flex;
+}
+.txt_izquierda_o{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 30px;
+    color: #5C5C5C;
+}
+.txt_derecha_o{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5C5C5C;
+    margin-left: auto;
+}
+.a_comprar_o{   
+    color: #8177F5;
+    text-decoration: underline;
+}
+.txt_italic_14{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #5C5C5C;
+}
+.row_encabezado_paso_2{
+    border: 0.3px solid #5C5C5C;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-top:12px;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+.img_playlist_o{
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-right: -20px;
+}
+.a_row_play_o{
+    text-decoration-line: underline;
+    color: #8177F5;
+    transition: ease-in-out 0.3s;
+}
+.botones_margin_subir{
+    margin-top: -55px;
+}
 .encabezado_play_1{
     font-family: Roboto;
     font-style: bold;
@@ -462,6 +649,119 @@
     line-height: 16px;
     color: #5C5C5C;
 }
+.modalContainer {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modalContainer .modal-content {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 915px;
+    height: 463px;
+    font-family: Roboto;
+}
+.modalContainer .close:hover,
+.modalContainer .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal_title_tokens{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+    text-align: center;
+}
+.hr_modal_o{
+    width: 95%;
+    border: 1px solid #8177F5;
+}
+.sel_cantidad_tokens{
+    border: 1px solid rgba(92, 92, 92, 0.46);
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 185px;
+    height: 88px;
+    padding-top: 14px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.txt_cantidad_modal{
+    width: 100%;
+    text-align: center;
+}
+.modal_token_boton_cantidad{
+    width: 10%;
+    text-align: center;
+    background:none;
+    border: none;
+}
+.modal_token_input{
+    width: 40%;
+    text-align: center;
+    border: none;
+    background: none;
+}
+.txt_modal_izquierda{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+}
+.modal_metodos_pago{
+    width: 100%;
+    display: flex;
+}
+.modal_img_pago{
+    width: 233px;
+    height: 71px;
+    margin-top: 25px;
+    float: left;
+}
+.modal_img_pago2{
+    width: 237px;
+    height: 85px;
+    margin-top: 25px;
+    float: left;
+}
+.modal_txt_mensaje{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    color: #5C5C5C;
+}
+.modal_tokens_total{
+    margin-left: auto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5C5C5C;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}   
 .lds-spinner {
     display: inline-block;
     width: 40px;
@@ -772,7 +1072,7 @@
     }
 }
 @media (max-width:792px){
-    .div_campanas_actuales_o{
+    .div_campanas_actuales_o,.div_campanas_actuales_2{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -814,7 +1114,7 @@
     }
 }
 @media (max-width:610px){
-    .div_campanas_actuales_o{
+    .div_campanas_actuales_o,.div_campanas_actuales_2{
         justify-content: space-around;
     }
     .div_item_campana_o{

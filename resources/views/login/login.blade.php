@@ -47,15 +47,16 @@
                 <div class="form-element login">
                     <button class="inicio-sesionbtn">Inicio Sesión</button>
                 </div>
-
+            </form>
+            <p class="login-text-opcion">o ingresa con</p>
+            <hr>
+            <div class="login-form" style="padding-top: 0px">
                 <div class="form-element login">
                     <button class="inicio-spotybtn">
                         <img src="{{ asset('/img/iconos/sp white.png') }}">
                     </button>
                 </div>
-            </form>
-            <p class="login-text-opcion">o ingresa con</p>
-            <hr>
+            </div>
         </div>
 
         <div class="espacio-inter" style="margin-top:42px"></div>
