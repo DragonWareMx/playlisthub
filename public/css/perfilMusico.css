@@ -75,7 +75,8 @@
 
 .div_fotoPerfilM img{ 
     padding:10%;
-    width: 100%;
+    width: 150px;
+    height:150px;
     border-radius: 50%;
 }
 
@@ -130,6 +131,8 @@
     width: 90%;
     margin-right: auto;
     margin-left: auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .div_eliminarCuenta a{
@@ -140,7 +143,8 @@
     line-height: 21px;
     text-decoration-line: underline;
     color: #8177F5;
-    margin-bottom: 40px;
+    height: 50px;
+    /* padding-top: 40px; */
 }
 
 .div_Ajustes{
@@ -166,6 +170,16 @@
 }
 
 .div_Ajustes_item{
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #D0D0D0;
+    padding-bottom: 2%;
+    padding-top: 1%;
+
+}
+.div_Ajustes_itemUP{
+    width: 100%;
     display: flex;
     border-top: 1px solid #FFFFFF;
     border-bottom: 1px solid #D0D0D0;
@@ -194,6 +208,117 @@
 .div_Ajustes_item:hover{
     cursor: pointer;
     border-bottom: 2px solid #D0D0D0;
+}
+.input_Ajustes_valor{
+    border: none;
+    width: 70%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #686868;
+    background-color: transparent;
+}
+.div_btnsUpdate{
+    margin-top: 30px;
+    display: flex;
+    justify-content: right;
+}
+.div_btnsUpdate a{
+    padding-top: 1%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8177F5;
+    text-decoration: none;
+    margin-right: 40px;
+}
+.div_btnsUpdate a:hover{
+    text-decoration: underline;
+    transition: all ease 0.3s;
+}
+.div_btnsUpdate input{
+    background: #8177F5;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+    width: 100px;
+    height: 40px;
+}
+.div_btnsUpdate input:hover{
+    border: solid .1rem #8177F5;
+    transition: all ease 0.3s;
+}
+
+.error{
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: normal;
+    color:#8177F5;
+}
+.marcarFav{
+    display: block;
+}
+.desmarcarFav{
+    display: none;
+}
 
 
+
+/* RESPONSIVIDAD */
+@media (max-width:600px){
+    .div_tituloApartado p{
+        font-size: 16px;
+    }
+    .txt-descAjustes{
+        font-size: 14px;
+    }
+    .div_Ajustes_name{
+        font-size: 13px;
+    }
+    .div_Ajustes_valor{
+        font-size: 14px;
+    }
+    .div_eliminarCuenta a{
+        font-size: 14px;
+    }
+    .div_btnsUpdate input{
+        font-size: 14px;
+    }
+    .div_btnsUpdate a{
+        font-size: 14px;
+        padding-top: 2%;
+    }
+
+}
+@media (max-width:500px){
+    .div_Ajustes{
+        width: 100%;
+    }
+    .div_eliminarCuenta{
+        width: 100%;
+        flex-wrap:wrap ;
+    }
+    .div_CabeceraApartado{
+        width: 100%;
+    }
+    .div_Ajustes_name{
+        width: 100%;
+    }
+    .div_btnsUpdate a{
+        padding-top: 3%;
+    }
+}
+@media (max-width:400px){
+    .div_btnsUpdate a{
+        padding-top: 3.5%;
+    }
 }
