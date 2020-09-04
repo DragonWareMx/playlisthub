@@ -101,7 +101,7 @@
 
       <li class="nav-item">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="#">
+      <a class="nav-link" href="/reviews">
           <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
           <span style="padding-left: 10px">Reviews</span>
         </a>
@@ -206,8 +206,8 @@
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 
                 {{-- <div class="dropdown-divider"></div> --}}
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" style="background-color: rgb(243, 243, 243); color:#5c5c5c">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" ></i>
                   Cerrar Sesión
                 </a>
               </div>
@@ -266,12 +266,12 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Selecciona "Cerrar sesión" si está listo para salir del sistema.</div>
+        <div class="modal-body">Selecciona "Cerrar sesión" si está listo para salir de Playlisthub.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
           <form action="#" method="POST">
             {{csrf_field()}}
-            <button class="btn btn-primary "> Cerrar Sesión</button>
+            <button class="btn btn-primary " style="background-color: #8177F5;"> Cerrar Sesión</button>
           </form>
         </div>
       </div>
