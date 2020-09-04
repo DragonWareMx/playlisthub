@@ -119,7 +119,7 @@
           </div>
       </li>
 
-      <li class="nav-item "">
+      <li class="nav-item ">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="#">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
@@ -134,7 +134,8 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
-      <li class="nav-item" style="position: fixed; bottom: 0px;display:block">
+      <br><br><br><br><br><br>
+      <li class="nav-item" style="position: relative; bottom: 0px;display:block">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
             <img src="{{ asset('/img/iconos/salir.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Cerrar Sesión</span>
