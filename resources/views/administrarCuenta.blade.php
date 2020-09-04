@@ -158,8 +158,32 @@
 
 <br>
 <div class="div_eliminarCuenta">
-    <a href="#"><i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Eliminar cuenta</a>
+    <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-minus-circle" ></i>&nbsp;&nbsp;Eliminar cuenta</a>
     <a href="{{route('perfil-musico')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
 </div>
 <br>
+
+
+
+<!-- Eliminar cuenta Modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que quieres eliminar tu cuenta? </h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Si decides eliminar tu cuenta, debes recordar que no podrás registrarte de nuevo con el mismo nombre de usuario en el futuro.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
+          <form action="#" method="">
+            {{-- {{csrf_field()}} --}}
+            <button class="btn btn-primary " style="background-color: #8177F5;"> Eliminar cuenta</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
