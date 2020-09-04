@@ -28,7 +28,7 @@
         <p class="login-text3">¿Ya tienes una cuenta? <a href="">Ingresar aquí</a></p>
 
         <div class="cuadro-formulario">
-            <div style="width:100%; align-content:center;margin-top:-25px">
+            <div class="button-cuadro-form" style="width:100%; align-content:center;">
                 <button class="login-button">Músico</button>
                 <button class="login-button active">Curador</button>
             </div>

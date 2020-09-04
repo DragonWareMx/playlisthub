@@ -27,7 +27,7 @@
         <p class="login-text2">Bienvenido de nuevo</p>
 
         <div class="cuadro-formulario-login">
-            <div style="width:100%; align-content:center;margin-top:-25px">
+            <div class="button-cuadro-form" style="width:100%; align-content:center;">
                 <button class="login-button active">Músico</button>
                 <button class="login-button">Curador</button>
             </div>

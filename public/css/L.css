@@ -144,6 +144,10 @@ html,body{
         height: 24.84px;
     }
 
+    .button-cuadro-form{
+        margin-top:-12px
+    }
+
     .encabezado td{
         padding-left: 1vh;
         padding-right: 1vh;
@@ -220,6 +224,9 @@ html,body{
     color: #000000;
 
     margin-top: 40px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-form{
@@ -547,4 +554,73 @@ html,body{
 
     width: 80%;
     margin: 0px auto 0px auto;
+}
+
+.button-cuadro-form{
+    margin-top:-25px
+}
+
+@media screen and (max-width: 541px){
+    .cuadro-formulario{
+        width: 90%;
+    }
+    .cuadro-formulario-login{
+        width: 90%;
+    }
+    .inicio-sesionbtn, .inicio-spotybtn{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 444px){
+    .form-element{
+        width: 100%;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .espacio-inter{
+        height: 0px;
+        margin-top: 0px;
+    }
+
+    .registro-login{
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .texto-inicio-sesion{
+        width: 100%;
+    }
+
+    .texto-inicio-sesion.error{
+        width: 100%;
+    }
+    .button-spoty{
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .button-cuadro-form{
+        margin-top:-15px
+    }
+}
+
+@media screen and (max-width: 769px){
+    .registro-login{
+        margin: auto auto 0px auto;
+    }
+    .texto-inicio-sesion{
+        width: 100%;
+    }
+    .texto-inicio-sesion.error{
+        width: 100%;
+    }
+
+    .cuadro-formulario-login{
+        width: 70%;
+    }
 }
