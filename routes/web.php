@@ -82,5 +82,13 @@ Route::get('/forgot',function(){
 
 /*---------------- COMBO WOMBO 4 ----------------*/
 Route::get('/reviews', function () {
-    return view('musico.reviews');
+    return view('reviews.reviews');
+});
+
+Route::get('/reviews-pendientes', function () {
+    return view('reviews.reviews_pendientes');
+});
+
+Route::get('/reviews-realizar', function () {
+    return view('reviews.reviews_realizar');
 });

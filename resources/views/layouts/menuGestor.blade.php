@@ -99,13 +99,24 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
-      <li class="nav-item">
+      {{-- REVIEWS --}}
+      <li class="nav-item {{ Request::path() ==  'reviews' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="#">
-          <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="16px" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
+            <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Reviews</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="/reviews">Reviews</a>
+              <a class="collapse-item" href="/reviews-pendientes">Reviews Pendientes</a>
+              <a class="collapse-item" href="/reviews-realizar">Realizar Review</a>
+              <div class="collapse-divider"></div>
+              <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
+            </div>
+          </div>
       </li>
 
       <li class="nav-item "">

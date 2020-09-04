@@ -110,6 +110,10 @@
     vertical-align: top;
 }
 
+.reviews_list .review_item .r_p{
+    margin-left: 42px;
+}
+
 .reviews_list .review_item .review_content .review_content_names{
     width: 100%;
     display: table;
