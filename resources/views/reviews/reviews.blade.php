@@ -56,23 +56,23 @@
             <div class="review_content">
                 {{-- NOMBRES --}}
                 <div class="review_content_names">
-                    <div class="review_content_names_name"><a href="#">Nombre completo del curador</a></div>
+                    <div class="review_content_names_name autor"><a href="#">Nombre completo del curador</a></div>
                     <div class="review_content_names_name">
                         <div class="m_r"><a href="#">Nombre de la canción del review</a></div>
                     </div>
                 </div>
                 {{-- CALIFICACION Y FECHA --}}
-                <div class="review_content_sd">
+                <div class="review_content_sd s_m">
                     {{-- ESTRELLAS --}}
-                    <div class="review_content_score">
+                    <div class="review_content_score s_m">
                         <img src="img/iconos/reviews.png" alt="">
                         <img src="img/iconos/reviews.png" alt="">
                         <img src="img/iconos/reviews.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                         <img src="img/iconos/op.png" alt="">
                     </div>
-                    <div class="review_content_date">17 de junio de 2020</div>
-                    <div class="review_content_date"><b>Estatus</b> Aceptada</div>
+                    <div class="review_content_date s_m">17 de junio de 2020</div>
+                    <div class="review_content_date s_m"><b>Estatus</b> Aceptada</div>
                 </div>
                 {{-- REVIEW --}}
                 <div class="review_content_review">
@@ -92,7 +92,7 @@
             <div class="review_content">
                 {{-- NOMBRES --}}
                 <div class="review_content_names">
-                    <div class="review_content_names_name"><a href="#">Nombre completo del músico</a></div>
+                    <div class="review_content_names_name autor"><a href="#">Nombre completo del músico</a></div>
                     <div class="review_content_names_name">
                         <div class="m_r"><b>Playlist </b><a href="#">Nombre de la playlist</a></div>
                     </div>

@@ -86,6 +86,22 @@
                         <div class="review_content_date"><b>Tokens</b> 3</div>
                     </div>
 
+                    {{-- ARTISTA --}}
+                    <div class="review_content_artista r_p">
+                        <p><b>ARTISTA</b></p>
+                        <p>Nombre del artista</p>
+                        <p><b>LINK DEL ARTISTA</b></p>
+                        <a href="https://www.spotify.com/">Link del artista</a>
+                    </div>
+
+                    {{-- ESTATUS --}}
+                    <div class="review_content_buttons_ar r_p">
+                        <input type="radio" class="radio" name="x" value="y" id="y" checked="checked"/>
+                        <label for="y">Aceptar</label>
+                        <input type="radio" class="radio" name="x" value="z" id="z" />
+                        <label for="z">Rechazar</label>
+                    </div>
+
                     {{-- REVIEW --}}
                     <div class="review_content_review r_p" style="margin-bottom: 0px">
                         <textarea name="mensaje" placeholder="Escribe tu review (150 caracteres como mínimo)"></textarea>
@@ -101,10 +117,5 @@
             </div>
         </div>
     </form>
-
-    {{-- VER MÁS --}}
-    <div style="width:100%; margin-top:21px; margin-bottom:21px;">
-        <a class="a_derecha_o" style="width: fit-content" href="{{Route('campanasActuales')}}">Ver más</a>
-    </div>
 </div>
 @endsection
