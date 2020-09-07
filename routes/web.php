@@ -92,3 +92,6 @@ Route::get('/reviews-pendientes', function () {
 Route::get('/reviews-realizar', function () {
     return view('reviews.reviews_realizar');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
