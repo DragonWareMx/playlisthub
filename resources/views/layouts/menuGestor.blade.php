@@ -48,7 +48,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="{{ route('inicio') }}">
+        <a class="nav-link" href="{{ route('home') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
           <span style="padding-left: 10px">Inicio</span>
         </a>
@@ -211,8 +211,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center">Pancho Pantera <br> <strong>Músico</strong> </span>
-                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/iconos/perfil.png')}}">
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center"> {{auth()->user()->name}} <br> <strong>Músico</strong> </span>
+                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{auth()->user()->avatar}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -281,7 +281,7 @@
         <div class="modal-body">Selecciona "Cerrar sesión" si está listo para salir de Playlisthub.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
-          <form action="#" method="POST">
+          <form action="{{route('logout')}}" method="POST">
             {{csrf_field()}}
             <button class="btn btn-primary " style="background-color: #8177F5;"> Cerrar Sesión</button>
           </form>

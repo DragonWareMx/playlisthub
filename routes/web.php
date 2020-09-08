@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Route::get('/', function () {
 
 Route::get('/prueba',function(){
     return view('inicio');
-})->name('inicio');
+})->name('home');
 
 Route::get('/registro-curador',function(){
     return view('login.registroCurador');
@@ -72,7 +73,7 @@ Route::get('/registro-musico',function(){
     return view('login.registroMusico');
 })->name('register-musico');
 
-Route::get('/login',function(){
+Route::get('/login2',function(){
     return view('login.login');
 })->name('login');
 
@@ -93,5 +94,7 @@ Route::get('/reviews-realizar', function () {
     return view('reviews.reviews_realizar');
 });
 Auth::routes();
+Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
+Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');

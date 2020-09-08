@@ -72,6 +72,10 @@
             </div>
         </nav>
 
+        <div style="background-color: black">
+            <img src="{{auth()->user()->avatar}}" alt="" srcset="">
+            <p style="color: white">Bienvenido {{auth()->user()->name}}, ahora eres un viledruid</p>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

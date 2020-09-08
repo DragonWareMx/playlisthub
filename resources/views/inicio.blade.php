@@ -35,7 +35,7 @@
 
 <div class="card shadow mb-4" style="width:80%; margin-left:auto; margin-right:auto" >
   <div class="card-header py-3 txt-bienvenido">
-      <h6 style="color:#181A2C">Bienvenido de nuevo Viledruid</h6>
+      <h6 style="color:#181A2C">Bienvenido de nuevo {{auth()->user()->name}}</h6>
   </div>
   <div class="card-body img-fluid body_Inicio">
     <p style="width: 100%">La fecha de hoy es: <?php echo date("d/m/Y"); ?></p>

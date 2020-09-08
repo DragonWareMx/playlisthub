@@ -52,9 +52,9 @@
             <hr>
             <div class="login-form" style="padding-top: 0px">
                 <div class="form-element login">
-                    <button class="inicio-spotybtn">
-                        <img src="{{ asset('/img/iconos/sp white.png') }}">
-                    </button>
+                    <a href="{{ route('login-spotify') }}" class="inicio-spotybtn">
+                        <img src="{{ asset('/img/iconos/sp white.png') }}">  
+                    </a>
                 </div>
             </div>
         </div>
