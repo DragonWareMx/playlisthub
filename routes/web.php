@@ -54,7 +54,7 @@ Route::get('/playlists', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Route::get('/inicio',function(){
