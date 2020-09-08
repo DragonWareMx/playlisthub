@@ -15,14 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');                 //Nombre completo del usuario
+            $table->string('name');                             //Nombre completo del usuario
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->enum('genre', ['f', 'm','o']);  //Genero del usuario   
-            $table->date('birth_date');             //Fecha de nacimiento del usuario
-            $table->string('country', 200);         //Pais de origen del usuario
+            $table->enum('genre', ['f', 'm','o']);              //Genero del usuario   
+            $table->date('birth_date');                         //Fecha de nacimiento del usuario
+            $table->string('country', 200);                     //Pais de origen del usuario
+
+            $table->unsignedSmallInteger('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
 
             $table->rememberToken();
             $table->timestamps();
