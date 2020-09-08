@@ -57,9 +57,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prueba',function(){
+Route::get('/inicio',function(){
     return view('inicio');
-})->name('home');
+})->name('home')->middleware('auth');
 
 Route::get('/registro-curador',function(){
     return view('login.registroCurador');
