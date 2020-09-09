@@ -15,8 +15,8 @@ class CreateFavoritesUserTable extends Migration
     {
         Schema::create('favorites_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->integer('favorite_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('favorite_id')->nullable();
             $table->timestamps();
 
             //llave foranea del usuario
@@ -27,9 +27,9 @@ class CreateFavoritesUserTable extends Migration
 
             //llave foranea del usuario
             $table->foreign('favorite_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('set null');
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
         });
     }
 

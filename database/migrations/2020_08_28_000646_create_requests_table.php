@@ -24,6 +24,8 @@ class CreateRequestsTable extends Migration
             $table->string('tags')->nullable();                     //Son los tags de la campaña
             $table->unsignedBigInteger('user_id');                  //Musico que lanza la campaña
             $table->unsignedBigInteger('playlist_id')->nullable();  //Playlist relacionada a la campaña
+            $table->unsignedBigInteger('review_id')->nullable();    //review
+            $table->enum('status', ['aceptado', 'rechazado','espera']);//Genero del usuario
 
             //llave foranea del usuario
             $table->foreign('user_id')
@@ -33,9 +35,15 @@ class CreateRequestsTable extends Migration
 
             //llave foranea del playlist
             $table->foreign('playlist_id')
-            ->references('id')
-            ->on('playlists')
-            ->onDelete('set null');
+                ->references('id')
+                ->on('playlists')
+                ->onDelete('set null');
+
+            //llave foranea del review
+            $table->foreign('review_id')
+                ->references('id')
+                ->on('reviews')
+                ->onDelete('set null');
         });
     }
 

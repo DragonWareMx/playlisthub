@@ -19,6 +19,13 @@ class CreatePlaylistsTable extends Migration
             $table->unsignedTinyInteger('tier');    //Nivel del playlist
             $table->unsignedTinyInteger('tokens');  //Cantidad de tokens que cuesta la playlist
             $table->string('link_playlist');        //Link de spotify de la playlist
+            $table->unsignedBigInteger('user_id');  //Musico que lanza la campaña
+
+            //llave foranea del usuario
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

@@ -37,8 +37,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    //Curadores favoritos del musico
     public function favorites()
     {
         return $this->belongsToMany('User', 'favorites_user', 'user_id', 'favorite_id');
+    }
+
+    //Campañas del musico
+    public function requests()
+    {
+        return $this->hasMany('App\Request');
+    }
+
+    //Reviews del usuario
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
     }
 }
