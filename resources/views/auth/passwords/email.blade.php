@@ -33,6 +33,11 @@
             </div>
             <form class="login-form" style="margin-bottom: 0px" method="POST" action="{{ route('password.email') }}">
                 @csrf
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert" style="font-family: Roboto; color:#8177f5">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="form-element login">
                     <span>CORREO ELÉCTRONICO</span>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
