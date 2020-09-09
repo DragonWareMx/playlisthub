@@ -93,7 +93,12 @@ Route::get('/reviews-pendientes', function () {
 Route::get('/reviews-realizar', function () {
     return view('reviews.reviews_realizar');
 });
-Auth::routes();
+
+//Rutas del sistema de Auth
+Auth::routes(['register' => false]);
+Route::get('/register/curador','RegistroController@RegistroCurador')->name('register');
+
+
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
 
