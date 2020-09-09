@@ -16,12 +16,12 @@ class OController extends Controller
     public function campanas()
     {
         $hoy = Carbon::now();
-        $campsAct=Camp::orderBy('start_date','desc')->where('status','espera')->orWhere('end_date','>=',$hoy)->limit(3)->get();
+        $campsAct=Camp::with('playlist')->orderBy('start_date','desc')->where('status','espera')->orWhere('end_date','>=',$hoy)->limit(3)->get();
         $campsAnt=Camp::orderBy('start_date','desc')->where('end_date','<',$hoy)->limit(3)->get();
         $i=0;
-        $access_token='BQB-L1L7NfSmpWCdBMoA80dXjBcRqB6FohUATeDqPJIa8o-OfWaKkufBpodgZ224N0FahlUxhKqbQXZD9ze_a2zsett7nMIHbQ3CF9yVZKALwIBrhhr8O-VBPrq3-kQTIsprGaH_iL0SB0grYq-62YHTwKtWi1dsYFwFb65M-6zQ_4BOv_rpFicNSBnca0Dq8adF-1laKBUlgd5QvXPoYN_VBXEKYlxPVNh6WeTMYoruVHfTkwCigl6l7dhJgRPH_g1ydxBgLcOtSANKWHoZrwR6aEDz8mHL1Msr';
-        $arraySong=[];
-        $arrayPlaylist=[];
+        $access_token='BQCLO2OOSdx7QjH65M96iaJS84bUqJgzRI6iC_RUXKK1tGkqt-pZ6HTNvgo3RL8gYdWFWcHzUbAQ_8i16KXHs-4fb4qH6tk97RrJreL2zfUj_Csd0i_GESw2pNPdXe354KoSPcfdbkYxc1xvPRqVqw3UVVVXEpt3qfVHMyoY_uAsRob9RNsKOQHx8FWmhwtD9ubBHOvkNlMrFBFPi_EIE1hTGZ3MK8YaqCXGXLWwUq0gHoEeAx5vCi4xk8YkxZkgSgSEgICZZlDToXxzgc8m2jqcQczAuu5e5egd';
+        $songsAct=[];
+        $playlistsAct=[];
         foreach($campsAct as $camp){
             //Se extrae el id de la canción 
             $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
@@ -38,10 +38,26 @@ class OController extends Controller
             $song= curl_exec($conexion);
             curl_close($conexion);
             $song=json_decode($song);
-            $arraySong[$i]=$song;
+            $songsAct[$i]=$song;
+            //Se extrae el id de la playlist 
+            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlist= curl_exec($conexion);
+            curl_close($conexion);
+            $playlist=json_decode($playlist);
+            $playlistsAct[$i]=$playlist;
             $i++;
-        }   
-        return view ('musico.campanas',['campsAct'=>$campsAct,'campsAnt'=>$campsAnt]);
+        }
+        return view ('musico.campanas',['campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt]);
     }
     public function campanasActuales()
     {
