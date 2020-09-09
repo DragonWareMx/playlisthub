@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedTinyInteger('rating');  //Es el rating de la review (0.0 a 5.0) que son representados con estrellas
-            $table->string('comment');              //Es el comentario de la review
+            $table->text('comment');              //Es el comentario de la review
             $table->date('date');                   //Fecha en que se publica la review
             $table->unsignedBigInteger('user_id');  //Usuario que realiza el review
             $table->unsignedBigInteger('playlist_id')->nullable();  //playlist

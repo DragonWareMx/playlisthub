@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequestsTable extends Migration
+class CreateCampsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateRequestsTable extends Migration
      */
     public function up()
     {
-        //REQUESTS es la entidad utilizada para las CAMPAÑAS
-        Schema::create('requests', function (Blueprint $table) {
+         //REQUESTS es la entidad utilizada para las CAMPAÑAS
+         Schema::create('camps', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->date('start_date');                             //fecha de inicio de la campaña
             $table->date('end_date')->nullable();                   //fecha de termino de la campaña
             $table->unsignedSmallInteger('cost');                   //el número de tokens que el musico utilizó para la campaña
             $table->string('link_song');                            //es el link de la canción de spotify
-            $table->string('tags')->nullable();                     //Son los tags de la campaña
+            $table->string('genre');                                //Son los tags de la campaña
             $table->unsignedBigInteger('user_id');                  //Musico que lanza la campaña
             $table->unsignedBigInteger('playlist_id')->nullable();  //Playlist relacionada a la campaña
             $table->unsignedBigInteger('review_id')->nullable();    //review
@@ -54,6 +54,6 @@ class CreateRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('camps');
     }
 }
