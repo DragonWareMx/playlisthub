@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro - Curador</title>
+    <title>Document</title>
     <link rel="stylesheet" href="{{ asset('/css/L.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
@@ -18,14 +18,14 @@
                     <img src="{{ asset('/img/logos/logo.png') }}">
                 </td>
                 <td align="right">
-                    <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
-                    <button onclick="location.href='{{route('register')}}';" class="login-button active">Registrarme</button>
+                    <button class="login-button">Ingresar</button>
+                    <button class="login-button active">Registrarme</button>
                 </td>
             </tr>
         </table>
         <p class="login-text">Registrate para ser parte de Playlisthub</p>
         <p class="login-text2">Conectamos artistas con influencers y curadores</p>
-        <p class="login-text3">¿Ya tienes una cuenta? <a href="{{ route('login') }}">Ingresar aquí</a></p>
+        <p class="login-text3">¿Ya tienes una cuenta? <a href="">Ingresar aquí</a></p>
 
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
@@ -35,13 +35,25 @@
             <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
             <form class="login-form" action="">
                 <div class="form-element">
-                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
-                    <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
-                    <p class="texto-inicio-sesion">  </p>
+                    <span>PAÍS DE RESIDENCIA</span>
+                    <select name="" id="">
+                        <option value="Mexico" selected>Mexico</option>
+                    </select>
+                </div>
+                <div class="form-element">
+                    <span>CORREO ELÉCTRONICO</span>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>¿CUÁNTOS SEGUIDORES TIENE TU PLAYLIST MÁS GRANDE DE SPOTIFY?</span>
+                    <select name="" id="">
+                        <option value="Mexico" selected>15</option>
+                    </select>
                 </div>
                 <div class="espacio-inter" style="margin-top: 1px"></div>
                 <p class="msg-spoty-denied">
-                    {{-- Lo sentimos, no puedes convertirte en curador de Playlisthub --}}
+                    Lo sentimos, no puedes convertirte en curador de Playlisthub
                 </p>
             </form>
         </div>

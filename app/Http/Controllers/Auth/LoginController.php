@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -50,8 +51,12 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
+        if($request->error){
+            return 'Hubo un error al autentificarse';
+        }
+
         $userSocialite = Socialite::driver('spotify')->user();
         $user=User::where('spotify_id',$userSocialite->getId())->first();
         if($user){

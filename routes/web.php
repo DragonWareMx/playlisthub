@@ -97,9 +97,12 @@ Route::get('/reviews-realizar', function () {
 //Rutas del sistema de Auth
 Auth::routes(['register' => false]);
 Route::get('/register/curador','RegistroController@RegistroCurador')->name('register');
-
+Route::post('/register/curador','RegistroController@registrarseCurador')->name('registerCurator');
+Route::get('/register/curador/spotify','RegistroController@CuradorSpoty')->name('regCuradorSpoty');
+Route::get('/register/curador/spotify/callback','RegistroController@CuradorSpotyCallback');
 
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
+
 
 Route::get('/home', 'HomeController@index');
