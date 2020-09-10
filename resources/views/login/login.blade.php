@@ -31,30 +31,41 @@
                 <button class="login-button active">Músico</button>
                 <button class="login-button">Curador</button>
             </div>
-            <form class="login-form" style="margin-bottom: 0px" action="">
+            <form class="login-form" style="margin-bottom: 0px" method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="form-element login">
                     <span>CORREO ELÉCTRONICO</span>
-                    <input type="text" name="" id="">
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert" style="color: firebrick">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="espacio-inter"></div>
                 <div class="form-element login">
                     <span>CONTRASEÑA</span>
-                    <input type="password" name="" id="">
+                    <input id="password" type="password" name="password" required autocomplete="current-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert" style="color: firebrick">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="espacio-inter"></div>
-                <a class="link-forgot" href="{{ route('forgotpass') }}"> ¿Olvidaste tu contraseña? </a>
+                <a class="link-forgot" href="{{ route('password.request') }}"> ¿Olvidaste tu contraseña? </a>
                 
                 <div class="form-element login">
-                    <button class="inicio-sesionbtn">Inicio Sesión</button>
+                    <button type="submit" class="inicio-sesionbtn">Inicio Sesión</button>
                 </div>
             </form>
             <p class="login-text-opcion">o ingresa con</p>
             <hr>
             <div class="login-form" style="padding-top: 0px">
                 <div class="form-element login">
-                    <button class="inicio-spotybtn">
-                        <img src="{{ asset('/img/iconos/sp white.png') }}">
-                    </button>
+                    <a href="{{ route('login-spotify') }}" class="inicio-spotybtn">
+                        <img src="{{ asset('/img/iconos/sp white.png') }}">  
+                    </a>
                 </div>
             </div>
         </div>

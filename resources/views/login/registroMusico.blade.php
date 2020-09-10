@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registro - Músico</title>
     <link rel="stylesheet" href="{{ asset('/css/L.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
@@ -18,8 +18,8 @@
                     <img src="{{ asset('/img/logos/logo.png') }}">
                 </td>
                 <td align="right">
-                    <button class="login-button">Ingresar</button>
-                    <button class="login-button active">Registrarme</button>
+                    <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
+                    <button onclick="location.href='{{route('register')}}';" class="login-button active">Registrarme</button>
                 </td>
             </tr>
         </table>
@@ -30,56 +30,16 @@
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
                 <button class="login-button active">Músico</button>
-                <button class="login-button">Curador</button>
+                <button onclick="location.href='{{route('register')}} class="login-button">Curador</button>
             </div>
             <p class="form-text">Registrate aquí para que tu música sea escuchada por los curadores de playlist y creadores de contenido</p>
             <form class="login-form" action="">
                 <div class="form-element">
-                    <span>NOMBRE COMPLETO</span>
-                    <input type="text" name="" id="">
-                </div>
-                <div class="form-element">
-                    <span>GÉNERO</span>
-                    <select name="" id="">
-                        <option value="Mexico" selected>Hombre</option>
-                        <option value="Mexico" selected>Mujer</option>
-                        <option value="Mexico" selected>Otro</option>
-                    </select>
-                </div>
-                <div class="espacio-inter"></div>
-                <div class="form-element">
-                    <span>FECHA NACIMIENTO</span>
-                    <input type="date" name="" id="">
-                </div>
-                <div class="form-element">
-                    <span>PAÍS DE RESIDENCIA</span>
-                    <select name="" id="">
-                        <option value="Mexico" selected>Mexico</option>
-                    </select>
-                </div>
-                <div class="espacio-inter"></div>
-                <div class="form-element">
-                    <span>CONTRASEÑA</span>
-                    <input type="password" name="" id="">
-                </div>
-                <div class="form-element">
-                    <span>CONFIRMAR CONTRASEÑA</span>
-                    <input type="password" name="" id="">
-                </div>
-                <div class="espacio-inter"></div>
-                <div class="form-element">
-                    <span>CORREO ELÉCTRONICO</span>
-                    <input type="text" name="" id="">
-                </div>
-                <div class="espacio-inter"></div>
-                <div class="form-element">
                     <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
-                    <a href="" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
-                    <p class="texto-inicio-sesion error">Hubo un error al iniciar sesión</p>
+                    <a href="{{route('regMusicianSpoty')}}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
+                    <p class="texto-inicio-sesion error"></p>
                 </div>
-                <div class="form-element">
-                    <button class="registro-login">Registrarme</button>
-                </div>
+                <div class="espacio-inter"></div>
             </form>
         </div>
 

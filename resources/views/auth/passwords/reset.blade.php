@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Recuperar contraseña</title>
     <link rel="stylesheet" href="{{ asset('/css/L.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
@@ -23,28 +23,56 @@
                 </td>
             </tr>
         </table>
-        <p class="login-text">Registrate para ser parte de Playlisthub</p>
-        <p class="login-text2">Conectamos artistas con influencers y curadores</p>
-        <p class="login-text3">¿Ya tienes una cuenta? <a href="{{ route('login') }}">Ingresar aquí</a></p>
+        <p class="login-text">¿Olvidaste tu contraseña?</p>
+        <p class="login-text2">Recuperar contraseña</p>
 
-        <div class="cuadro-formulario">
+        <div class="cuadro-formulario-login">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button onclick="location.href='{{route('register2')}} class="login-button">Músico</button>
-                <button class="login-button active">Curador</button>
+                <button class="login-button active">Músico</button>
+                <button class="login-button">Curador</button>
             </div>
-            <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
-            <form class="login-form" action="">
-                <div class="form-element">
-                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
-                    <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
-                    <p class="texto-inicio-sesion">  </p>
+            <form class="login-form" style="margin-bottom: 0px" method="POST" action="{{ route('password.update') }}">
+                @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
+                <div class="form-element login">
+                    <span>CORREO ELÉCTRONICO</span>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert" style="color: firebrick">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
-                <div class="espacio-inter" style="margin-top: 1px"></div>
-                <div class="espacio-inter" style="margin-top: 1px"></div>
-                <p class="msg-spoty-denied">
-                    Lo sentimos, no puedes convertirte en curador de Playlisthub
-                </p>
+                <div class="espacio-inter"></div>
+                <div class="form-element login">
+                    <span>CONTRASEÑA</span>
+                    <input id="password" type="password" name="password" required autocomplete="current-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert" style="color: firebrick">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element login">
+                    <span>CONFIRMAR CONTRASEÑA</span>
+                    <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+                </div>
+                <div class="espacio-inter"></div>
+
+                <div class="form-element login">
+                    <button type="submit" class="inicio-sesionbtn" style="font-size: 14px">Restablecer Contraseña</button>
+                </div>
             </form>
+            <p class="login-text-opcion">o ingresa con</p>
+            <hr>
+            <div class="login-form" style="padding-top: 0px">
+                <div class="form-element login">
+                    <button class="inicio-spotybtn">
+                        <img src="{{ asset('/img/iconos/sp white.png') }}">
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="espacio-inter" style="margin-top:42px"></div>
