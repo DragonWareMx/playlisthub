@@ -761,6 +761,46 @@
     color: #5C5C5C;
     margin-top: 20px;
     margin-bottom: 25px;
+}
+.div_error_o{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.txt_error_o{
+    width: 100%;
+    text-align: center;
+    font-family: Roboto;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 15px;
+    color: #C96DD8;
+    margin-top:50px;
+}
+.a_error_o{
+    width: 140px;
+    height: 35px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 15px;
+    color: #FFFFFF;
+    transition: ease-in-out 0.3s;
+}
+.a_error_o:hover{
+    width: 150px;
+    text-decoration: none;
+    color: #C96DD8;
+    transition: ease-in-out 0.3s;
 }   
 .lds-spinner {
     display: inline-block;
@@ -1243,6 +1283,17 @@
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
         font-size: 13px;
     }
+    .txt_error_o{
+        font-size: 16px;
+    }
+    .a_error_o{
+        width: 120px;
+        height: 35px;
+        font-size: 14px;
+    }
+    .a_error_o:hover{
+        width: 130px;
+    }  
 }
 @media(max-width:470px){
     .campana_info_0,.campana_info_1,.campana_info_2{
