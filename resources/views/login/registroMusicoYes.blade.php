@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro - Curador</title>
+    <title>Registro - Músico</title>
     <link rel="stylesheet" href="{{ asset('/css/L.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
@@ -29,8 +29,8 @@
 
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button onclick="location.href='{{route('register2')}} class="login-button">Músico</button>
-                <button class="login-button active">Curador</button>
+                <button class="login-button active">Músico</button>
+                <button onclick="location.href='{{route('register')}} class="login-button">Curador</button>
             </div>
             @if($errors->any())
                 <div class="alert alert-danger" role="alert" style="background-color: firebrick;width:100%;margin:10px auto 0px auto;padding:10px 0px 10px 0px">
@@ -41,22 +41,18 @@
                     </ul>
                 </div>
             @endif
-            <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
-            <form class="login-form" id="register-form" action="{{ route('registerCurator') }}" method="POST">
+            <p class="form-text">Registrate aquí para que tu música sea escuchada por los curadores de playlist y creadores de contenido</p>
+            <form class="login-form" action="{{ route('registerMusician') }}" method="POST">
                 @csrf
                 <input type="hidden" name="spotify_id" value="{{$user->id}}">
                 <input type="hidden" name="avatar" value="{{$user->images[0]->url}}">
-                <input type="hidden" name="type" value="curador">
+                <input type="hidden" name="type" value="musico">
                 <div class="form-element">
                     <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
-                    <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
+                    <a href="{{ route('regMusicianSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
                     <p class="texto-inicio-sesion">Sesión iniciada con éxito</p>
                 </div>
-                <div class="espacio-inter" style="margin-top: 1px"></div>
-                <p class="msg-spoty-approved">
-                    ¡Excelente! Parece que calificas para convertirte en curador de Playlisthub <br>
-                    Continúa llenando los siguientes campos.
-                </p>
+                <div class="espacio-inter" style=""></div>
                 <div class="form-element">
                     <span>CORREO ELÉCTRONICO</span>
                     <input type="email" name="email" id="email" required autocomplete="email">
@@ -67,30 +63,11 @@
                 </div>
                 <div class="espacio-inter"></div>
                 <div class="form-element">
-                    <span>GÉNERO</span>
-                    <select name="genero" id="genero" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="m">Hombre</option>
-                        <option value="f">Mujer</option>
-                        <option value="o">Otro</option>
-                    </select>
-                </div>
-                <div class="form-element">
                     <span>FECHA NACIMIENTO</span>
                     <input type="date" name="date" id="date" required>
                 </div>
-                <div class="espacio-inter"></div>
                 <div class="form-element">
-                    <span>CONTRASEÑA</span>
-                    <input type="password" onchange="validatePassword()" name="password" id="password" required>
-                </div>
-                <div class="form-element">
-                    <span>CONFIRMAR CONTRASEÑA</span>
-                    <input type="password" onkeyup="validatePassword()" name="password_confirmation" id="confirm_password" required>
-                </div>
-                <div class="espacio-inter"></div>
-                <div class="form-element">
-                    <span>PAÍS</span>
+                    <span>PAÍS DE RESIDENCIA</span>
                     <select id="country" name="country" required>
                         <option value="">Selecciona una opción</option>
                         <option value="Andorra">Andorra</option>
@@ -147,8 +124,27 @@
                      </select>
                 </div>
                 <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>CONTRASEÑA</span>
+                    <input type="password" onchange="validatePassword()" name="password" id="password" required>
+                </div>
+                <div class="form-element">
+                    <span>CONFIRMAR CONTRASEÑA</span>
+                    <input type="password" onkeyup="validatePassword()" name="password_confirmation" id="confirm_password" required>
+                </div>
+                <div class="espacio-inter"></div>
+                <div class="form-element">
+                    <span>GÉNERO</span>
+                    <select name="genero" id="genero" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="m">Hombre</option>
+                        <option value="f">Mujer</option>
+                        <option value="o">Otro</option>
+                    </select>
+                </div>
+                <div class="espacio-inter"></div>
                 <div class="form-element" style="width: 100%">
-                    <button type="submit" class="registro-login">Registrarme</button>
+                    <button type="submit" class="registro-login" style="cursor: pointer">Registrarme</button>
                 </div>
             </form>
         </div>

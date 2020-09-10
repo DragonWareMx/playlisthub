@@ -96,10 +96,18 @@ Route::get('/reviews-realizar', function () {
 
 //Rutas del sistema de Auth
 Auth::routes(['register' => false]);
+//Para el registro del curador
 Route::get('/register/curador','RegistroController@RegistroCurador')->name('register');
+Route::get('/register/curador/accepted','RegistroController@RegistroCuradorForm')->name('registerCuratorForm');
 Route::post('/register/curador','RegistroController@registrarseCurador')->name('registerCurator');
 Route::get('/register/curador/spotify','RegistroController@CuradorSpoty')->name('regCuradorSpoty');
 Route::get('/register/curador/spotify/callback','RegistroController@CuradorSpotyCallback');
+//para el registro del musico
+Route::get('/register/musico','RegistroController@RegistroMusico')->name('register2');
+Route::get('/register/musico/accepted','RegistroController@RegistroMusicoForm')->name('registerMusicianForm');
+Route::post('/register/musico','RegistroController@registrarseMusico')->name('registerMusician');
+Route::get('/register/musico/spotify','RegistroController@MusicoSpoty')->name('regMusicianSpoty');
+Route::get('/register/musico/spotify/callback','RegistroController@MusicoSpotyCallback');
 
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');

@@ -135,6 +135,9 @@ return [
         'email' => [
             'unique' => 'El :attribute ya ha sido registrado.',
         ],
+        'spotify_id'=> [
+            'unique' => 'Esa cuenta de Spotify ya ha sido registrada.',
+        ],
     ],
 
     /*
