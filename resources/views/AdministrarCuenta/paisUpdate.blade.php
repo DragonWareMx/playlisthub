@@ -19,14 +19,14 @@
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR PAÍS DE RESIDENCIA</p>
-
+    @foreach ($usuario as $user)
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         PAÍS
         </div>
         <select name="pais" size=1  class="input_Ajustes_valor"OnChange="javascript:pais();" required> 
-                <option  selected="selected" value="1">México</option>
+                <option  selected="selected" value="1">{{$user ->country}}</option>
                 <option value="2">Argentina</option>
                 <option value="3">Bolivia</option>
                 <option value="4">Brasil</option>
@@ -60,6 +60,7 @@
         <input class="" type="submit" value="Guardar">
     </div>
     </form>
+    @endforeach
 </div>
 
 <br>

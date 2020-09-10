@@ -21,13 +21,12 @@
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR CONTRASEÑA</p>
-
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data" id="formCheckPassword">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         CONTRASEÑA ACTUAL
         </div>
-        <input type="password" name="passActual" class="input_Ajustes_valor" id="" value="" required style=" width:30%; background-color:#f1f1f1;">
+    <input type="password" name="passActual" class="input_Ajustes_valor" id="" value="" required style=" width:30%; background-color:#f1f1f1;">
     </div>
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">

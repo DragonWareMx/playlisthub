@@ -19,19 +19,20 @@
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR FECHA DE NACIMIENTO</p>
-
+    @foreach ($usuario as $user)
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         FECHA DE NACIMIENTO
         </div>
-        <input type="date" name="fecha" class="input_Ajustes_valor" id="" value="Fec actual" required>
+        <input type="date" name="fecha" class="input_Ajustes_valor" id="" value="{{$user ->birth_date}}" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>
         <input class="" type="submit" value="Guardar">
     </div>
     </form>
+    @endforeach
 </div>
 
 <br>

@@ -19,16 +19,29 @@
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR GÉNERO</p>
-
+    @foreach ($usuario as $user)
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         GÉNERO
         </div>
         <select name="genero" class="input_Ajustes_valor" value="" required>
-            <option  selected="selected" value="1">Femenino</option>
-            <option value="2">Masculino</option>
-            <option value="3">Otro</option>
+            @if($user->genre =='f')
+                <option  selected="selected" value="1">Femenino</option>
+                <option value="2">Masculino</option>
+                <option value="3">Otro</option>
+            @else
+                @if($user->genre =='m')
+                    <option  selected="selected" value="2">Masculino</option>
+                    <option value="1">Femenino</option>
+                    <option value="3">Otro</option>
+                @else
+                    <option  selected="selected" value="3">Otro</option>
+                    <option value="1">Femenino</option>
+                    <option value="2">Masculino</option>
+                @endif
+            @endif
+
         </select>
     </div>
     <div class="div_btnsUpdate">
@@ -36,6 +49,7 @@
         <input class="" type="submit" value="Guardar">
     </div>
     </form>
+    @endforeach
 </div>
 
 <br>

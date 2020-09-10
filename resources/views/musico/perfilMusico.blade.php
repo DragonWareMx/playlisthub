@@ -27,10 +27,12 @@
         <a href="{{route('foto-update')}}"><i class="fas fa-pencil-alt"></i>&nbsp;Cambiar foto</a>
         </div>
         <div class="div_txtPM">
-            <p class="txt-infoNombrePM">Nombre completo del usuario</p>
+            @foreach ($usuario as $user)
+        <p class="txt-infoNombrePM">{{ $user -> name }}</p>
             <p class="txt-infoUserP">Músico</p>
-            <p class="txt-informacionP">México</p>   
-            <p class="txt-informacionP">correoelectrónico@ejemplo.com</p>
+            <p class="txt-informacionP">{{ $user -> country }}</p>   
+            <p class="txt-informacionP">{{ $user -> email }}</p>
+            @endforeach
         </div>
     </div>
 

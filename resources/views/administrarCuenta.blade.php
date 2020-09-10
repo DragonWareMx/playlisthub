@@ -16,9 +16,12 @@
         <p><img class="img_ico_title_o" src="img/iconos/info.png" alt="">&nbsp;&nbsp;Ajustes de cuenta</p>
     </div>
 </div>
+@foreach ($usuario as $user)
+    
+
 <div class="div_Ajustes">
     <p class="txt-descAjustes">Es posible que cierta información sea visible para otras personas que usan los servicios de Playlishub. <a target="blank" href="https://playlisthub.io/aviso-de-privacidad/">Más información</a></p>
-    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('foto-update')}}">
+    {{-- <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('foto-update')}}">
         <div class="div_Ajustes_item">
             <div class="div_Ajustes_name">
             FOTO
@@ -28,7 +31,7 @@
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
-    </a>
+    </a> --}}
 
     <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('nombre-update')}}">
         <div class="div_Ajustes_item" >
@@ -36,7 +39,7 @@
             NOMBRE
             </div>
             <div class="div_Ajustes_valor">
-            Nombre completo del usuario
+                {{ $user -> name }}
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -48,7 +51,11 @@
             GÉNERO
             </div>
             <div class="div_Ajustes_valor">
-            Femenino
+                @if ($user -> genre == 'f')
+                    Femenino
+                @else
+                    Masculino
+                @endif
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -60,7 +67,7 @@
             FECHA DE NACIMIENTO
             </div>
             <div class="div_Ajustes_valor">
-            02 - Agosto - 1999
+                {{ \Carbon\Carbon::parse($user->birth_date)->format('d/m/Y')}}
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -72,7 +79,7 @@
             PAÍS DE RESIDENCIA
             </div>
             <div class="div_Ajustes_valor">
-            México
+                {{ $user -> country }}
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -84,7 +91,7 @@
             CORREO ELECTRÓNICO
             </div>
             <div class="div_Ajustes_valor">
-            correo@ejemplo.com
+                {{ $user -> email }}
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -105,7 +112,7 @@
             CONTRASEÑA
             </div>
             <div class="div_Ajustes_valor">
-            ***********
+                <input type="password" value ="{{ $user -> password }}" style="border:none; background:transparent; width:auto" readonly disabled >
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -113,48 +120,6 @@
 </div>
 
 
-<div class="div_CabeceraApartado" style="margin-top:40px">
-    <div class="div_tituloApartado">
-        <p><img class="img_ico_title_o" src="img/iconos/facturacion.png" alt="">&nbsp;&nbsp;Dirección de facturación</p>
-    </div>
-</div>
-<div class="div_Ajustes">
-    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fnombre-update')}}">
-        <div class="div_Ajustes_item">
-            <div class="div_Ajustes_name">
-            NOMBRE
-            </div>
-            <div class="div_Ajustes_valor">
-            Nombre completo
-            </div>
-            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-        </div>
-    </a>
-
-    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fcompañia-update')}}">
-        <div class="div_Ajustes_item">
-            <div class="div_Ajustes_name">
-            NOMBRE DE LA COMPAÑÍA (Opcional)
-            </div>
-            <div class="div_Ajustes_valor">
-            Nombre de la compañía
-            </div>
-            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-        </div>
-    </a>
-
-    <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('Fdireccion-update')}}">
-        <div class="div_Ajustes_item">
-            <div class="div_Ajustes_name">
-            DIRECCIÓN
-            </div>
-            <div class="div_Ajustes_valor">
-            País, estado, ciudad y código postal
-            </div>
-            <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
-        </div>
-    </a>
-</div>
 
 <br>
 <div class="div_eliminarCuenta">
@@ -163,7 +128,7 @@
 </div>
 <br>
 
-
+@endforeach
 
 <!-- Eliminar cuenta Modal-->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,7 +140,9 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Si decides eliminar tu cuenta, debes recordar que no podrás registrarte de nuevo con el mismo nombre de usuario en el futuro.</div>
+        <div class="modal-body">Si decides eliminar tu cuenta, debes recordar que no podrás registrarte de nuevo con el mismo nombre de usuario en el futuro.
+            Esto será permanente.
+        </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
           <form action="#" method="">

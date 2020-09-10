@@ -19,19 +19,21 @@
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR NOMBRE</p>
-
+    @foreach ($usuario as $user)
+    
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         NOMBRE
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="Nombre actual" required>
+        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="{{ $user ->name }}" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>
         <input class="" type="submit" value="Guardar">
     </div>
     </form>
+    @endforeach
 </div>
 
 <br>
