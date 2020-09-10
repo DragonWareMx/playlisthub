@@ -24,7 +24,7 @@
     <div class="div_tokens_o"> 15 tokens</div>
     <div class="ico_title_o">
         <img class="img_ico_title_o" src="img/iconos/buy.png" alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Tus curadores favoritos</div>
+        <div class="p_title_o">&nbsp;&nbsp;Paquetes de tokens disponibles para compra</div>
     </div>
     <hr class="hr_100_o">
     <div class="div_100_o">
