@@ -18,7 +18,7 @@ Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
 Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');
-Route::get('/campana/{id}', 'OController@campana')->name('campana');
+Route::get('/campana/{token}', 'OController@campana')->name('campana');
 Route::get('/crear-paso-1','Ocontroller@crearCampana1')->name('crearCampana1');
 Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
 Route::get('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');

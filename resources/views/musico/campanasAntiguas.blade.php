@@ -89,7 +89,7 @@
                             @endswitch-
                             {{$anio}}
                         </div>
-                        <a class="a_campana_o" href="{{route('campana', ['id'=>$camp->id])}}">Más info.</a>
+                        <a class="a_campana_o" href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}">Más info.</a>
                         <a class="a_campana_o" href="#">Renovar</a>
                     </div>
                     @php

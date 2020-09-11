@@ -14,7 +14,7 @@
         <div class="div_90_o">
             <div class="ico_title_o">
                 <a style="margin-top:-3px;" href="{{route('campanas')}}"><img class="img_ico_title_o" src={{asset("img/iconos/regresar.png")}} alt=""></a>
-                <div class="p_title_o">&nbsp;&nbsp;Campaña "Nombre de la canción"</div>
+                <div class="p_title_o">&nbsp;&nbsp;Campaña "{{$song->name}}"</div>
             </div>
             <hr class="hr_100_o">
             <div class="div_campana_info_o">

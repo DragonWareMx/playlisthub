@@ -767,6 +767,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom:30px;
 }
 .txt_error_o{
     width: 100%;

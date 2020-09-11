@@ -97,7 +97,7 @@
                         @else
                             <div class="campana_text_o">Por determinar</div>
                         @endif
-                        <a class="a_campana_o" href="{{route('campana', ['id'=>$camp->id])}}">Más info.</a>
+                        <a class="a_campana_o" href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}">Más info.</a>
                     </div>
                     @php
                         $i++;
