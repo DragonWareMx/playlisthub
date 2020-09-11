@@ -23,8 +23,8 @@
 
     <div class="div_infoPerfilM">
         <div class="div_fotoPerfilM">
-            <img src="/img/cat.jpg">
-        <a href="{{route('foto-update')}}"><i class="fas fa-pencil-alt"></i>&nbsp;Cambiar foto</a>
+            <img src="{{auth()->user()->avatar}}">
+        {{-- <a href="{{route('foto-update')}}"><i class="fas fa-pencil-alt"></i>&nbsp;Cambiar foto</a> --}}
         </div>
         <div class="div_txtPM">
             @foreach ($usuario as $user)

@@ -34,8 +34,8 @@ Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('adminis
 Route::get('/nombreUpdate', 'cuentaController@nombreUpdate')->name('nombre-update');
 Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('contraseña-update');
 Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
-Route::get('/fechaUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
-// Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
+Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
+Route::get('/fechaNacUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
 Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');
 Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
 

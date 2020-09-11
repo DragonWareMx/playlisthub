@@ -12,8 +12,7 @@ class cuentaController extends Controller
     public function administrar()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
@@ -29,7 +28,6 @@ class cuentaController extends Controller
     public function nombreUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
@@ -49,7 +47,6 @@ class cuentaController extends Controller
     public function correoUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
@@ -65,7 +62,6 @@ class cuentaController extends Controller
     public function fecNacUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
@@ -81,7 +77,6 @@ class cuentaController extends Controller
     public function fotoUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
@@ -97,7 +92,6 @@ class cuentaController extends Controller
     public function generoUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
@@ -113,7 +107,6 @@ class cuentaController extends Controller
     public function paisUpdate()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
             $usuario = User::where('id',1)->get();
         } 
         catch(QueryException $ex){ 
