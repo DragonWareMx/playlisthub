@@ -35,5 +35,29 @@ class Users extends Seeder
             'avatar'=>'https://i.scdn.co/image/ab6775700000ee8555c25988a6ac314394d3fbf5',
             'type'=>'Curador'
         ]);
+        DB::table('users')->insert([
+            'name' => 'Usuario no favorito',
+            'email' => 'nofav@hotmail.com',
+            'password' => 'nofav.com',
+            'genre'=>'o',
+            'birth_date'=>'1997-12-27',
+            'country'=>'Morelia',
+            'tokens'=>27,
+            'spotify_id'=>'nofav',
+            'avatar'=>'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=920179414750566&height=300&width=300&ext=1602407219&hash=AeTStCGgMinDhsOO',
+            'type'=>'Curador'
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Usuario favorito',
+            'email' => 'sifav@hotmail.com',
+            'password' => 'sifav.com',
+            'genre'=>'f',
+            'birth_date'=>'1997-12-27',
+            'country'=>'Morelia',
+            'tokens'=>27,
+            'spotify_id'=>'sifav',
+            'avatar'=>'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=920179414750566&height=300&width=300&ext=1602407219&hash=AeTStCGgMinDhsOO',
+            'type'=>'Curador'
+        ]);
     }
 }

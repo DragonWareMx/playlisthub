@@ -39,7 +39,8 @@ class OController extends Controller
         $error=false;
         foreach($campsAct as $camp){
             //Se extrae el id de la canción 
-            $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
             if(substr($song_id, 0, strpos($song_id, "?"))){
                 $song_id = substr($song_id, 0, strpos($song_id, "?"));
             }
@@ -55,7 +56,8 @@ class OController extends Controller
             $song=json_decode($song);
             $songsAct[$i]=$song;
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
@@ -77,7 +79,8 @@ class OController extends Controller
         $playlistsAnt=[];
         foreach($campsAnt as $camp){
             //Se extrae el id de la canción 
-            $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
             if(substr($song_id, 0, strpos($song_id, "?"))){
                 $song_id = substr($song_id, 0, strpos($song_id, "?"));
             }
@@ -93,7 +96,8 @@ class OController extends Controller
             $song=json_decode($song);
             $songsAnt[$i]=$song;
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
@@ -134,7 +138,8 @@ class OController extends Controller
         $error=false;
         foreach($campsAct as $camp){
             //Se extrae el id de la canción 
-            $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
             if(substr($song_id, 0, strpos($song_id, "?"))){
                 $song_id = substr($song_id, 0, strpos($song_id, "?"));
             }
@@ -150,7 +155,8 @@ class OController extends Controller
             $song=json_decode($song);
             $songsAct[$i]=$song;
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
@@ -188,7 +194,8 @@ class OController extends Controller
         $playlistsAnt=[];
         foreach($campsAnt as $camp){
             //Se extrae el id de la canción 
-            $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
             if(substr($song_id, 0, strpos($song_id, "?"))){
                 $song_id = substr($song_id, 0, strpos($song_id, "?"));
             }
@@ -204,7 +211,8 @@ class OController extends Controller
             $song=json_decode($song);
             $songsAnt[$i]=$song;
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
@@ -236,7 +244,8 @@ class OController extends Controller
             $hoy = Carbon::now();
 
             //Se extrae el id de la canción 
-            $song_id=trim($camp->link_song,'https://open.spotify.com/track/');
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
             if(substr($song_id, 0, strpos($song_id, "?"))){
                 $song_id = substr($song_id, 0, strpos($song_id, "?"));
             }
@@ -251,7 +260,8 @@ class OController extends Controller
             curl_close($conexion);
             $song=json_decode($song);
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }

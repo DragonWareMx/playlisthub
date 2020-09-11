@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Playlists::class);
         $this->call(Reviews::class);
         $this->call(Camps::class);
+        $this->call(Favorite_User::class);
     }
 }
