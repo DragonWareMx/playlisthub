@@ -114,7 +114,7 @@ class OController extends Controller
             $playlistsAnt[$i]=$playlist;
             $i++;
         }
-        if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($playlistsAnt[0]->error)){
+        if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($songsAnt[0]->error) || isset($playlistsAnt[0]->error)){
             $error=true;
         }
         return view ('musico.campanas',['campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
