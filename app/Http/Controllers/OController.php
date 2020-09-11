@@ -55,7 +55,8 @@ class OController extends Controller
             $song=json_decode($song);
             $songsAct[$i]=$song;
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/', '', $playlist_id) ;
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
@@ -110,7 +111,7 @@ class OController extends Controller
             $playlistsAnt[$i]=$playlist;
             $i++;
         }
-        if(isset($songsAct[0]->error) || isset($songsAnt[0]->error) || isset($playlistsAct[0]->error) || isset($playlistsAnt[0]->error)){
+        if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($playlistsAnt[0]->error)){
             $error=true;
         }
         return view ('musico.campanas',['campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
@@ -251,7 +252,8 @@ class OController extends Controller
             curl_close($conexion);
             $song=json_decode($song);
             //Se extrae el id de la playlist 
-            $playlist_id=trim($camp->playlist->link_playlist,'https://open.spotify.com/playlist/');
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/', '', $playlist_id) ;
             if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
                 $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
             }
