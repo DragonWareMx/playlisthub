@@ -73,6 +73,7 @@
       </li>
       
 
+      @if (auth()->user()->type == 'Músico')
       <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
@@ -128,6 +129,64 @@
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
+      @endif
+
+      @if (auth()->user()->type == 'Curador')
+      <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
+            <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Playlists</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="{{ route('campanas') }}">Campañas</a>
+            <a class="collapse-item" href="{{route('tokens')}}">Tokens</a>
+              <div class="collapse-divider"></div>
+              <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
+            </div>
+          </div>
+      </li>
+
+      <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="{{ route('favoritos') }}">           
+            <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Ranking</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+      </li>
+      {{-- GANANCIAS --}}
+      <li class="nav-item ">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link" href="#">
+            <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Ganancias</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+      </li>
+      {{-- REVIEWS --}}
+      <li class="nav-item {{ Request::path() ==  'reviews' ? 'active' : ''  }}">
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
+            <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
+          <span style="padding-left: 10px">Reviews</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="/reviews">Reviews</a>
+              <a class="collapse-item" href="/reviews-pendientes">Reviews Pendientes</a>
+              <a class="collapse-item" href="/reviews-realizar">Realizar Review</a>
+              <div class="collapse-divider"></div>
+              <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
+            </div>
+          </div>
+      </li>
+      @endif
 
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar Toggler (Sidebar) -->
@@ -212,7 +271,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center"> {{auth()->user()->name}} <br> <strong>Músico</strong> </span>
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center"> {{auth()->user()->name}} <br> <strong>{{auth()->user()->type}}</strong> </span>
                 <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{auth()->user()->avatar}}">
               </a>
               <!-- Dropdown - User Information -->

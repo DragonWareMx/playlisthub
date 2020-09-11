@@ -29,7 +29,7 @@
 
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button onclick="location.href='{{route('register2')}} class="login-button">Músico</button>
+                <button onclick="location.href='{{route('register2')}}" class="login-button">Músico</button>
                 <button class="login-button active">Curador</button>
             </div>
             @if($errors->any())
@@ -46,7 +46,7 @@
                 @csrf
                 <input type="hidden" name="spotify_id" value="{{$user->id}}">
                 <input type="hidden" name="avatar" value="{{$user->images[0]->url}}">
-                <input type="hidden" name="type" value="curador">
+                <input type="hidden" name="type" value="Curador">
                 <div class="form-element">
                     <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>

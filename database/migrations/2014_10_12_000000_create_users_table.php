@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
 
             $table->string('spotify_id')->unique();//id del prefil de spotify
             $table->string('avatar');//foto de perfil 
+            $table->string('type');
 
             $table->enum('genre', ['f', 'm','o']);              //Genero del usuario   
             $table->date('birth_date');                         //Fecha de nacimiento del usuario

@@ -30,7 +30,7 @@
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
                 <button class="login-button active">Músico</button>
-                <button onclick="location.href='{{route('register')}} class="login-button">Curador</button>
+                <button onclick="location.href='{{route('register')}}" class="login-button">Curador</button>
             </div>
             <p class="form-text">Registrate aquí para que tu música sea escuchada por los curadores de playlist y creadores de contenido</p>
             <form class="login-form" action="">

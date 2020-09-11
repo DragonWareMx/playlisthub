@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -58,6 +59,7 @@ class LoginController extends Controller
         }
 
         $userSocialite = Socialite::driver('spotify')->user();
+        Session::put('access_token',$userSocialite->token);
         $user=User::where('spotify_id',$userSocialite->getId())->first();
         if($user){
             auth()->login($user);
