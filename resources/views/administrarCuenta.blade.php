@@ -54,7 +54,11 @@
                 @if ($user -> genre == 'f')
                     Femenino
                 @else
-                    Masculino
+                    @if ($user -> genre == 'm')
+                        Masculino
+                    @else
+                        Otro
+                    @endif
                 @endif
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
@@ -128,7 +132,7 @@
 </div>
 <br>
 
-@endforeach
+
 
 <!-- Eliminar cuenta Modal-->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,12 +149,15 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
-          <form action="#" method="">
-            {{-- {{csrf_field()}} --}}
+          <form action="{{ route('delete-user', ['id'=>$user->id]) }}" method="POST">
+            {{csrf_field()}}
+            @method('DELETE')
             <button class="btn btn-primary " style="background-color: #8177F5;"> Eliminar cuenta</button>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  @endforeach
 @endsection

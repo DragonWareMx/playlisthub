@@ -11,6 +11,17 @@
 @endsection
 
 @section('contenido')
+
+{{-- @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif --}}
+
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
         <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Nombre</p>
@@ -21,12 +32,14 @@
     <p class="txt-descAjustes">EDITAR NOMBRE</p>
     @foreach ($usuario as $user)
     
-    <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('nombre-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+        @method("PATCH")
+                @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         NOMBRE
         </div>
-        <input type="text" name="nombre" class="input_Ajustes_valor" id="" value="{{ $user ->name }}" required>
+        <input type="text" name="nombre" class="input_Ajustes_valor" id="nombre" value="{{ $user ->name }}" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>

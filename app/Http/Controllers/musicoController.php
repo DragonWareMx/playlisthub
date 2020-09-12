@@ -12,8 +12,7 @@ class musicoController extends Controller
     public function perfil()
     {
         try { 
-            // $usuario = User::where('id',Auth::id())->get();
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }

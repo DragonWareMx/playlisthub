@@ -58,14 +58,14 @@
            rules: {
                password: { 
                  required: true,
-                    minlength: 6,
+                    minlength: 8,
                     maxlength: 10,
 
                } , 
 
                    cfmPassword: { 
                     equalTo: "#password",
-                     minlength: 6,
+                     minlength: 8,
                      maxlength: 10
                }
 
@@ -74,12 +74,12 @@
      messages:{
          password: { 
                  required:"Contraseña requerida",
-                 minlength: "Mínimo 6 carácteres",
+                 minlength: "Mínimo 8 carácteres",
                  maxlength: "Máximo 10 carácteres"
                },
        cfmPassword: { 
          equalTo: "La contraseña debe ser igual al anterior",
-         minlength: "Mínimo 6 carácteres",
+         minlength: "Mínimo 8 carácteres",
          maxlength: "Máximo 10 carácteres"
        }
      }

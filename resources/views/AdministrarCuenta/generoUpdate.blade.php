@@ -20,12 +20,14 @@
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR GÉNERO</p>
     @foreach ($usuario as $user)
-    <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('genero-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+        @method("PATCH")
+        @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         GÉNERO
         </div>
-        <select name="genero" class="input_Ajustes_valor" value="" required>
+        <select name="genero" class="input_Ajustes_valor" value="" required id="genero">
             @if($user->genre =='f')
                 <option  selected="selected" value="1">Femenino</option>
                 <option value="2">Masculino</option>
