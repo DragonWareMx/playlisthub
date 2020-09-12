@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use App\Camp;
 use App\Review;
+use App\User;
 use Carbon\Carbon;
 use Auth;
 
@@ -12,7 +14,38 @@ class OController extends Controller
 {
     public function favoritos()
     {
-        return view ('musico.favoritos');
+        $user=User::with('favorites')->findOrFail(Auth::id());
+        $favorites=[];
+        $i=0;
+        foreach($user->favorites as $favorite){
+            $favorites[$i]=$favorite->id;
+            $i++;
+        }
+        $favorites=User::with('playlists')->whereIn('id',$favorites)->get();
+        $i=0;
+        $favs=[];
+        foreach($favorites as $favorite){
+            $item['id']=$favorite->id;
+            $item['avatar']=$favorite->avatar;
+            $item['name']=$favorite->name;
+            $item['country']=$favorite->country;
+            $item['playlists']=sizeOf($favorite->playlists);
+            $total=0;
+            $numPlaylists=0;
+            foreach($favorite->playlists as $playlist){
+                $total+=$playlist->tier;
+                $numPlaylists++;
+            }
+            if($numPlaylists>0){ 
+                $item['average']=round($total/$numPlaylists,2);
+            }
+            else{
+                $item['average']=0;
+            }
+            $favs[$i]=$item;
+            $i++;
+        }
+        return view ('musico.favoritos',['favs'=>$favs]);
     }
     public function campanas()
     {
