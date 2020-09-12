@@ -92,17 +92,32 @@
             
             <div class="txt_modal_center">Playlists que cumplen con los requisitos</div>
             <div class="txt_modal_left">Selecciona la playlist que vas a agregar</div>
-
-            <!--se hacen con un for-->
-            <div id="1" class="div_playlist_modal">
-                <div><img class="img_modal" src="img/unnamed.jpg" alt=""></div>  
-                <div class="txt_row">Nombre de la playlist muy largo pero muy largo ala verga muy muy muy </div> <div class="txt_row">2,000 seguidores (nivel 10)</div>
-            </div>
-
-            <div class="botones_modal">
-                <button type="button" class="btn_modal_cancel" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn_modal_add">Agregar</button>    
-            </div>
+           
+            @php
+                $i=0;
+            @endphp
+            @foreach ($playlists ['items'] as $playlist)
+                @if (true)
+                    <div id="{{$playlist['id']}}" class="div_playlist_modal">
+                        <div><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
+                        <div class="txt_row">{{$playlist['name']}}</div> 
+                        <div class="txt_row">{{$followers[$i]}}</div>
+                    </div>
+                @endif
+            @php
+                $i++;
+            @endphp                
+            @endforeach
+                    
+                <form action="{{Route('addPlaylist')}}" method="POST">
+                    <input id="link_pl" type="text" required style="display: none">
+                @csrf
+                <div class="botones_modal">
+                    <button type="button" class="btn_modal_cancel" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn_modal_add">Agregar</button>    
+                </div>
+            </form>
+            
       </div>
     </div>
   </div>
