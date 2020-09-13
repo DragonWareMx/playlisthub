@@ -225,7 +225,11 @@
 .div_btnsUpdate{
     margin-top: 30px;
     display: flex;
-    justify-content: right;
+}
+.div_contbtns{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
 }
 .div_btnsUpdate a{
     padding-top: 1%;
@@ -269,7 +273,7 @@
 .error::after {
     content: attr(data-text);
     position: absolute;
-    left: 2px;
+    left: 2px; 
     text-shadow: -1px 0 #e74a3b;
     top: 0;
     color: #5a5c69;

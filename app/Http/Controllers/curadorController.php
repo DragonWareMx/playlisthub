@@ -9,7 +9,11 @@ use Auth;
 
 class curadorController extends Controller
 {
-    // 
+    public function index()
+    {
+        return view ('curador.inicioCurador');
+    } 
+
     public function perfil()
     {
         try { 

@@ -24,8 +24,11 @@ Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
 Route::get('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
 Route::get('/tokens','Ocontroller@tokens')->name('tokens');
 
+Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
 Route::get('/idMusico', 'musicoController@perfilPublico')->name('perfil-musico-publico');
+
+Route::get('/TableroC', 'curadorController@index')->name('inicio-curador');
 Route::get('/perfilC', 'curadorController@perfil')->name('perfil-curador');
 Route::get('/idCurador', 'curadorController@perfilPublico')->name('perfil-curador-publico');
 

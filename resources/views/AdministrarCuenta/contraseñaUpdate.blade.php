@@ -56,15 +56,19 @@
         <input type="password" name="cfmPassword" id="cfmPassword" class="input_Ajustes_valor" value="" required style="width:30%; background-color:transparent; border-bottom: solid 1px #8177F5;">
     </div>
     <div class="div_btnsUpdate">
-        <a href="javascript:history.back(-1);">Cancelar</a>
-        <input class="" type="submit" value="Guardar">
+        <div class="div_contbtns">
+            <a href="javascript:history.back(-1);">Cancelar</a>
+            <input class="" type="submit" value="Guardar">
+        </div>
     </div>
     </form>
 </div>
 
 <br>
 <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
-    <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    <div class="div_contbtns">
+        <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
 </div>
 <br>
 @endforeach
@@ -91,19 +95,19 @@
            },
      messages:{
          password: { 
-                 required:"Contraseña requerida",
-                 minlength: "Mínimo 8 carácteres",
-                 maxlength: "Máximo 10 carácteres"
+                 required:" Contraseña requerida",
+                 minlength: " Mínimo 8 carácteres",
+                 maxlength: " Máximo 10 carácteres"
                },
 
         passActual: { 
-                 required:"Contraseña requerida",
+                 required:" Contraseña requerida",
                 },
         cfmPassword: { 
-                required:"Contraseña requerida",
-                equalTo: "Las contraseñas no coinciden",
-                minlength: "Mínimo 8 carácteres",
-                maxlength: "Máximo 10 carácteres"
+                required:" Contraseña requerida",
+                equalTo: " Las contraseñas no coinciden",
+                minlength: " Mínimo 8 carácteres",
+                maxlength: " Máximo 10 carácteres"
        }
      }
 
