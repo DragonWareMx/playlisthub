@@ -9,6 +9,11 @@ use Auth;
 
 class musicoController extends Controller
 {
+    public function index()
+    {
+        return view ('musico.inicioMusico');
+    } 
+
     public function perfil()
     {
         try { 

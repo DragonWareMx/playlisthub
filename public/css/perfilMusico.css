@@ -186,6 +186,7 @@
     border-bottom: 1px solid #D0D0D0;
     padding-bottom: 2%;
     padding-top: 1%;
+    align-items: center;
 
 }
 .div_Ajustes_name{
@@ -224,7 +225,11 @@
 .div_btnsUpdate{
     margin-top: 30px;
     display: flex;
-    justify-content: right;
+}
+.div_contbtns{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
 }
 .div_btnsUpdate a{
     padding-top: 1%;
@@ -265,11 +270,39 @@
     font-style: normal;
     color:#8177F5;
 }
+.error::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px; 
+    text-shadow: -1px 0 #e74a3b;
+    top: 0;
+    color: #5a5c69;
+    background: #f8f9fc;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+.error::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: 1px 0 #4e73df;
+    top: 0;
+    color: #5a5c69;
+    background: #f8f9fc;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
 .marcarFav{
     display: block;
 }
 .desmarcarFav{
     display: none;
+}
+.inputUPP:focus{
+    border-bottom: solid 1px #8177F5;
+    transition: all 0.5s;
 }
 
 

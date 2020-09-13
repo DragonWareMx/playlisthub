@@ -21,11 +21,11 @@ class CreateCampsTable extends Migration
             $table->date('end_date')->nullable();                   //fecha de termino de la campaña
             $table->unsignedSmallInteger('cost');                   //el número de tokens que el musico utilizó para la campaña
             $table->string('link_song');                            //es el link de la canción de spotify
-            $table->string('genre');                                //Son los tags de la campaña
             $table->unsignedBigInteger('user_id');                  //Musico que lanza la campaña
             $table->unsignedBigInteger('playlist_id')->nullable();  //Playlist relacionada a la campaña
             $table->unsignedBigInteger('review_id')->nullable();    //review
             $table->enum('status', ['aceptado', 'rechazado','espera']);//Genero del usuario
+            $table->unsignedBigInteger('genre_id');
 
             //llave foranea del usuario
             $table->foreign('user_id')
@@ -44,6 +44,11 @@ class CreateCampsTable extends Migration
                 ->references('id')
                 ->on('reviews')
                 ->onDelete('set null');
+
+            $table->foreign('genre_id')
+                ->references('id')
+                ->on('genres')
+                ->onDelete('cascade');
         });
     }
 

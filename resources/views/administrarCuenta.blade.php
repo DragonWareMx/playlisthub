@@ -11,6 +11,16 @@
 @endsection
 
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
         <p><img class="img_ico_title_o" src="img/iconos/info.png" alt="">&nbsp;&nbsp;Ajustes de cuenta</p>
@@ -116,7 +126,7 @@
             CONTRASEÑA
             </div>
             <div class="div_Ajustes_valor">
-                <input type="password" value ="{{ $user -> password }}" style="border:none; background:transparent; width:auto" readonly disabled >
+                Asegúrate de recordar tu contraseña
             </div>
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
@@ -144,7 +154,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Si decides eliminar tu cuenta, debes recordar que no podrás registrarte de nuevo con el mismo nombre de usuario en el futuro.
+        <div class="modal-body">Si decides eliminar tu cuenta, perderás todos tu datos.
             Esto será permanente.
         </div>
         <div class="modal-footer">

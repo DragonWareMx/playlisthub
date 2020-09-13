@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use Auth;
 
@@ -64,7 +65,53 @@ class cuentaController extends Controller
 
     public function contraseñaUpdate()
     {
-        return view ('AdministrarCuenta.contraseñaUpdate');
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } 
+        catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+        return view ('AdministrarCuenta.contraseñaUpdate', ['usuario' => $usuario]);
+    }
+
+    public function contraseñaUpdateDo($id){
+
+        $data=request()->validate([
+            'passActual'=>'required|min:8',
+            'password'=>'required|min:8',
+            'cfmPassword'=>'required|min:8'
+        ]);
+
+        $change=0;
+        try{
+            $user=User::findOrFail($id);
+            if( Hash::check( request('passActual'), $user->password ) ){
+                $change=1;
+                $user->password=bcrypt(request('password'));
+                $user->save();
+                
+            }
+            else{
+                $change=2;
+                }
+        }
+        catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+
+        if($change == 1){
+            return redirect()->route('administrar-cuenta');
+        }
+        else if($change == 2){
+            return redirect()->back()->withErrors(['error' => 'ERROR: La contraseña es incorrecta']);
+        }
+        else{
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
     }
 
     public function correoUpdate()

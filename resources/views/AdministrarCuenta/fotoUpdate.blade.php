@@ -29,15 +29,19 @@
         <input type="file" name="imagen" class="input_Ajustes_valor" id="seleccionArchivos" accept="image/*" value="al" required style="padding: 8%; padding-left:1%">
     </div>
     <div class="div_btnsUpdate">
-        <a href="javascript:history.back(-1);">Cancelar</a>
-        <input class="" type="submit" value="Guardar">
+        <div class="div_contbtns">
+            <a href="javascript:history.back(-1);">Cancelar</a>
+            <input class="" type="submit" value="Guardar">
+        </div>
     </div>
     </form>
 </div>
 
 <br>
 <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
-    <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    <div class="div_contbtns">
+        <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
 </div>
 <br>
 

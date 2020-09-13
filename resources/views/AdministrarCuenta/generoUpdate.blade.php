@@ -11,6 +11,16 @@
 @endsection
 
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
         <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Género</p>
@@ -47,8 +57,10 @@
         </select>
     </div>
     <div class="div_btnsUpdate">
-        <a href="javascript:history.back(-1);">Cancelar</a>
-        <input class="" type="submit" value="Guardar">
+        <div class="div_contbtns">
+            <a href="javascript:history.back(-1);">Cancelar</a>
+            <input class="" type="submit" value="Guardar">
+        </div>
     </div>
     </form>
     @endforeach
@@ -56,7 +68,9 @@
 
 <br>
 <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
-    <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    <div class="div_contbtns">
+        <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
 </div>
 <br>
 

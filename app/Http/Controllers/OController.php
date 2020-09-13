@@ -7,11 +7,18 @@ use Illuminate\Database\QueryException;
 use App\Camp;
 use App\Review;
 use App\User;
+use App\Genre;
+use App\Genre_Playlist;
+use App\Playlist;
 use Carbon\Carbon;
 use Auth;
 
 class OController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function favoritos()
     {
         $user=User::with('favorites')->findOrFail(Auth::id());
@@ -319,11 +326,83 @@ class OController extends Controller
     }
     public function crearCampana1()
     {
-        return view ('musico.crearCampana1');
+        $usedGenres=Genre_Playlist::groupBy('genre_id')->get('genre_id');
+        $genres=Genre::orderBy('name','asc')->whereIn('id',$usedGenres)->get();
+        return view ('musico.crearCampana1',['genres'=>$genres]);
+    }
+    public function recrearCampana2(){
+        return redirect('/crear-paso-1');
     }
     public function crearCampana2(request $request)
     {
-        return view ('musico.crearCampana2');
+        $data=request()->validate([
+            'link'=>'required',
+            'genre'=>'required'
+        ]);
+        
+        $error=false;
+        $access_token=session()->get('access_token');
+        $song_id=trim($request->link,);
+        $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
+        if(substr($song_id, 0, strpos($song_id, "?"))){
+            $song_id = substr($song_id, 0, strpos($song_id, "?"));
+        }
+        $url='https://api.spotify.com/v1/tracks/'.$song_id.'?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $song= curl_exec($conexion);
+        curl_close($conexion);
+        $song=json_decode($song);
+        if(!$song){
+            session()->flash('badLink',true);
+            return redirect('/crear-paso-1');
+        }
+        if(isset($song->error->message)){
+            if($song->error->message == 'invalid id'){
+                session()->flash('badLink',true);
+                return redirect('/crear-paso-1');
+            }
+            else{
+                session()->flash('expiredToken',true);
+                return redirect('/crear-paso-1');
+            }
+        }
+        $user=User::findOrFail(Auth::id());
+        $plays=Playlist::with('user')->orderBy('tier','desc')->leftJoin('genre_playlist','playlists.id', '=', 'genre_playlist.playlist_id')
+            ->where('genre_playlist.genre_id',$request->genre)->get();
+        $playlists=[];
+        $i=0;
+        foreach($plays as $play){
+            $playlist_id=trim($play->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlist= curl_exec($conexion);
+            curl_close($conexion);
+            $playlist=json_decode($playlist);
+            $item=[];
+            $item['id']=$play->id;
+            $item['url']=$playlist->external_urls->spotify;
+            $item['image']=$playlist->images[0]->url;
+            $item['name']=$playlist->name;
+            $item['curator']=$play->user->name;
+            $item['followers']=$playlist->followers->total;
+            $item['profits']=$play->profits;
+            $playlists[$i]=$item;
+            $i++;
+        }
+        return view ('musico.crearCampana2',['$data'=>$request,'song'=>$song,'user'=>$user,'playlists'=>$playlists]);
     }
     public function crearCampana3()
     {

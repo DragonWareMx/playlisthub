@@ -19,38 +19,35 @@ Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
 Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');
 Route::get('/campana/{token}', 'OController@campana')->name('campana');
-Route::get('/crear-paso-1','Ocontroller@crearCampana1')->name('crearCampana1');
-Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
-Route::get('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
-Route::get('/tokens','Ocontroller@tokens')->name('tokens');
+Route::get('/crear-paso-1','OController@crearCampana1')->name('crearCampana1');
+Route::post('/crear-paso-2','OController@crearCampana2')->name('crearCampana2');
+Route::get('crear-paso-2','OController@recrearCampana2');
+Route::get('/crear-paso-3','OController@crearCampana3')->name('crearCampana3');
+Route::get('/tokens','OController@tokens')->name('tokens');
 
+Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
 Route::get('/idMusico', 'musicoController@perfilPublico')->name('perfil-musico-publico');
+
+Route::get('/TableroC', 'curadorController@index')->name('inicio-curador');
 Route::get('/perfilC', 'curadorController@perfil')->name('perfil-curador');
 Route::get('/idCurador', 'curadorController@perfilPublico')->name('perfil-curador-publico');
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');
-
 Route::get('/nombreUpdate', 'cuentaController@nombreUpdate')->name('nombre-update');
 Route::patch('/nombreUpdate/{id}', 'cuentaController@nombreUpdateDo')->name('nombre-updateDo');
-
 Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('contraseña-update');
-
+Route::patch('/contraseñaUpdate/{id}', 'cuentaController@contraseñaUpdateDo')->name('contraseña-updateDo');
 Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
 Route::patch('/correoUpdate/{id}', 'cuentaController@correoUpdateDo')->name('correo-updateDo');
-
 // Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
-
 Route::get('/fechaNacUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
 Route::patch('/fechaNacUpdate/{id}', 'cuentaController@fecNacUpdateDo')->name('fecNac-updateDo');
-
 Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');
 Route::patch('/generoUpdate/{id}', 'cuentaController@generoUpdateDo')->name('genero-updateDo');
-
 Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
 Route::patch('/paisUpdate/{id}', 'cuentaController@paisUpdateDo')->name('pais-updateDo');
-
 Route::delete('/deleteUser/{id}' , 'cuentaController@userDelete')->name('delete-user');
 
 //Rutas CURADOR

@@ -13,20 +13,20 @@ class Playlists extends Seeder
     {
         DB::table('playlists')->insert([
             'tier' => 5,
-            'tokens' => 2,
-            'link_playlist' => 'https://open.spotify.com/playlist/6sSVRSUCRVJwSSTHnFmIfc?si=jQZfGuAxSzu5lRjI6Tj3aw',
+            'profits' => 2,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M',
             'user_id'=>2
         ]);
         DB::table('playlists')->insert([
             'tier' => 3,
-            'tokens' => 1,
-            'link_playlist' => 'https://open.spotify.com/playlist/3LQzcNIohGjtFo2a10vrmb',
+            'profits' => 1,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX8FwnYE6PRvL',
             'user_id'=>2
         ]);
         DB::table('playlists')->insert([
             'tier' => 2.5,
-            'tokens' => 2,
-            'link_playlist' => 'https://open.spotify.com/playlist/0FzjuZcMMAY9vrkBmVARlR',
+            'profits' => 2,
+            'link_playlist' => 'https://open.spotify.com/playlist/6CWhQMDzDzUyk3e2gmvNeY',
             'user_id'=>2
         ]);
     }
