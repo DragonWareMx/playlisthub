@@ -81,9 +81,9 @@ class cuentaController extends Controller
     public function contraseñaUpdateDo($id){
 
         $data=request()->validate([
-            'passActual'=>'required|min:8',
-            'password'=>'required|min:8',
-            'cfmPassword'=>'required|min:8'
+            'passActual'=>'required',
+            'password'=>'required',
+            'cfmPassword'=>'required'
         ]);
 
         $change=0;

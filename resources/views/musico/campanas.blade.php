@@ -3,6 +3,7 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
 @endsection
 
@@ -12,16 +13,13 @@
 
 @section('contenido')
     @if (!$error)
-        <div class="div_90_o">
-            <div class="ico_title60_o">
-                <img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">
-                <div class="p_title_o">&nbsp;&nbsp;Campañas actuales</div>
+        <div class="div_CabeceraApartado" style="margin-top:40px">
+            <div class="div_tituloApartado resize_tituloApartado">
+                <p><img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">&nbsp;&nbsp;Campañas actuales</p>
             </div>
-            <a href="{{Route('crearCampana1')}}" class="a_agregar_o">
-                <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
-                <div class="txt_a_o">Agregar</div>
-            </a>
-            <hr class="hr_100_o">
+            <a href="{{route('crearCampana1')}}" class="resize-btn-agregar"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
+        </div>
+        <div class="div_90_o">
             @if (sizeOf($campsAct)>0)
                 <div class="div_campanas_actuales_o">
                     @php
@@ -112,11 +110,13 @@
                     <div class="txt_error_o">No tienes campañas actuales.</div>
                 </div>
             @endif
-            <div style="margin-top:30px;"class="ico_title_o">
-                <img class="img_ico_title_o" src="img/iconos/overtime.png" alt="">
-                <div class="p_title_o">&nbsp;&nbsp;Campañas antiguas</div>
+        </div>
+        <div class="div_CabeceraApartado" style="margin-top:40px">
+            <div class="div_tituloApartado resize_tituloApartado">
+                <p><img class="img_ico_title_o" src="img/iconos/overtime.png" alt="">&nbsp;&nbsp;Campañas antiguas</p>
             </div>
-            <hr class="hr_100_o">
+        </div>
+        <div class="div_90_o">
             @if (sizeOf($campsAnt)>0)
                 <div class="div_campanas_actuales_o">
                     @php
