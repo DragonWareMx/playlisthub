@@ -19,10 +19,11 @@ Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
 Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');
 Route::get('/campana/{token}', 'OController@campana')->name('campana');
-Route::get('/crear-paso-1','Ocontroller@crearCampana1')->name('crearCampana1');
-Route::post('/crear-paso-2','Ocontroller@crearCampana2')->name('crearCampana2');
-Route::get('/crear-paso-3','Ocontroller@crearCampana3')->name('crearCampana3');
-Route::get('/tokens','Ocontroller@tokens')->name('tokens');
+Route::get('/crear-paso-1','OController@crearCampana1')->name('crearCampana1');
+Route::post('/crear-paso-2','OController@crearCampana2')->name('crearCampana2');
+Route::get('crear-paso-2','OController@recrearCampana2');
+Route::get('/crear-paso-3','OController@crearCampana3')->name('crearCampana3');
+Route::get('/tokens','OController@tokens')->name('tokens');
 
 Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');

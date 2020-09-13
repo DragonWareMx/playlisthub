@@ -17,7 +17,7 @@ class CreatePlaylistsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedTinyInteger('tier');    //Nivel del playlist
-            $table->unsignedTinyInteger('tokens');  //Cantidad de tokens que cuesta la playlist
+            $table->unsignedTinyInteger('profits');  //Dinero que ha obtenido con la playlist
             $table->string('link_playlist');        //Link de spotify de la playlist
             $table->unsignedBigInteger('user_id');  //Musico que lanza la campaña
 

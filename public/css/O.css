@@ -721,10 +721,14 @@
     margin-top: 10px;
     flex-wrap: wrap;
 }
+.img_playlist_o_2{
+    height:35px;
+    width: 68px;
+}
 .error_msg_o{
     width: 80%;
     background-color: #e41425c5;
-    border: 1px solid #fd0015da;
+    border: 2px solid #fd0015da;
     border-radius: 5px;
     color: #FFFFFF;
     padding: 5px;
