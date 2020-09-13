@@ -3,6 +3,7 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
+    <link rel="stylesheet" type="text/css" href="/css/L.css">
 @endsection
 
 @section('menu')
@@ -107,8 +108,10 @@
         </div>
     @else
         <div class="div_error_o">
-            <div class="txt_error_o">Tu token de acceso ha expirado, por favor vuelve a iniciar sesión.</div>
-            <a class="a_error_o" href="#">Cerrar sesión</a>
+            <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+            <a href="http://127.0.0.1:8000/login/spotify" id="a_error_o" class="inicio-spotybtn">
+                <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+            </a>
         </div>
     @endif
 @endsection

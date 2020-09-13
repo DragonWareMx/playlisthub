@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use App\Camp;
 use App\Review;
 use App\User;
+use App\Genre;
 use Carbon\Carbon;
 use Auth;
 
@@ -319,10 +320,46 @@ class OController extends Controller
     }
     public function crearCampana1()
     {
-        return view ('musico.crearCampana1');
+        $genres=Genre::get();
+        return view ('musico.crearCampana1',['genres'=>$genres]);
     }
     public function crearCampana2(request $request)
     {
+        $data=request()->validate([
+            'link'=>'required',
+            'genre'=>'required'
+        ]);
+        
+        $error=false;
+        $access_token=session()->get('access_token').'1';
+        $song_id=trim($request->link,);
+        $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
+        if(substr($song_id, 0, strpos($song_id, "?"))){
+            $song_id = substr($song_id, 0, strpos($song_id, "?"));
+        }
+        $url='https://api.spotify.com/v1/tracks/'.$song_id.'?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $song= curl_exec($conexion);
+        curl_close($conexion);
+        $song=json_decode($song);
+        if(!$song){
+            session()->flash('badLink',true);
+            return redirect('/crear-paso-1');
+        }
+        if(isset($song->error->message)){
+            if($song->error->message == 'invalid id'){
+                session()->flash('badLink',true);
+                return redirect('/crear-paso-1');
+            }
+            else{
+                session()->flash('expiredToken',true);
+                return redirect('/crear-paso-1');
+            }
+        }
         return view ('musico.crearCampana2');
     }
     public function crearCampana3()
