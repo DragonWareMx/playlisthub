@@ -45,76 +45,79 @@
     <div class="reviews_list">
         {{-- !!!!!!!!!!! EN ESTA PARTE MAXIMO DEBEN APARECER 3 REVIEWS !!!!!!!!!!! --}}
 
-        {{-- REVIEW DEL CURADOR / VISTA DE MÚSICO --}}
-        <div class="review_item">
-            {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
-            <div class="review_img">
-                <img src="img/iconos/perfil.png" alt="">
-            </div>
+        {{-- si el usuario es del tipo musico / si es falso entonces es de curador--}}
+        @if($tipo)
+            {{-- REVIEW DEL CURADOR / VISTA DE MÚSICO --}}
+            <div class="review_item">
+                {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                <div class="review_img">
+                    <img src="img/iconos/perfil.png" alt="">
+                </div>
 
-            {{-- CONTENIDO DE LA REVIEW --}}
-            <div class="review_content">
-                {{-- NOMBRES --}}
-                <div class="review_content_names">
-                    <div class="review_content_names_name autor"><a href="#">Nombre completo del curador</a></div>
-                    <div class="review_content_names_name">
-                        <div class="m_r"><a href="#">Nombre de la canción del review</a></div>
+                {{-- CONTENIDO DE LA REVIEW --}}
+                <div class="review_content">
+                    {{-- NOMBRES --}}
+                    <div class="review_content_names">
+                        <div class="review_content_names_name autor"><a href="#">Nombre completo del curador</a></div>
+                        <div class="review_content_names_name">
+                            <div class="m_r"><a href="#">Nombre de la canción del review</a></div>
+                        </div>
                     </div>
-                </div>
-                {{-- CALIFICACION Y FECHA --}}
-                <div class="review_content_sd s_m">
-                    {{-- ESTRELLAS --}}
-                    <div class="review_content_score s_m">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
+                    {{-- CALIFICACION Y FECHA --}}
+                    <div class="review_content_sd">
+                        {{-- ESTRELLAS --}}
+                        <div class="review_content_score m_f">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/op.png" alt="">
+                            <img src="img/iconos/op.png" alt="">
+                        </div>
+                        <div class="review_content_date s_m">17 de junio de 2020</div>
+                        <div class="review_content_date s_m"><b>Estatus</b> Aceptada</div>
                     </div>
-                    <div class="review_content_date s_m">17 de junio de 2020</div>
-                    <div class="review_content_date s_m"><b>Estatus</b> Aceptada</div>
-                </div>
-                {{-- REVIEW --}}
-                <div class="review_content_review">
-                    Descripción del review Lorem ipsum dolor sit amet consectetur adipiscing elit risus, class enim laoreet senectus suspendisse suscipit nascetur, aliquet pellentesque vivamus ultricies eros rutrum scelerisque. Quam nostra aliquam praesent scelerisque libero vitae sed tellus, pharetra semper elementum varius aliquet pretium a volutpat, aptent mauris fusce eu mollis sem lectus. Fringilla... <a href="#">leer más</a>
+                    {{-- REVIEW --}}
+                    <div class="review_content_review">
+                        Descripción del review Lorem ipsum dolor sit amet consectetur adipiscing elit risus, class enim laoreet senectus suspendisse suscipit nascetur, aliquet pellentesque vivamus ultricies eros rutrum scelerisque. Quam nostra aliquam praesent scelerisque libero vitae sed tellus, pharetra semper elementum varius aliquet pretium a volutpat, aptent mauris fusce eu mollis sem lectus. Fringilla... <a href="#">leer más</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @else
+            {{-- REVIEW DEL MÚSICO / VISTA DE CURADOR --}}
+            <div class="review_item">
+                {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                <div class="review_img">
+                    <img src="img/iconos/perfil.png" alt="">
+                </div>
 
-        {{-- REVIEW DEL MÚSICO / VISTA DE CURADOR --}}
-        <div class="review_item">
-            {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
-            <div class="review_img">
-                <img src="img/iconos/perfil.png" alt="">
-            </div>
-
-            {{-- CONTENIDO DE LA REVIEW --}}
-            <div class="review_content">
-                {{-- NOMBRES --}}
-                <div class="review_content_names">
-                    <div class="review_content_names_name autor"><a href="#">Nombre completo del músico</a></div>
-                    <div class="review_content_names_name">
-                        <div class="m_r"><b>Playlist </b><a href="#">Nombre de la playlist</a></div>
+                {{-- CONTENIDO DE LA REVIEW --}}
+                <div class="review_content">
+                    {{-- NOMBRES --}}
+                    <div class="review_content_names">
+                        <div class="review_content_names_name autor"><a href="#">Nombre completo del músico</a></div>
+                        <div class="review_content_names_name">
+                            <div class="m_r"><b>Playlist </b><a href="#">Nombre de la playlist</a></div>
+                        </div>
+                    </div>
+                    {{-- CALIFICACION Y FECHA --}}
+                    <div class="review_content_sd">
+                        {{-- ESTRELLAS --}}
+                        <div class="review_content_score m_f">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/reviews.png" alt="">
+                            <img src="img/iconos/op.png" alt="">
+                            <img src="img/iconos/op.png" alt="">
+                        </div>
+                        <div class="review_content_date s_m">17 de junio de 2020</div>
+                    </div>
+                    {{-- REVIEW --}}
+                    <div class="review_content_review">
+                        Descripción del review Lorem ipsum dolor sit amet consectetur adipiscing elit risus, class enim laoreet senectus suspendisse suscipit nascetur, aliquet pellentesque vivamus ultricies eros rutrum scelerisque. Quam nostra aliquam praesent scelerisque libero vitae sed tellus, pharetra semper elementum varius aliquet pretium a volutpat, aptent mauris fusce eu mollis sem lectus. Fringilla... <a href="#">leer más</a>
                     </div>
                 </div>
-                {{-- CALIFICACION Y FECHA --}}
-                <div class="review_content_sd">
-                    {{-- ESTRELLAS --}}
-                    <div class="review_content_score">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/reviews.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
-                        <img src="img/iconos/op.png" alt="">
-                    </div>
-                    <div class="review_content_date">17 de junio de 2020</div>
-                </div>
-                {{-- REVIEW --}}
-                <div class="review_content_review">
-                    Descripción del review Lorem ipsum dolor sit amet consectetur adipiscing elit risus, class enim laoreet senectus suspendisse suscipit nascetur, aliquet pellentesque vivamus ultricies eros rutrum scelerisque. Quam nostra aliquam praesent scelerisque libero vitae sed tellus, pharetra semper elementum varius aliquet pretium a volutpat, aptent mauris fusce eu mollis sem lectus. Fringilla... <a href="#">leer más</a>
-                </div>
             </div>
-        </div>
+        @endif
     </div>
 
     {{-- VER MÁS --}}

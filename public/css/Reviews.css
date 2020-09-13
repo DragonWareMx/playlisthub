@@ -343,6 +343,10 @@
 }
 
 .s_m{
+    margin-left: 18px !important;
+}
+
+.m_f{
     margin-left: 0px !important;
 }
 
@@ -359,6 +363,9 @@
     .reviews_list .review_item .review_content .review_content_realizar_r_div {
         margin-top: 17px;
         margin-bottom: 17px;
+    }
+    .s_m{
+        margin-left: 0px !important;
     }
 }
 

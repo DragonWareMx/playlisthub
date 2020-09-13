@@ -16,6 +16,8 @@ class ReviewController extends Controller
         $usuario = null;
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
+        //reviews del usuario musico/curador
+        $reviews;
 
         //obtenemos el usuario que inicio sesion
         try { 
