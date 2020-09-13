@@ -41,7 +41,7 @@ class User extends Authenticatable
     //Curadores favoritos del musico
     public function favorites()
     {
-        return $this->belongsToMany('User', 'favorites_user', 'user_id', 'favorite_id');
+        return $this->belongsToMany('App\User','favorites_user', 'user_id', 'favorite_id');
     }
 
     //Campañas del musico
@@ -54,6 +54,11 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany('App\Review');
+    }
+
+    public function playlists()
+    {
+        return $this->hasMany('App\Playlist');
     }
 
      /**

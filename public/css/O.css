@@ -780,6 +780,10 @@
     color: #C96DD8;
     margin-top:50px;
 }
+.favs_star_o{
+    width: 16px;
+    height: 16px;
+}
 .a_error_o{
     width: 140px;
     height: 35px;

@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
 
-            $table->string('spotify_id')->unique();//id del prefil de spotify
-            $table->string('avatar');//foto de perfil 
+            $table->string('spotify_id')->unique();            //id del prefil de spotify
+            $table->string('avatar');                          //foto de perfil 
             $table->string('type');
 
             $table->enum('genre', ['f', 'm','o']);              //Genero del usuario   

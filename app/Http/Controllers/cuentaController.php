@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Auth;
 
@@ -28,7 +29,7 @@ class cuentaController extends Controller
     public function nombreUpdate()
     {
         try { 
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } 
         catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -40,14 +41,36 @@ class cuentaController extends Controller
 
         return view ('AdministrarCuenta.nombreUpdate', ['usuario' => $usuario]);
     }
+
+    public function nombreUpdateDo($id){
+
+        $data=request()->validate([
+            'nombre'=>'required|max:191'
+        ]);
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                $user->name=request('nombre');
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
+    }
+
     public function contraseñaUpdate()
     {
         return view ('AdministrarCuenta.contraseñaUpdate');
     }
+
     public function correoUpdate()
     {
         try { 
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } 
         catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -59,10 +82,31 @@ class cuentaController extends Controller
 
         return view ('AdministrarCuenta.correoUpdate', ['usuario' => $usuario]);
     }
+
+    public function correoUpdateDo($id){
+
+        $data=request()->validate([
+            'correo'=>'required'
+        ]);
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                $user->email=request('correo');
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
+    }
+
     public function fecNacUpdate()
     {
         try { 
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } 
         catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -74,25 +118,47 @@ class cuentaController extends Controller
 
         return view ('AdministrarCuenta.fecNacUpdate', ['usuario' => $usuario]);
     }
-    public function fotoUpdate()
-    {
-        try { 
-            $usuario = User::where('id',1)->get();
-        } 
-        catch(QueryException $ex){ 
-            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-        }
 
-        if($usuario == null){
-            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-        }
+    public function fecNacUpdateDo($id){
 
-        return view ('AdministrarCuenta.fotoUpdate', ['usuario' => $usuario]);
+        $data=request()->validate([
+            'fecha'=>'required|date'
+        ]);
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                $user->birth_date=request('fecha');
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
     }
+
+    // public function fotoUpdate()
+    // {
+    //     try { 
+    //         $usuario = User::where('id',Auth::id())->get();
+    //     } 
+    //     catch(QueryException $ex){ 
+    //         return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+    //     }
+
+    //     if($usuario == null){
+    //         return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+    //     }
+
+    //     return view ('AdministrarCuenta.fotoUpdate', ['usuario' => $usuario]);
+    // }
+
     public function generoUpdate()
     {
         try { 
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } 
         catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -104,10 +170,40 @@ class cuentaController extends Controller
 
         return view ('AdministrarCuenta.generoUpdate', ['usuario' => $usuario]);
     }
+
+    public function generoUpdateDo($id){
+        
+        $data=request()->validate([
+            'genero'=>'required'
+        ]);
+
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                if(request('genero') == '2'){
+                    $user->genre='m';
+                }
+                else if (request('genero') == '1'){
+                    $user->genre='f';
+                }
+                else if (request('genero') == '3'){
+                    $user->genre='o';
+                }
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
+    }
+
     public function paisUpdate()
     {
         try { 
-            $usuario = User::where('id',1)->get();
+            $usuario = User::where('id',Auth::id())->get();
         } 
         catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -118,5 +214,41 @@ class cuentaController extends Controller
         }
 
         return view ('AdministrarCuenta.paisUpdate', ['usuario' => $usuario]);
+    }
+
+    public function paisUpdateDo($id){
+        
+        $data=request()->validate([
+            'pais'=>'required'
+        ]);
+
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                $user->country=request('pais');
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
+    }
+
+    public function userDelete($id){
+        try{
+            DB::transaction(function() use ($id)
+            {
+               $user=User::findOrFail($id);
+               $user->delete();
+
+            });
+       }
+       catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudó eliminar la cuenta']);
+       }
+       return redirect()->route('login');
     }
 }

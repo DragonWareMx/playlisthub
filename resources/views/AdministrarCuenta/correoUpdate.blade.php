@@ -20,12 +20,14 @@
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR CORREO ELECTRÓNICO</p>
     @foreach ($usuario as $user)
-    <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('correo-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+        @method("PATCH")
+        @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         CORREO
-        </div>
-        <input type="email" name="correo" class="input_Ajustes_valor" id="" value="{{$user ->email}}" required>
+        </div>  
+        <input type="email" name="correo" class="input_Ajustes_valor" id="correo" value="{{$user ->email}}" required>
     </div>
     <div class="div_btnsUpdate">
         <a href="javascript:history.back(-1);">Cancelar</a>

@@ -31,7 +31,7 @@
         <p class="txt-infoNombrePM">{{ $user -> name }}</p>
             <p class="txt-infoUserP">Músico</p>
             <p class="txt-informacionP">{{ $user -> country }}</p>   
-            <p class="txt-informacionP">{{ $user -> email }}</p>
+            <p class="txt-informacionP">Miembro desde el &nbsp;{{ \Carbon\Carbon::parse($user->created_at)->format('Y')}}</p>
             @endforeach
         </div>
     </div>
@@ -64,53 +64,7 @@
             <div class="campana_text_o">{{Str::limit('Nombre de la playlist', 48)}}</div>
             <div class="campana_title_o">FECHA DE TÉRMINO</div>
             <div class="campana_text_o">20-Agosto-2020</div>
-            <a class="a_campana_o" href="{{route('campana', ['id'=>1])}}">Más info.</a>
-        </div>
-
-        <div class="div_item_campana_o">
-            <div class="img_item_campana_o" style="background-image:url('https://images-na.ssl-images-amazon.com/images/I/712rrJUrcrL._AC_SL1256_.jpg');
-            background-size: contain;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="campanas_encabezado_cancion_o">
-                    {{Str::limit('Nombre de la canción', 39)}}
-                </div>
-                <div class="campanas_encabezado_artista_o">
-                    {{Str::limit('NOMBRE DEL ARTISTA', 39)}}
-                </div>
-                <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="img/iconos/sp white logo.png" alt=""></div>
-            </div>
-            <div class="campana_title_o">TOKENS</div>
-            <div class="campana_text_o">25</div>
-            <div class="campana_title_o">PLAYLIST</div>
-            <div class="campana_text_o">{{Str::limit('Nombre de la playlist', 48)}}</div>
-            <div class="campana_title_o">FECHA DE TÉRMINO</div>
-            <div class="campana_text_o">20-Agosto-2020</div>
-            <a class="a_campana_o" href="{{route('campana', ['id'=>1])}}">Más info.</a>
-        </div>
-
-        <div class="div_item_campana_o">
-            <div class="img_item_campana_o" style="background-image:url('https://images-na.ssl-images-amazon.com/images/I/81KWwt9-szL._AC_SL1400_.jpg');
-            background-size: contain;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="campanas_encabezado_cancion_o">
-                    {{Str::limit('Nombre de la canción', 39)}}
-                </div>
-                <div class="campanas_encabezado_artista_o">
-                    {{Str::limit('NOMBRE DEL ARTISTA', 39)}}
-                </div>
-                <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="img/iconos/sp white logo.png" alt=""></div>
-            </div>
-            <div class="campana_title_o">TOKENS</div>
-            <div class="campana_text_o">25</div>
-            <div class="campana_title_o">PLAYLIST</div>
-            <div class="campana_text_o">{{Str::limit('Nombre de la playlist', 48)}}</div>
-            <div class="campana_title_o">FECHA DE TÉRMINO</div>
-            <div class="campana_text_o">20-Agosto-2020</div>
-            <a class="a_campana_o" href="{{route('campana', ['id'=>1])}}">Más info.</a>
+            <a class="a_campana_o" href="href="{{route('campana', ['token'=>Str::random(150),'id'=>1,'index'=>Str::random(150)])}}"">Más info.</a>
         </div>
     </div>
     

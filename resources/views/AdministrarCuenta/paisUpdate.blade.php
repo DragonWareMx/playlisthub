@@ -20,39 +20,41 @@
 <div class="div_Ajustes">
     <p class="txt-descAjustes">EDITAR PAÍS DE RESIDENCIA</p>
     @foreach ($usuario as $user)
-    <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pais-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+        @method("PATCH")
+        @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
         PAÍS
         </div>
-        <select name="pais" size=1  class="input_Ajustes_valor"OnChange="javascript:pais();" required> 
-                <option  selected="selected" value="1">{{$user ->country}}</option>
-                <option value="2">Argentina</option>
-                <option value="3">Bolivia</option>
-                <option value="4">Brasil</option>
-                <option value="5">Chile</option>
-                <option value="6">Colombia</option>
-                <option value="7">Costa Rica</option>
-                <option value="8">Cuba</option>
-                <option value="9">Ecuador</option>
-                <option value="10">El Salvador</option>
-                <option value="11">Guayana Francesa</option>
-                <option value="12">Granada</option>
-                <option value="13">Guatemala</option>
-                <option value="14">Guayana</option>
-                <option value="15">Haití</option>
-                <option value="16">Honduras</option>
-                <option value="17">Jamaica</option>
-                <option value="18">México</option>
-                <option value="19">Nicaragua</option>
-                <option value="20">Paraguay</option>
-                <option value="21">Panamá</option>
-                <option value="22">Perú</option>
-                <option value="23">Puerto Rico</option>
-                <option value="24">República Dominicana</option>
-                <option value="25">Surinam</option>
-                <option value="26">Uruguay</option>
-                <option value="27">Venezuela </option>
+        <select name="pais" size=1 id="pais" class="input_Ajustes_valor" OnChange="javascript:pais();" required> 
+                <option  selected="selected" value="{{$user ->country}}">{{$user ->country}}</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Chile">Chile</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="El Salvador">El Salvador</option>
+                <option value="Guayana Francesa">Guayana Francesa</option>
+                <option value="Granada">Granada</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guayana">Guayana</option>
+                <option value="Haití">Haití</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="México">México</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Panamá">Panamá</option>
+                <option value="Perú">Perú</option>
+                <option value="Puerto">Puerto Rico</option>
+                <option value="República Dominicana">República Dominicana</option>
+                <option value="Surinam">Surinam</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Venezuela">Venezuela </option>
                 </select>
     </div>
     <div class="div_btnsUpdate">
