@@ -15,6 +15,10 @@ use Auth;
 
 class OController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function favoritos()
     {
         $user=User::with('favorites')->findOrFail(Auth::id());
@@ -367,7 +371,7 @@ class OController extends Controller
             }
         }
         $user=User::findOrFail(Auth::id());
-        $plays=Playlist::with('user')->orderBy('tokens','desc')->leftJoin('genre_playlist','playlists.id', '=', 'genre_playlist.playlist_id')
+        $plays=Playlist::with('user')->orderBy('tier','desc')->leftJoin('genre_playlist','playlists.id', '=', 'genre_playlist.playlist_id')
             ->where('genre_playlist.genre_id',$request->genre)->get();
         $playlists=[];
         $i=0;
