@@ -331,7 +331,7 @@ class OController extends Controller
         ]);
         
         $error=false;
-        $access_token=session()->get('access_token').'1';
+        $access_token=session()->get('access_token');
         $song_id=trim($request->link,);
         $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
         if(substr($song_id, 0, strpos($song_id, "?"))){
@@ -360,7 +360,7 @@ class OController extends Controller
                 return redirect('/crear-paso-1');
             }
         }
-        return view ('musico.crearCampana2');
+        return view ('musico.crearCampana2',['$data'=>$request,'song'=>$song]);
     }
     public function crearCampana3()
     {
