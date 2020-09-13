@@ -11,6 +11,16 @@
 @endsection
 
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
         <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Correo electrónico</p>

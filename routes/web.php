@@ -31,26 +31,19 @@ Route::get('/idCurador', 'curadorController@perfilPublico')->name('perfil-curado
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');
-
 Route::get('/nombreUpdate', 'cuentaController@nombreUpdate')->name('nombre-update');
 Route::patch('/nombreUpdate/{id}', 'cuentaController@nombreUpdateDo')->name('nombre-updateDo');
-
 Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('contraseña-update');
-
+Route::patch('/contraseñaUpdate/{id}', 'cuentaController@contraseñaUpdateDo')->name('contraseña-updateDo');
 Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
 Route::patch('/correoUpdate/{id}', 'cuentaController@correoUpdateDo')->name('correo-updateDo');
-
 // Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
-
 Route::get('/fechaNacUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
 Route::patch('/fechaNacUpdate/{id}', 'cuentaController@fecNacUpdateDo')->name('fecNac-updateDo');
-
 Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');
 Route::patch('/generoUpdate/{id}', 'cuentaController@generoUpdateDo')->name('genero-updateDo');
-
 Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
 Route::patch('/paisUpdate/{id}', 'cuentaController@paisUpdateDo')->name('pais-updateDo');
-
 Route::delete('/deleteUser/{id}' , 'cuentaController@userDelete')->name('delete-user');
 
 //Rutas CURADOR

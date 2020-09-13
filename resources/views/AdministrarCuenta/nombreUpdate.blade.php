@@ -12,7 +12,7 @@
 
 @section('contenido')
 
-{{-- @if($errors->any())
+@if($errors->any())
     <div class="alert alert-danger" role="alert">
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
             @endforeach
         </ul>
     </div>
-@endif --}}
+@endif
 
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">

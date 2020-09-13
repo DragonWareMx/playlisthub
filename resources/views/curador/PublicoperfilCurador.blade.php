@@ -24,13 +24,16 @@
 
     <div class="div_infoPerfilM">
         <div class="div_fotoPerfilM">
-            <img src="/img/cat.jpg">
+            <img src="{{auth()->user()->avatar}}">
+        {{-- <a href="{{route('foto-update')}}"><i class="fas fa-pencil-alt"></i>&nbsp;Cambiar foto</a> --}}
         </div>
         <div class="div_txtPM">
-            <p class="txt-infoNombrePM">Nombre completo del usuario</p>
+            @foreach ($usuario as $user) 
+        <p class="txt-infoNombrePM">{{ $user -> name }}</p>
             <p class="txt-infoUserP">Curador</p>
-            <p class="txt-informacionP">México</p>   
-            <p class="txt-informacionP">Fecha en que se unió a playlisthub</p>
+            <p class="txt-informacionP">{{ $user -> country }}</p>   
+            <p class="txt-informacionP">Miembro desde el&nbsp;{{ \Carbon\Carbon::parse($user->created_at)->format('Y')}}</p>
+            @endforeach
         </div>
     </div>
 

@@ -31,7 +31,7 @@
         <p class="txt-infoNombrePM">{{ $user -> name }}</p>
             <p class="txt-infoUserP">Músico</p>
             <p class="txt-informacionP">{{ $user -> country }}</p>   
-            <p class="txt-informacionP">Miembro desde el &nbsp;{{ \Carbon\Carbon::parse($user->created_at)->format('Y')}}</p>
+            <p class="txt-informacionP">Miembro desde el&nbsp;{{ \Carbon\Carbon::parse($user->created_at)->format('Y')}}</p>
             @endforeach
         </div>
     </div>
