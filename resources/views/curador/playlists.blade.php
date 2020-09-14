@@ -108,9 +108,11 @@
                 $i++;
             @endphp                
             @endforeach
-                    
+
                 <form action="{{Route('addPlaylist')}}" method="POST">
-                    <input id="link_pl" type="text" required style="display: none">
+                    <input type="checkbox">
+
+                    <input id="link_pl" type="text" required style="display: none" name="id_pl">
                 @csrf
                 <div class="botones_modal">
                     <button type="button" class="btn_modal_cancel" data-dismiss="modal">Cancelar</button>
@@ -124,13 +126,36 @@
     
   <script>
       var click= false;
-    $('#1').on('click', function () {
+      var control;
+
+    //al dar click en el cancel del modal deja todo como estaba
+    $('.btn_modal_cancel').on('click', function(){
+        $('.div_playlist_modal').css('border-color','#5C5C5C');
+        $('#link_pl').val(null);
+        click=false;
+        control="";
+    });
+    //para seleccionar el div de la playlist que se elegira
+    $('.div_playlist_modal').on('click', function () {
         if(click){
-            $(this).css('border-color','#5C5C5C');
-            click=false;
+            if(control==this.id){
+                $(this).css('border-color','#5C5C5C');
+                $('#link_pl').val(null);
+                click=false;
+                control="";
+            }
+            else{
+                $('#'+control+'').css('border-color','#5C5C5C');
+                $(this).css('border-color','#8177F5');
+                $('#link_pl').val(this.id);
+                control=this.id;
+                click=true;
+            }  
         }
         else{
             $(this).css('border-color','#8177F5');
+            $('#link_pl').val(this.id);
+            control=this.id;
             click=true;
         }
       });

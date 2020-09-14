@@ -61,7 +61,7 @@ Route::get('/ganancias', function () {
     return view('curador.ganancias');
 });
 Route::get('/playlists', 'AController@playlists')->name('playlists');
-Route::get('/addPlaylist','AController@addPlaylist')->name('addPlaylist');
+Route::post('/addPlaylist','AController@addPlaylist')->name('addPlaylist');
 
 Route::get('/', function () {
     return redirect()->route('home');
