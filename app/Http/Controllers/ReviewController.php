@@ -35,33 +35,34 @@ class ReviewController extends Controller
             case 'Músico':
                 $tipo = true;
 
-                //campanas con reviews del usuario musico
-                /*$reviews = Review::whereHas('camp', function ($query) {
-                    return $query->where('user_id', '=', Auth::id());
-                })->orderBy('date','desc')
-                ->get();*/
+                //reviews de las campanas del usuario musico
                 $reviews = Review::whereHas('camp', function ($query) {
-                    return $query->where('user_id', '=', 1);
+                    return $query->where('user_id', '=', Auth::id());
                 })->orderBy('date','desc')
                 ->get();
 
-                //campanas con reviews del usuario musico
-                /*$reviews = Review::with('camp')->orderBy('date','desc')
+                //reviews a playlists de curadores que el musico ha realizado
+                $realizadas = Review::with('playlist')->orderBy('date','desc')
                                                 ->where('user_id', '=', Auth::id())
-                                                ->limit(3)->get();*/
+                                                ->get();
 
                 //obtenemos el promedio de las reviews y la cantidad de reviews
                 $total = 0;
                 $numReviews = 0;
 
-                foreach($reviews as $review){
-                    $total+=$review->rating;
-                    $numReviews++;
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
                 }
 
-                $calificacion = round($total/$numReviews,1);
-
-                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews]);
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
                 break;
             case 'Curador':
                 $tipo = false;
