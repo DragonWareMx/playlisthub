@@ -23,7 +23,6 @@ class CreateCampsTable extends Migration
             $table->string('link_song');                            //es el link de la canción de spotify
             $table->unsignedBigInteger('user_id');                  //Musico que lanza la campaña
             $table->unsignedBigInteger('playlist_id')->nullable();  //Playlist relacionada a la campaña
-            $table->unsignedBigInteger('review_id')->nullable();    //review
             $table->enum('status', ['aceptado', 'rechazado','espera']);//Genero del usuario
             $table->unsignedBigInteger('genre_id');
 
@@ -37,12 +36,6 @@ class CreateCampsTable extends Migration
             $table->foreign('playlist_id')
                 ->references('id')
                 ->on('playlists')
-                ->onDelete('set null');
-
-            //llave foranea del review
-            $table->foreign('review_id')
-                ->references('id')
-                ->on('reviews')
                 ->onDelete('set null');
 
             $table->foreign('genre_id')

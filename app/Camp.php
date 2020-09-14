@@ -13,9 +13,9 @@ class Camp extends Model
    }
    
    //reviews de la campaña
-   public function reviews()
+   public function review()
    {
-       return $this->hasMany('App\Review');
+       return $this->hasOne('App\Review');
    }
    //playlists a la que pertenece la campaña
    public function playlist()
