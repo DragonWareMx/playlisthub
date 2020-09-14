@@ -123,7 +123,7 @@
 
       <li class="nav-item ">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('referencias')}}">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Referencias</span>
         </a>

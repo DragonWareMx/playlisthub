@@ -132,24 +132,16 @@ class musicoController extends Controller
         if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($songsAnt[0]->error) || isset($playlistsAnt[0]->error)){
             $error=true;
         }
-
-
-
         // return view ('musico.campanas',['campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
 
-
-
-
-
-
-
-
-
-        
         return view ('musico.perfilMusico', ['usuario' => $usuario, 'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
     }
     public function perfilPublico()
     {
         return view ('musico.PublicoperfilMusico');
+    }
+
+    public function referencias(){
+        return view('musico.referencias');
     }
 }

@@ -50,6 +50,8 @@ Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
 Route::patch('/paisUpdate/{id}', 'cuentaController@paisUpdateDo')->name('pais-updateDo');
 Route::delete('/deleteUser/{id}' , 'cuentaController@userDelete')->name('delete-user');
 
+Route::get('/referencias', 'musicoController@referencias')->name('referencias');
+
 //Rutas CURADOR
 Route::get('/ranking', function () {
     return view('curador.ranking');
