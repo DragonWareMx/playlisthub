@@ -34,8 +34,8 @@
             <div class="vercampana_txt_o">012287</div>
         </div>
         <div class="campana_info_2">
-            <div class="vercampana_title_o">ARTISTAS A LOS QUE SE PARECE</div>
-            <div class="vercampana_txt_o">#Radio Head #The Killers #Interpol</div>
+            <div class="vercampana_title_o">GÉNERO</div>
+            <div class="vercampana_txt_o"></div>
             <div class="vercampana_title_o">TOKENS</div>
             <div class="vercampana_txt_o">5</div>
             <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div>

@@ -3,7 +3,6 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
-    <link rel="stylesheet" type="text/css" href="/css/A.css">
 @endsection
 
 @section('menu')
@@ -19,31 +18,66 @@
     <div class="crearCampana_pasos">Paso 2 de 3</div>
     <hr class="hr_100_o">
 
-    <div class="div_content">
+    <div class="div_content_o">
         <div class="encabezado_paso_2">
             <div class="txt_izquierda_o">Seleciona la playlist en la que deseas ubicar tu campaña</div>
             <div class="txt_derecha_o">Tokens totales: {{$user->tokens}} </div>
         </div>
-        <div class="table_head">
-            <div class="img_playlist_o_2" style="margin-bottom:0px"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head">CURADOR</div> <div class="txt_row_head"># DE SEGUIDORES</div> 
-            <div class="txt_row_head">TOKENS REQUERIDOS</div>
+        <div class="table_head_o">
+            <div class="img_playlist_o_2" style="margin-bottom:0px"></div> <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
+            <div class="txt_row_head_o">CURADOR</div> <div class="txt_row_head_o"># DE SEGUIDORES</div> 
+            <div class="txt_row_head_o">TOKENS REQUERIDOS</div>
         </div>
         <hr class="hr_100_o" style="margin-top:0px;">
         @foreach ($playlists as $playlist)
-        <div id=" {{$playlist['id']}} " class="table_row row_encabezado_paso_2">
-            <img class="img_playlist img_playlist_o" src="{{$playlist['image']}}" alt=""> 
-            <a href=" {{$playlist['url']}} "  target="_blank" class="txt_row_play a_row_play_o"> {{$playlist['name']}} </a> 
-            <div class="txt_row_play"> {{$playlist['curator']}} </div> 
-            <div class="txt_row_play"> {{$playlist['followers']}} </div>
-            <div class="txt_row_play"> {{$playlist['profits']}} </div>
-        </div> 
+        <button id="{{$playlist['id']}}" class="table_row_o" onclick="selectPlaylist(this.id,{{$playlist['cost']}},{{$user->tokens}},{{$playlist['curator_id']}})">
+            <img class="img_playlist_o" src="{{$playlist['image']}}" alt=""> 
+            <a href=" {{$playlist['url']}} "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist['name']}} </a> 
+            <div class="txt_row_play_o"> {{$playlist['curator_name']}} </div> 
+            <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
+            <div class="txt_row_play_o"> {{$playlist['cost']}} </div>
+        </button> 
         @endforeach
-        <div class="txt_izquierda_o txt_italic_14" style="margin-top:40px;">Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}">comprar tokens</a></div>
-        <div class="crearCampana_botones botones_margin_subir">
-            <a class="a_cancelar_o" href="{{Route('crearCampana1')}}">Regresar</a>
-            <a class="a_continuar_o" href="{{Route('crearCampana3')}}">Continuar</a>
+        <div id="notEnoughTokens" class="txt_izquierda_o txt_italic_14" style="margin-top:40px;" hidden>Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}">comprar tokens</a></div>
+        <div id="enoughTokens" class="crearCampana_botones"> {{-- botones_margin_subir --}}
+            <a class="a_cancelar_o" href="{{url()->previous()}}">Regresar</a>
+            <form action="{{Route('crearCampana3')}}" method="POST">
+                @csrf
+                <input name="link" type="text" value="{{$data->link}}" hidden>
+                <input name="genre_id" type="text" value="{{$data->genre}}" hidden>
+                <input name="image" type="text" value="{{$song->album->images[0]->url}}" hidden>
+                <input name="song_name" type="text"value="{{$song->name}}" hidden>
+                <input name="song_artist" type="text"value="{{$song->artists[0]->name}}" hidden>
+                <input id="selected_playlist" name="selected_playlist" type="text" value required hidden>
+                <input id="cost" name="cost" type="text" value="" required hidden>
+                <input id="curator" name="curator" type="text" value="" required hidden>
+                <button id="buttonSubmit" type="submit" class="a_continuar_o">Continuar</button> 
+            </form>
         </div>
     </div>
 </div>
+<script>
+    function selectPlaylist(id,cost,tokens,curator) {
+        document.getElementById('selected_playlist').value=id;
+        document.getElementById('cost').value=cost;
+        document.getElementById('curator').value=curator;
+        var rows = document.getElementsByClassName('table_row_o');
+        for(var i=0; i<rows.length; i++){
+            rows[i].style['background-color'] = 'transparent';
+        }
+        document.getElementById(id).style.backgroundColor="#ca6dd88e";
+        if(cost > tokens){
+            document.getElementById('notEnoughTokens').hidden=false;
+            document.getElementById('enoughTokens').classList.add('botones_margin_subir');
+            document.getElementById('buttonSubmit').disabled=true;
+            document.getElementById('buttonSubmit').style.opacity=0.5;
+        }
+        else{
+            document.getElementById('notEnoughTokens').hidden=true;
+            document.getElementById('enoughTokens').classList.remove('botones_margin_subir');
+            document.getElementById('buttonSubmit').disabled=false;
+            document.getElementById('buttonSubmit').style.opacity=1;
+        }
+    }
+</script>
 @endsection

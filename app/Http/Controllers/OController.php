@@ -333,6 +333,9 @@ class OController extends Controller
     public function recrearCampana2(){
         return redirect('/crear-paso-1');
     }
+    public function recrearCampana3(){
+        return redirect('/crear-paso-1');
+    }
     public function crearCampana2(request $request)
     {
         $data=request()->validate([
@@ -396,17 +399,61 @@ class OController extends Controller
             $item['url']=$playlist->external_urls->spotify;
             $item['image']=$playlist->images[0]->url;
             $item['name']=$playlist->name;
-            $item['curator']=$play->user->name;
+            $item['curator_id']=$play->user->id;
+            $item['curator_name']=$play->user->name;
             $item['followers']=$playlist->followers->total;
-            $item['profits']=$play->profits;
+            $total=$playlist->followers->total;
+            $cost=10;
+            if($total>=500 && $total<1000) $cost=1;
+            if($total>=1000 && $total<2000) $cost=2;
+            if($total>=2000 && $total<3000) $cost=3;
+            if($total>=3000 && $total<4000) $cost=4;
+            if($total>=4000 && $total<5000) $cost=5;
+            if($total>=5000 && $total<6000) $cost=6;
+            $item['cost']=$cost;
             $playlists[$i]=$item;
             $i++;
         }
-        return view ('musico.crearCampana2',['$data'=>$request,'song'=>$song,'user'=>$user,'playlists'=>$playlists]);
+        return view ('musico.crearCampana2',['data'=>$request,'user'=>$user,'playlists'=>$playlists,'song'=>$song]);
     }
-    public function crearCampana3()
+    public function crearCampana3(request $request)
     {
-        return view ('musico.crearCampana3');
+        $access_token=session()->get('access_token');
+        $data['song_name']=$request->song_name;
+        $data['song_artist']=$request->song_artist;
+        $data['song_link']=$request->link;
+        $data['song_genre_id']=$request->genre_id;
+        $genre=Genre::findOrFail($request->genre_id);
+        $data['song_genre']=$genre->name;
+        $data['tokens']=$request->cost;
+        $hoy=Carbon::now();
+        $data['date']=$hoy;
+        $data['curator_id']=$request->curator;
+        $curator=User::findOrFail($request->curator);
+        $data['curator_name']=$curator->name;
+        $data['playlist_id']=$request->selected_playlist;
+        $playlist=Playlist::findOrFail($request->selected_playlist);
+        $data['playlist_url']=$playlist->link_playlist;
+
+        $playlist_id=trim($playlist->link_playlist,);
+        $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+        if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+            $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+        }
+        //Se hace la conexión con la api de spotify
+        $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $playlist= curl_exec($conexion);
+        curl_close($conexion);
+        $playlist=json_decode($playlist);
+
+        $data['playlist_name']=$playlist->name;
+        dd($data);
+        return view ('musico.crearCampana3',['data'=>$data]);
     }
     public function tokens()
     {
