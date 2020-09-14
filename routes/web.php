@@ -91,14 +91,11 @@ Route::get('/forgot',function(){
     return view('login.recuperarContra');
 })->name('forgotpass');
 
-/*---------------- COMBO WOMBO 4 ----------------*/
-Route::get('/reviews', function () {
-    return view('reviews.reviews');
-});
-
-Route::get('/reviews-pendientes', function () {
-    return view('reviews.reviews_pendientes');
-});
+/*---------------- REVIEWS MUSICO/CURADOR ----------------*/
+//pagina principal
+Route::get('/reviews', 'ReviewController@reviews')->name('reviews');
+//reviews pendientes
+Route::get('/reviews-pendientes', 'ReviewController@reviewsPendientes')->name('reviewsPendientes');
 
 Route::get('/reviews-realizar', function () {
     return view('reviews.reviews_realizar');

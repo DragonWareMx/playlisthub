@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    //
-    //Campaña a la que se le hace el review
-    public function request()
-    {
-        return $this->hasOne('App\Request');
-    }
-
     //Playlist a la que se le hace el review
     public function playlist()
     {
         return $this->belongsTo('App\Playlist');
+    }
+
+    //Campana a la que se le hace el review
+    public function camp()
+    {
+        return $this->belongsTo('App\Camp');
+    }
+
+    //Usuario que escribe el review
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

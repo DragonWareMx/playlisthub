@@ -21,6 +21,7 @@ class CreateReviewsTable extends Migration
             $table->date('date');                   //Fecha en que se publica la review
             $table->unsignedBigInteger('user_id');  //Usuario que realiza el review
             $table->unsignedBigInteger('playlist_id')->nullable();  //playlist
+            $table->unsignedBigInteger('camp_id')->nullable();  //campana
 
             //llave foranea del usuario
             $table->foreign('user_id')
@@ -33,6 +34,12 @@ class CreateReviewsTable extends Migration
                 ->references('id')
                 ->on('playlists')
                 ->onDelete('cascade');
+
+            //llave foranea de la campana
+            $table->foreign('camp_id')
+            ->references('id')
+            ->on('camps')
+            ->onDelete('cascade');
         });
     }
 
