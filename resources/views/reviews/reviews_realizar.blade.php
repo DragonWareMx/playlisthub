@@ -12,6 +12,11 @@
 
 @section('contenido')
 
+@php
+    use Carbon\Carbon;
+    use App\User;
+@endphp
+
 <div class="div_90_o" style="max-width: 1059px;">
     {{-- REALIZAR REVIEW/REVISAR SOLICITUD --}}
     <div class="ico_title60_o">
@@ -23,126 +28,185 @@
 
     <form id="form_review" method="post" action="mailto://test@test.com" style="width: 100%">
         <div class="reviews_list">
-            {{-- REVIEW A LA PLAYLIST / VISTA DE MÚSICO --}}
-            <div class="review_item">
-                {{-- CONTENIDO DE LA REVIEW --}}
-                <div class="review_content">
-                    {{-- NOMBRES --}}
-                    <div class="review_content_names">
-                        <div class="review_content_names_name">
-                            <div class="m_r"><a href="#" style="color: #8177F5;">Ver campaña</a></div>
-                        </div>
-                    </div>
 
-                    {{-- CALIFICACION Y FECHA --}}
-                    <div class="review_content_sd r_p">
-                        {{-- ESTRELLAS --}}
-                        <div id="half-stars-example" class="d_m">
-                            <div class="rating-group" style="display: inline-flex;">
-                                <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-05" value="0.5" type="radio">
-                                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
-                                <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-15" value="1.5" type="radio">
-                                <label aria-label="2 stars" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
-                                <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-25" value="2.5" type="radio" checked>
-                                <label aria-label="3 stars" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
-                                <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-35" value="3.5" type="radio">
-                                <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
-                                <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-45" value="4.5" type="radio">
-                                <label aria-label="5 stars" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio">
+            {{-- si el usuario es del tipo musico / si es falso entonces es de curador--}}
+            @if($tipo)
+                {{-- REVIEW A LA PLAYLIST / VISTA DE MÚSICO --}}
+                <div class="review_item">
+                    {{-- CONTENIDO DE LA REVIEW --}}
+                    <div class="review_content">
+                        {{-- NOMBRES --}}
+                        <div class="review_content_names">
+                            <div class="review_content_names_name">
+                                <div class="m_r"><a href="#" style="color: #8177F5;">Ver campaña</a></div>
                             </div>
                         </div>
-                        {{--
-                        <div class="review_content_score">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
+
+                        {{-- CALIFICACION Y FECHA --}}
+                        <div class="review_content_sd r_p">
+                            {{-- ESTRELLAS --}}
+                            <div id="half-stars-example" class="d_m">
+                                <div class="rating-group" style="display: inline-flex;">
+                                    <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-05" value="0.5" type="radio">
+                                    <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-10" value="1" type="radio">
+                                    <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-15" value="1.5" type="radio">
+                                    <label aria-label="2 stars" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-20" value="2" type="radio">
+                                    <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-25" value="2.5" type="radio" checked>
+                                    <label aria-label="3 stars" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-30" value="3" type="radio">
+                                    <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-35" value="3.5" type="radio">
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-40" value="4" type="radio">
+                                    <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-45" value="4.5" type="radio">
+                                    <label aria-label="5 stars" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    <input class="rating__input" name="rating" id="rating2-50" value="5" type="radio">
+                                </div>
+                            </div>
+                            {{--
+                            <div class="review_content_score">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                            </div>
+                            --}}
+                            {{-- FECHA --}}
+                            @php
+                                $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                                $fecha = Carbon::now();
+                                $mes = $meses[($fecha->format('n')) - 1];
+                            @endphp 
+                            <div class="review_content_date">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
+                            {{-- PLAYLIST --}}
+
+                            {{-- conexion con spotify --}}
+                            @php
+                                $access_token=session()->get('access_token');
+                                //Se extrae el id de la canción 
+                                $playlist_id=trim($camp->playlist->link_playlist,);
+                                $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+                                if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                                    $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+                                }
+                                //Se hace la conexión con la api de spotify
+                                $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+                                $conexion=curl_init();
+                                curl_setopt($conexion, CURLOPT_URL, $url);
+                                curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+                                curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                                curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+                                $playlist= curl_exec($conexion);
+                                curl_close($conexion);
+                                $playlist=json_decode($playlist);
+                            @endphp
+                            <div class="review_content_date"><b>Playlist</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
                         </div>
-                    --}}
-                        <div class="review_content_date">17 de junio de 2020</div>
-                        <div class="review_content_date"><b>Playlist</b> <a href="#">Nombre de la playlist</a></div>
-                    </div>
 
-                    {{-- REVIEW --}}
-                    <div class="review_content_review r_p" style="margin-bottom: 0px">
-                        <textarea name="mensaje" placeholder="Escribe tu review (150 caracteres como mínimo)"></textarea>
-                    </div>
+                        {{-- REVIEW --}}
+                        <div class="review_content_review r_p" style="margin-bottom: 0px">
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)"></textarea>
+                        </div>
 
-                    {{-- REALIZAR REVIEW --}}
-                    <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
-                        <a href="javascript:{}" onclick="document.getElementById('form_review').submit();" class="review_content_realizar_r">
-                            Enviar
-                        </a>
+                        {{-- REALIZAR REVIEW --}}
+                        <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
+                            <a href="javascript:{}" onclick="checkForm()" class="review_content_realizar_r">
+                                Enviar
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            {{-- SOLICITUD DE CANCIÓN / VISTA DE CURADOR --}}
-            <div class="review_item">
-                {{-- CONTENIDO DE LA REVIEW --}}
-                <div class="review_content">
-                    {{-- NOMBRES --}}
-                    <div class="review_content_names">
-                        <div class="review_content_names_name">
-                            <div class="m_r"><a href="#" style="color: #8177F5;">Nombre de la canción</a></div>
+            @else
+                {{-- SOLICITUD DE CANCIÓN / VISTA DE CURADOR --}}
+                <div class="review_item">
+                    {{-- CONTENIDO DE LA REVIEW --}}
+                    <div class="review_content">
+                        {{-- NOMBRES --}}
+                        <div class="review_content_names">
+                            <div class="review_content_names_name">
+                                <div class="m_r"><a href="#" style="color: #8177F5;">Nombre de la canción</a></div>
+                            </div>
                         </div>
-                    </div>
-                    {{-- CALIFICACION Y FECHA --}}
-                    <div class="review_content_sd r_p">
-                        {{-- ESTRELLAS --}}
-                        <div class="review_content_score">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
-                            <img src="/img/iconos/op.png" alt="">
+                        {{-- CALIFICACION Y FECHA --}}
+                        <div class="review_content_sd r_p">
+                            {{-- ESTRELLAS --}}
+                            <div class="review_content_score">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                                <img src="/img/iconos/op.png" alt="">
+                            </div>
+                            <div class="review_content_date"><b>Fecha de solicitud</b> 17 de junio de 2020</div>
+                            <div class="review_content_date"><b>Playlist solicitada</b> <a href="#">Nombre de la playlist</a></div>
+                            <div class="review_content_date"><b>Tokens</b> 3</div>
                         </div>
-                        <div class="review_content_date"><b>Fecha de solicitud</b> 17 de junio de 2020</div>
-                        <div class="review_content_date"><b>Playlist solicitada</b> <a href="#">Nombre de la playlist</a></div>
-                        <div class="review_content_date"><b>Tokens</b> 3</div>
-                    </div>
 
-                    {{-- ARTISTA --}}
-                    <div class="review_content_artista r_p">
-                        <p><b>ARTISTA</b></p>
-                        <p>Nombre del artista</p>
-                        <p><b>LINK DEL ARTISTA</b></p>
-                        <a href="https://www.spotify.com/">Link del artista</a>
-                    </div>
+                        {{-- ARTISTA --}}
+                        <div class="review_content_artista r_p">
+                            <p><b>ARTISTA</b></p>
+                            <p>Nombre del artista</p>
+                            <p><b>LINK DEL ARTISTA</b></p>
+                            <a href="https://www.spotify.com/">Link del artista</a>
+                        </div>
 
-                    {{-- ESTATUS --}}
-                    <div class="review_content_buttons_ar r_p">
-                        <input type="radio" class="radio" name="x" value="y" id="y" checked="checked"/>
-                        <label for="y">Aceptar</label>
-                        <input type="radio" class="radio" name="x" value="z" id="z" />
-                        <label for="z">Rechazar</label>
-                    </div>
+                        {{-- ESTATUS --}}
+                        <div class="review_content_buttons_ar r_p">
+                            <input type="radio" class="radio" name="x" value="y" id="y" checked="checked"/>
+                            <label for="y">Aceptar</label>
+                            <input type="radio" class="radio" name="x" value="z" id="z" />
+                            <label for="z">Rechazar</label>
+                        </div>
 
-                    {{-- REVIEW --}}
-                    <div class="review_content_review r_p" style="margin-bottom: 0px">
-                        <textarea name="mensaje" placeholder="Escribe tu review (150 caracteres como mínimo)"></textarea>
-                    </div>
+                        {{-- REVIEW --}}
+                        <div class="review_content_review r_p" style="margin-bottom: 0px">
+                            <textarea name="mensaje" placeholder="Escribe tu review (150 caracteres como mínimo)"></textarea>
+                        </div>
 
-                    {{-- REALIZAR REVIEW --}}
-                    <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
-                        <a href="javascript:{}" onclick="document.getElementById('form_review').submit();" class="review_content_realizar_r">
-                            Enviar
-                        </a>
+                        {{-- REALIZAR REVIEW --}}
+                        <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
+                            <a href="javascript:{}" onclick="document.getElementById('form_review').submit();" class="review_content_realizar_r">
+                                Enviar
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </form>
 </div>
+
+<script>
+    function checkForm() {
+
+        //VERIFICA QUE EL COMENTARIO CUMPLA CON LA LONGITUD MINIMA Y MAXIMA
+        var minLength = 150;
+        var maxLength = 3000;
+
+        var textarea = document.getElementById('mensaje');
+
+        if(textarea.value.length < minLength) {
+            alert('La review debe tener ' + minLength + ' caracteres como mínimo.');
+            return false;
+        }
+        else if(textarea.value.length > maxLength){
+            alert('La review puede tener ' + maxLength + ' caracteres como máximo.');
+            return false;
+        }
+
+        document.getElementById('form_review').submit();
+    }
+
+    function auto_grow(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight)+"px";
+    }
+</script>
 @endsection

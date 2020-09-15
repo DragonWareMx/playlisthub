@@ -38,7 +38,7 @@ class ReviewController extends Controller
 
                 //reviews de las campanas del usuario musico
                 $reviews = Review::whereHas('camp', function ($query) {
-                    return $query->where('user_id', '=', Auth::id());
+                    return $query->where('user_id', '=', Auth::id())->whereNull('playlist_id');
                 })->orderBy('date','desc')
                 ->get();
 
@@ -68,8 +68,45 @@ class ReviewController extends Controller
             case 'Curador':
                 $tipo = false;
 
-                //reviews del usuario curador
-                $reviews;
+                //reviews de las playlists del usuario musico
+                // $reviews = Review::whereHas('playlist', function ($query) {
+                //     return $query->where('user_id', '=', Auth::id());
+                // })->orderBy('date','desc')
+                // ->get();
+
+                $reviews = Review::whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', 2);
+                })->orderBy('date','desc')
+                ->get();
+
+                //reviews a campañas de musicos que el curador ha realizado
+                // $realizadas = Review::with('camp')->orderBy('date','desc')
+                //                                 ->where('user_id', '=', Auth::id())
+                //                                 ->whereNull('playlist_id')
+                //                                 ->get();
+
+                $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->where('user_id', '=', 2)
+                                                ->whereNull('playlist_id')
+                                                ->get();
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+                
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -158,7 +195,41 @@ class ReviewController extends Controller
         if($usuario == null || count($usuario) == 0){
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
-        
-        return view('reviews.reviews_realizar');
+
+        //verifica que tipo de usuario es
+        switch($usuario[0]->type){
+            case 'Músico':
+                $tipo = true;
+
+                $camp = Camp::find($data);
+
+                if($camp == null){
+                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                }
+
+                //obtenemos los IDs de las campañas que ya escribieron una review a la playlist
+                $campsIds = Camp::select('camps.id')
+                                ->join('reviews', 'reviews.camp_id', '=', 'camps.id')
+                                ->distinct()
+                                ->where('reviews.playlist_id','!=','NULL')
+                                ->pluck('id')->toArray();
+
+                //verifica que la campaña aún no haya escrito una review a la playlist del curador
+                if(in_array($camp->id, $campsIds)){
+                    return view('errors.404', ['mensaje' => 'Esta campaña ya realizó una review.']);
+                }
+                
+                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp]);
+                break;
+            case 'Curador':
+                $tipo = false;
+
+                //reviews del usuario curador
+                $reviews;
+                break;
+            default:
+                return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                break;
+        }
     }
 }
