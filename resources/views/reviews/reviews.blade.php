@@ -243,7 +243,7 @@
     <div href="#" class="review_calificacion" style="margin-top:30px;">
         {{-- PENDIENTES(MUSICO)/SOLICITUDES(CURADOR) --}}
         <div class="review_calificacion_item">
-            <a href="#">Pendientes</a>
+            <a href="{{Route('reviewsPendientes')}}">Pendientes</a>
         </div>
 
         {{-- NUMERO DE REVIEWS --}}

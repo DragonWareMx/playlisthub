@@ -96,10 +96,8 @@ Route::get('/forgot',function(){
 Route::get('/reviews', 'ReviewController@reviews')->name('reviews');
 //reviews pendientes
 Route::get('/reviews-pendientes', 'ReviewController@reviewsPendientes')->name('reviewsPendientes');
-
-Route::get('/reviews-realizar', function () {
-    return view('reviews.reviews_realizar');
-});
+//reviews pendientes
+Route::get('/reviews-realizar/{id}', 'ReviewController@realizarReview')->name('realizarReview');
 
 //Rutas del sistema de Auth
 Auth::routes(['register' => false]);

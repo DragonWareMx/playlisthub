@@ -16,7 +16,7 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedTinyInteger('rating');  //Es el rating de la review (0.0 a 5.0) que son representados con estrellas
+            $table->decimal('rating', 2, 1);  //Es el rating de la review (0.0 a 5.0) que son representados con estrellas
             $table->text('comment');              //Es el comentario de la review
             $table->date('date');                   //Fecha en que se publica la review
             $table->unsignedBigInteger('user_id');  //Usuario que realiza el review

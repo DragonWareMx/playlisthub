@@ -12,7 +12,7 @@ class Reviews extends Seeder
     public function run()
     {
         DB::table('reviews')->insert([
-            'rating' => 4,
+            'rating' => 4.5,
             'comment' => '"El Amor Brujo" tiene la ardua tarea de seguirle el ritmo a "In Eternum", pero el disco no se detiene en su ritmo y el tercer corte demuestra una cara menos rápida pero más bonachona, sin salir del heavy metal. Ésta se presenta como una amalgama entre los omnipresentes, y acertados, teclados de Javi Díez. Se le puede escuchar con amplia comodidad a Zeta, mientras Patricia Tapia – la cual hace su primera aparición como co-vocalista-, lo acompaña en los estribillos antes del pegajoso puente. El estribillo es súper pegadizo, la letra en los versos es muy guapa y el tema metralla con poder durante su parte media, en donde el ritmo se alenta y se escucha un ritmo arábico, dando la tralla al máximo.',
             'date'=>'2020-08-20',
             'camp_id'=>1,

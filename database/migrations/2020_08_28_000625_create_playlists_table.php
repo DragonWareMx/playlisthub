@@ -16,7 +16,7 @@ class CreatePlaylistsTable extends Migration
         Schema::create('playlists', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedTinyInteger('tier');    //Nivel del playlist
+            $table->decimal('tier', 2, 1);    //Nivel del playlist
             $table->unsignedTinyInteger('profits');  //Dinero que ha obtenido con la playlist
             $table->string('link_playlist');        //Link de spotify de la playlist
             $table->unsignedBigInteger('user_id');  //Musico que lanza la campaña
