@@ -56,6 +56,10 @@ class AController extends Controller
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers]);
     }
     public function addPlaylist(){
+        $id_playlist=request()->validate([
+            'id_pl'=>'required'
+        ]);
 
+        dd(request());
     }
 }
