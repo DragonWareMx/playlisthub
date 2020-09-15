@@ -44,7 +44,6 @@
             <form action="{{Route('crearCampana3')}}" method="POST">
                 @csrf
                 <input name="link" type="text" value="{{$data->link}}" hidden>
-                <input name="genre_id" type="text" value="{{$data->genre}}" hidden>
                 <input name="image" type="text" value="{{$song->album->images[0]->url}}" hidden>
                 <input name="song_name" type="text"value="{{$song->name}}" hidden>
                 <input name="song_artist" type="text"value="{{$song->artists[0]->name}}" hidden>

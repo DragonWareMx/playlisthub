@@ -326,9 +326,7 @@ class OController extends Controller
     }
     public function crearCampana1()
     {
-        $usedGenres=Genre_Playlist::groupBy('genre_id')->get('genre_id');
-        $genres=Genre::orderBy('name','asc')->whereIn('id',$usedGenres)->get();
-        return view ('musico.crearCampana1',['genres'=>$genres]);
+        return view ('musico.crearCampana1');
     }
     public function recrearCampana2(){
         return redirect('/crear-paso-1');
@@ -339,10 +337,9 @@ class OController extends Controller
     public function crearCampana2(request $request)
     {
         $data=request()->validate([
-            'link'=>'required',
-            'genre'=>'required'
+            'link'=>'required'
         ]);
-        
+        $user=User::findOrFail(Auth::id());
         $error=false;
         $access_token=session()->get('access_token');
         $song_id=trim($request->link,);
@@ -373,47 +370,104 @@ class OController extends Controller
                 return redirect('/crear-paso-1');
             }
         }
-        $user=User::findOrFail(Auth::id());
-        $plays=Playlist::with('user')->orderBy('tier','desc')->leftJoin('genre_playlist','playlists.id', '=', 'genre_playlist.playlist_id')
-            ->where('genre_playlist.genre_id',$request->genre)->get();
+        $artists=[];
+        $i=0;
+        $id_principal=$song->artists[0]->id;
+        foreach($song->artists as $artist){
+            $artists[$i]=$artist->id;
+            $i++;
+        }
+        //voy a sacar los putos artistas relacionados
+        $url='https://api.spotify.com/v1/artists/'.$id_principal.'/related-artists?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $related_artists= curl_exec($conexion);
+        curl_close($conexion);
+        $related_artists=json_decode($related_artists);
+        foreach($related_artists->artists as $artist){
+            $artists[$i]=$artist->id;
+            $i++;
+        }
+        $allPlays=Playlist::get();
         $playlists=[];
         $i=0;
-        foreach($plays as $play){
-            $playlist_id=trim($play->link_playlist,);
-            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
-            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
-                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+        $k=0;
+        foreach($allPlays as $allPlay){
+            $allPlay_id=trim($allPlay->link_playlist,);
+            $allPlay_id=str_replace('https://open.spotify.com/playlist/','',$allPlay_id);
+            if(substr($allPlay_id, 0, strpos($allPlay_id, "?"))){
+                $allPlay_id = substr($allPlay_id, 0, strpos($allPlay_id, "?"));
             }
-            //Se hace la conexión con la api de spotify
-            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/tracks?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=100';
             $conexion=curl_init();
             curl_setopt($conexion, CURLOPT_URL, $url);
             curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
             curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
             curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
-            $playlist= curl_exec($conexion);
+            $tracks= curl_exec($conexion);
             curl_close($conexion);
-            $playlist=json_decode($playlist);
-            $item=[];
-            $item['id']=$play->id;
-            $item['url']=$playlist->external_urls->spotify;
-            $item['image']=$playlist->images[0]->url;
-            $item['name']=$playlist->name;
-            $item['curator_id']=$play->user->id;
-            $item['curator_name']=$play->user->name;
-            $item['followers']=$playlist->followers->total;
-            $total=$playlist->followers->total;
-            $cost=10;
-            if($total>=500 && $total<1000) $cost=1;
-            if($total>=1000 && $total<2000) $cost=2;
-            if($total>=2000 && $total<3000) $cost=3;
-            if($total>=3000 && $total<4000) $cost=4;
-            if($total>=4000 && $total<5000) $cost=5;
-            if($total>=5000 && $total<6000) $cost=6;
-            $item['cost']=$cost;
-            $playlists[$i]=$item;
-            $i++;
+            $tracks=json_decode($tracks);
+            $j=0;
+            $coincidencias=0;
+            foreach($tracks->items as $track){
+                foreach($artists as $artist){
+                    if($track->track->artists[0]->id == $artist){
+                        $coincidencias++;
+                    }
+                }
+                $j++;
+            }
+            if($coincidencias>0){
+                $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'?access_token='.$access_token;
+                $conexion=curl_init();
+                curl_setopt($conexion, CURLOPT_URL, $url);
+                curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+                curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+                $playlist= curl_exec($conexion);
+                curl_close($conexion);
+                $playlist=json_decode($playlist);
+                $item=[];
+                $item['id']=$allPlay->id;
+                $item['url']=$playlist->external_urls->spotify;
+                $item['coincidences']=$coincidencias;
+                $item['image']=$playlist->images[0]->url;
+                $item['name']=$playlist->name;
+                $item['curator_id']=$allPlay->user->id;
+                $item['curator_name']=$allPlay->user->name;
+                $item['followers']=$playlist->followers->total;
+                $total=$playlist->followers->total;
+                $cost=0;
+                if($total>=500 && $total<=5000) $cost=1;
+                if($total>=5001 && $total<15000) $cost=1;
+                if($total>=15001 && $total<=20000) $cost=1;
+                if($total>=20001 && $total<=30000) $cost=1;
+                if($total>=30001 && $total<=50000) $cost=2;
+                if($total>=50001 && $total<=60000) $cost=2;
+                if($total>=60001 && $total<=70000) $cost=3;
+                if($total>=70001 && $total<=80000) $cost=3;
+                if($total>=80001 && $total<=90000) $cost=4;
+                if($total>=90001) $cost=4;
+                $item['cost']=$cost;
+                if($total>=500){
+                    $playlists[$k]=$item;
+                    $k++;
+                }
+            } 
         }
+        //ordena las playlists por orden de coincidencias 
+        function order(&$arr_ini, $col,$order=SORT_DESC){
+            $arr_aux=array();
+            foreach($arr_ini as $key=>$row){
+                $arr_aux[$key]=is_object($row) ? $arr_aux[$key]=$row->$col : $row[$col];
+                $arr_aux[$key]=strtolower($arr_aux[$key]);
+            }
+            array_multisort($arr_aux,$order,$arr_ini);
+        }
+        order($playlists,'coincidences',$order=SORT_DESC);
         return view ('musico.crearCampana2',['data'=>$request,'user'=>$user,'playlists'=>$playlists,'song'=>$song]);
     }
     public function crearCampana3(request $request)
@@ -422,9 +476,6 @@ class OController extends Controller
         $data['song_name']=$request->song_name;
         $data['song_artist']=$request->song_artist;
         $data['song_link']=$request->link;
-        $data['song_genre_id']=$request->genre_id;
-        $genre=Genre::findOrFail($request->genre_id);
-        $data['song_genre']=$genre->name;
         $data['tokens']=$request->cost;
         $hoy=Carbon::now();
         $data['date']=$hoy;
@@ -452,7 +503,6 @@ class OController extends Controller
         $playlist=json_decode($playlist);
 
         $data['playlist_name']=$playlist->name;
-        dd($data);
         return view ('musico.crearCampana3',['data'=>$data]);
     }
     public function tokens()

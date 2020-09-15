@@ -33,13 +33,6 @@
                 <div id="crearCampana_50" class="campana_info_1">
                     <div class="vercampana_title_o">LINK DE SPOTIFY</div>
                     <input name="link" class="input_crearCampana" type="text" required>
-                    <div class="vercampana_title_o">GÉNERO</div>
-                    <select name="genre" id="" class="select_crearCampana" required>
-                        <option value="" class="option_crearCampana" >Selecciona</option>
-                        @foreach ($genres as $genre)
-                            <option value="{{$genre->id}}" class="option_crearCampana" >{{$genre->name}}</option>
-                        @endforeach
-                    </select>
                     <div class="vercampana_title_o" style="display:flex">CÓDIGO DE REFERENCIA <h1 class="normalizar_letra">(Opcional)</h1></div>
                     <input name="code" class="input_crearCampana" type="text">
                 </div>
