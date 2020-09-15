@@ -350,6 +350,10 @@
     margin-left: 0px !important;
 }
 
+.d_m{
+    margin-left: 0px !important;
+}
+
 
 /*-------------------------------------- SISTEMA DE ESTRELLAS --------------------------------------*/
     /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
@@ -367,8 +371,7 @@
     /* make none icon red on hover */
 
   #half-stars-example {
-    padding: 1rem;
-    text-align: center;
+    margin-top: 8px;
   }
   #half-stars-example .rating-group {
     display: inline-flex;
@@ -384,7 +387,6 @@
     cursor: pointer;
     /* if you change the left/right padding, update the margin-right property of .rating__label--half as well. */
     padding: 0 0.4em;
-    font-size: 2rem;
   }
   #half-stars-example .rating__label--half {
     padding-right: 0;
@@ -424,6 +426,9 @@
     }
     .r_p{
         margin-left: 21px !important;
+    }
+    .d_m{
+        margin-left: 10px !important;
     }
     .reviews_list .review_item .review_content .review_content_score {
         margin-left: 21px;
