@@ -662,7 +662,7 @@
     display: none; 
     position: fixed; 
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 20px;
     left: 0;
     top: 0;
     width: 100%;
@@ -1076,6 +1076,16 @@
         margin-right: 2%;
     }
 }
+@media (max-width:935px){
+    .modalContainer {
+        padding-top: 0px;
+    }
+    .modalContainer .modal-content {
+        margin-top: 100px;
+        width: 700px;
+        height: 463px;
+    }
+}
 @media (max-width:920px){
     .vercampana_title_o{
         font-size: 10px;
@@ -1249,6 +1259,14 @@
         font-size: 12px;
     }
 }
+@media (max-width:725px){
+    .modalContainer .modal-content {
+        margin-top: 100px;
+        width: 550px;
+        height: 463px;
+        background-color: aqua;
+    }
+}
 @media (max-width:623px){
     .div_item_fav_o{
         width: 200px;/*-60px*/
@@ -1386,6 +1404,13 @@
         margin: 0px;
     }
 }
+@media (max-width:565px){
+    .modalContainer .modal-content {
+        margin-top: 100px;
+        width: 450px;
+        height: 463px;
+    }
+}
 @media (max-width:491px){
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
         font-size: 13px;
@@ -1433,6 +1458,11 @@
     }
     #crearCampana_50{
         width: 100%;
+    }
+    .modalContainer .modal-content {
+        margin-top: 100px;
+        width: 300px;
+        height: 463px;
     }
 }
 @media (max-width:438px){
