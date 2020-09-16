@@ -52,9 +52,8 @@
     transition: ease-in-out 0.3s;
 }
 .a_agregar_o:hover{
-    transition: ease-in-out 0.2s;
-    text-decoration: none;
-    width: 135px;
+    text-decoration: underline;
+    color: #8177F5;
 }
 .p_title_o{
     font-family: 'Roboto', sans-serif;
@@ -433,9 +432,8 @@
     transition: ease-in-out 0.2s;
 }
 .btn_comprar_token:hover{
-    width: 137px;
-    transition: ease-in-out 0.2s;
-    color: black;
+    text-decoration: underline;
+    color: white;
 }
 .campana_info_1{
     width: 30%;
@@ -1236,6 +1234,20 @@
         margin-top: 20px;
     }
 }
+@media (max-width:740px){
+    .item_comprar_token{
+        width: 180px;
+        height: 320px;
+    }
+    .item_token_encabezado{
+        height: 60px;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    .btn_comprar_token{
+        margin-left: -10px;
+    }
+}
 @media (max-width:792px){
     .div_campanas_actuales_o,.div_campanas_actuales_2{
         display: flex;
@@ -1325,6 +1337,32 @@
         transition: ease-in-out 0.3s;
     }
 }
+@media (max-width:600px){
+    .item_token_encabezado{
+        font-size: 14px;
+    }
+    .item_txt_black{
+        font-size: 14px;
+        width: 100%;
+    }
+    .item_txt_gray{
+        font-size: 13px;
+        width: 100%;
+    }
+    .btn_comprar_token{
+        font-size: 13px;
+    }
+    .item_comprar_token{
+        height: 250px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn_comprar_token{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 @media (max-width:581px){
     .campana_info_3_img{
         width: 100px;
@@ -1395,8 +1433,7 @@
         margin-top:-3.5px;
     }
     .a_agregar_o:hover{
-        transition: ease-in-out 0.2s;
-        width: 70px;
+        text-decoration: underline;
     }
     .img_a_agregar_o{
         display:none;
@@ -1500,6 +1537,24 @@
         font-size: 12px;
     }
 }
+@media (max-width:430px){
+    .item_comprar_token{
+        height: 270px;
+    }
+}
+@media (max-width:410px){
+    .item_comprar_token{
+        height: 290px;
+    }
+}
+@media (max-width:400px){
+    .item_comprar_token{
+        height: 305px;
+    }
+    .item_comprar_token{
+        width: 100%;
+    }
+}
 @media (max-width:385px){
     .div_90_o{
         width: 100%;
@@ -1555,6 +1610,11 @@
     }    
     .div_item_campana_o{
         width: 100%;
+    }
+}
+@media (max-width:360px){
+    .btn_comprar_token{
+        margin-left: -10px;
     }
 }
 @media (max-width:354px){
