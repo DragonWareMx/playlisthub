@@ -56,14 +56,12 @@
                     </div>
                 </div>
                 <div class="campana_info_2">
-                    <div class="vercampana_title_o">GÉNERO</div>
-                    <div class="vercampana_txt_o">{{$camp->genre}}</div>
                     <div class="vercampana_title_o">TOKENS</div>
                     <div class="vercampana_txt_o">{{$camp->cost}}</div>
                     <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div>
                     <div class="vercampana_txt_o">{{$playlist->name}}</div>
                     <div class="vercampana_title_o">NOMBRE DEL CURADOR</div>
-                    <a class="vercampana_a_o" href="#"></a>
+                    <div class="vercampana_txt_o">{{Str::limit($camp->playlist->user->name,27)}}</div>
                     <div class="vercampana_title_o">FECHA DE TERMINO</div>
                     <div class="vercampana_txt_o">
                         @if ($camp->end_date)

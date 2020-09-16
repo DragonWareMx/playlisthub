@@ -781,6 +781,14 @@
     height:35px;
     width: 105px;
 }
+.disclaimer_txt{
+    font-family: Roboto;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 40px;
+    padding: 10px;
+    text-align: justify;
+}
 .error_msg_o{
     width: 80%;
     background-color: #e41425c5;

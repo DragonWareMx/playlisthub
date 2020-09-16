@@ -82,5 +82,6 @@
             </form>
         </div>
     </div>
+    <div class="disclaimer_txt">*En caso de no ser aceptada, la campaña termina con la respuesta del review por parte del curador.</div>
 </div>
 @endsection
