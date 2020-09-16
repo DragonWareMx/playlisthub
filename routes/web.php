@@ -24,6 +24,7 @@ Route::post('/crear-paso-2','OController@crearCampana2')->name('crearCampana2');
 Route::get('/crear-paso-2','OController@recrearCampana2');
 Route::post('/crear-paso-3','OController@crearCampana3')->name('crearCampana3');
 Route::get('crear-paso-3','OController@recrearCampana3');
+Route::post('/create-store-step','OController@storeCamp')->name('storeCamp');
 Route::get('/tokens','OController@tokens')->name('tokens');
 
 Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');

@@ -36,7 +36,7 @@ class Users extends Seeder
             'type'=>'Curador'
         ]);
         DB::table('users')->insert([
-            'name' => 'Usuario no favorito',
+            'name' => 'El viledruid superduper',
             'email' => 'nofav@hotmail.com',
             'password' => 'nofav.com',
             'genre'=>'o',
@@ -48,7 +48,7 @@ class Users extends Seeder
             'type'=>'Curador'
         ]);
         DB::table('users')->insert([
-            'name' => 'Usuario favorito',
+            'name' => 'Agustonsio 56 en corto',
             'email' => 'sifav@hotmail.com',
             'password' => 'sifav.com',
             'genre'=>'f',

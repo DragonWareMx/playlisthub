@@ -16,6 +16,11 @@
         ERROR: El link debe pertenecer a una canción registrada en Spotify
     </div>
 @endif
+@if (session()->get('unexpected'))
+    <div class="error_msg_o">
+        ERROR: Sucedió algo inesperado, por favor inténtalo de nuevo más tarde
+    </div>
+@endif
 @if (!session()->get('expiredToken'))
     <div class="div_90_o">
         <div class="ico_title60_o">

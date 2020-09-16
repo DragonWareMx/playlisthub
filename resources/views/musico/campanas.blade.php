@@ -12,6 +12,11 @@
 @endsection
 
 @section('contenido')
+@if (session()->get('success'))
+    <div class="success_msg_o">
+        Campaña creada con éxito!!!
+    </div>
+@endif
     @if (!$error)
         <div class="div_CabeceraApartado" style="margin-top:40px">
             <div class="div_tituloApartado resize_tituloApartado">

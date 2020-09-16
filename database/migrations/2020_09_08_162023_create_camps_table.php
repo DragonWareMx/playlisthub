@@ -24,7 +24,6 @@ class CreateCampsTable extends Migration
             $table->unsignedBigInteger('user_id');                  //Musico que lanza la campaña
             $table->unsignedBigInteger('playlist_id')->nullable();  //Playlist relacionada a la campaña
             $table->enum('status', ['aceptado', 'rechazado','espera']);//Genero del usuario
-            $table->unsignedBigInteger('genre_id');
 
             //llave foranea del usuario
             $table->foreign('user_id')
@@ -37,11 +36,6 @@ class CreateCampsTable extends Migration
                 ->references('id')
                 ->on('playlists')
                 ->onDelete('set null');
-
-            $table->foreign('genre_id')
-                ->references('id')
-                ->on('genres')
-                ->onDelete('cascade');
         });
     }
 

@@ -57,7 +57,7 @@ class OController extends Controller
     public function campanas()
     {
         $hoy = Carbon::now();
-        $campsAct=Camp::with('playlist')->orderBy('start_date','desc')->where([
+        $campsAct=Camp::with('playlist')->orderBy('id','desc')->where([
             ['status', '=', 'espera'],
             ['user_id', '=', Auth::id()],
         ])
@@ -66,7 +66,7 @@ class OController extends Controller
             ['user_id', '=', Auth::id()],
         ])
         ->limit(3)->get();
-        $campsAnt=Camp::orderBy('start_date','desc')->
+        $campsAnt=Camp::orderBy('id','desc')->
         where([
             ['end_date','<',$hoy],
             ['user_id', '=', Auth::id()]
@@ -162,7 +162,7 @@ class OController extends Controller
     public function campanasActuales()
     {
         $hoy = Carbon::now();
-        $campsAct=Camp::with('playlist')->orderBy('start_date','desc')->where([
+        $campsAct=Camp::with('playlist')->orderBy('id','desc')->where([
             ['status', '=', 'espera'],
             ['user_id', '=', Auth::id()],
         ])
@@ -170,7 +170,7 @@ class OController extends Controller
             ['end_date','>=',$hoy],
             ['user_id', '=', Auth::id()],
         ])
-        ->limit(3)->get();
+        ->get();
         $i=0;
         $access_token=session()->get('access_token');
         $songsAct=[];
@@ -221,12 +221,12 @@ class OController extends Controller
     public function campanasAntiguas()
     {
         $hoy = Carbon::now();
-        $campsAnt=Camp::orderBy('start_date','desc')->
+        $campsAnt=Camp::orderBy('id','desc')->
         where([
             ['end_date','<',$hoy],
             ['user_id', '=', Auth::id()]
         ])
-        ->limit(3)->get();
+        ->get();
         $i=0;
         $access_token=session()->get('access_token');
         $error=false;
@@ -328,7 +328,8 @@ class OController extends Controller
     {
         return view ('musico.crearCampana1');
     }
-    public function recrearCampana2(){
+    public function recrearCampana2()
+    {
         return redirect('/crear-paso-1');
     }
     public function recrearCampana3(){
@@ -377,7 +378,7 @@ class OController extends Controller
             $artists[$i]=$artist->id;
             $i++;
         }
-        //voy a sacar los putos artistas relacionados
+        //voy a sacar los artistas relacionados
         $url='https://api.spotify.com/v1/artists/'.$id_principal.'/related-artists?access_token='.$access_token;
         $conexion=curl_init();
         curl_setopt($conexion, CURLOPT_URL, $url);
@@ -387,6 +388,10 @@ class OController extends Controller
         $related_artists= curl_exec($conexion);
         curl_close($conexion);
         $related_artists=json_decode($related_artists);
+        if(isset($related_artists->error)){
+            session()->flash('expiredToken',true);
+            return redirect('/crear-paso-1');
+        }
         foreach($related_artists->artists as $artist){
             $artists[$i]=$artist->id;
             $i++;
@@ -410,6 +415,9 @@ class OController extends Controller
             $tracks= curl_exec($conexion);
             curl_close($conexion);
             $tracks=json_decode($tracks);
+            if(isset($tracks->error)){
+                dd($tracks->error,$url,$allPlay_id);
+            }
             $j=0;
             $coincidencias=0;
             foreach($tracks->items as $track){
@@ -430,6 +438,9 @@ class OController extends Controller
                 $playlist= curl_exec($conexion);
                 curl_close($conexion);
                 $playlist=json_decode($playlist);
+                if(isset($playlist->error)){
+                    dd($playlist->error);
+                }
                 $item=[];
                 $item['id']=$allPlay->id;
                 $item['url']=$playlist->external_urls->spotify;
@@ -476,6 +487,7 @@ class OController extends Controller
         $data['song_name']=$request->song_name;
         $data['song_artist']=$request->song_artist;
         $data['song_link']=$request->link;
+        $data['song_image']=$request->image;
         $data['tokens']=$request->cost;
         $hoy=Carbon::now();
         $data['date']=$hoy;
@@ -501,9 +513,65 @@ class OController extends Controller
         $playlist= curl_exec($conexion);
         curl_close($conexion);
         $playlist=json_decode($playlist);
+        if(isset($playlist->error)){
+            session()->flash('expiredToken',true);
+            return redirect('/crear-paso-1');
+        }
 
         $data['playlist_name']=$playlist->name;
         return view ('musico.crearCampana3',['data'=>$data]);
+    }
+    public function storeCamp(request $request){
+        $user=User::findOrFail(Auth::id());
+        $playlist=Playlist::findOrFail($request->playlist_id);
+        $access_token=session()->get('access_token');
+        $playlist_id=trim($playlist->link_playlist,);
+        $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+        if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+            $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+        }
+        $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $playlist= curl_exec($conexion);
+        curl_close($conexion);
+        $playlist=json_decode($playlist);
+        if(isset($playlist->error)){
+            session()->flash('expiredToken',true);
+            return redirect('/crear-paso-1');
+        }
+        $total=$playlist->followers->total;
+        $cost=100;
+        if($total<=5000) $cost=1;
+        if($total>=5001 && $total<15000) $cost=1;
+        if($total>=15001 && $total<=20000) $cost=1;
+        if($total>=20001 && $total<=30000) $cost=1;
+        if($total>=30001 && $total<=50000) $cost=2;
+        if($total>=50001 && $total<=60000) $cost=2;
+        if($total>=60001 && $total<=70000) $cost=3;
+        if($total>=70001 && $total<=80000) $cost=3;
+        if($total>=80001 && $total<=90000) $cost=4;
+        if($total>=90001) $cost=4;
+        if($user->tokens-$cost<0){
+            session()->flash('unexpected',true);
+            return redirect('/crear-paso-1');
+        }
+        $camp=new Camp();
+        $camp->start_date=Carbon::now();
+        $camp->cost=$cost;
+        $camp->link_song=$request->link_song;
+        $camp->user_id=Auth::id();
+        $camp->playlist_id=$request->playlist_id;
+        $camp->status='espera';
+        $camp->save();
+        $user->tokens=$user->tokens-$cost;
+        $user->save();
+
+        session()->flash('success',true);
+        return redirect('/campanas');
     }
     public function tokens()
     {

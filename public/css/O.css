@@ -771,7 +771,6 @@
 .table_row_o:hover{
     cursor: hand;
     border: 2px solid #8177F5;
-    transition: ease-in-out 0.3s;
 }
 .txt_row_play_o{
     width: 18%;
@@ -786,6 +785,19 @@
     width: 80%;
     background-color: #e41425c5;
     border: 2px solid #fd0015da;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-style: italic;
+}
+.success_msg_o{
+    width: 80%;
+    background-color: #8177F5;
+    border: 2px solid #8277f5a1;
     border-radius: 5px;
     color: #FFFFFF;
     padding: 5px;

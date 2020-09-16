@@ -22,8 +22,4 @@ class Camp extends Model
    {
        return $this->belongsTo('App\Playlist');
    }
-   public function genre()
-   {
-       return $this->belongsTo('App\Genre');
-   }
 }

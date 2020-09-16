@@ -20,7 +20,7 @@
 
     <div class="div_content_o">
         <div class="encabezado_paso_2">
-            <div class="txt_izquierda_o">Seleciona la playlist en la que deseas ubicar tu campaña</div>
+            <div class="txt_izquierda_o">Seleciona la playlist en la que deseas ubicar tu campaña (Las playlists estan ordenadas por coincidencias para tu campaña).</div>
             <div class="txt_derecha_o">Tokens totales: {{$user->tokens}} </div>
         </div>
         <div class="table_head_o">
@@ -38,7 +38,7 @@
             <div class="txt_row_play_o"> {{$playlist['cost']}} </div>
         </button> 
         @endforeach
-        <div id="notEnoughTokens" class="txt_izquierda_o txt_italic_14" style="margin-top:40px;" hidden>Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}">comprar tokens</a></div>
+        <div id="notEnoughTokens" class="txt_izquierda_o txt_italic_14" style="margin-top:40px;" hidden>Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}" target='_blank'>comprar tokens</a></div>
         <div id="enoughTokens" class="crearCampana_botones"> {{-- botones_margin_subir --}}
             <a class="a_cancelar_o" href="{{url()->previous()}}">Regresar</a>
             <form action="{{Route('crearCampana3')}}" method="POST">
@@ -48,7 +48,6 @@
                 <input name="song_name" type="text"value="{{$song->name}}" hidden>
                 <input name="song_artist" type="text"value="{{$song->artists[0]->name}}" hidden>
                 <input id="selected_playlist" name="selected_playlist" type="text" value required hidden>
-                <input id="cost" name="cost" type="text" value="" required hidden>
                 <input id="curator" name="curator" type="text" value="" required hidden>
                 <button id="buttonSubmit" type="submit" class="a_continuar_o">Continuar</button> 
             </form>
@@ -58,7 +57,6 @@
 <script>
     function selectPlaylist(id,cost,tokens,curator) {
         document.getElementById('selected_playlist').value=id;
-        document.getElementById('cost').value=cost;
         document.getElementById('curator').value=curator;
         var rows = document.getElementsByClassName('table_row_o');
         for(var i=0; i<rows.length; i++){
