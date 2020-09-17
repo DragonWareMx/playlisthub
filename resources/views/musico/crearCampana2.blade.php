@@ -48,7 +48,6 @@
                 <input name="song_name" type="text"value="{{$song->name}}" hidden>
                 <input name="song_artist" type="text"value="{{$song->artists[0]->name}}" hidden>
                 <input id="selected_playlist" name="selected_playlist" type="text" value required hidden>
-                <input id="cost" name="cost" type="text" value required hidden>
                 <input id="curator" name="curator" type="text" value="" required hidden>
                 <button id="buttonSubmit" type="submit" class="a_continuar_o">Continuar</button> 
             </form>
@@ -59,7 +58,6 @@
     function selectPlaylist(id,cost,tokens,curator) {
         document.getElementById('selected_playlist').value=id;
         document.getElementById('curator').value=curator;
-        document.getElementById('cost').value=cost;
         var rows = document.getElementsByClassName('table_row_o');
         for(var i=0; i<rows.length; i++){
             rows[i].style['background-color'] = 'transparent';

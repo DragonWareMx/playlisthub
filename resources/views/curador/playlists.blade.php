@@ -31,20 +31,17 @@
         
     
     <!--estos divs se crean con un foreach-->
+    @foreach ($playlists_registradas as $playlist)
     <hr class="hr_100_o">
-        <div class="table_row">
-            <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre</div> <div class="txt_row_play row_hide2">rock</div> <div class="txt_row_play row_hide">nivel 10</div>
-              <div class="txt_row_play row_hide">1000</div> <div class="txt_row_play row_hide">$5,300</div>
+        <div id="{{$playlist->id}}" class="table_row">
+            <img class="img_playlist" src="{{$playlist->images[0]->url}}" alt=""> 
+            <div class="txt_row_play">{{$playlist->name}}</div> <div class="txt_row_play row_hide2"></div> 
+            <div class="txt_row_play row_hide">nivel 10</div>
+            <div class="txt_row_play row_hide">{{$playlist->followers->total}}</div> 
+            <div class="txt_row_play row_hide">$</div>
         </div>
-    <!--este es de prueba-->
-        <hr class="hr_100_o">
-        <div class="table_row">
-            <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre</div> <div class="txt_row_play row_hide2">rock</div> <div class="txt_row_play row_hide">nivel 10</div>
-              <div class="txt_row_play row_hide">1000</div> <div class="txt_row_play row_hide">$5,300</div>
-        </div>
-
+    @endforeach
+    
     </div>
 
     
@@ -98,7 +95,7 @@
             @endphp
             @foreach ($playlists ['items'] as $playlist)
                 @if (true)
-                    <div id="{{$playlist['id']}}" class="div_playlist_modal">
+                    <div id="{{$playlist['external_urls']['spotify']}}" class="div_playlist_modal" value="">
                         <div><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
                         <div class="txt_row">{{$playlist['name']}}</div> 
                         <div class="txt_row">{{$followers[$i]}}</div>
@@ -112,7 +109,7 @@
                 <form action="{{Route('addPlaylist')}}" method="POST">
                     <input type="checkbox">
 
-                    <input id="link_pl" type="text" required style="display: none" name="id_pl">
+                    <input id="link_pl" type="text" required style="display: none" name="link">
                 @csrf
                 <div class="botones_modal">
                     <button type="button" class="btn_modal_cancel" data-dismiss="modal">Cancelar</button>
