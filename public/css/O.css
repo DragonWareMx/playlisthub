@@ -33,6 +33,7 @@
     align-items: center;
     transition: ease-in-out 0.3s;
     margin-top:-6px;
+    text-decoration: none;
 }
 .a_agregar_o:focus{
     border:none;
@@ -43,6 +44,7 @@
     transition: ease-in-out 0.3s;
 }
 .txt_a_o{
+    text-decoration: none;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -544,31 +546,34 @@
 #crearCampana_50{
     width: 50%;
 }
-.crearCampana_botones{
+.crearCampana_botones, .div_tokens_botones{
     width: 100%;
     display: flex;
 }
-.a_cancelar_o{
+.a_cancelar_o, .a_cancelarTokens{
     margin-left: auto;
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #8177F5;
+    color: #8177F5 !important;
     width: 104px;
     height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: ease-in-out 0.3s;
+}
+.a_cancelarTokens:hover{
+    cursor: pointer;
+    color: #8177F5 !important;
+    text-decoration: underline !important;
 }
 .a_cancelar_o:hover{
-    text-decoration: none;
-    color: black;
-    transition: ease-in-out 0.3s;
+    text-decoration: underline;
+    color: #8177F5;
 }
-.a_continuar_o{
+.a_continuar_o, .a_comprarTokens{
     border: none;
     float:right;
     background: #8177F5;
@@ -587,11 +592,11 @@
     margin-left: 20px;
     transition: ease-in-out 0.3s;
 }
-.a_continuar_o:hover{
+.a_continuar_o:hover, .a_comprarTokens:hover{
     text-decoration: none;
-    color: black;
-    transition: ease-in-out 0.3s;
-    width: 109px;
+    color: white;
+    border: solid .1rem #8177F5;
+    transition: all ease 0.3s;
 }
 .div_encabezado_sel_play{
     width: 85%;
@@ -680,12 +685,6 @@
     height: 463px;
     font-family: Roboto;
 }
-.modalContainer .close:hover,
-.modalContainer .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
 .modal_title_tokens{
     font-style: normal;
     font-weight: bold;
@@ -706,6 +705,7 @@
     height: 88px;
     padding-top: 14px;
     display: flex;
+    align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -843,13 +843,13 @@
 .modal_img_pago{
     width: 233px;
     height: 71px;
-    margin-top: 25px;
+    margin-top: 10px;
     float: left;
 }
 .modal_img_pago2{
     width: 237px;
     height: 85px;
-    margin-top: 25px;
+    margin-top: 10px;
     float: left;
 }
 .modal_txt_mensaje{
@@ -1088,8 +1088,11 @@
     }
     .modalContainer .modal-content {
         margin-top: 100px;
-        width: 700px;
-        height: 463px;
+        width: 705px;
+        height: 470px;
+    }
+    .txt_modal_izquierda{
+        margin-top: 15px;
     }
 }
 @media (max-width:920px){
@@ -1283,8 +1286,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 550px;
-        height: 463px;
-        background-color: aqua;
+        height: 490px;
     }
 }
 @media (max-width:623px){
@@ -1362,6 +1364,13 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .modal_title_tokens, .txt_modal_izquierda, .modal_tokens_total{
+        font-size: 16px;
+    }
+    .txt_cantidad_modal, .modal_token_input, .a_cancelarTokens, .a_comprarTokens{
+        font-size: 14px;
+    }
+    
 }
 @media (max-width:581px){
     .campana_info_3_img{
@@ -1453,7 +1462,19 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 450px;
-        height: 463px;
+        height: 520px;
+    }
+    .modal_img_pago{
+        width: 233px;
+        height: 59px;
+        margin-top: 10px;
+        float: left;
+    }
+    .modal_img_pago2{
+        width: 237px;
+        height: 70px;
+        margin-top: 10px;
+        float: left;
     }
 }
 @media (max-width:491px){
@@ -1507,7 +1528,11 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 300px;
-        height: 463px;
+        height: 585px;
+    }
+    .modal_metodos_pago{
+        flex-wrap: wrap;
+        margin-bottom: 10px;
     }
 }
 @media (max-width:438px){

@@ -71,9 +71,9 @@
             dolor sit amet consectetur adipiscing elit.
         </div>
         <div class="modal_tokens_total">Total: $1250.00</div>
-        <div class="crearCampana_botones">
-            <a class="a_cancelar_o close">Cancelar</a>
-            <a class="a_continuar_o" href="#">Comprar</a>
+        <div class="div_tokens_botones">
+            <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
+            <a class="a_comprarTokens" href="#">Comprar</a>
         </div>
     </div>
 </div>  
