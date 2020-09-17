@@ -25,7 +25,7 @@
             <div class="vercampana_title_o">NOMBRE DE LA CANCION</div>
             <div class="vercampana_txt_o">{{Str::limit($data['song_name'], 27)}}</div>
             <div class="vercampana_title_o">LINK DE SPOTIFY</div>
-            <a href="{{$data['song_link']}}" target="_blank" class="vercampana_a_o">{{Str::limit($data['song_link'], 27 )}}</a>
+            <a href="{{session()->get('link_song')}}" target="_blank" class="vercampana_a_o">{{Str::limit(session()->get('link_song'), 27 )}}</a>
             <div class="vercampana_title_o">NOMBRE DEL ARTISTA</div>
             <div class="vercampana_txt_o">{{Str::limit($data['song_artist'], 27)}}</div>
             <div class="vercampana_title_o">FECHA DE INICIO</div>
@@ -75,8 +75,7 @@
             <form action="{{Route('storeCamp')}}" method="POST">
                 @csrf
                 <input name="start_date" type="text" value="{{$data['date']}}" hidden readonly='readonly'>
-                <input name="link_song" type="text" value="{{$data['song_link']}}" hidden readonly='readonly'>
-                <input name="playlist_id" type="text" value="{{$data['playlist_id']}}" hidden readonly='readonly'>
+                <input name="playlist_id" type="text" value="{{$data['playlist_id']}}" style="display:none" readonly='readonly'>
                 
                 <button class="a_continuar_o" type="submit">Confirmar</button>
             </form>
