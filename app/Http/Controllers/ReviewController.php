@@ -164,8 +164,30 @@ class ReviewController extends Controller
             case 'Curador':
                 $tipo = false;
 
-                //reviews del usuario curador
-                $reviews;
+                //Obtiene los IDs de las campañas que ya recibieron una review
+                $campsIds = Camp::select('camps.id')
+                                            ->join('reviews', 'reviews.camp_id', '=', 'camps.id')
+                                            ->distinct()
+                                            ->whereNull('reviews.playlist_id')
+                                            ->pluck('id')->toArray();
+
+                //Obtiene las campañas que en espera de review
+                /*$camps = Camp::where('status','=','espera')
+                ->whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', Auth::id());
+                })
+                ->whereNotIn('id', $campsIds)
+                ->orderBy('start_date','asc')
+                ->get();*/
+                $camps = Camp::where('status','=','espera')
+                ->whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', 2);
+                })
+                ->whereNotIn('id', $campsIds)
+                ->orderBy('start_date','asc')
+                ->get();
+
+                return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -224,8 +246,25 @@ class ReviewController extends Controller
             case 'Curador':
                 $tipo = false;
 
-                //reviews del usuario curador
-                $reviews;
+                $camp = Camp::find($data);
+
+                if($camp == null){
+                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                }
+
+                //obtenemos los IDs de las campañas que ya recibieron una review
+                $campsIds = Camp::select('camps.id')
+                                ->join('reviews', 'reviews.camp_id', '=', 'camps.id')
+                                ->distinct()
+                                ->whereNull('reviews.playlist_id')
+                                ->pluck('id')->toArray();
+
+                //verifica que la campaña aún no haya escrito una review a la playlist del curador
+                if(in_array($camp->id, $campsIds)){
+                    return view('errors.404', ['mensaje' => 'Esta campaña ya realizó una review.']);
+                }
+                
+                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
