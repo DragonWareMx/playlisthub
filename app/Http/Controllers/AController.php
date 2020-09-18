@@ -15,19 +15,9 @@ class AController extends Controller
         $error=false;
         $access_token=session()->get('access_token');
         $playlists_bd= Playlist::where('user_id',$id)->get();
-   
-        //nos conectamos a API de spotify para sacar todas las playlists
-        $url='https://api.spotify.com/v1/me/playlists?access_token='.$access_token;
-        $conexion=curl_init();
-        curl_setopt($conexion, CURLOPT_URL, $url);
-        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
-        $playlists= curl_exec($conexion);
-        curl_close($conexion);
-        
-        $playlists=json_decode($playlists, true);
-        
+        $user= User::findOrFail($id);
+
+
         //sacamos playlists para vista principal
         $i=0;
         $playlists_registradas=[];
@@ -54,11 +44,41 @@ class AController extends Controller
             $i++;
         }
 
-        //nos conectamos a la API para sacar los followers
-
+        
+        //nos conectamos a API de spotify para sacar todas las playlists, esto es para modal
+        $url='https://api.spotify.com/v1/me/playlists?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $playlists= curl_exec($conexion);
+        curl_close($conexion);
+        $playlists=json_decode($playlists, true);
+        
+        
+        //for para mostrar en modal sólo las que no están registradas ya y las que sí son mismo id que owner
+        $playlistsModal=[];
+        $i=0;
+        foreach ($playlists['items'] as $playlist) {
+            $control=false;
+            foreach ($playlists_bd as $playlist2) {
+                if($playlist['external_urls']['spotify']==$playlist2->link_playlist){
+                    $control=true;
+                    break;
+                }
+            }
+            if($control==false && $playlist['owner']['id']==$user->spotify_id) {
+                $playlistsModal[$i]=$playlist;
+                $i++;
+            }
+        }
+        $playlists=$playlistsModal;
+        
+        //nos conectamos a la API para sacar los followers, sólo son para las del modal
         $followers=[];
         $i=0;
-        foreach($playlists['items'] as $playlist){
+        foreach($playlists as $playlist){
             $url='https://api.spotify.com/v1/playlists/'.$playlist['id'].'?access_token='.$access_token;
             $conexion=curl_init();
             curl_setopt($conexion, CURLOPT_URL, $url);
@@ -74,12 +94,12 @@ class AController extends Controller
         }
 
 
-        if(isset($playlists->error) || isset($playlistFollow->error)){
+        if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error)){
             $error=true;
         }
        
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
-        'playlists_registradas'=>$playlists_registradas]);
+        'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd]);
     }
 
     public function addPlaylist(){
