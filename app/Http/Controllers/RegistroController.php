@@ -158,7 +158,8 @@ class RegistroController extends Controller
         $user->genre=$request->genero;
         $user->birth_date=$request->date;
         $user->country=$request->country;
-        $user->type=$request->type;
+        $user->type='Curador';
+        $user->tokens=0;
         $user->save();
 
         session()->forget('user');
@@ -279,7 +280,8 @@ class RegistroController extends Controller
         $user->genre=$request->genero;
         $user->birth_date=$request->date;
         $user->country=$request->country;
-        $user->type=$request->type;
+        $user->type='Músico';
+        $user->tokens=0;
         $user->save();
 
         session()->forget('user');
