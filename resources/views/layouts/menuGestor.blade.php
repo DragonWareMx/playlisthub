@@ -343,7 +343,7 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background-color: rgb(129, 129, 129);">Cancelar</button>
           <form action="{{route('logout')}}" method="POST">
             {{csrf_field()}}
-            <button class="btn btn-primary " style="background-color: #8177F5;"> Cerrar Sesión</button>
+            <button class="btn btn-primary " style="background-color: #8177F5; border:none"> Cerrar Sesión</button>
           </form>
         </div>
       </div>

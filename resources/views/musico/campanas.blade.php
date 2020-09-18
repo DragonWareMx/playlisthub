@@ -48,7 +48,7 @@
                             <div class="campana_title_o">TOKENS</div>
                             <div class="campana_text_o">{{$camp->cost}}</div>
                             <div class="campana_title_o">PLAYLIST</div>
-                            <div class="campana_text_o">{{Str::limit($playlistsAct[$i]->name, 48)}}</div>
+                            <div class="campana_text_o">{{Str::limit($playlistsAct[$i]->name, 45)}}</div>
                             <div class="campana_title_o">FECHA DE TÉRMINO</div>
                             @if ($camp->end_date)
                                 @php

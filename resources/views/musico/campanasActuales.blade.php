@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -12,16 +13,13 @@
 
 @section('contenido')
     @if (!$error)
-        <div class="div_90_o">
-            <div class="ico_title60_o">
-                <img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">
-                <div class="p_title_o">&nbsp;&nbsp;Campañas actuales</div>
+        <div class="div_CabeceraApartado" style="margin-top:40px">
+            <div class="div_tituloApartado resize_tituloApartado">
+                <p><img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">&nbsp;&nbsp;Campañas actuales</p>
             </div>
-            <a href="{{Route('crearCampana1')}}" class="a_agregar_o">
-                <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
-                <div class="txt_a_o">Agregar</div>
-            </a>
-            <hr class="hr_100_o">
+            <a href="{{route('crearCampana1')}}" class="resize-btn-agregar"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
+        </div>
+        <div class="div_90_o">
             <div class="div_campanas_actuales_2">
                 @php
                     $i=0;
@@ -106,6 +104,14 @@
                 @endforeach
             </div>
         </div>
+        <br>
+        <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+            <div class="div_contbtns">
+                <a href="{{route('campanas')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+            </div>
+        </div>
+        <br>
+        
     @else
         <div class="div_error_o">
             <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>

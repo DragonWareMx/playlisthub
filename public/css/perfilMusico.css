@@ -299,6 +299,8 @@
 .resize-btn-agregar{
     color: #8177F5;
     width: 10% !important;
+    vertical-align: middle;
+    text-align: center; 
 }
 .resize-btn-agregar:hover{
     color: #8177F5;
@@ -325,6 +327,28 @@
     }
     .div_txtPM{
         padding-left: 10%;
+    }
+}
+@media (max-width:1074px){
+
+    .div_CabeceraApartado{
+        width: 100%;
+    }
+    .div_infoPerfilM{
+        width: 100%;
+    }
+    .div_Ajustes{
+        width: 100%;
+    }
+    .div_eliminarCuenta{
+        width: 100%;
+        flex-wrap:wrap ;
+    }
+    .div_Ajustes_name{
+        width: 100%;
+    }
+    .div_btnsUpdate a{
+        padding-top: 3%;
     }
 }
 @media (max-width:960px){
@@ -416,27 +440,13 @@
         width: 30% !important;
     }
 }
-@media (max-width:500px){
-    .div_infoPerfilM{
-        width: 100%;
+/* @media(max-width:500px){
+    .resize-btn-agregar{
+        padding-top: auto;
+        padding-bottom: -5%;
+        color: brown;
     }
-    .div_Ajustes{
-        width: 100%;
-    }
-    .div_eliminarCuenta{
-        width: 100%;
-        flex-wrap:wrap ;
-    }
-    .div_CabeceraApartado{
-        width: 100%;
-    }
-    .div_Ajustes_name{
-        width: 100%;
-    }
-    .div_btnsUpdate a{
-        padding-top: 3%;
-    }
-}
+} */
 
 @media (max-width:460px){
     .txt-infoNombrePM{
@@ -452,8 +462,8 @@
         padding-left: 30%;
     }
     .resize-btn-agregar{
-        padding-top: 2%;
         width: 40% !important;
+        line-height: 22px !important;
     }
 }
 @media (max-width:400px){
@@ -465,7 +475,12 @@
         height:90px;
     }
     .resize-btn-agregar{
-        padding-bottom: -5%;
         width: 50% !important;
+    }
+    .resize-btn-agregar i{
+        display: none;
+    }
+    .div_CabeceraApartado a i{
+        display: none;
     }
 }

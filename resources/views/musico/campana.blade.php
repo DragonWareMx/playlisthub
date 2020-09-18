@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -12,9 +13,9 @@
 
 @section('contenido')
     @if (!$error)
-        <div class="div_90_o">
+        <div class="div_90_o"> 
             <div class="ico_title_o">
-                <a style="margin-top:-3px;" href="{{route('campanas')}}"><img class="img_ico_title_o" src={{asset("img/iconos/regresar.png")}} alt=""></a>
+                <a style="margin-top:-3px;" href="{{route('campanas')}}"><img class="img_ico_title_o" src={{asset("img/iconos/campanas.png")}} alt=""></a>
                 <div class="p_title_o">&nbsp;&nbsp;Campaña "{{$song->name}}"</div>
             </div>
             <hr class="hr_100_o">
@@ -122,6 +123,13 @@
                 @endif
             </div>
         </div>
+        <br>
+        <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+            <div class="div_contbtns">
+                <a href="{{route('campanas')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+            </div>
+        </div>
+        <br>
     @else 
         <div class="div_error_o">
             <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
