@@ -15,7 +15,7 @@
         <table class="encabezado">
             <tr>
                 <td align="left">
-                    <img src="{{ asset('/img/logos/logo.png') }}">
+                    <img onclick="location.href='{{route('home')}}';" src="{{ asset('/img/logos/logo.png') }}">
                 </td>
                 <td align="right">
                     <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
@@ -28,9 +28,18 @@
 
         <div class="cuadro-formulario-login">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button class="login-button active">Músico</button>
-                <button class="login-button">Curador</button>
+                <img class="login-button active" src="{{ asset('/img/logos/logo-white.png') }}" alt="" 
+                style="background-color: #8177F5;cursor:default;">
             </div>
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert" style="background-color: firebrick;width:100%;margin:10px auto 0px auto;padding:10px 0px 10px 0px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li style="color: white;font-family:Roboto"><strong>{{$error}}</strong></li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="login-form" style="margin-bottom: 0px" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-element login">

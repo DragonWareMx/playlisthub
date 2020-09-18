@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -55,7 +56,7 @@ class LoginController extends Controller
     public function handleProviderCallback(Request $request)
     {
         if($request->error){
-            return 'Hubo un error al autentificarse';
+            return redirect()->route('login')->withErrors(['msg'=> 'Hubo un error al autentificarse con Spotify. Por favor vuelva a intentarlo.']);
         }
 
         $userSocialite = Socialite::driver('spotify')->user();
@@ -66,7 +67,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
         else{
-            return 'no te encuentras registrado';
+            return redirect()->route('login')->withErrors(['msg' => 'La cuenta de Spotify con la que intentas ingresar no se encuentra registrada.']);
         }
     }
 }
