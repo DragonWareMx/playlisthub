@@ -10,14 +10,13 @@
 @endsection
 
 @section('contenido')
-<div class="div_90_o">
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Agregar campaña</div>
+<div class="div_CabeceraApartado" style="margin-top:40px">
+    <div class="div_tituloApartado resize_tituloApartado">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">&nbsp;&nbsp;Agregar campaña</p>
     </div>
-    <div class="crearCampana_pasos">Paso 2 de 3</div>
-    <hr class="hr_100_o">
-
+    <a style="border:none; background-color:transparent"><b>Paso 2 de 3</b></a>
+</div>
+<div class="div_90_o">
     <div class="div_content_o">
         <div class="encabezado_paso_2">
             <div class="txt_izquierda_o">Seleciona la playlist en la que deseas ubicar tu campaña (Las playlists estan ordenadas por coincidencias para tu campaña).</div>

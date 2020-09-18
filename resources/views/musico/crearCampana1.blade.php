@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -22,13 +23,13 @@
     </div>
 @endif
 @if (!session()->get('expiredToken'))
-    <div class="div_90_o">
-        <div class="ico_title60_o">
-            <img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">
-            <div class="p_title_o">&nbsp;&nbsp;Agregar campaña</div>
+    <div class="div_CabeceraApartado" style="margin-top:40px">
+        <div class="div_tituloApartado resize_tituloApartado">
+            <p><img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">&nbsp;&nbsp;Agregar campaña</p>
         </div>
-        <div class="crearCampana_pasos">Paso 1 de 3</div>
-        <hr class="hr_100_o">
+        <a style="border:none; background-color:transparent"><b>Paso 1 de 3</b></a>
+    </div>
+    <div class="div_90_o">
         <div class="div_campana_info_o">
             <form action="{{Route('crearCampana2')}}" style="width:100%; display:flex; flex-wrap:wrap;" method="POST">
                 @csrf
