@@ -26,7 +26,7 @@
     <div class="div_content">
         <div class="table_head">
            <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head">PROMEDIO</div> <div class="txt_row_head row_hide">NIVEL</div> 
+            <div class="txt_row_head">RANKING</div> <div class="txt_row_head row_hide">NIVEL</div> 
             <div class="txt_row_head row_hide">SEGUIDORES</div> <div class="txt_row_head row_hide">GANANCIAS</div> 
         </div>
         

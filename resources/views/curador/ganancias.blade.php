@@ -17,8 +17,8 @@
     <hr class="hr_100_o">
 
     <div class="div_content">
-        <p class="txt_total">$ de ganancias totales</p>
-        <p class="txt_content_ganancias">Tienes un saldo de ..., para poder hacer el cobro debes llegar a la cantidad de ...</p>
+        <p class="txt_total">$ {{$total}} de ganancias totales</p>
+        <p class="txt_content_ganancias">Tienes un saldo de ..., para poder hacer el cobro debes llegar a la cantidad de 10 dolares</p>
     </div>
 
     <div class="p_title_o">
@@ -30,17 +30,26 @@
     <div class="div_content">
         <div class="table_head">
            <div class="img_vacia"></div> <div class="txt_row_head">GANANCIAS</div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div> 
-           <div class="txt_row_head row_hide">GÉNERO</div>  <div class="txt_row_head row_hide">SEGUIDORES</div> 
+           <div class="txt_row_head row_hide">RANKING</div>  <div class="txt_row_head row_hide">SEGUIDORES</div> 
         </div>
         
-    
-    <!--estos divs se crean con un foreach-->
-        <hr class="hr_100_o">
-        <div class="table_row">
-            <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">$</div> <div class="txt_row_play row_hide2">nombre</div> 
-            <div class="txt_row_play row_hide">rock</div>  <div class="txt_row_play row_hide">1000</div> 
-        </div>
+    @php
+        $i=0;
+    @endphp
+    @foreach ($playlists as $playlist)
+    <hr class="hr_100_o">
+    <div class="table_row">
+        <img class="img_playlist" src="{{$playlist->images[0]->url}}" alt=""> 
+        <div class="txt_row_play">$ {{$playlists_bd[$i]->profits}}</div> 
+        <div class="txt_row_play row_hide2">{{$playlist->name}}</div> 
+        <div class="txt_row_play row_hide">{{$playlists_bd[$i]->tier}}</div> 
+        <div class="txt_row_play row_hide">{{$playlist->followers->total}}</div> 
+    </div>
+    @php
+        $i++;
+    @endphp
+    @endforeach
+        
     </div>
 </div>
 @endsection

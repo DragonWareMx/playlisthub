@@ -122,4 +122,86 @@ class AController extends Controller
         }
         return redirect()->route('playlists');
     }
+
+    public function ranking(){
+        $id= Auth::id();
+        $error=false;
+        $access_token=session()->get('access_token');
+        $playlists_bd= Playlist::where('user_id',$id)->orderBy('tier','desc')->get();
+
+        //sacamos datos de playlists de API
+        $i=0;
+        $playlists=[];
+        foreach($playlists_bd as $playlist)
+        {   
+            //se extrae el id de la playlist
+            $playlist_id=trim($playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //consultamos la playlist para sacar los datos
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlistBD= curl_exec($conexion);
+            curl_close($conexion);
+            
+            $playlistBD=json_decode($playlistBD);
+            $playlists[$i]=$playlistBD;
+            $i++;
+        }
+
+        if(isset($playlistBD->error)){
+            $error=true;
+        }
+
+        return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd]);
+    }
+
+    public function ganancias(){
+        $id= Auth::id();
+        $error=false;
+        $access_token=session()->get('access_token');
+        $playlists_bd= Playlist::where('user_id',$id)->orderBy('profits','desc')->get();
+    
+        //sacamos datos de playlists de API
+        $i=0;
+        $playlists=[];
+        $total=0;
+        foreach($playlists_bd as $playlist)
+        {   
+            //se extrae el id de la playlist
+            $playlist_id=trim($playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //consultamos la playlist para sacar los datos
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlistBD= curl_exec($conexion);
+            curl_close($conexion);
+            
+            $playlistBD=json_decode($playlistBD);
+            $playlists[$i]=$playlistBD;
+            $total+=$playlist->profits;
+            $i++;
+        }
+
+        if(isset($playlistBD->error)){
+            $error=true;
+        }
+
+        return view('curador.ganancias', ['playlists'=>$playlists, 'error'=>$error, 
+        'playlists_bd'=>$playlists_bd, 'total'=>$total]);
+    }
+
 }
