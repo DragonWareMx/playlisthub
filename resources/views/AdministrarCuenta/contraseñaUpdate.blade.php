@@ -96,8 +96,8 @@
      messages:{
          password: { 
                  required:" Contraseña requerida",
-                 minlength: " Mínimo 8 carácteres",
-                 maxlength: " Máximo 10 carácteres"
+                 minlength: " Mínimo 8 caracteres",
+                 maxlength: " Máximo 10 caracteres"
                },
 
         passActual: { 
@@ -106,8 +106,8 @@
         cfmPassword: { 
                 required:" Contraseña requerida",
                 equalTo: " Las contraseñas no coinciden",
-                minlength: " Mínimo 8 carácteres",
-                maxlength: " Máximo 10 carácteres"
+                minlength: " Mínimo 8 caracteres",
+                maxlength: " Máximo 10 caracteres"
        }
      }
 
