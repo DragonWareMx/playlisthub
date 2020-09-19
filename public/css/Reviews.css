@@ -192,7 +192,7 @@
     margin-right: 42px;
     margin-bottom: 16px;
     word-wrap: break-word;
-    max-width:972px;
+    max-width:930px;
 
     font-family: Roboto;
     font-style: normal;
@@ -235,6 +235,7 @@
     width: fit-content;
     margin-left: auto;
     margin-right: 39px;
+    float: right;
 }
 
 .reviews_list .review_item .review_content .form_rea_r a{

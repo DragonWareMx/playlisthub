@@ -168,7 +168,9 @@
 
                     @if ($contador == 4)
                         @php
-                            $contador++;
+                            if (isset($reviews[3])) {
+                                $contador++;
+                            }
                             break;
                         @endphp
                     @endif
@@ -270,7 +272,9 @@
 
                     @if ($contador == 4)
                         @php
-                            $contador++;
+                            if (isset($reviews[3])) {
+                                $contador++;
+                            }
                             break;
                         @endphp
                     @endif
@@ -432,7 +436,9 @@
 
                     @if ($contadorReal == 4)
                         @php
-                            $contadorReal++;
+                            if (isset($realizadas[3])) {
+                                $contadorReal++;
+                            }
                             break;
                         @endphp
                     @endif
@@ -530,7 +536,9 @@
 
                     @if ($contadorReal == 4)
                         @php
-                            $contadorReal++;
+                            if (isset($realizadas[3])) {
+                                $contadorReal++;
+                            }
                             break;
                         @endphp
                     @endif
