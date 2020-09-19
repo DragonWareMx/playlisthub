@@ -53,7 +53,7 @@
                         {{-- NOMBRES --}}
                         <div class="review_content_names">
                             <div class="review_content_names_name">
-                                <div class="m_r"><a href="#" style="color: #8177F5;">Ver campaña</a></div>
+                                <div class="m_r"><a href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}" style="color: #8177F5;">Ver campaña</a></div>
                             </div>
                         </div>
 

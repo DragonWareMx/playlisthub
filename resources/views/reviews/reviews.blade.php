@@ -17,6 +17,12 @@
     use App\User;
 @endphp
 
+@if (session()->get('success'))
+    <div class="success_msg_o">
+        Review creada con éxito!!!
+    </div>
+@endif
+
 <div class="div_90_o" style="max-width: 1059px;">
     {{-------------------------- REVIEWS RECIBIDAS --------------------------}}
     <div class="ico_title60_o">

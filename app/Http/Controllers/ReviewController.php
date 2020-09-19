@@ -430,25 +430,36 @@ class ReviewController extends Controller
                     'review'=>'required|max:3000|min:150'
                 ]);
 
-                try{
-                    \DB::transaction(function() use($usuario)
-                    {
-                        $today=Carbon::now()->format('Y-m-d H:i:s');
+                //Obtiene los IDs de las campañas que ya escribieron una review a la playlist
+                $campsIds = Camp::select('camps.id')
+                                            ->join('reviews', 'reviews.camp_id', '=', 'camps.id')
+                                            ->distinct()
+                                            ->where('reviews.playlist_id','!=','NULL')
+                                            ->pluck('id')->toArray();
+                
+                if(in_array(request('camp_id'),$campsIds)){
+                    try{
+                        \DB::transaction(function() use($usuario)
+                        {
+                            $today=Carbon::now()->format('Y-m-d H:i:s');
 
-                        //se crea el review
-                        $review = new Review();
+                            //se crea el review
+                            $review = new Review();
 
-                        $review->rating = request('rating');
-                        $review->comment = request('review');
-                        $review->date = $today;
-                        $review->user_id = Auth::id();
-                        $review->playlist_id = request('playlist_id');
-                        $review->camp_id = request('camp_id');
-                        $review->save();
-                    });
-                }
-                catch(QueryException $ex){
-                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                            $review->rating = request('rating');
+                            $review->comment = request('review');
+                            $review->date = $today;
+                            $review->user_id = Auth::id();
+                            $review->playlist_id = request('playlist_id');
+                            $review->camp_id = request('camp_id');
+                            $review->save();
+
+                            session()->flash('success',true);
+                        });
+                    }
+                    catch(QueryException $ex){
+                        return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                    }
                 }
                 
                 return redirect()->route('reviews');
@@ -461,34 +472,45 @@ class ReviewController extends Controller
                     'review'=>'required|max:3000|min:150'
                 ]);
 
-                try{
-                    \DB::transaction(function() use($usuario)
-                    {
-                        $today=Carbon::now()->format('Y-m-d H:i:s');
+                //Obtiene los IDs de las campañas que ya recibieron una review
+                $campsIds = Camp::select('camps.id')
+                                            ->join('reviews', 'reviews.camp_id', '=', 'camps.id')
+                                            ->distinct()
+                                            ->whereNull('reviews.playlist_id')
+                                            ->pluck('id')->toArray();
 
-                        //se crea el review
-                        $review = new Review();
+                if(in_array(request('camp_id'),$campsIds)){
+                    try{
+                        \DB::transaction(function() use($usuario)
+                        {
+                            $today=Carbon::now()->format('Y-m-d H:i:s');
 
-                        $review->rating = request('rating');
-                        $review->comment = request('review');
-                        $review->date = $today;
-                        $review->user_id = Auth::id();
-                        $review->camp_id = request('camp_id');
-                        $review->save();
+                            //se crea el review
+                            $review = new Review();
 
-                        //actualizamos el estatus de la campaña
-                        $camp = Camp::find(request('camp_id'));
+                            $review->rating = request('rating');
+                            $review->comment = request('review');
+                            $review->date = $today;
+                            $review->user_id = Auth::id();
+                            $review->camp_id = request('camp_id');
+                            $review->save();
 
-                        if(request('estatus') == "true")
-                            $camp->status = "aceptado";
-                        else
-                            $camp->status = "rechazado";
-                    
-                        $camp->save();
-                    });
-                }
-                catch(QueryException $ex){
-                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                            //actualizamos el estatus de la campaña
+                            $camp = Camp::find(request('camp_id'));
+
+                            if(request('estatus') == "true")
+                                $camp->status = "aceptado";
+                            else
+                                $camp->status = "rechazado";
+                        
+                            $camp->save();
+
+                            session()->flash('success',true);
+                        });
+                    }
+                    catch(QueryException $ex){
+                        return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                    }
                 }
 
                 return redirect()->route('reviews');
