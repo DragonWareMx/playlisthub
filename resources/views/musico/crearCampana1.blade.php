@@ -34,7 +34,7 @@
             <form action="{{Route('crearCampana2')}}" style="width:100%; display:flex; flex-wrap:wrap;" method="POST">
                 @csrf
                 <div class="campana_info_0">
-                    <img class="campana_info_3_img" src="https://cdn.pixabay.com/photo/2016/04/28/23/53/spotify-1360002_960_720.jpg" alt="">
+                    {{-- <img class="campana_info_4_img" src="img/iconos/spotify-img.png" alt=""> --}}
                 </div>
                 <div id="crearCampana_50" class="campana_info_1">
                     <div class="vercampana_title_o">LINK DE SPOTIFY</div>
@@ -43,7 +43,7 @@
                     <input name="code" class="input_crearCampana" type="text">
                 </div>
                 <div id="crearCampana_50" class="campana_info_3">
-                    <img class="campana_info_3_img" src="https://cdn.pixabay.com/photo/2016/04/28/23/53/spotify-1360002_960_720.jpg" alt="">
+                    {{-- <img class="campana_info_4_img" src="img/iconos/spotify-img.png" alt=""> --}}
                 </div>
                 <div class="crearCampana_botones">
                     <a class="a_cancelar_o" href="{{Route('campanas')}}">Cancelar</a>

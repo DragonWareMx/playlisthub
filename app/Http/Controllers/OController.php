@@ -337,6 +337,7 @@ class OController extends Controller
     }
     public function crearCampana2(request $request)
     {
+        ini_set('max_execution_time', 500);
         $data=request()->validate([
             'link'=>'required'
         ]);
@@ -480,9 +481,123 @@ class OController extends Controller
                 }
             } 
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(!$playlists){
-            dd('joven habré que buscar por géneros alv va a estar mazizo este rollo pero no nos awitamos aquí en la oskis´s house ');
+            $url='https://api.spotify.com/v1/artists/'.$id_principal.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $artist= curl_exec($conexion);
+            curl_close($conexion);
+            $artist=json_decode($artist);
+            if(isset($artist->error)){
+                session()->flash('expiredToken',true);
+                session()->forget('link_song');
+                return redirect('/crear-paso-1');
+            }
+            $playlists=[];
+            $playlistsCosts=[];
+            $i=0;
+            $k=0;
+            foreach($allPlays as $allPlay){
+                $allPlay_id=trim($allPlay->link_playlist,);
+                $allPlay_id=str_replace('https://open.spotify.com/playlist/','',$allPlay_id);
+                if(substr($allPlay_id, 0, strpos($allPlay_id, "?"))){
+                    $allPlay_id = substr($allPlay_id, 0, strpos($allPlay_id, "?"));
+                }
+                $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/tracks?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=15';
+                $conexion=curl_init();
+                curl_setopt($conexion, CURLOPT_URL, $url);
+                curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+                curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+                $tracks_artists= curl_exec($conexion);
+                curl_close($conexion);
+                $tracks_artists=json_decode($tracks_artists);
+                if(isset($tracks_artists->error)){
+                    session()->flash('expiredToken',true);
+                    session()->forget('link_song');
+                    return redirect('/crear-paso-1');
+                }
+
+                $j=0;
+                $coincidencias=0;
+                foreach($tracks_artists->items as $item_artist){
+                    if(!$item_artist->track->artists[0]->id)continue;
+                    $url='https://api.spotify.com/v1/artists/'.$item_artist->track->artists[0]->id.'?access_token='.$access_token;
+                    $conexion=curl_init();
+                    curl_setopt($conexion, CURLOPT_URL, $url);
+                    curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+                    curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                    curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+                    $track_artist= curl_exec($conexion);
+                    curl_close($conexion);
+                    $track_artist=json_decode($track_artist);
+                    if(isset($track_artist->error)){
+                        session()->flash('expiredToken',true);
+                        session()->forget('link_song');
+                        return redirect('/crear-paso-1');
+                    }
+                    foreach($track_artist->genres as $genreA){
+                        foreach($artist->genres as $genreB){
+                            if($genreA == $genreB){
+                                $coincidencias++;
+                            }
+                        }
+                        $j++;
+                    } 
+                }
+                if($coincidencias>0){
+                    $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'?access_token='.$access_token;
+                    $conexion=curl_init();
+                    curl_setopt($conexion, CURLOPT_URL, $url);
+                    curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+                    curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                    curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+                    $playlist= curl_exec($conexion);
+                    curl_close($conexion);
+                    $playlist=json_decode($playlist);
+                    if(isset($playlist->error)){
+                        session()->flash('expiredToken',true);
+                        session()->forget('link_song');
+                        return redirect('/crear-paso-1');
+                    }
+                    $item=[];
+                    $item['id']=$allPlay->id;
+                    $item['url']=$playlist->external_urls->spotify;
+                    $item['coincidences']=$coincidencias;
+                    $item['image']=$playlist->images[0]->url;
+                    $item['name']=$playlist->name;
+                    $item['curator_id']=$allPlay->user->id;
+                    $item['curator_name']=$allPlay->user->name;
+                    $item['followers']=$playlist->followers->total;
+                    $total=$playlist->followers->total;
+                    $cost=100;
+                    if($total>=500 && $total<=5000) $cost=1;
+                    if($total>=5001 && $total<15000) $cost=1;
+                    if($total>=15001 && $total<=20000) $cost=1;
+                    if($total>=20001 && $total<=30000) $cost=1;
+                    if($total>=30001 && $total<=50000) $cost=2;
+                    if($total>=50001 && $total<=60000) $cost=2;
+                    if($total>=60001 && $total<=70000) $cost=3;
+                    if($total>=70001 && $total<=80000) $cost=3;
+                    if($total>=80001 && $total<=90000) $cost=4;
+                    if($total>=90001) $cost=4;
+                    $item['cost']=$cost;
+                    if($total>=500){
+                        $playlists[$k]=$item;
+                        $itemCost=[];
+                        $itemCost['playlist']=$allPlay->id;
+                        $itemCost['cost']=$cost;
+                        $playlistsCosts[$k]=$itemCost;
+                        $k++;
+                    }
+                }  
+            }
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         session()->put('playlistsCosts',$playlistsCosts);
         //ordena las playlists por orden de coincidencias 
         function order(&$arr_ini, $col,$order=SORT_DESC){

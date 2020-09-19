@@ -457,6 +457,10 @@
     border-radius: 5px;
     object-fit: cover;
 }
+.campana_info_4_img{
+    display: flex;
+    width: 331px;
+}
 .campana_info_3_status{
     display: flex;
     float: right;
