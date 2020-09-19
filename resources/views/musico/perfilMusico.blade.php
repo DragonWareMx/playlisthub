@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
+    <link rel="stylesheet" type="text/css" href="/css/L.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
 @endsection
 
