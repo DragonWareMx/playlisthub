@@ -77,18 +77,28 @@
         <div class="table_head">
            <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA CANCIÓN</div> 
            <div class="txt_row_head">PLAYLIST</div> <div class="txt_row_head row_hide">ARTISTA</div>  
-           <div class="txt_row_head row_hide">TOKENS</div> <div class="txt_row_head row_hide">MÚSICO</div> 
+           <div class="txt_row_head row_hide">TOKENS</div> <div class="txt_row_head row_hide">ESTATUS</div> 
         </div>
         
     
-    <!--estos divs se crean con un foreach-->
+    @php
+        $i=0
+    @endphp
+    @foreach ($songsSpoty as $song)
     <hr class="hr_100_o">
-        <div class="table_row">
-            <img class="img_playlist" src="img/unnamed.jpg" alt=""> 
-            <div class="txt_row_play">nombre muy largo alv</div> <div class="txt_row_play row_hide2">nombre más que largo mucho mucho mucho</div> 
-            <div class="txt_row_play row_hide">nombre</div>  
-            <div class="txt_row_play row_hide">2</div> <div class="txt_row_play row_hide">nombre</div> 
-        </div>
+    <div class="table_row">
+        <img class="img_playlist" src="{{$song->album->images[0]->url}}" alt=""> 
+        <div class="txt_row_play">{{$song->name}}</div> 
+        <div class="txt_row_play row_hide2">{{$plnames[$i]}}</div> 
+        <div class="txt_row_play row_hide">{{$song->artists[0]->name}}</div>  
+        <div class="txt_row_play row_hide">{{$songs[$i]->cost}}</div> 
+        <div class="txt_row_play row_hide">{{$songs[$i]->status}}</div> 
+    </div>
+        @php
+            $i++;
+        @endphp
+    @endforeach
+    
     </div>
 </div>
 <!--MODAL de agregar playlist-->
