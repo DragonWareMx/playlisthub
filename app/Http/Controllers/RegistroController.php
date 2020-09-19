@@ -38,6 +38,9 @@ class RegistroController extends Controller
         $code=$request->code;
         $state=$request->state;
 
+        if($request->error){
+            return redirect()->route('registerCurator')->withErrors(['msg'=> 'Hubo un error al iniciar sesión con Spotify. Por favor vuelva a intentarlo.']);
+        }
         $storedState=null;
         if(isset($_COOKIE['stateKey'])) {
             $storedState=$_COOKIE['stateKey'];
@@ -115,7 +118,7 @@ class RegistroController extends Controller
                     $playlist= curl_exec($conexion);
                     curl_close($conexion);
                     $playlist=json_decode($playlist,true);
-                    if ($playlist['followers']['total'] >= 17) {
+                    if ($playlist['followers']['total'] >= 1) {
                         $aprobado=true;
                     }
                 }
@@ -194,6 +197,10 @@ class RegistroController extends Controller
 
         $code=$request->code;
         $state=$request->state;
+
+        if($request->error){
+            return redirect()->route('registerMusician')->withErrors(['msg'=> 'Hubo un error al iniciar sesión con Spotify. Por favor vuelva a intentarlo.']);
+        }
 
         $storedState=null;
         if(isset($_COOKIE['stateKey'])) {

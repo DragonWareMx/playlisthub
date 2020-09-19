@@ -68,25 +68,6 @@ Route::get('/inicio',function(){
     return view('inicio');
 })->name('home')->middleware('auth');
 
-Route::get('/registro-curador',function(){
-    return view('login.registroCurador');
-})->name('register-curador');
-
-Route::get('/registro-curador-no',function(){
-    return view('login.registroCuradorNo');
-})->name('register-curador-no');
-
-Route::get('/registro-musico',function(){
-    return view('login.registroMusico');
-})->name('register-musico');
-
-Route::get('/login2',function(){
-    return view('login.login');
-})->name('login');
-
-Route::get('/forgot',function(){
-    return view('login.recuperarContra');
-})->name('forgotpass');
 
 /*---------------- REVIEWS MUSICO/CURADOR ----------------*/
 //pagina principal

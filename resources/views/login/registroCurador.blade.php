@@ -37,7 +37,13 @@
                 <div class="form-element">
                     <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
-                    <p class="texto-inicio-sesion">  </p>
+                    <p class="texto-inicio-sesion error"> 
+                        @if($errors->any())
+                            @foreach ($errors->all() as $error)
+                                {{$error}}
+                            @endforeach
+                        @endif    
+                    </p>
                 </div>
                 <div class="espacio-inter" style="margin-top: 1px"></div>
                 <p class="msg-spoty-denied">
