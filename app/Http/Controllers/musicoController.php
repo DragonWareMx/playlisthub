@@ -238,9 +238,18 @@ class musicoController extends Controller
         
         return view ('musico.perfilMusico', ['usuario' => $usuario, 'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
     }
-    public function perfilPublico()
+    public function perfilPublico($id) 
     {
-        return view ('musico.PublicoperfilMusico');
+        try { 
+            $usuario = User::where('spotify_id',$id)->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No se encontraron resultados']);
+        }
+        return view ('musico.PublicoperfilMusico', ['usuario' => $usuario]);
     }
 
     public function referencias(){

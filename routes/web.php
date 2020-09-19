@@ -29,11 +29,11 @@ Route::get('/tokens','OController@tokens')->name('tokens');
 
 Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
-Route::get('/idMusico', 'musicoController@perfilPublico')->name('perfil-musico-publico');
+Route::get('/Musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
 
 Route::get('/TableroC', 'curadorController@index')->name('inicio-curador');
 Route::get('/perfilC', 'curadorController@perfil')->name('perfil-curador');
-Route::get('/idCurador', 'curadorController@perfilPublico')->name('perfil-curador-publico');
+Route::get('/Curador/{id}', 'curadorController@perfilPublico')->name('perfil-curador-publico');
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');

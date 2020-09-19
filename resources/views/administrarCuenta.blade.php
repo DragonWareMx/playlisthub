@@ -162,7 +162,7 @@
           <form action="{{ route('delete-user', ['id'=>$user->id]) }}" method="POST">
             {{csrf_field()}}
             @method('DELETE')
-            <button class="btn btn-primary " style="background-color: #8177F5;"> Eliminar cuenta</button>
+            <button class="btn btn-primary " style="background-color: #8177F5; border:none"> Eliminar cuenta</button>
           </form>
         </div>
       </div>
