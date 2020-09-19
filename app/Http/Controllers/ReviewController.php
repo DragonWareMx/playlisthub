@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 use App\User;
 use App\Camp;
 use App\Review;
@@ -148,12 +149,7 @@ class ReviewController extends Controller
                                             ->pluck('id')->toArray();
 
                 //Obtiene las campañas que ya fueron aceptadas que aun no hacen una review a la playlist
-                /*$camps = Camp::where([['user_id', '=', Auth::id()],['status','=','aceptado'],])
-                ->with('review')
-                ->whereNotIn('id', $campsIds)
-                ->orderBy('start_date','desc')
-                ->get();*/
-                $camps = Camp::where([['user_id', '=', 1],['status','=','aceptado'],])
+                $camps = Camp::where([['user_id', '=', Auth::id()],['status','=','aceptado'],])
                 ->with('review')
                 ->whereNotIn('id', $campsIds)
                 ->orderBy('start_date','desc')
@@ -172,16 +168,9 @@ class ReviewController extends Controller
                                             ->pluck('id')->toArray();
 
                 //Obtiene las campañas que en espera de review
-                /*$camps = Camp::where('status','=','espera')
-                ->whereHas('playlist', function ($query) {
-                    return $query->where('user_id', '=', Auth::id());
-                })
-                ->whereNotIn('id', $campsIds)
-                ->orderBy('start_date','asc')
-                ->get();*/
                 $camps = Camp::where('status','=','espera')
                 ->whereHas('playlist', function ($query) {
-                    return $query->where('user_id', '=', 2);
+                    return $query->where('user_id', '=', Auth::id());
                 })
                 ->whereNotIn('id', $campsIds)
                 ->orderBy('start_date','asc')
@@ -265,6 +254,101 @@ class ReviewController extends Controller
                 }
                 
                 return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp]);
+                break;
+            default:
+                return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                break;
+        }
+    }
+
+    public function storeReview(request $request){
+        //variables
+        $usuario = null;
+        //booleano que indica el tipo del usuario (true = musico, false = curador)
+        $tipo;
+
+        //obtenemos el usuario que inicio sesion
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null || count($usuario) == 0){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        //verifica que tipo de usuario es
+        switch($usuario[0]->type){
+            case 'Músico':
+                //valida los campos
+                $data=request()->validate([
+                    'rating'=>'required|max:5|min:0.5',
+                    'review'=>'required|max:3000|min:150'
+                ]);
+
+                try{
+                    \DB::transaction(function() use($usuario)
+                    {
+                        $today=Carbon::now()->format('Y-m-d H:i:s');
+
+                        //se crea el review
+                        $review = new Review();
+
+                        $review->rating = request('rating');
+                        $review->comment = request('review');
+                        $review->date = $today;
+                        $review->user_id = Auth::id();
+                        $review->playlist_id = request('playlist_id');
+                        $review->camp_id = request('camp_id');
+                        $review->save();
+                    });
+                }
+                catch(QueryException $ex){
+                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                }
+                
+                return redirect()->route('reviews');
+                break;
+            case 'Curador':
+                //valida los campos
+                $data=request()->validate([
+                    'rating'=>'required|max:5|min:0.5',
+                    'estatus'=>'required',
+                    'review'=>'required|max:3000|min:150'
+                ]);
+
+                try{
+                    \DB::transaction(function() use($usuario)
+                    {
+                        $today=Carbon::now()->format('Y-m-d H:i:s');
+
+                        //se crea el review
+                        $review = new Review();
+
+                        $review->rating = request('rating');
+                        $review->comment = request('review');
+                        $review->date = $today;
+                        $review->user_id = Auth::id();
+                        $review->camp_id = request('camp_id');
+                        $review->save();
+
+                        //actualizamos el estatus de la campaña
+                        $camp = Camp::find(request('camp_id'));
+
+                        if(request('estatus') == "true")
+                            $camp->status = "aceptado";
+                        else
+                            $camp->status = "rechazado";
+                    
+                        $camp->save();
+                    });
+                }
+                catch(QueryException $ex){
+                    return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']); 
+                }
+
+                return redirect()->route('reviews');
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);

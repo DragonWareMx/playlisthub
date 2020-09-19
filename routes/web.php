@@ -99,6 +99,8 @@ Route::get('/reviews', 'ReviewController@reviews')->name('reviews');
 Route::get('/reviews-pendientes', 'ReviewController@reviewsPendientes')->name('reviewsPendientes');
 //reviews pendientes
 Route::get('/reviews-realizar/{id}', 'ReviewController@realizarReview')->name('realizarReview');
+//store review
+Route::post('/create-review','ReviewController@storeReview')->name('storeReview');
 
 //Rutas del sistema de Auth
 Auth::routes(['register' => false]);
