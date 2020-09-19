@@ -21,12 +21,12 @@
             </div>
         <a href="{{route('administrar-cuenta')}}" style="color: #8177F5"><i class="fas fa-cog"></i>&nbsp;&nbsp;Administrar tu cuenta</a>
         </div>
+        @foreach ($usuario as $user)
         <div class="div_infoPerfilM">
             <div class="div_fotoPerfilM">
-                <img src="{{auth()->user()->avatar}}">
+                <img src="{{$user->avatar}}">
             </div>
-            <div class="div_txtPM">
-                @foreach ($usuario as $user)  
+            <div class="div_txtPM"> 
                 <p class="txt-infoNombrePM">{{ $user -> name }}</p>
                 <p class="txt-infoUserP">Músico</p>
                 <p class="txt-informacionP">{{ $user -> country }}</p>   
