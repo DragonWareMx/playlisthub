@@ -9,7 +9,7 @@ html,body{
     text-align: center;
     justify-content: center;
     font:  16px sans-serif;
-    padding: 40px 40px 50px 40px;
+    padding: 20px 40px 30px 40px;
     background-color:  #8177F5;
     display: flex;
     flex-wrap: wrap;
@@ -49,6 +49,9 @@ html,body{
     margin-right: 0px;
     color: #2C2C2C;
 }
+.small-txt{
+    font-size: 14px;
+}
 
 .principal-screen{
     width: 100%;
@@ -59,13 +62,15 @@ html,body{
 
 .encabezado{
     width: 100%;
+    background-color: white;
+    height: 110px;
 }
 
 .encabezado td{
     width: 50%;
     padding-left: 7vh;
     padding-right: 7vh;
-    padding-top: 4vh;
+    padding-top: 1vh;
 }
 
 .encabezado td img{
@@ -87,12 +92,29 @@ html,body{
     box-shadow: none;
     cursor: pointer;
     padding: 5px;
+    
+    transition: all 0.3s;
+}
+.login-button:hover{
+    color:#8177F5;
+    transition: all 0.3s;
 }
 
 .login-button.active{
     border: 2px solid #8177F5;
     box-sizing: border-box;
     border-radius: 20px;
+    transition: all 0.3s;
+}
+.login-button.active:hover{
+    border: 1px solid #8177F5;
+    transition: all 0.3s;
+}
+.login-button.noactive{
+    border: 2px solid #cfcfcf;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: all 0.3s;
 }
 
 @media screen and (max-width: 679px){
@@ -196,19 +218,24 @@ html,body{
     font-size: 15px;
     line-height: 18px;
     color: #545454;
-
+    transition: all 0.2s;
     margin-top: 9px;
 }
 
 .login-text3 a{
     color: #8177F5;
 }
+.login-text3 a:hover{
+    font-weight: 400;
+    color: #8177F5;
+    transition: all 0.2s;
+}
 
 .cuadro-formulario{
     background: #FFFFFF;
-    border: 1px solid #B595F8;
+    border: 1px solid #8177F5;
     box-sizing: border-box;
-
+    border-radius: 0.5%;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -249,14 +276,12 @@ html,body{
 .form-element span{
     width: 80%;
     text-align: left;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     color: #000000;
-
     margin-top: 3px;
     margin-bottom: 3px;
     margin-left: auto;
@@ -279,14 +304,13 @@ html,body{
 
     background-color: #E7E7E7;
     border-radius: 5px;
-    border: 0px;
+    border: 1px solid #E7E7E7;
 
     padding-left: 5px;
     padding-right: 5px;
 
     outline: none;
     box-shadow: none !important;
-    border: none;
 }
 
 .form-element select{
@@ -316,7 +340,7 @@ html,body{
 
 .form-element input:focus,
 .form-element input:hover{
-    border: 1px solid #B595F8;
+    border: 1px solid #8177F5;
 }
 
 .msg-spoty-approved{
@@ -356,8 +380,7 @@ html,body{
     border-radius: 5px;
     margin-top: 8px;
     cursor: pointer;
-
-    margin-left: auto;
+    margin-left: 35px;
     margin-right: 0px;
 }
 
@@ -410,18 +433,23 @@ html,body{
     font-weight: 900;
     font-size: 16px;
     line-height: 19px;
-
     color: #FFFFFF;
-
     background: #000000;
     border-radius: 5px;
-
+    border: none;
     height: 39px;
     width: 174px;
     margin-bottom: 0;
     margin-top: auto;
     margin-left: auto;
     margin-right: 40px;
+    transition: all 0.2s;
+}
+
+.registro-login:hover{
+    cursor: pointer;
+    border: solid 1px black;
+    transition: all 0.2s;
 }
 
 .login-text4{
@@ -432,7 +460,7 @@ html,body{
     line-height: 15px;
     text-align: center;
 
-    color: #2F2F2F;
+    color: #636363;
 
     width: 50%;
     margin-left: auto;
@@ -444,13 +472,13 @@ html,body{
 /* COSAS DEL LOGIN */
 .cuadro-formulario-login{
     background: #FFFFFF;
-    border: 1px solid #B595F8;
+    border: 1px solid #8177F5;
     box-sizing: border-box;
-
-    width: 35%;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    border-radius: 0.5%;
 }
 
 .form-element.login{
@@ -471,6 +499,11 @@ html,body{
     text-decoration: none;
     margin-left: auto;
     margin-right: auto;
+}
+.link-forgot:hover{
+    color: #8177F5;
+    text-decoration: underline;
+    transition: all 0.2s;
 }
 
 .inicio-sesionbtn{
@@ -626,5 +659,13 @@ html,body{
 
     .cuadro-formulario-login{
         width: 70%;
+    }
+}
+@media (max-width:600px){
+    .footer-text{
+        font-size: 14px;
+    }
+    .small-txt{
+        font-size: 13px;
     }
 }

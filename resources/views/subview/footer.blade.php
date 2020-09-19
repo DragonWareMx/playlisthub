@@ -22,11 +22,11 @@
         <span class="footer-text" style="margin-left: 25px;margin-right:auto">Términos y condiciones</span>    
     </div> 
     <div class="footer-left">
-        <span class="footer-text" style="margin-left: auto;margin-right:10px;">Copyright © 2020 Playlisthub</span>
+        <span class="footer-text small-txt" style="margin-left: auto;margin-right:10px;">Copyright © 2020 Playlisthub</span>
     </div>
     <div class="footer-right">
         <a href="https://www.facebook.com/DragonWare-110557344026414" target="_blank" style="text-decoration: none">
-            <span class="footer-text" style="margin-left: 10px;margin-right:auto;">Desarrollado por DragonWare 
+            <span class="footer-text small-txt" style="margin-left: 10px;margin-right:auto;">Desarrollado por DragonWare 
                 <img src="{{ asset('/img/iconos/dragonware.png') }}" height="14.5px">
             </span>      
         </a>  
