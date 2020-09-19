@@ -113,10 +113,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="/reviews">Reviews</a>
               <a class="collapse-item" href="/reviews-pendientes">Reviews Pendientes</a>
-              <a class="collapse-item" href="/reviews-realizar">Realizar Review</a>
+              {{-- <a class="collapse-item" href="/reviews-realizar">Realizar Review</a> --}}
               <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
             </div>
           </div>
       </li>
