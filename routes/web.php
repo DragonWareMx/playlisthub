@@ -55,12 +55,8 @@ Route::delete('/deleteUser/{id}' , 'cuentaController@userDelete')->name('delete-
 Route::get('/referencias', 'musicoController@referencias')->name('referencias');
 
 //Rutas CURADOR
-Route::get('/ranking', function () {
-    return view('curador.ranking');
-});
-Route::get('/ganancias', function () {
-    return view('curador.ganancias');
-});
+Route::get('/ranking', 'AController@ranking')->name('ranking');
+Route::get('/ganancias', 'AController@ganancias')->name('ganancias');
 Route::get('/playlists', 'AController@playlists')->name('playlists');
 Route::post('/addPlaylist','AController@addPlaylist')->name('addPlaylist');
 

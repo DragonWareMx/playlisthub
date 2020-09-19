@@ -134,25 +134,16 @@
       @if (auth()->user()->type == 'Curador')
       <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="{{route ('playlists')}}">             
             <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Playlists</span>
+            <span style="padding-left: 10px">Playlists</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="{{ route('campanas') }}">Campañas</a>
-            <a class="collapse-item" href="{{route('tokens')}}">Tokens</a>
-              <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="{{route('crearCampana1')}}">Agregar campaña</a>
-            </div>
-          </div>
       </li>
 
       <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="{{ route('favoritos') }}">           
+        <a class="nav-link" href="{{ route('ranking') }}">           
             <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Ranking</span>
         </a>
@@ -161,7 +152,7 @@
       {{-- GANANCIAS --}}
       <li class="nav-item ">
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
-        <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('ganancias')}}">
             <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="18px" >
           <span style="padding-left: 10px">Ganancias</span>
         </a>

@@ -10,13 +10,13 @@
 @endsection
 
 @section('contenido')
-<div class="div_90_o">
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Agregar campaña</div>
+<div class="div_CabeceraApartado" style="margin-top:40px">
+    <div class="div_tituloApartado resize_tituloApartado">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/plusGris.png")}} alt="">&nbsp;&nbsp;Agregar campaña</p>
     </div>
-    <div class="crearCampana_pasos">Paso 3 de 3</div>
-    <hr class="hr_100_o">
+    <a style="border:none; background-color:transparent"><b>Paso 3 de 3</b></a>
+</div>
+<div class="div_90_o">
     <div class="div_campana_info_o">
         <div class="campana_info_0">
             <img class="campana_info_3_img" src="{{$data['song_image']}}" alt="">

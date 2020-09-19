@@ -541,7 +541,7 @@
 .input_crearCampana:focus, .select_crearCampana:focus{
     border: none;
     outline: none;
-    border-bottom:3px solid #8177F5;
+    border-bottom:1px solid #8177F5;
     transition: ease-in-out 0.2s;
 }
 #crearCampana_50{

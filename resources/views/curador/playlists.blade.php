@@ -2,8 +2,8 @@
 
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
-    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
 @endsection
@@ -13,6 +13,7 @@
 @endsection
 
 @section('contenido')
+@if (!$error)
 <div class="div_90_o">
     <div class="p_title_o">
         <img class="logo_ranking" src="img/iconos/campanas.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_title"> playlists activas </span>
@@ -25,21 +26,41 @@
     <div class="div_content">
         <div class="table_head">
            <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head">GÉNERO</div> <div class="txt_row_head row_hide">NIVEL</div> 
+            <div class="txt_row_head">RANKING</div> <div class="txt_row_head row_hide">NIVEL</div> 
             <div class="txt_row_head row_hide">SEGUIDORES</div> <div class="txt_row_head row_hide">GANANCIAS</div> 
         </div>
         
     
     <!--estos divs se crean con un foreach-->
+    @php
+        $i=0;
+    @endphp
     @foreach ($playlists_registradas as $playlist)
     <hr class="hr_100_o">
         <div id="{{$playlist->id}}" class="table_row">
             <img class="img_playlist" src="{{$playlist->images[0]->url}}" alt=""> 
-            <div class="txt_row_play">{{$playlist->name}}</div> <div class="txt_row_play row_hide2"></div> 
-            <div class="txt_row_play row_hide">nivel 10</div>
+            <div class="txt_row_play">{{$playlist->name}}</div> <div class="txt_row_play row_hide2">{{$playlists_bd[$i]->tier}}</div> 
+            <div class="txt_row_play row_hide">
+                @php
+                   if($playlist->followers->total<=5000) $nivel=1;
+                   if($playlist->followers->total>5000 && $playlist->followers->total<=15000) $nivel=2;
+                   if($playlist->followers->total>15000 && $playlist->followers->total<=20000) $nivel=3;
+                   if($playlist->followers->total>20000 && $playlist->followers->total<=30000) $nivel=4;
+                   if($playlist->followers->total>30000 && $playlist->followers->total<=50000) $nivel=5;
+                   if($playlist->followers->total>50000 && $playlist->followers->total<=60000) $nivel=6;
+                   if($playlist->followers->total>60000 && $playlist->followers->total<=70000) $nivel=7;
+                   if($playlist->followers->total>70000 && $playlist->followers->total<=80000) $nivel=8;
+                   if($playlist->followers->total>80000 && $playlist->followers->total<=90000) $nivel=9;
+                   if($playlist->followers->total>90000) $nivel=10;
+                @endphp
+                nivel {{$nivel}}
+            </div>
             <div class="txt_row_play row_hide">{{$playlist->followers->total}}</div> 
-            <div class="txt_row_play row_hide">$</div>
+            <div class="txt_row_play row_hide">${{$playlists_bd[$i]->profits}}</div>
         </div>
+    @php
+        $i++;
+    @endphp
     @endforeach
     
     </div>
@@ -92,23 +113,27 @@
            
             @php
                 $i=0;
+                $control=true;
             @endphp
-            @foreach ($playlists ['items'] as $playlist)
-                @if (true)
+            @foreach ($playlists as $playlist)
+                @if ($followers[$i]>500)
                     <div id="{{$playlist['external_urls']['spotify']}}" class="div_playlist_modal" value="">
                         <div><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
                         <div class="txt_row">{{$playlist['name']}}</div> 
                         <div class="txt_row">{{$followers[$i]}}</div>
                     </div>
+                    @php
+                        $control=false;
+                    @endphp
                 @endif
             @php
                 $i++;
             @endphp                
             @endforeach
-
+            @if ($control)
+            <div class="txt_modal_center">Lo sentimos, ninguna de tus playlists sin registrar tiene un número mayor a 500 seguidores</div>
+            @endif
                 <form action="{{Route('addPlaylist')}}" method="POST">
-                    <input type="checkbox">
-
                     <input id="link_pl" type="text" required style="display: none" name="link">
                 @csrf
                 <div class="botones_modal">
@@ -158,4 +183,12 @@
       });
   </script>
   
+@else
+<div class="div_error_o">
+    <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+    <a href="http://127.0.0.1:8000/login/spotify" id="a_error_o" class="inicio-spotybtn">
+        <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+    </a>
+</div>
+@endif
 @endsection
