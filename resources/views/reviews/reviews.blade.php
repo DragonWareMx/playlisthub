@@ -36,13 +36,13 @@
             {{-- ESTRELLAS --}}
             @for ($i = 0; $i < 5; $i++)
                 @if ($calificacion>=1)
-                    <img class="img_review" src="img/iconos/star review.png" alt="">
+                    <img class="img_review" src="img/iconos/reviews.png" alt="">
                     @php
                     $calificacion--;  
                     @endphp
                 @else 
                     @if ($calificacion<1 && $calificacion>=0.5)
-                        <img class="img_review" src="img/iconos/star review 2.png" alt="">
+                        <img class="img_review" src="img/iconos/reviewsmiddle.png" alt="">
                         @php
                         $calificacion-=$calificacion;  
                         @endphp
@@ -127,13 +127,13 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/star review.png" alt="">
+                                            <img src="img/iconos/reviews.png" alt="">
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/star review 2.png" alt="">
+                                                <img src="img/iconos/reviewsmiddle.png" alt="">
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
@@ -238,13 +238,13 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/star review.png" alt="">
+                                            <img src="img/iconos/reviews.png" alt="">
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/star review 2.png" alt="">
+                                                <img src="img/iconos/reviewsmiddle.png" alt="">
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
@@ -377,13 +377,13 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/star review.png" alt="">
+                                            <img src="img/iconos/reviews.png" alt="">
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/star review 2.png" alt="">
+                                                <img src="img/iconos/reviewsmiddle.png" alt="">
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
@@ -500,13 +500,13 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/star review.png" alt="">
+                                            <img src="img/iconos/reviews.png" alt="">
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/star review 2.png" alt="">
+                                                <img src="img/iconos/reviewsmiddle.png" alt="">
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
