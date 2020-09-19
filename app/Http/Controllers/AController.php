@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use App\User;
 use App\Playlist;
+use App\Camp;
 use Auth;
 
 class AController extends Controller
@@ -16,7 +17,6 @@ class AController extends Controller
         $access_token=session()->get('access_token');
         $playlists_bd= Playlist::where('user_id',$id)->get();
         $user= User::findOrFail($id);
-
 
         //sacamos playlists para vista principal
         $i=0;
@@ -43,8 +43,64 @@ class AController extends Controller
             $playlists_registradas[$i]=$playlistBD;
             $i++;
         }
-
         
+        //sacamos las canciones
+        $plSongs=[];
+        $i=0;
+        foreach ($playlists_bd as $playlist) {
+            $plSongs[$i]=$playlist->id;
+            $i++;
+        }
+
+        $songs= Camp::with('playlist')->whereIn('playlist_id',$plSongs)->orderBy('playlist_id','asc')->get();
+        
+        //usamos API para sacar los datos de las canciones
+        $songsSpoty=[];
+        $i=0;
+        foreach ($songs as $song) {
+            //se extrae el id de la canción
+            $song_id=trim($song->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
+            if(substr($song_id, 0, strpos($song_id, "?"))){
+                $song_id = substr($song_id, 0, strpos($song_id, "?"));
+            }
+            //consultamos la canción para sacar los datos
+            $url='https://api.spotify.com/v1/tracks/'.$song_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $songsAux= curl_exec($conexion);
+            curl_close($conexion);
+            
+            $songsAux=json_decode($songsAux);
+            $songsSpoty[$i]=$songsAux;
+            $i++;
+        }
+        //sacamos los nombres de las playlists de las canciones
+        //encontramos la posición de las playlist que tienen esas canciones en el arreglo de pl registradas
+        $pos=[];
+        $i=0;
+        foreach ($songs as $song) {
+            $j=0;
+            foreach ($plSongs as $pl) {
+                if($song->playlist_id==$pl){
+                    $pos[$i]=$j;
+                    break;
+                }
+                $j++;
+            }
+            $i++;
+        }
+        //recorremos ese arreglo para sacar el nombre con el arreglo donde guardamos lo que nos entregó la API de las playlists
+        $plnames=[];
+        $i=0;
+        foreach ($pos as $posAct) {
+            $plnames[$i]=$playlists_registradas[$posAct]->name;
+            $i++;
+        }
+
         //nos conectamos a API de spotify para sacar todas las playlists, esto es para modal
         $url='https://api.spotify.com/v1/me/playlists?access_token='.$access_token;
         $conexion=curl_init();
@@ -56,7 +112,7 @@ class AController extends Controller
         curl_close($conexion);
         $playlists=json_decode($playlists, true);
         
-        
+
         //for para mostrar en modal sólo las que no están registradas ya y las que sí son mismo id que owner
         $playlistsModal=[];
         $i=0;
@@ -99,7 +155,8 @@ class AController extends Controller
         }
        
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
-        'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd]);
+        'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
+        'songs'=>$songs, 'plnames'=>$plnames]);
     }
 
     public function addPlaylist(){

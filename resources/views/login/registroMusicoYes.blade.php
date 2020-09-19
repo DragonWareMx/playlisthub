@@ -30,7 +30,7 @@
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
                 <button class="login-button active">Músico</button>
-                <button onclick="location.href='{{route('register')}}'" class="login-button">Curador</button>
+                <button onclick="location.href='{{route('register')}}'" class="login-button noactive">Curador</button>
             </div>
             @if($errors->any())
                 <div class="alert alert-danger" role="alert" style="background-color: firebrick;width:100%;margin:10px auto 0px auto;padding:10px 0px 10px 0px">

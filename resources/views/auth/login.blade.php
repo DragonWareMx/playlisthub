@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
     <link rel="icon" href="{{asset('/img/logos/ico-playlist.png')}}" type="image/icon type">
 </head>
-<body>
+<body style="background-color: #f5f5f5">
     <div class="principal-screen">
-        <table class="encabezado">
+        <table class="encabezado" >
             <tr>
                 <td align="left">
                     <img onclick="location.href='{{route('home')}}';" src="{{ asset('/img/logos/logo.png') }}">
@@ -27,9 +27,9 @@
         <p class="login-text2">Bienvenido de nuevo</p>
 
         <div class="cuadro-formulario-login">
-            <div class="button-cuadro-form" style="width:100%; align-content:center;">
+            <div class="button-cuadro-form" style="width:100%; align-content:center; height:50px">
                 <img class="login-button active" src="{{ asset('/img/logos/logo-white.png') }}" alt="" 
-                style="background-color: #8177F5;cursor:default;">
+                style="background-color: #8177F5;cursor:default; ">
             </div>
             @if($errors->any())
                 <div class="alert alert-danger" role="alert" style="background-color: firebrick;width:100%;margin:10px auto 0px auto;padding:10px 0px 10px 0px">
