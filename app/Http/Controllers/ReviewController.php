@@ -39,14 +39,15 @@ class ReviewController extends Controller
 
                 //reviews de las campanas del usuario musico
                 $reviews = Review::whereHas('camp', function ($query) {
-                    return $query->where('user_id', '=', Auth::id())->whereNull('playlist_id');
+                    return $query->where('user_id', '=', Auth::id());
                 })->orderBy('date','desc')
+                ->whereNull('playlist_id')
                 ->get();
 
                 //reviews a playlists de curadores que el musico ha realizado
-                $realizadas = Review::with('playlist')->orderBy('date','desc')
-                                                ->where('user_id', '=', Auth::id())
-                                                ->get();
+                $realizadas = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
+                                            ->where('user_id', '=', Auth::id())
+                                            ->get();
 
                 //obtenemos el promedio de las reviews y la cantidad de reviews
                 $total = 0;
@@ -65,6 +66,197 @@ class ReviewController extends Controller
                 }
 
                 return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
+                break;
+            case 'Curador':
+                $tipo = false;
+
+                //reviews de las playlists del usuario musico
+                // $reviews = Review::whereHas('playlist', function ($query) {
+                //     return $query->where('user_id', '=', Auth::id());
+                // })->orderBy('date','desc')
+                // ->get();
+
+                $reviews = Review::whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', 2);
+                })->orderBy('date','desc')
+                ->get();
+
+                //reviews a campañas de musicos que el curador ha realizado
+                // $realizadas = Review::with('camp')->orderBy('date','desc')
+                //                                 ->where('user_id', '=', Auth::id())
+                //                                 ->whereNull('playlist_id')
+                //                                 ->get();
+
+                $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->where('user_id', '=', 2)
+                                                ->whereNull('playlist_id')
+                                                ->get();
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+                
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
+                break;
+            default:
+                return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                break;
+        }
+    }
+
+    //pagina principal de las reviews musico/curador
+    public function reviewsReal()
+    {
+        //variables
+        $usuario = null;
+        //booleano que indica el tipo del usuario (true = musico, false = curador)
+        $tipo;
+
+        //obtenemos el usuario que inicio sesion
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null || count($usuario) == 0){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        //verifica que tipo de usuario es
+        switch($usuario[0]->type){
+            case 'Músico':
+                $tipo = true;
+
+                //reviews a playlists de curadores que el musico ha realizado
+                $realizadasN = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
+                                            ->where('user_id', '=', Auth::id())
+                                            ->count();
+                $realizadas = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
+                                            ->where('user_id', '=', Auth::id())
+                                            ->paginate(10);
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                return view('reviews.reviews_realizadas',['tipo'=>$tipo, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>$realizadasN]);
+                break;
+            case 'Curador':
+                $tipo = false;
+
+                //reviews de las playlists del usuario musico
+                // $reviews = Review::whereHas('playlist', function ($query) {
+                //     return $query->where('user_id', '=', Auth::id());
+                // })->orderBy('date','desc')
+                // ->get();
+
+                $reviews = Review::whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', 2);
+                })->orderBy('date','desc')
+                ->get();
+
+                //reviews a campañas de musicos que el curador ha realizado
+                // $realizadas = Review::with('camp')->orderBy('date','desc')
+                //                                 ->where('user_id', '=', Auth::id())
+                //                                 ->whereNull('playlist_id')
+                //                                 ->get();
+
+                $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->where('user_id', '=', 2)
+                                                ->whereNull('playlist_id')
+                                                ->get();
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+                
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
+                break;
+            default:
+                return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                break;
+        }
+
+        return view('reviews.reviews',['tipo'=>$tipo]);
+    }
+
+    //pagina principal de las reviews musico/curador
+    public function reviewsRec()
+    {
+        //variables
+        $usuario = null;
+        //booleano que indica el tipo del usuario (true = musico, false = curador)
+        $tipo;
+
+        //obtenemos el usuario que inicio sesion
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null || count($usuario) == 0){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        //verifica que tipo de usuario es
+        switch($usuario[0]->type){
+            case 'Músico':
+                $tipo = true;
+
+                //reviews de las campanas del usuario musico
+                $reviews = Review::whereHas('camp', function ($query) {
+                    return $query->where('user_id', '=', Auth::id());
+                })->orderBy('date','desc')
+                ->whereNull('playlist_id');
+
+                $reviewsn = $reviews;
+
+                $reviewsn = $reviewsn->get();
+                $reviews = $reviews->paginate(10);
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviewsn) > 0){
+                    foreach($reviewsn as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+
+                return view('reviews.reviews_recibidas',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews]);
                 break;
             case 'Curador':
                 $tipo = false;

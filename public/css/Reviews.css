@@ -139,7 +139,7 @@
 .reviews_list .review_item .review_content .review_content_names .review_content_names_name .m_r{
     width: fit-content;
     margin-left: auto;
-
+    float: right;
     font-weight: 300;
 
     margin-right: 39px;
@@ -191,6 +191,8 @@
     margin-top: 15px;
     margin-right: 42px;
     margin-bottom: 16px;
+    word-wrap: break-word;
+    max-width:972px;
 
     font-family: Roboto;
     font-style: normal;

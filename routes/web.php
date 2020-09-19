@@ -72,6 +72,10 @@ Route::get('/inicio',function(){
 /*---------------- REVIEWS MUSICO/CURADOR ----------------*/
 //pagina principal
 Route::get('/reviews', 'ReviewController@reviews')->name('reviews');
+//pagina principal - reviews recibidas
+Route::get('/reviews-recibidas', 'ReviewController@reviewsRec')->name('reviewsRec');
+//pagina principal - reviews realizadas
+Route::get('/reviews-realizadas', 'ReviewController@reviewsReal')->name('reviewsReal');
 //reviews pendientes
 Route::get('/reviews-pendientes', 'ReviewController@reviewsPendientes')->name('reviewsPendientes');
 //reviews pendientes
