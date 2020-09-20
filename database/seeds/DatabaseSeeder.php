@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Camps::class);
         $this->call(Reviews::class);
         $this->call(Favorite_User::class);
+        $this->call(PermissionSeeder::class);
     }
 }

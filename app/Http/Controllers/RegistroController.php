@@ -164,6 +164,7 @@ class RegistroController extends Controller
         $user->type='Curador';
         $user->tokens=0;
         $user->save();
+        $user->roles()->sync(['3']);
 
         session()->forget('user');
         return redirect()->route('home');
@@ -290,6 +291,7 @@ class RegistroController extends Controller
         $user->type='Músico';
         $user->tokens=0;
         $user->save();
+        $user->roles()->sync(['2']);
 
         session()->forget('user');
         return redirect()->route('home');
