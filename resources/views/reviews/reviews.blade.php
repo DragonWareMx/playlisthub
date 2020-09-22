@@ -565,6 +565,63 @@
     @endif
 </div>
 
+<!-- BORRAR!!!!!!!!!!!!! -->
+<button id="btnModal" class="a_agregar_o">
+    <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
+    <div id="btnModal" class="txt_a_o">Comprar</div>
+</button>
+
+<!-- Modal -->
+<div id="tvesModal" class="modalContainer">
+    <div class="modal-content">
+        <div class="modal_title_tokens" >Compartir review</div>
+        <hr class="hr_modal_o"> 
+        <div class="modal_compartir">
+            <img src="img/iconos/facebook png.png">
+            <img src="img/iconos/twt png.png">
+        </div>
+        <div class="div_tokens_botones">
+            <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
+            <a class="a_comprarTokens" href="#">Compartir</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    if(document.getElementById("btnModal")){
+			var modal = document.getElementById("tvesModal");
+			var btn = document.getElementById("btnModal");
+			var span = document.getElementsByClassName("close")[0];
+			var body = document.getElementsByTagName("body")[0];
+
+			btn.onclick = function() {
+				modal.style.display = "block";
+
+				body.style.position = "static";
+				body.style.height = "100%";
+				body.style.overflow = "hidden";
+			}
+
+			span.onclick = function() {
+				modal.style.display = "none";
+
+				body.style.position = "inherit";
+				body.style.height = "auto";
+				body.style.overflow = "visible";
+			}
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+
+					body.style.position = "inherit";
+					body.style.height = "auto";
+					body.style.overflow = "visible";
+				}
+			}
+		}
+</script>
+
 <script>
     function leermas(numero) {
         var dots = document.getElementById("dots"+numero);
