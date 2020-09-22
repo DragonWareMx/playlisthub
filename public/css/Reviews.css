@@ -321,6 +321,7 @@
 }
 
 .reviews_list .review_item .review_content .review_content_artista{
+    word-wrap: break-word;
     width: 100%;
     
     font-family: Roboto;
@@ -458,15 +459,40 @@
     color: red;
   }
 
+.modal_compartir{
+    width: 100%;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 50px;
+}
+
+.modal_compartir img{
+    width: 164px;
+    height: auto;
+
+    border: 4px solid #CACACA;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.modal_compartir img:hover{
+    border: 4px solid #8177F5;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.modal_compartir .modal_compartir_facebook{
+    margin-right: 47px;
+}
+
 @media(max-width: 850px){
     .reviews_list .review_item .review_content .review_content_sd{
         display: inline;
     }
     .r_p{
         margin-left: 21px !important;
-    }
-    .d_m{
-        margin-left: 10px !important;
     }
     .reviews_list .review_item .review_content .review_content_score {
         margin-left: 21px;
@@ -483,6 +509,9 @@
         margin-left: 21px;
         margin-right: auto;
         padding-top: 8px;
+    }
+    .reviews_list .review_item .review_content .review_content_artista{
+        max-width: 600px;
     }
 }
 
@@ -528,7 +557,9 @@
         margin-bottom: 16px;
     }
 
-    .reviews_list .review_item .review_content .review_content_review{
+    .reviews_list .review_item .review_content .review_content_review,
+    .review_content_artista,
+    .review_content_buttons_ar{
         margin-top: 15px;
         margin-left: 21px;
         margin-right: 21px;
@@ -544,6 +575,18 @@
     .autor{
         text-align: center;
     }
+    .d_m{
+        margin-left: 10px !important;
+    }
+    .reviews_list .review_item .review_content .review_content_artista{
+        max-width: 300px;
+    }
+}
+
+@media(max-width: 350px){
+    .reviews_list .review_item .review_content .review_content_artista{
+        max-width: 200px;
+    } 
 }
 
 /* -------------------RESPONSIVE------------------- */

@@ -32,10 +32,19 @@
                 @foreach ($camps as $camp)
                     {{-- REVIEW A LA PLAYLIST / VISTA DE MÚSICO --}}
                     <div class="review_item">
+
+                        {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                        <div class="review_img">
+                            <img src="{{User::find($camp->playlist->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                        </div>
+
                         {{-- CONTENIDO DE LA REVIEW --}}
                         <div class="review_content">
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
+                                {{-- NOMBRE DEL CURADOR --}}
+                                <div class="review_content_names_name autor"><a href="{{ route('perfil-curador-publico',$camp->playlist->user_id) }}" target="_blank">{{ $camp->playlist->user->name }}</a></div>
+                                {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}
                                     @php
@@ -61,9 +70,9 @@
                                 </div>
                             </div>
                             {{-- CALIFICACION Y FECHA --}}
-                            <div class="review_content_sd r_p">
+                            <div class="review_content_sd">
                                 {{-- ESTRELLAS --}}
-                                <div class="review_content_score">
+                                <div class="review_content_score m_f">
                                     <img src="img/iconos/op.png" alt="">
                                     <img src="img/iconos/op.png" alt="">
                                     <img src="img/iconos/op.png" alt="">
@@ -77,7 +86,7 @@
                                     $fecha = Carbon::parse($camp->start_date);
                                     $mes = $meses[($fecha->format('n')) - 1];
                                 @endphp 
-                                <div class="review_content_date">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
+                                <div class="review_content_date s_m">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
 
                                 {{-- PLAYLIST --}}
 
@@ -101,11 +110,11 @@
                                     curl_close($conexion);
                                     $playlist=json_decode($playlist);
                                 @endphp
-                                <div class="review_content_date"><b>Playlist</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
+                                <div class="review_content_date s_m"><b>Playlist</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
                             </div>
 
                             {{-- REVIEW --}}
-                            <div class="review_content_review r_p" style="margin-bottom: 0px">
+                            <div class="review_content_review" style="margin-bottom: 0px">
                                 Sin calificar
                             </div>
 
@@ -133,10 +142,20 @@
                 @foreach ($camps as $camp)
                     {{-- SOLICITUD DE CANCIÓN / VISTA DE CURADOR --}}
                     <div class="review_item">
+
+                        {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                        <div class="review_img">
+                            <img src="{{User::find($camp->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                        </div>
+
                         {{-- CONTENIDO DE LA REVIEW --}}
                         <div class="review_content">
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
+                                {{-- NOMBRE DEL MUSICO --}}
+                                <div class="review_content_names_name autor"><a href="{{ route('perfil-musico-publico',$camp->user_id) }}" target="_blank">{{ $camp->user->name }}</a></div>
+                                
+                                {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}
                                     @php
@@ -162,9 +181,9 @@
                                 </div>
                             </div>
                             {{-- CALIFICACION Y FECHA --}}
-                            <div class="review_content_sd r_p">
+                            <div class="review_content_sd">
                                 {{-- ESTRELLAS --}}
-                                <div class="review_content_score">
+                                <div class="review_content_score m_f">
                                     <img src="img/iconos/op.png" alt="">
                                     <img src="img/iconos/op.png" alt="">
                                     <img src="img/iconos/op.png" alt="">
@@ -177,7 +196,7 @@
                                     $fecha = Carbon::parse($camp->start_date);
                                     $mes = $meses[($fecha->format('n')) - 1];
                                 @endphp 
-                                <div class="review_content_date">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
+                                <div class="review_content_date s_m">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
 
                                 {{-- PLAYLIST --}}
 
@@ -201,14 +220,14 @@
                                     curl_close($conexion);
                                     $playlist=json_decode($playlist);
                                 @endphp
-                                <div class="review_content_date"><b>Playlist solicitada</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
+                                <div class="review_content_date s_m"><b>Playlist solicitada</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
 
                                 {{-- TOKENS --}}
-                                <div class="review_content_date"><b>Tokens</b> {{ $camp->cost }}</div>
+                                <div class="review_content_date s_m"><b>Tokens</b> {{ $camp->cost }}</div>
                             </div>
 
                             {{-- REVIEW --}}
-                            <div class="review_content_review r_p" style="margin-bottom: 0px">
+                            <div class="review_content_review" style="margin-bottom: 0px">
                                 Sin respuesta
                             </div>
 

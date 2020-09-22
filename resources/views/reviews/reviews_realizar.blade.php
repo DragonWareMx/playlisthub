@@ -49,17 +49,25 @@
 
                 {{-- REVIEW A LA PLAYLIST / VISTA DE MÚSICO --}}
                 <div class="review_item">
+                    {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                    <div class="review_img">
+                        <img src="{{User::find($camp->playlist->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                    </div>
+
                     {{-- CONTENIDO DE LA REVIEW --}}
                     <div class="review_content">
                         {{-- NOMBRES --}}
                         <div class="review_content_names">
+                            {{-- NOMBRE DEL CURADOR --}}
+                            <div class="review_content_names_name autor"><a href="{{ route('perfil-curador-publico',$camp->playlist->user_id) }}" target="_blank">{{ $camp->playlist->user->name }}</a></div>
+                            {{-- NOMBRE DE CANCION --}}
                             <div class="review_content_names_name">
-                                <div class="m_r"><a href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}" style="color: #8177F5;">Ver campaña</a></div>
+                                <div class="m_r"><a href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}" style="color: #8177F5;" target="_blank">Ver campaña</a></div>
                             </div>
                         </div>
 
                         {{-- CALIFICACION Y FECHA --}}
-                        <div class="review_content_sd r_p">
+                        <div class="review_content_sd">
                             {{-- ESTRELLAS --}}
                             <div id="half-stars-example" class="d_m">
                                 <div class="rating-group" style="display: inline-flex;">
@@ -123,7 +131,7 @@
                                 $fecha = Carbon::now();
                                 $mes = $meses[($fecha->format('n')) - 1];
                             @endphp 
-                            <div class="review_content_date">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
+                            <div class="review_content_date s_m">{{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
                             {{-- PLAYLIST --}}
 
                             {{-- conexion con spotify --}}
@@ -146,11 +154,11 @@
                                 curl_close($conexion);
                                 $playlist=json_decode($playlist);
                             @endphp
-                            <div class="review_content_date"><b>Playlist</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
+                            <div class="review_content_date s_m"><b>Playlist</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
                         </div>
 
                         {{-- REVIEW --}}
-                        <div class="review_content_review r_p" style="margin-bottom: 0px">
+                        <div class="review_content_review" style="margin-bottom: 0px">
                             <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
                             <div id="msj1" class="msjErro-r1">
@@ -174,10 +182,19 @@
             @else
                 {{-- SOLICITUD DE CANCIÓN / VISTA DE CURADOR --}}
                 <div class="review_item">
+                    {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
+                    <div class="review_img">
+                        <img src="{{User::find($camp->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                    </div>
+
                     {{-- CONTENIDO DE LA REVIEW --}}
                     <div class="review_content">
                         {{-- NOMBRES --}}
                         <div class="review_content_names">
+                            {{-- NOMBRE DEL MUSICO --}}
+                            <div class="review_content_names_name autor"><a href="{{ route('perfil-musico-publico',$camp->user_id) }}" target="_blank">{{ $camp->user->name }}</a></div>
+                                
+                            {{-- NOMBRE DE CANCION --}}
                             <div class="review_content_names_name">
                                 {{-- conexion con spotify --}}
                                 @php
@@ -203,7 +220,7 @@
                             </div>
                         </div>
                         {{-- CALIFICACION Y FECHA --}}
-                        <div class="review_content_sd r_p">
+                        <div class="review_content_sd">
                             {{-- ESTRELLAS --}}
                             <div id="half-stars-example" class="d_m">
                                 <div class="rating-group" style="display: inline-flex;">
@@ -266,7 +283,7 @@
                                 $fecha = Carbon::parse($camp->start_date);
                                 $mes = $meses[($fecha->format('n')) - 1];
                             @endphp 
-                            <div class="review_content_date"><b>Fecha de solicitud</b> {{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
+                            <div class="review_content_date s_m"><b>Fecha de solicitud</b> {{ $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y') }}</div>
 
                             {{-- PLAYLIST --}}
 
@@ -290,12 +307,12 @@
                                 curl_close($conexion);
                                 $playlist=json_decode($playlist);
                             @endphp
-                            <div class="review_content_date"><b>Playlist solicitada</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
-                            <div class="review_content_date"><b>Tokens</b> {{ $camp->cost }}</div>
+                            <div class="review_content_date s_m"><b>Playlist solicitada</b> <a href="{{ $camp->playlist->link_playlist }}" target="_blank">{{Str::limit($playlist->name, 48)}}</a></div>
+                            <div class="review_content_date s_m"><b>Tokens</b> {{ $camp->cost }}</div>
                         </div>
 
                         {{-- ARTISTA --}}
-                        <div class="review_content_artista r_p">
+                        <div class="review_content_artista">
                             <p><b>ARTISTA</b></p>
                             <p>{{$song->artists[0]->name}}</p>
                             <p><b>LINK DEL ARTISTA</b></p>
@@ -303,7 +320,7 @@
                         </div>
 
                         {{-- ESTATUS --}}
-                        <div class="review_content_buttons_ar r_p">
+                        <div class="review_content_buttons_ar">
                             @if (old('estatus'))
                                 <input type="radio" class="radio" name="estatus" value="true" id="true" {{ (old('estatus') == "true") ? "checked=\"checked\"" : "" }}/>
                                 <label for="true">Aceptar</label>
@@ -318,7 +335,7 @@
                         </div>
 
                         {{-- REVIEW --}}
-                        <div class="review_content_review r_p" style="margin-bottom: 0px;" >
+                        <div class="review_content_review" style="margin-bottom: 0px;" >
                             <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)" onchange="caracteres(this)">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
                             <div id="msj1" class="msjErro-r1">

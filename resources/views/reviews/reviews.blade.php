@@ -565,19 +565,20 @@
     @endif
 </div>
 
-<!-- BORRAR!!!!!!!!!!!!! -->
+<!-- BORRAR!!!!!!!!!!!!! 
 <button id="btnModal" class="a_agregar_o">
     <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
     <div id="btnModal" class="txt_a_o">Comprar</div>
 </button>
+-->
 
 <!-- Modal -->
 <div id="tvesModal" class="modalContainer">
-    <div class="modal-content">
+    <div class="modal-content" style="height: fit-content; max-width: 648px;">
         <div class="modal_title_tokens" >Compartir review</div>
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">
-            <img src="img/iconos/facebook png.png">
+            <img class="modal_compartir_facebook" src="img/iconos/facebook png.png">
             <img src="img/iconos/twt png.png">
         </div>
         <div class="div_tokens_botones">
