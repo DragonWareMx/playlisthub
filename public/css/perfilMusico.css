@@ -25,7 +25,9 @@
 .resize_tituloApartado {
     width: 90%;
 }
-
+.reviews-cabecera{
+    justify-content: space-between;
+}
 .div_CabeceraApartado a{
     font-family: 'Roboto';
     font-style: normal;
@@ -223,7 +225,9 @@
     margin-left: auto;
     align-items: center;
 }
-.div_btnsUpdate a{
+
+.div_btnsUpdate a:nth-child(1)
+{
     padding-top: 1%;
     font-family: 'Roboto';
     font-style: normal;
@@ -234,9 +238,25 @@
     text-decoration: none;
     margin-right: 40px;
 }
-.div_btnsUpdate a:hover{
+.div_btnsUpdate a:nth-child(1):hover{
     text-decoration: underline;
     transition: all ease 0.3s;
+}
+.div_btnsUpdate a:nth-child(2){
+    background: #8177F5;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    padding-top: 4.5%;
+    text-decoration: none;
 }
 .div_btnsUpdate input{
     background: #8177F5;
@@ -254,6 +274,11 @@
 .div_btnsUpdate input:hover{
     border: solid .1rem #8177F5;
     transition: all ease 0.3s;
+}
+.div_btnsUpdate a:nth-child(2):hover{
+    border: solid .1rem #8177F5;
+    transition: all ease 0.3s;
+    text-decoration: none;
 }
 
 .error{
@@ -305,7 +330,11 @@
 .resize-btn-agregar:hover{
     color: #8177F5;
 }
-
+.btns-R-R{
+    margin-right:20px; 
+    margin-bottom:20px;
+}
+nth-child(1)
 
 
 /* RESPONSIVIDAD */
@@ -347,7 +376,7 @@
     .div_Ajustes_name{
         width: 100%;
     }
-    .div_btnsUpdate a{
+    .div_btnsUpdate a:nth-child(1){
         padding-top: 3%;
     }
 }
@@ -417,7 +446,10 @@
     .div_btnsUpdate input{
         font-size: 14px;
     }
-    .div_btnsUpdate a{
+    .div_btnsUpdate a:nth-child(2){
+        font-size: 14px;
+    }
+    .div_btnsUpdate a:nth-child(1){
         font-size: 14px;
         padding-top: 2%;
     }
@@ -466,8 +498,18 @@
         line-height: 22px !important;
     }
 }
+@media(max-width:420px){
+    .btns-R-R{
+        width: 90%;
+        flex-wrap: wrap;
+        margin-right:auto;
+        margin-left: auto;
+        justify-content: space-between;
+        float: none;
+    }
+}
 @media (max-width:400px){
-    .div_btnsUpdate a{
+    .div_btnsUpdate a:nth-child(1){
         padding-top: 3.5%;
     }
     .div_fotoPerfilM img{ 
