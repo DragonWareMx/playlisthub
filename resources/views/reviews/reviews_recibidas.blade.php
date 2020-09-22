@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -273,6 +274,14 @@
     {{-- PAGINACION --}}
     {{ $reviews->links() }}
 </div>
+
+<br>
+<div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+    <div class="div_contbtns">
+        <a href="{{route('reviews')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
+</div>
+<br>
 
 <script>
     function leermas(numero) {

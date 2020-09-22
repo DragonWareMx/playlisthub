@@ -27,13 +27,11 @@
 
 {{-- @if (!$error) --}}
     <div class="div_perfilMusico">
-        <div class="div_CabeceraApartado">
+        <div class="div_CabeceraApartado"> 
             <div class="div_tituloApartado">
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
-            {{-- CHECAR SI ES FAVORITO O NO, recgargar la página cuando se marque o desmarque, poner un javascript para ocultar el btn --}}
-            <a href="#" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
-            {{-- <a href="#" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a> --}}
+            <a href="{{route('administrar-cuenta')}}" style="color: #8177F5"><i class="fas fa-cog"></i>&nbsp;&nbsp;Administrar tu cuenta</a>
         </div>  
         @foreach ($usuario as $user)  
         <div class="div_infoPerfilM">
@@ -54,6 +52,7 @@
             <div class="div_tituloApartado resize_tituloApartado">
                 <p><img class="img_ico_title_o" src="/img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlists actuales</p>
             </div>
+            <a href="#" class="resize-btn-agregar"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
         </div>
 
         

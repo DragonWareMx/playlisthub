@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -16,19 +17,14 @@
     use Carbon\Carbon;
     use App\User;
 @endphp
-
-<div class="div_90_o" style="max-width: 1059px;">
-
-    {{-------------------------- REVIEWS REALIZADAS --------------------------}}
-    <div style="margin-top:30px;" class="ico_title60_o">
-        <img class="img_ico_title_o" src="img/iconos/overtime.png" alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Reviews realizadas</div>
+<div class="div_CabeceraApartado reviews-cabecera" style="margin-top:40px">
+    <div class="div_tituloApartado" style="width:auto">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/overtime.png")}} alt="">&nbsp;&nbsp;Reviews realizadas</p>
     </div>
-
     {{-- ESTRELLAS (CALIFICACIÓN) --}}
-    <div href="#" class="review_calificacion" style="margin-top:30px;">
+    <div href="#" class="review_calificacion">
         {{-- PENDIENTES(MUSICO)/SOLICITUDES(CURADOR) --}}
-        <div class="review_calificacion_item">
+        <div class="review_calificacion_item" style="margin-top: 8px">
             <a href="{{Route('reviewsPendientes')}}">@if($tipo)Pendientes @else Solicitudes @endif</a>
         </div>
 
@@ -37,9 +33,12 @@
             <img class="img_review" src="img/iconos/user.png" alt="">
             <div class="p_review">{{ $nrealizadas }} en total</div>
         </div>
-    </div>
+    </div> 
+</div>
 
-    <hr class="hr_100_o">
+<div class="div_90_o" style="max-width: 1059px;">
+
+    
 
     <div class="reviews_list">
         {{-- !!!!!!!!!!! EN ESTA PARTE MAXIMO DEBEN APARECER 3 REVIEWS !!!!!!!!!!! --}}
@@ -263,6 +262,14 @@
     {{-- PAGINACION --}}
     {{ $realizadas->links() }}
 </div>
+
+<br>
+<div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+    <div class="div_contbtns">
+        <a href="{{route('reviews')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
+</div>
+<br>
 
 <script>
     function leermas(numero) {

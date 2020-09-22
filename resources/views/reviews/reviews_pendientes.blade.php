@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -17,15 +18,12 @@
     use App\User;
     use Illuminate\Support\Facades\Crypt;
 @endphp
-
-<div class="div_90_o" style="max-width: 1059px;">
-    {{-- REVIEWS/SOLICITUDES PENDIENTES--}}
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src="img/iconos/pendiente.png" alt="">
-        <div class="p_title_o">@if($tipo)&nbsp;&nbsp;Reviews pendientes @else&nbsp;&nbsp;Solicitudes pendientes @endif</div>
+<div class="div_CabeceraApartado reviews-cabecera" style="margin-top:40px">
+    <div class="div_tituloApartado" style="width:auto">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/pendiente.png")}} alt="">@if($tipo)&nbsp;&nbsp;Reviews pendientes @else&nbsp;&nbsp;Solicitudes pendientes @endif</p>
     </div>
-
-    <hr class="hr_100_o">
+</div>
+<div class="div_90_o" style="max-width: 1059px;">
 
     <div class="reviews_list">
         {{-- si el usuario es del tipo musico / si es falso entonces es de curador--}}
@@ -116,7 +114,7 @@
                                 @php
                                     $id= Crypt::encrypt($camp->id);
                                 @endphp
-                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r">
+                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r" style="background-color: #f2f1ff;">
                                     Realizar review
                                 </a>
                             </div>
@@ -217,7 +215,7 @@
                                 @php
                                     $id= Crypt::encrypt($camp->id);
                                 @endphp
-                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r">
+                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r" style="background-color: #f2f1ff;">
                                     Revisar solicitud
                                 </a>
                             </div>
@@ -232,4 +230,12 @@
         @endif
     </div>
 </div>
+
+<br>
+<div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+    <div class="div_contbtns">
+        <a href="{{route('reviews')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    </div>
+</div>
+<br>
 @endsection

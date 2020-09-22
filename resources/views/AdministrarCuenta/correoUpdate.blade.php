@@ -41,7 +41,7 @@
     </div>
     <div class="div_btnsUpdate">
         <div class="div_contbtns">
-            <a href="javascript:history.back(-1);">Cancelar</a>
+            <a href="{{route('administrar-cuenta')}}">Cancelar</a>
             <input class="" type="submit" value="Guardar">
         </div>
     </div>

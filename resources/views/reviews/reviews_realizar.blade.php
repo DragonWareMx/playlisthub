@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -27,14 +28,14 @@
     </div>
 @endif
 
-<div class="div_90_o" style="max-width: 1059px;">
-    {{-- REALIZAR REVIEW/REVISAR SOLICITUD --}}
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src="/img/iconos/escribir.png" alt="">
-        <div class="p_title_o">@if($tipo)&nbsp;&nbsp;Realizar review @else&nbsp;&nbsp;Revisar solicitud @endif</div>
+<div class="div_CabeceraApartado reviews-cabecera" style="margin-top:40px">
+    <div class="div_tituloApartado" style="width:auto">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/escribir.png")}} alt="">@if($tipo)&nbsp;&nbsp;Realizar review @else&nbsp;&nbsp;Revisar solicitud @endif</p>
     </div>
+</div>
 
-    <hr class="hr_100_o">
+<div class="div_90_o" style="max-width: 1059px;">
+    
 
     <form id="form_review" method="post" action="{{Route('storeReview')}}" style="width: 100%">
         @csrf
@@ -155,11 +156,18 @@
                         </div>
 
                         {{-- REALIZAR REVIEW --}}
-                        <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
+                        {{-- <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
                             <a href="javascript:{}" onclick="checkForm()" class="review_content_realizar_r">
                                 Enviar
                             </a>
+                        </div> --}}
+                        <div class="div_btnsUpdate">
+                            <div class="div_contbtns">
+                                <a href="javascript:history.back(-1);">Cancelar</a>
+                                <input class="" type="submit" value="Enviar">
+                            </div>
                         </div>
+
                     </div>
                 </div>
             @else
@@ -309,17 +317,24 @@
                         </div>
 
                         {{-- REVIEW --}}
-                        <div class="review_content_review r_p" style="margin-bottom: 0px">
+                        <div class="review_content_review r_p" style="margin-bottom: 0px;" >
                             <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)" onchange="caracteres()">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
                         </div>
 
                         {{-- REALIZAR REVIEW --}}
-                        <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
+                        {{-- <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
                             <a href="javascript:{}" onclick="checkForm()" class="review_content_realizar_r">
                                 Enviar
                             </a>
+                        </div> --}}
+                        <div class="div_btnsUpdate" >
+                            <div class="div_contbtns btns-R-R" >
+                                <a href="javascript:history.back(-1);">Cancelar</a>
+                                <input class="" type="submit" value="Enviar">
+                            </div>
                         </div>
+
                     </div>
                 </div>
             @endif

@@ -138,7 +138,7 @@
 <br>
 <div class="div_eliminarCuenta">
     <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-minus-circle" ></i>&nbsp;&nbsp;Eliminar cuenta</a>
-    <a href="{{route('perfil-musico')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+    <a href="javascript:history.back(-1);" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
 </div>
 <br>
 
