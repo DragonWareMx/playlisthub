@@ -153,8 +153,14 @@
                         <div class="review_content_review r_p" style="margin-bottom: 0px">
                             <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
+                            <div id="msj1" class="msjErro-r1">
+                                La review debe tener 150 caracteres como mínimo
+                            </div>
+                            <div id="msj2" class="msjErro-r2">
+                                La review puede tener 3000 caracteres como máximo
+                            </div>
                         </div>
-
+                        
                         {{-- REALIZAR REVIEW --}}
                         <div class="div_btnsUpdate" >
                             <div class="div_contbtns btns-R-R" >
@@ -313,15 +319,22 @@
 
                         {{-- REVIEW --}}
                         <div class="review_content_review r_p" style="margin-bottom: 0px;" >
-                            <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)" onchange="caracteres()">{{ old('review') }}</textarea>
+                            <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)" onchange="caracteres(this)">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
+                            <div id="msj1" class="msjErro-r1">
+                                La review debe tener 150 caracteres como mínimo
+                            </div>
+                            <div id="msj2" class="msjErro-r2">
+                                La review puede tener 3000 caracteres como máximo
+                            </div>
                         </div>
+                        
                         {{-- REALIZAR REVIEW --}}
                         
                         <div class="div_btnsUpdate" >
                             <div class="div_contbtns btns-R-R" >
                                 <a href="javascript:history.back(-1);">Cancelar</a>
-                                <a href="javascript:{}" onclick="checkForm()">Enviar</a>
+                                <a href="javascript:{}" onclick="checkForm()">Enviar</a> 
                             </div>
                         </div>
 
@@ -334,7 +347,6 @@
 
 <script>
     function caracteres(){
-        
     }
 
     function checkForm() {
@@ -342,15 +354,21 @@
         //VERIFICA QUE EL COMENTARIO CUMPLA CON LA LONGITUD MINIMA Y MAXIMA
         var minLength = 150;
         var maxLength = 3000;
+        var msj1= document.getElementById('msj1');
+        var msj2= document.getElementById('msj2');
 
         var textarea = document.getElementById('review');
 
         if(textarea.value.length < minLength) {
-            alert('La review debe tener ' + minLength + ' caracteres como mínimo.');
+            msj2.style.display = 'none';
+            msj1.style.display = 'block';
+            // alert('La review debe tener ' + minLength + ' caracteres como mínimo.');
             return false;
         }
         else if(textarea.value.length > maxLength){
-            alert('La review puede tener ' + maxLength + ' caracteres como máximo.');
+            msj1.style.display = 'none';
+            msj2.style.display = 'block';
+            // alert('La review puede tener ' + maxLength + ' caracteres como máximo.');
             return false;
         }
 

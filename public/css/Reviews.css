@@ -227,10 +227,12 @@
     text-align: justify;
     
     color: #5C5C5C;
-
+    border-bottom: solid 1px #c7c7c7;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-radius:3px;
     line-height:2em;
-    border:none;
     padding:3px;
     -webkit-transition: height 0.1s ease;
     -moz-transition: height 0.1s ease;
@@ -379,7 +381,17 @@
 .d_m{
     margin-left: 0px !important;
 }
-
+.msjErro-r1, .msjErro-r2 {
+    display: none;
+    font-size: 14px;
+    color: #8177F5;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    transition: all 0.2s;
+    /* padding-left:4.3%; */
+}
 
 /*-------------------------------------- SISTEMA DE ESTRELLAS --------------------------------------*/
     /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
@@ -475,7 +487,12 @@
 }
 
 @media(max-width: 600px){
-
+    .msjErro-r1, .msjErro-r2 {
+        font-size: 13px;
+    }
+    .reviews_list .review_item .review_content .review_content_realizar_r_div .review_content_realizar_r{
+        font-size: 14px;
+    }
     .reviews_list .review_item .review_content .review_content_review textarea{
         font-size: 14px;
     }
@@ -580,12 +597,25 @@
         width: 100%;
     }
     .reviews_list .review_item .review_content .review_content_realizar_r_div{
-        margin-left: auto;
-        margin-right: auto;
+        display: flex;
+        justify-content: center;
     }
     .reviews_list .review_item .review_content .review_content_review textarea{
         font-size: 14px;
         line-height: 16px;
+    }
+    .reviews_list .review_item .review_content .review_content_realizar_r_div .review_content_realizar_r{
+        text-align: center;
+    }
+}
+
+@media(max-width:420px){
+    .reviews_list .review_item .review_content .review_content_realizar_r_div .review_content_realizar_r{
+           
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 
