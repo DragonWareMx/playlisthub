@@ -26,6 +26,7 @@ Route::post('/crear-paso-3','OController@crearCampana3')->name('crearCampana3');
 Route::get('crear-paso-3','OController@recrearCampana3');
 Route::post('/create-store-step','OController@storeCamp')->name('storeCamp');
 Route::get('/tokens','OController@tokens')->name('tokens');
+Route::post('/relogin', function(){    Auth::logout();  return Redirect::to('login/spotify'); })->name('relogin');
 
 Route::get('/TableroM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
