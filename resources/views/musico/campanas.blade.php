@@ -32,11 +32,11 @@
                     @endphp
                     @foreach ($campsAct as $camp)
                         <div class="div_item_campana_o">
-                        <div class="img_item_campana_o" style="background-image:url('{{$playlistsAct[$i]->images[0]->url}}');
-                            background-size: contain;
-                            -moz-background-size: cover;
-                            -o-background-size: cover;
-                            -webkit-background-size: cover;">
+                            <div class="img_item_campana_o" style="background-image:url('{{$playlistsAct[$i]->images[0]->url}}');
+                                background-size: contain;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                -webkit-background-size: cover;">
                                 <div class="campanas_encabezado_cancion_o">
                                     {{Str::limit($songsAct[$i]->name, 39)}}
                                 </div>
@@ -45,6 +45,7 @@
                                 </div>
                                 <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="img/iconos/sp white logo.png" alt=""></div>
                             </div>
+                            <div class="background_o"></div>
                             <div class="campana_title_o">TOKENS</div>
                             <div class="campana_text_o">{{$camp->cost}}</div>
                             <div class="campana_title_o">PLAYLIST</div>
@@ -212,10 +213,13 @@
         </div>
     @else
         <div class="div_error_o">
-            <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
-            <a href="http://127.0.0.1:8000/login/spotify" id="a_error_o" class="inicio-spotybtn">
-                <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
-            </a>
+            <form action="{{route('relogin')}}" method="POST">
+                @csrf
+                <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+                <button type="submit" id="a_error_o" class="inicio-spotybtn">
+                    <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+                </button>
+            </form>
         </div>
     @endif
 @endsection

@@ -256,6 +256,14 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+.background_o{
+    width: 100%;
+    height: 93px;
+    display: flex;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.25);
+    margin-top: -93px;
+}
 .campanas_encabezado_cancion_o{
     width: 60%;
     font-family: Roboto;
@@ -1273,6 +1281,10 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    .background_o{
+        height: 75px;
+        margin-top: -75px;
+    }
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
         width: 70%;
         font-size: 12px;
@@ -1324,6 +1336,10 @@
         padding-top: 7px;
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .background_o{
+        height: 93px;
+        margin-top: -93px;
     }
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
         width: 60%;
