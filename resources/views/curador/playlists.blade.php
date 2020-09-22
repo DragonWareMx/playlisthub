@@ -70,7 +70,7 @@
     <div class="p_title_o">
         <img class="logo_ranking" src="img/iconos/match.png" alt=""> &nbsp;&nbsp;<span class="txt_title">Canciones con match</span>
     </div>
-    <a class="item_right" href="#">Solicitudes</a>
+    <a class="item_right" href="{{route('reviewsPendientes')}}">Solicitudes</a>
     <hr class="hr_100_o">
     <!--tabla canciones con match-->
     <div class="div_content">

@@ -191,5 +191,317 @@ class Playlists extends Seeder
             'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DWXceHWsfM22I?si=FQgZ8y3vSyKAZTGFxEPGOg',
             'user_id'=>4
         ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/2aJOycqHbkJYXZ2vZ9Wgyp?si=-C-nCg6CTMm28bplBKZtnA',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/0EfZGNw0JHvoCkNfnMDYAU?si=U9uXgjMuRDeXY1GEDT8UhQ',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DWTmGGCbcoQhY?si=3Ppl3FVmTjC990eXNwIB7w',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX2URKHjAj20D?si=OVIDmQ46RvaYJXE2KFow8w',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/3uL8Ly0gFkGRusTfHKUdQL?si=MOBtyqlvSS2GWwhsCgzitA',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/1kIdpyyoNn3SSJj9nFWU7f?si=y0TzSLvcQViZ9SRi6Bc_GA',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/2237sMNMlXS4wWLgdQ1UuV',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DXe6bgV3TmZOL',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX76t638V6CA8?si=pqyqfJ9YRUaHzM2hrodKeg',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DWVciwe52Zt0R',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5i6TPyuopfPKAaamnsLskD',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/0fNNZ3QzK0BDPgPrdcTyuU',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5sR0mmFaRHyuADDulJelJb',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/0iRYimgRUT52YoGmg1jerj',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX5BAPG29mHS8',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX2rtAnhOgHNC',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/1lYC7XQ5zUp3J9cc0H5Nwb',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37Rhu95nrZX1D9kHQkzCsQ?si=npTHlS3-R3y08lYQd0FKBQ',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/63bIDddwkMVnWb0I5duf8A',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5ANxfoVce6973RY7k5wDnB',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZEVXbKXQ4mDTEBXq',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/6Z6uprRI9AcbB3on3GZK0H',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/0la7RHMMbKUbYEUDQLdZ3P',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5HJh115GFoZGzuXGRJO7B4',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/7ccKRHcNatehyGOS7Ctycw',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4sfSa33DyplxQhDBLjOuwD',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/1xMRYfCoCIPNsdLaYbrH3q',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/6joEWwbov1heeFU2vILmzN',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5YisCbxyb1qfYz13DcNbNU',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/05GAvqdLaCNsCp8GQwJE5g',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4Nb5G8PDHFl5FKmRjz27kk',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DWXm9R2iowygp',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/597jkYcWWa5l15HzmJxkyF',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/1FSnzuNsvFZqU8MF34eoAx?si=1K1nUhdNTn6q6BB8GzyiSA',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5TqgRiyl1aV6A8xClBK4WH',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/3wgnWYcEiuxQrMTK2lbZxd?si=rYF1TN1MS2G7BbYOUts4uA',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/08tmkVRTJx83PRONf81rvf',
+            'user_id'=>4
+        ]);
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/6sYWMOzVHTX9Edvi7gYXiL?si=ZUSUpFiGT36fQVu_2WFsAQ',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4uSvG0Q1k2yhHX8jWABZoI?si=WsJVX2iwTmmxSlc7JuFe6w',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4RZHGMiPzjc0tjTaKhHuiv',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4tKpXWS6GNnsNsJuAM9GXK',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/37i9dQZF1DX09mi3a4Zmox',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/51YhlDxD5xBu0Asg1jPZHt?si=8O7KXZdDTpWMgnegy5eoQQ',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/2ZONg885GRx1XlgcsNVzLk?si=duMTs-pRS1CQedMd_gYaqA',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/2rhYiWRMoVoZyOQUtPDDzA?si=F7utP2ZzSsOslV5zSfkzvw',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/5NR9PTONpAnQosYaYChQ39?si=W7FdgZy2TSSJM7SUDZnWDA',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/2OuARtC9zwzmhzjvxCGsMl?si=UuMaMZ9OQjCSXi0xEruqFg',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/0UcwCkqWyi3ytmn02wg49L?si=pOrbsdYqSsarTQqwC4t3oQ',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/6NnmhlZkomby9sLz353xqK?si=nZhJ5lQzRb-g0MSIS3mfLw',
+            'user_id'=>4
+        ]);
+        
+        DB::table('playlists')->insert([
+            'tier' => 2.5,
+            'profits' => 24,
+            'link_playlist' => 'https://open.spotify.com/playlist/4oV9FunjBgpX3vFKCDdQyR?si=9H8KauXBQPGzTXfcHb9LZw',
+            'user_id'=>4
+        ]);
     }
 }
