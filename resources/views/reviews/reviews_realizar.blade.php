@@ -156,15 +156,10 @@
                         </div>
 
                         {{-- REALIZAR REVIEW --}}
-                        {{-- <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
-                            <a href="javascript:{}" onclick="checkForm()" class="review_content_realizar_r">
-                                Enviar
-                            </a>
-                        </div> --}}
-                        <div class="div_btnsUpdate">
-                            <div class="div_contbtns">
+                        <div class="div_btnsUpdate" >
+                            <div class="div_contbtns btns-R-R" >
                                 <a href="javascript:history.back(-1);">Cancelar</a>
-                                <input class="" type="submit" value="Enviar">
+                                <a href="javascript:{}" onclick="checkForm()">Enviar</a>
                             </div>
                         </div>
 
@@ -321,17 +316,12 @@
                             <textarea id="review" name="review" placeholder="Escribe tu review (150 caracteres como mínimo)" oninput="auto_grow(this)" onchange="caracteres()">{{ old('review') }}</textarea>
                             <div id="caracteres_escritos" style="font-size: 12px; font-weight:200">caracteres: 0</div>
                         </div>
-
                         {{-- REALIZAR REVIEW --}}
-                        {{-- <div class="review_content_realizar_r_div form_rea_r" style="margin-top: 11px; margin-bottom:22px;">
-                            <a href="javascript:{}" onclick="checkForm()" class="review_content_realizar_r">
-                                Enviar
-                            </a>
-                        </div> --}}
+                        
                         <div class="div_btnsUpdate" >
                             <div class="div_contbtns btns-R-R" >
                                 <a href="javascript:history.back(-1);">Cancelar</a>
-                                <input class="" type="submit" value="Enviar">
+                                <a href="javascript:{}" onclick="checkForm()">Enviar</a>
                             </div>
                         </div>
 

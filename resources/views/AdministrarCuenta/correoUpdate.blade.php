@@ -49,12 +49,6 @@
     @endforeach
 </div>
 
-<br>
-<div class="div_eliminarCuenta" style="display: flex; justify-content:right">
-    <div class="div_contbtns">
-        <a href="{{route('administrar-cuenta')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
-    </div>
-</div>
-<br>
+<
 
 @endsection

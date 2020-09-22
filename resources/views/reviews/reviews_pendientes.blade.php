@@ -114,10 +114,12 @@
                                 @php
                                     $id= Crypt::encrypt($camp->id);
                                 @endphp
-                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r" style="background-color: #f2f1ff;">
+                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r">
                                     Realizar review
                                 </a>
                             </div>
+
+                            
                         </div>
                     </div>
                 @endforeach
@@ -215,7 +217,7 @@
                                 @php
                                     $id= Crypt::encrypt($camp->id);
                                 @endphp
-                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r" style="background-color: #f2f1ff;">
+                                <a href="{{ route('realizarReview',[$id]) }}" class="review_content_realizar_r" >
                                     Revisar solicitud
                                 </a>
                             </div>
