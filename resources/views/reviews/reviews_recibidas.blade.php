@@ -17,14 +17,10 @@
     use Carbon\Carbon;
     use App\User;
 @endphp
-
-<div class="div_90_o" style="max-width: 1059px;">
-    {{-------------------------- REVIEWS RECIBIDAS --------------------------}}
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src="img/iconos/reviews.png" alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Reviews recibidas</div>
+<div class="div_CabeceraApartado reviews-cabecera" style="margin-top:40px">
+    <div class="div_tituloApartado" style="width:auto">
+        <p><img class="img_ico_title_o" src={{asset("img/iconos/reviews.png")}} alt="">&nbsp;&nbsp;Reviews recibidas</p>
     </div>
-
     {{-- ESTRELLAS (CALIFICACIÓN) --}}
     <div href="#" class="review_calificacion">
 
@@ -60,8 +56,8 @@
             <div class="p_review">{{ $numReviews }} en total</div>
         </div>
     </div>
-
-    <hr class="hr_100_o">
+</div>
+<div class="div_90_o" style="max-width: 1059px;">
 
     @php
         //contador para identificar los contenidos / sirve para el funcionamiento del boton leer mas

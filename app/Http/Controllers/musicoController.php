@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use App\Camp;
 use App\Genre;
+use App\Review;
 use App\Genre_Playlist;
 use App\Playlist;
 use Carbon\Carbon;
@@ -133,7 +134,7 @@ class musicoController extends Controller
         if($usuario == null){
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
-
+        //CAMPAÑAS
         $hoy = Carbon::now();
         $campsAct=Camp::with('playlist')->orderBy('start_date','desc')->where([
             ['status', '=', 'espera'],
@@ -235,9 +236,45 @@ class musicoController extends Controller
         if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($songsAnt[0]->error) || isset($playlistsAnt[0]->error)){
             $error=true;
         }
+        //REVIEWS
+        //booleano que indica el tipo del usuario (true = musico, false = curador)
+        $tipo;
+
+        //verifica que tipo de usuario es
         
-        return view ('musico.perfilMusico', ['usuario' => $usuario, 'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
+        $tipo = true;
+
+        //reviews de las campanas del usuario musico
+        $reviews = Review::whereHas('camp', function ($query) {
+            return $query->where('user_id', '=', Auth::id());
+        })->orderBy('date','desc')
+        ->whereNull('playlist_id')
+        ->get();
+
+        //reviews a playlists de curadores que el musico ha realizado
+        $realizadas = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
+                                    ->where('user_id', '=', Auth::id())
+                                    ->get();
+
+        //obtenemos el promedio de las reviews y la cantidad de reviews
+        $total = 0;
+        $numReviews = 0;
+
+        if(count($reviews) > 0){
+            foreach($reviews as $review){
+                $total+=$review->rating;
+                $numReviews++;
+            }
+
+            $calificacion = round($total/$numReviews,1);
+        }
+        else{
+            $calificacion = 0;
+        }
+
+        return view ('musico.perfilMusico', ['usuario' => $usuario, 'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error, 'tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
     }
+
     public function perfilPublico($id) 
     {
         try { 
