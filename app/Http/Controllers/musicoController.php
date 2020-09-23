@@ -17,6 +17,16 @@ class musicoController extends Controller
 {
     public function index()
     {
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
         $hoy = Carbon::now();
         $campsAct=Camp::with('playlist')->orderBy('start_date','desc')->where([
             ['status', '=', 'espera'],
@@ -119,7 +129,7 @@ class musicoController extends Controller
             $error=true;
         }
 
-        return view ('musico.inicioMusico', ['campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
+        return view ('musico.inicioMusico', ['usuario' => $usuario,'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error]);
         
     } 
 

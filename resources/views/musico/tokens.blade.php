@@ -11,6 +11,15 @@
 @endsection
 
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="div_90_o">
     <div class="ico_title60_o">
         <img class="img_ico_title_o" src="img/iconos/tokens.png" alt="">
@@ -21,7 +30,9 @@
         <div id="btnModal" class="txt_a_o">Comprar</div>
     </button>
     <hr class="hr_100_o">
-    <div class="div_tokens_o"> 15 tokens</div>
+    @foreach ($usuario as $user)
+        <div class="div_tokens_o"> {{$user->tokens}}&nbsp;tokens</div>
+        @endforeach 
     <div class="ico_title_o">
         <img class="img_ico_title_o" src="img/iconos/buy.png" alt="">
         <div class="p_title_o">&nbsp;&nbsp;Paquetes de tokens disponibles para compra</div>
