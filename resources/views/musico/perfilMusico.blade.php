@@ -249,7 +249,7 @@
                                                 <img src="img/iconos/reviewsmiddle.png" alt="">
                                                 @php
                                                 $total-=$total;  
-                                                @endphp
+                                                @endphp 
                                             @else 
                                                 <img src="img/iconos/op.png" alt="">
                                             @endif
@@ -313,12 +313,15 @@
 </div>
 
    
-@else 
+@else
     <div class="div_error_o">
-        <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
-        <a href="http://127.0.0.1:8000/login/spotify" id="a_error_o" class="inicio-spotybtn">
-            <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
-        </a>
+        <form action="{{route('relogin')}}" method="POST">
+            @csrf
+            <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+            <button type="submit" id="a_error_o" class="inicio-spotybtn">
+                <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+            </button>
+        </form>
     </div>
 @endif
 <script>

@@ -641,6 +641,9 @@
 }
 .a_comprar_o{   
     color: #8177F5;
+}
+.a_comprar_o:hover{   
+    color: #8177F5;
     text-decoration: underline;
 }
 .txt_italic_14{
@@ -659,9 +662,13 @@
     border-radius: 5px;
 }
 .a_row_play_o{
-    text-decoration-line: underline;
+    /* text-decoration-line: underline; */
     color: #8177F5;
     transition: ease-in-out 0.3s;
+}
+.a_row_play_o:hover{
+    text-decoration-line: underline;
+    color: #8177F5;
 }
 .botones_margin_subir{
     margin-top: -55px;
@@ -771,7 +778,7 @@
     line-height: 100%;
     fill: solid;
     color: #5C5C5C;
-    border: 0.3px solid #5C5C5C;
+    border: 0.3px solid #c0c0c0;
     box-sizing: border-box;
     border-radius: 5px;
     padding-top:12px;
@@ -781,7 +788,12 @@
 }
 .table_row_o:hover{
     cursor: hand;
+    border: 0.5px solid #8177F5;
+    transition: ease 0.2s;
+}
+.table_row_o:focus{
     border: 2px solid #8177F5;
+    transition: ease 0.2s;
 }
 .txt_row_play_o{
     width: 18%;
@@ -814,9 +826,9 @@
     font-style: italic;
 }
 .success_msg_o{
-    width: 80%;
+    width: 90%;
     background-color: #8177F5;
-    border: 2px solid #8277f5a1;
+    border: 2px solid #8177F5;
     border-radius: 5px;
     color: #FFFFFF;
     padding: 5px;
@@ -923,9 +935,8 @@
     transition: ease-in-out 0.3s;
 }
 #a_error_o:hover{
-    width: 150px;
-    text-decoration: none;
-    color: #C96DD8;
+    text-decoration: underline;
+    color: white;
     transition: ease-in-out 0.3s;
 }   
 .lds-spinner {

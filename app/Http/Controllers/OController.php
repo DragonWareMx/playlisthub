@@ -699,6 +699,16 @@ class OController extends Controller
     public function tokens()
     {
         Gate::authorize('haveaccess','musico.perm');
-        return view ('musico.tokens');
+
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+        return view ('musico.tokens', ['usuario'=>$usuario]);
     }
 }

@@ -14,7 +14,7 @@
 @section('contenido')
 @if (session()->get('success'))
     <div class="success_msg_o">
-        Campaña creada con éxito!!!
+        ¡Campaña creada con éxito!
     </div>
 @endif
     @if (!$error)

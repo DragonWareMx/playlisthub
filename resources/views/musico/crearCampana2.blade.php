@@ -62,7 +62,7 @@
         for(var i=0; i<rows.length; i++){
             rows[i].style['background-color'] = 'transparent';
         }
-        document.getElementById(id).style.backgroundColor="#ca6dd88e";
+        document.getElementById(id).style.backgroundColor="#f8f9fc";
         if(cost > tokens){
             document.getElementById('notEnoughTokens').hidden=false;
             document.getElementById('enoughTokens').classList.add('botones_margin_subir');
