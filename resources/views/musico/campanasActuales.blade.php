@@ -39,6 +39,7 @@
                             </div>
                             <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="img/iconos/sp white logo.png" alt=""></div>
                         </div>
+                        <div class="background_o"></div>
                         <div class="campana_title_o">TOKENS</div>
                         <div class="campana_text_o">{{$camp->cost}}</div>
                         <div class="campana_title_o">PLAYLIST</div>
