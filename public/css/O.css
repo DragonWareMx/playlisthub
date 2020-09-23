@@ -1678,3 +1678,26 @@
         font-size: 14px;
     }
 }
+  
+/* IMAGE STYLES */
+[type=radio] + img {
+cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked:after {
+    background-color: #ffa500;
+}
+
+.StripeElement{
+    height: 42px;
+    padding: 0px 15px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}

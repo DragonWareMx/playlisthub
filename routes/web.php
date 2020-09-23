@@ -102,5 +102,7 @@ Route::get('/register/musico/spotify/callback','RegistroController@MusicoSpotyCa
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
 
+//pagos
+Route::post('/tokens/payment','PaymentController@payment')->name('payment');
 
 Route::get('/home', 'HomeController@index');

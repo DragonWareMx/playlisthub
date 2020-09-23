@@ -12,6 +12,7 @@ use App\Genre_Playlist;
 use App\Playlist;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class OController extends Controller
 {
@@ -21,6 +22,7 @@ class OController extends Controller
     }
     public function favoritos()
     {
+        Gate::authorize('haveaccess','musico.perm');
         $user=User::with('favorites')->findOrFail(Auth::id());
         $favorites=[];
         $i=0;
@@ -56,6 +58,7 @@ class OController extends Controller
     }
     public function campanas()
     {
+        Gate::authorize('haveaccess','musico.perm');
         $hoy = Carbon::now();
         $campsAct=Camp::with('playlist')->orderBy('id','desc')->where([
             ['status', '=', 'espera'],
@@ -161,6 +164,7 @@ class OController extends Controller
     }
     public function campanasActuales()
     {
+        Gate::authorize('haveaccess','musico.perm');
         $hoy = Carbon::now();
         $campsAct=Camp::with('playlist')->orderBy('id','desc')->where([
             ['status', '=', 'espera'],
@@ -220,6 +224,7 @@ class OController extends Controller
     }
     public function campanasAntiguas()
     {
+        Gate::authorize('haveaccess','musico.perm');
         $hoy = Carbon::now();
         $campsAnt=Camp::orderBy('id','desc')->
         where([
@@ -276,6 +281,7 @@ class OController extends Controller
     }
     public function campana(request $request)
     {
+        Gate::authorize('haveaccess','musico.perm');
         $id=$request->id;
         $camp=Camp::findOrFail($id);
         if(Auth::id()==$camp->user_id){
@@ -326,17 +332,21 @@ class OController extends Controller
     }
     public function crearCampana1()
     {
+        Gate::authorize('haveaccess','musico.perm');
         return view ('musico.crearCampana1');
     }
     public function recrearCampana2()
     {
+        Gate::authorize('haveaccess','musico.perm');
         return redirect('/crear-paso-1');
     }
     public function recrearCampana3(){
+        Gate::authorize('haveaccess','musico.perm');
         return redirect('/crear-paso-1');
     }
     public function crearCampana2(request $request)
     {
+        Gate::authorize('haveaccess','musico.perm');
         ini_set('max_execution_time', 500);
         $data=request()->validate([
             'link'=>'required'
@@ -613,6 +623,7 @@ class OController extends Controller
     }
     public function crearCampana3(request $request)
     {
+        Gate::authorize('haveaccess','musico.perm');
         foreach(session()->get('playlistsCosts') as $playlistCost){
             if($playlistCost['playlist'] == $request->selected_playlist){
                 $cost=$playlistCost['cost'];
@@ -660,6 +671,7 @@ class OController extends Controller
         return view ('musico.crearCampana3',['data'=>$data]);
     }
     public function storeCamp(request $request){
+        Gate::authorize('haveaccess','musico.perm');
         $cost=session()->get('playlist_cost');
         $playlist_id=session()->get('selected_playlist');
         $user=User::findOrFail(Auth::id());
@@ -686,6 +698,7 @@ class OController extends Controller
     }
     public function tokens()
     {
+        Gate::authorize('haveaccess','musico.perm');
         return view ('musico.tokens');
     }
 }
