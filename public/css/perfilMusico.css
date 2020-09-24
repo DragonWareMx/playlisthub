@@ -206,7 +206,10 @@
     border-bottom: 2px solid #D0D0D0;
 }
 .input_Ajustes_valor{
-    border: none;
+    border-bottom: 1px #ffffff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     width: 70%;
     font-family: 'Roboto';
     font-style: normal;
@@ -215,6 +218,15 @@
     line-height: 19px;
     color: #686868;
     background-color: transparent;
+}
+.input_Ajustes_valor:hover{
+    transition: ease 0.2s;
+    border-bottom: 1px #8177F5;
+    outline: none;
+}
+.input_Ajustes_valor:focus{
+    border-bottom: 1px #8177F5;
+    outline: none;
 }
 .div_btnsUpdate{
     margin-top: 30px;

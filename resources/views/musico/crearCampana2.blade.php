@@ -24,17 +24,27 @@
             <div class="txt_derecha_o">Tokens totales: {{$user->tokens}} </div>
         </div>
         <div class="table_head_o">
-            <div class="img_playlist_o_2" style="margin-bottom:0px"></div> <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head_o">CURADOR</div> <div class="txt_row_head_o"># DE SEGUIDORES</div> 
+            <div class="img_playlist_o_2" style="margin-bottom:0px"></div> 
+            <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
+            <div class="txt_row_responsive">PLAYLIST</div> 
+            <div class="txt_row_head_o">CURADOR</div>
+            <div class="txt_row_responsive">CURADOR</div>
+            <div class="txt_row_head_o"># DE SEGUIDORES</div> 
+            <div class="txt_row_responsive">SEGUIDORES</div> 
             <div class="txt_row_head_o">TOKENS REQUERIDOS</div>
+            <div class="txt_row_responsive">TOKENS</div>
         </div>
         <hr class="hr_100_o" style="margin-top:0px;">
         @foreach ($playlists as $playlist)
         <button id="{{$playlist['id']}}" class="table_row_o" onclick="selectPlaylist(this.id,{{$playlist['cost']}},{{$user->tokens}},{{$playlist['curator_id']}})">
             <img class="img_playlist_o" src="{{$playlist['image']}}" alt=""> 
+            <p class="p_responsivep">PLAYLIST</p>
             <a href=" {{$playlist['url']}} "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist['name']}} </a> 
+            <p class="p_responsivep">CURADOR</p>
             <div class="txt_row_play_o"> {{$playlist['curator_name']}} </div> 
+            <p class="p_responsivep">SEGUIDORES</p>
             <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
+            <p class="p_responsivep">TOKENS</p>
             <div class="txt_row_play_o"> {{$playlist['cost']}} </div>
         </button> 
         @endforeach

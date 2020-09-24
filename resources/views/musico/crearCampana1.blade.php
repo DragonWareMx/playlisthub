@@ -30,13 +30,13 @@
         <a style="border:none; background-color:transparent"><b>Paso 1 de 3</b></a>
     </div>
     <div class="div_90_o">
-        <div class="div_campana_info_o">
+        <div class="div_campana_info_1">
             <form action="{{Route('crearCampana2')}}" style="width:100%; display:flex; flex-wrap:wrap;" method="POST">
                 @csrf
-                <div class="campana_info_0">
+                {{-- <div class="campana_info_0"> --}}
                     {{-- <img class="campana_info_4_img" src="img/iconos/spotify-img.png" alt=""> --}}
-                </div>
-                <div id="crearCampana_50" class="campana_info_1">
+                {{-- </div> --}}
+                <div id="crearCampana_50">
                     <div class="vercampana_title_o">LINK DE SPOTIFY</div>
                     <input name="link" class="input_crearCampana" type="text" required>
                     <div class="vercampana_title_o" style="display:flex">CÓDIGO DE REFERENCIA <h1 class="normalizar_letra">(Opcional)</h1></div>
