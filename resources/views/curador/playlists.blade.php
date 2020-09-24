@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css"> 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
 @endsection
@@ -12,24 +13,30 @@
     Playlists
 @endsection
 
-@section('contenido')
+@section('contenido') 
 @if (!$error)
+<div class="div_CabeceraApartado" style="margin-top:40px">
+    <div class="div_tituloApartado resize_tituloApartado">
+        <p><img class="img_ico_title_o" src="img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlist activas</p>
+    </div>
+    <a href="#" class="resize-btn-agregar" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
+</div>
 <div class="div_90_o">
-    <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/campanas.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_title"> playlists activas </span>
-    </div>
-    <div class="btn_addPlaylist" data-toggle="modal" data-target="#addModal">
-         <img class="logo_plus" src="img/iconos/plus.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_hide">Agregar</span>
-    </div>
-    <hr class="hr_100_o">
     <!--tabla playlists-->
-    <div class="div_content">
-        <div class="table_head">
-           <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div>
-            <div class="txt_row_head">RANKING</div> <div class="txt_row_head row_hide">NIVEL</div> 
-            <div class="txt_row_head row_hide">SEGUIDORES</div> <div class="txt_row_head row_hide">GANANCIAS</div> 
+    <div class="div_content_o">
+        <div class="table_head_o">
+            <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
+            <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
+            <div class="txt_row_responsive">PLAYLIST</div> 
+            <div class="txt_row_head_o">RANKING</div>
+            <div class="txt_row_responsive">RANKING</div> 
+            <div class="txt_row_head_o">NIVEL</div>
+            <div class="txt_row_responsive">NIVEL</div> 
+            <div class="txt_row_head_o">SEGUIDORES</div>
+            <div class="txt_row_responsive">SEGUIDORES</div> 
+            {{-- <div class="txt_row_head_o">GANANCIAS</div>
+            <div class="txt_row_responsive">GANANCIAS</div>  --}}
         </div>
-        
     
     <!--estos divs se crean con un foreach-->
     @php
@@ -37,10 +44,14 @@
     @endphp
     @foreach ($playlists_registradas as $playlist)
     <hr class="hr_100_o">
-        <div id="{{$playlist->id}}" class="table_row">
-            <img class="img_playlist" src="{{$playlist->images[0]->url}}" alt=""> 
-            <div class="txt_row_play">{{$playlist->name}}</div> <div class="txt_row_play row_hide2">{{$playlists_bd[$i]->tier}}</div> 
-            <div class="txt_row_play row_hide">
+        <div id="{{$playlist->id}}" class="table_row_o table_noBorder">
+            <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
+            <p class="p_responsivep">PLAYLIST</p>
+            <div class="txt_row_play_o">{{$playlist->name}}</div> 
+            <p class="p_responsivep">RANKING</p>
+            <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
+            <p class="p_responsivep">NIVEL</p>
+            <div class="txt_row_play_o">
                 @php
                    if($playlist->followers->total<=5000) $nivel=1;
                    if($playlist->followers->total>5000 && $playlist->followers->total<=15000) $nivel=2;
@@ -55,8 +66,10 @@
                 @endphp
                 nivel {{$nivel}}
             </div>
-            <div class="txt_row_play row_hide">{{$playlist->followers->total}}</div> 
-            <div class="txt_row_play row_hide">${{$playlists_bd[$i]->profits}}</div>
+            <p class="p_responsivep">SEGUIDORES</p>
+            <div class="txt_row_play_o">{{$playlist->followers->total}}</div> 
+            {{-- <p class="p_responsivep">GANANCIAS</p>
+            <div class="txt_row_play_o">${{$playlists_bd[$i]->profits}}</div> --}}
         </div>
     @php
         $i++;
@@ -64,35 +77,45 @@
     @endforeach
     
     </div>
-
-    
-
-    <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/match.png" alt=""> &nbsp;&nbsp;<span class="txt_title">Canciones con match</span>
+</div>
+<div class="div_CabeceraApartado" >
+    <div class="div_tituloApartado resize_tituloApartado">
+        <p><img class="img_ico_title_o" src="img/iconos/match.png" alt="">&nbsp;&nbsp;Canciones con match</p>
     </div>
-    <a class="item_right" href="{{route('reviewsPendientes')}}">Solicitudes</a>
-    <hr class="hr_100_o">
-    <!--tabla canciones con match-->
-    <div class="div_content">
-        <div class="table_head">
-           <div class="img_vacia"></div> <div class="txt_row_head">NOMBRE DE LA CANCIÓN</div> 
-           <div class="txt_row_head">PLAYLIST</div> <div class="txt_row_head row_hide">ARTISTA</div>  
-           <div class="txt_row_head row_hide">TOKENS</div> <div class="txt_row_head row_hide">ESTATUS</div> 
+    <a href="{{route('reviewsPendientes')}}" class="resize-btn-agregar btn-solicitudesC">Solicitudes</a>
+</div>  
+<div class="div_90_o"> 
+    <div class="div_content_o">
+        <div class="table_head_o">
+            {{-- <div class="img_playlist_o_2" style="margin-bottom:0px"></div> --}}
+           <div class="txt_row_head_o">NOMBRE DE LA CANCIÓN</div> 
+           <div class="txt_row_responsive">CANCIÓN</div> 
+           <div class="txt_row_head_o">PLAYLIST</div>
+           <div class="txt_row_responsive">PLAYLIST</div> 
+           <div class="txt_row_head_o">ARTISTA</div> 
+           <div class="txt_row_responsive">ARTISTA</div>  
+           <div class="txt_row_head_o">TOKENS</div>
+           <div class="txt_row_responsive">TOKENS</div> 
+           <div class="txt_row_head_o">ESTATUS</div> 
+           <div class="txt_row_responsive">ESTATUS</div> 
         </div>
-        
-    
     @php
         $i=0
     @endphp
     @foreach ($songsSpoty as $song)
     <hr class="hr_100_o">
-    <div class="table_row">
-        <img class="img_playlist" src="{{$song->album->images[0]->url}}" alt=""> 
-        <div class="txt_row_play">{{$song->name}}</div> 
-        <div class="txt_row_play row_hide2">{{$plnames[$i]}}</div> 
-        <div class="txt_row_play row_hide">{{$song->artists[0]->name}}</div>  
-        <div class="txt_row_play row_hide">{{$songs[$i]->cost}}</div> 
-        <div class="txt_row_play row_hide">{{$songs[$i]->status}}</div> 
+    <div class="table_row_o table_noBorder" style="border:none">
+        <img class="img_playlist_o_match" src="{{$song->album->images[0]->url}}" alt=""> 
+        <p class="p_responsivep">CANCIÓN</p>
+        <div class="txt_row_play_o">{{$song->name}}</div> 
+        <p class="p_responsivep">PLAYLIST</p>
+        <div class="txt_row_play_o">{{$plnames[$i]}}</div> 
+        <p class="p_responsivep">ARTISTA</p>
+        <div class="txt_row_play_o">{{$song->artists[0]->name}}</div>  
+        <p class="p_responsivep">TOKENS</p>
+        <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
+        <p class="p_responsivep">ESTATUS</p>
+        <div class="txt_row_play_o">{{$songs[$i]->status}}</div> 
     </div>
         @php
             $i++;
@@ -146,10 +169,11 @@
                 <form action="{{Route('addPlaylist')}}" method="POST">
                     <input id="link_pl" type="text" required style="display: none" name="link">
                 @csrf
-                <div class="botones_modal">
-                    <button type="button" class="btn_modal_cancel" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn_modal_add">Agregar</button>    
-                </div>
+                <div class="div_tokens_botones">
+                    <a class="a_cancelarTokens close" style="color: #8177F5 !important;" data-dismiss="modal">Cancelar</a>
+                    <button class="a_comprarTokens" type="submit">Agregar</button>  
+                </div> 
+
             </form>
             
       </div>
@@ -194,11 +218,14 @@
   </script>
   
 @else
-<div class="div_error_o">
-    <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
-    <a href="http://127.0.0.1:8000/login/spotify" id="a_error_o" class="inicio-spotybtn">
-        <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
-    </a>
-</div>
+  <div class="div_error_o">
+      <form action="{{route('relogin')}}" method="POST">
+          @csrf
+          <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+          <button type="submit" id="a_error_o" class="inicio-spotybtn">
+              <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+          </button>
+      </form>
+  </div>
 @endif
 @endsection

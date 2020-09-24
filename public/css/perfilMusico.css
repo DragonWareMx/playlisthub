@@ -43,6 +43,10 @@
     border-radius: 20px;
     margin-bottom: 10px;
 }
+.btn-solicitudesC{
+    background-color: transparent;
+    border:none;
+}
 
 .img_ico_title_o{
     width: 18px;

@@ -3,6 +3,9 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
+    <link rel="stylesheet" type="text/css" href="/css/O.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/L.css">
 @endsection
 
 @section('menu')
@@ -10,40 +13,54 @@
 @endsection
 
 @section('contenido')
-<div class="div_90_o">
-    <div class="p_title_o">
-        <img class="logo_ganancias" src="img/iconos/ganancias.png" alt="" style=""> &nbsp;&nbsp;<span class="txt_title">Ganancias totales</span>
+@if (!$error)
+<div class="div_CabeceraApartado" style="margin-top:40px">
+    <div class="div_tituloApartado">
+        <p><img class="img_ico_title_o" src="img/iconos/ganancias.png" alt="">&nbsp;&nbsp;Ganancias totales</p>
     </div>
-    <hr class="hr_100_o">
-
-    <div class="div_content">
+</div>
+<div class="div_90_o">
+    {{-- <div class="div_tokens_o"> --}}
+    <div class="div_content_o">
         <p class="txt_total">$ {{$total}} de ganancias totales</p>
         <p class="txt_content_ganancias">Tienes un saldo de ..., para poder hacer el cobro debes llegar a la cantidad de 10 dolares</p>
     </div>
-
-    <div class="p_title_o">
-        <img class="logo_ranking" src="img/iconos/ranking.png" alt=""> &nbsp;&nbsp;
-        <span class="txt_title">Ganancias por playlists</span>    
+</div>
+<div class="div_CabeceraApartado" >
+    <div class="div_tituloApartado">
+        <p><img class="img_ico_title_o" src="img/iconos/ranking.png" alt="">&nbsp;&nbsp;Ganancias por playlists</p>
     </div>
-    <hr class="hr_100_o">
+</div>
+<div class="div_90_o">
 
-    <div class="div_content">
-        <div class="table_head">
-           <div class="img_vacia"></div> <div class="txt_row_head">GANANCIAS</div> <div class="txt_row_head">NOMBRE DE LA PLAYLIST</div> 
-           <div class="txt_row_head row_hide">RANKING</div>  <div class="txt_row_head row_hide">SEGUIDORES</div> 
-        </div>
+    <div class="div_content_o">
+        <div class="table_head_o">
+            <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
+            <div class="txt_row_head_o">GANANCIAS</div>
+            <div class="txt_row_responsive">GANANCIAS</div> 
+            <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
+            <div class="txt_row_responsive">PLAYLIST</div> 
+            <div class="txt_row_head_o">RANKING</div>
+            <div class="txt_row_responsive">RANKING</div> 
+            <div class="txt_row_head_o">SEGUIDORES</div>
+            <div class="txt_row_responsive">SEGUIDORES</div> 
+        </div>   
         
     @php
         $i=0;
     @endphp
     @foreach ($playlists as $playlist)
     <hr class="hr_100_o">
-    <div class="table_row">
-        <img class="img_playlist" src="{{$playlist->images[0]->url}}" alt=""> 
-        <div class="txt_row_play">$ {{$playlists_bd[$i]->profits}}</div> 
-        <div class="txt_row_play row_hide2">{{$playlist->name}}</div> 
-        <div class="txt_row_play row_hide">{{$playlists_bd[$i]->tier}}</div> 
-        <div class="txt_row_play row_hide">{{$playlist->followers->total}}</div> 
+    <div class="table_row_o table_noBorder">
+        <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
+        <p class="p_responsivep">GANANCIAS</p>
+        <div class="txt_row_play_o">$ {{$playlists_bd[$i]->profits}}</div> 
+        <p class="p_responsivep">PLAYLIST</p>
+        <div class="txt_row_play_o">{{$playlist->name}}</div> 
+        <p class="p_responsivep">RANKING</p>
+        <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
+        <p class="p_responsivep">SEGUIDORES</p>
+        <div class="txt_row_play_o">{{$playlist->followers->total}}</div> 
     </div>
     @php
         $i++;
@@ -52,4 +69,15 @@
         
     </div>
 </div>
+@else
+        <div class="div_error_o">
+            <form action="{{route('relogin')}}" method="POST">
+                @csrf
+                <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+                <button type="submit" id="a_error_o" class="inicio-spotybtn">
+                    <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+                </button>
+            </form>
+        </div>
+@endif
 @endsection

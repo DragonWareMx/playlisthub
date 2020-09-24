@@ -30,8 +30,8 @@
         <div id="btnModal" class="txt_a_o">Comprar</div>
     </button>
     <hr class="hr_100_o">
-    @foreach ($usuario as $user)
-        <div class="div_tokens_o"> {{$user->tokens}}&nbsp;tokens</div>
+        @foreach ($usuario as $user)
+            <div class="div_tokens_o"> {{$user->tokens}}&nbsp;tokens</div>
         @endforeach 
     <div class="ico_title_o">
         <img class="img_ico_title_o" src="img/iconos/buy.png" alt="">
