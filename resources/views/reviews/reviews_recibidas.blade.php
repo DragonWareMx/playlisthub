@@ -32,19 +32,20 @@
 
             {{-- ESTRELLAS --}}
             @for ($i = 0; $i < 5; $i++)
-                @if ($calificacion>=1)
-                    <img class="img_review" src="img/iconos/reviews.png" alt="">
+                @if ($total>=1)
+                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                     @php
-                    $calificacion--;  
+                    $total--;  
                     @endphp
                 @else 
-                    @if ($calificacion<1 && $calificacion>=0.5)
-                        <img class="img_review" src="img/iconos/reviewsmiddle.png" alt="">
+                    @if ($total<1 && $total>=0.5)
+                        <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                        <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                         @php
-                        $calificacion-=$calificacion;  
+                        $total-=$total;  
                         @endphp
                     @else 
-                        <img class="img_review" src="img/iconos/op.png" alt="">
+                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                     @endif
                 @endif
             @endfor
@@ -119,18 +120,19 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/reviews.png" alt="">
+                                        <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/reviewsmiddle.png" alt="">
+                                                <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
                                             @else 
-                                                <img src="img/iconos/op.png" alt="">
+                                            <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                             @endif
                                         @endif
                                     @endfor
@@ -219,18 +221,19 @@
                                     @endphp 
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($total>=1)
-                                            <img src="img/iconos/reviews.png" alt="">
+                                        <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             @php
                                             $total--;  
                                             @endphp
                                         @else 
                                             @if ($total<1 && $total>=0.5)
-                                                <img src="img/iconos/reviewsmiddle.png" alt="">
+                                                <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                                 @php
                                                 $total-=$total;  
                                                 @endphp
                                             @else 
-                                                <img src="img/iconos/op.png" alt="">
+                                            <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                             @endif
                                         @endif
                                     @endfor

@@ -73,11 +73,11 @@
                             <div class="review_content_sd">
                                 {{-- ESTRELLAS --}}
                                 <div class="review_content_score m_f">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                 </div>
 
                                 {{-- FECHA --}}
@@ -184,11 +184,11 @@
                             <div class="review_content_sd">
                                 {{-- ESTRELLAS --}}
                                 <div class="review_content_score m_f">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
-                                    <img src="img/iconos/op.png" alt="">
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
                                 </div>
                                 {{-- FECHA --}}
                                 @php
