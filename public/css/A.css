@@ -161,6 +161,11 @@
     transition: ease 0.2s;
     cursor: pointer;
 }
+.div_playlist_modal:focus{
+    border: 2px solid #8177F5 !important;
+    transition: ease 0.2s;
+    cursor: pointer;
+}
 .botones_modal{
     padding-left: 50%;
 }

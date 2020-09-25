@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
 
 @section('menu')
@@ -20,16 +21,13 @@
         </ul>
     </div>
 @endif
-<div class="div_90_o">
-    <div class="ico_title60_o">
-        <img class="img_ico_title_o" src="img/iconos/tokens.png" alt="">
-        <div class="p_title_o">&nbsp;&nbsp;Tus Tokens</div>
+<div class="div_CabeceraApartado" style="margin-top:40px">
+    <div class="div_tituloApartado resize_tituloApartado">
+        <p><img class="img_ico_title_o" src="img/iconos/tokens.png" alt="">&nbsp;&nbsp;Tus tokens</p>
     </div>
-    <button id="btnModal" class="a_agregar_o">
-        <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
-        <div id="btnModal" class="txt_a_o">Comprar</div>
-    </button>
-    <hr class="hr_100_o">
+    <a id="btnModal" class="resize-btn-agregar agregarToken_a" style="color: #8177F5"><i class="fas fa-plus"></i>&nbsp;&nbsp;Comprar</a>
+</div>
+<div class="div_90_o">
         @foreach ($usuario as $user)
             <div class="div_tokens_o"> {{$user->tokens}}&nbsp;tokens</div>
         @endforeach 

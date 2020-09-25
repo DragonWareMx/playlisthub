@@ -12,6 +12,8 @@
     display: flex;
 }
 .ico_title60_o{
+    background-color: lightcoral;
+    
     width: 60%;
     display: flex;
     transition: ease-in-out 0.3s;
@@ -427,7 +429,8 @@
     border-radius: 5px;
     border: none;
     width: 129px;
-    height: 36px;
+    height: auto;
+    padding: 4%;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -1339,9 +1342,9 @@
         margin-bottom: 5px;
         font-size: 16px;
     }
-    .btn_comprar_token{
+    /* .btn_comprar_token{
         margin-left: -10px;
-    }
+    } */
 }
 @media (max-width:792px){
     .div_campanas_actuales_o,.div_campanas_actuales_2{
@@ -1382,7 +1385,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 550px;
-        height: 490px;
+        height: 510px;
     }
 }
 @media(max-width:660px){
@@ -1470,10 +1473,10 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .btn_comprar_token{
+    /* .btn_comprar_token{
         margin-left: auto;
         margin-right: auto;
-    }
+    } */
     .modal_title_tokens, .txt_modal_izquierda, .modal_tokens_total{
         font-size: 16px;
     }
@@ -1586,7 +1589,11 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 450px;
-        height: 520px;
+        height: 600px;
+    }
+    .modal_metodos_pago{
+        flex-wrap: wrap;
+        margin-bottom: 10px;
     }
     .modal_img_pago{
         width: 233px;
@@ -1692,12 +1699,9 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 300px;
-        height: 585px;
+        height: 650px;
     }
-    .modal_metodos_pago{
-        flex-wrap: wrap;
-        margin-bottom: 10px;
-    }
+    
 }
 @media (max-width:438px){
     .campanas_encabezado_cancion_o,.campanas_encabezado_artista_o{
@@ -1805,11 +1809,7 @@
         margin-top: 5px;
     }
 }
-@media (max-width:360px){
-    .btn_comprar_token{
-        margin-left: -10px;
-    }
-}
+
 @media (max-width:354px){
     .vercampana_title_o{
         font-size: 12px;
