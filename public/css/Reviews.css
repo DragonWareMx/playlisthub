@@ -7,7 +7,7 @@
     justify-content: space-evenly;
 
     align-items: center;
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.1s;
 
     float: right;
 
@@ -234,21 +234,21 @@
     border-radius:3px;
     line-height:2em;
     padding:3px;
-    -webkit-transition: height 0.1s ease;
-    -moz-transition: height 0.1s ease;
-    -ms-transition: height 0.1s ease;
-    -o-transition: height 0.1s ease;
-    transition: height 0.1s ease;
+    -webkit-transition: height 0.05s ease;
+    -moz-transition: height 0.05s ease;
+    -ms-transition: height 0.05s ease;
+    -o-transition: height 0.05s ease;
+    transition: height 0.05s ease;
 }
 
 .reviews_list .review_item .review_content .review_content_review textarea:focus{
     border-bottom: solid 1px #8177F5;
-    transition: ease-in 1s;
+    transition: ease-in 0.5s;
 }
 
 .reviews_list .review_item .review_content .review_content_review textarea:hover{
     border-bottom: solid 1px #8177F5;
-    transition: ease-in 1s;
+    transition: ease-in 0.5s;
 }
 
 .btnLeerMas{

@@ -401,8 +401,10 @@
     }
 
     function auto_grow(element) {
-        element.style.height = "5px";
-        element.style.height = (element.scrollHeight)+"px";
+        if(element.scrollHeight > 66){
+            element.style.height = "66px";
+            element.style.height = (element.scrollHeight+2)+"px";
+        }
 
         document.getElementById('caracteres_escritos').innerHTML = "caracteres: "+element.value.length;
     }
