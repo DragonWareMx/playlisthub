@@ -9,8 +9,8 @@ class PaymentController extends Controller
     //
     public function payment(Request $request){
         if($request->paytype=='stripe'){
-            
-            return view('compra');
+            $cantidad=$request->cantidad;
+            return view('compra',['cantidad'=>$cantidad]);
         }
         return 'vilecaca';
     }
