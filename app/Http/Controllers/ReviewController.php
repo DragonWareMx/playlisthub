@@ -421,6 +421,7 @@ class ReviewController extends Controller
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
 
+
         //verifica que tipo de usuario es
         switch($usuario[0]->type){
             case 'Músico':
@@ -479,7 +480,7 @@ class ReviewController extends Controller
                                             ->whereNull('reviews.playlist_id')
                                             ->pluck('id')->toArray();
 
-                if(in_array(request('camp_id'),$campsIds)){
+                if(!in_array(request('camp_id'),$campsIds)){
                     try{
                         \DB::transaction(function() use($usuario)
                         {

@@ -427,25 +427,42 @@
     /* if you change the left/right padding, update the margin-right property of .rating__label--half as well. */
     padding: 0 0.4em;
   }
-  #half-stars-example .rating__label--half {
+  #half-stars-example .rating__label--half{
     padding-right: 0;
     margin-right: -1.5em;
     z-index: 2;
   }
-  #half-stars-example .rating__icon--star {
+
+  .review_content_score .rating__label--half{
+    padding-right: 0;
+    margin-right: -1.4em;
+    position: relative;
+    z-index: 2;
+  }
+
+  .review_content_score label{
+      margin-bottom: 0;
+  }
+  
+  #half-stars-example .rating__icon--star,
+  .review_content_score .rating__icon--star{
     color: #858796;
   }
-  #half-stars-example .rating__icon--none {
+  #half-stars-example .rating__icon--none,
+  .review_content_score .rating__icon--none{
     color: #eee;
   }
-  #half-stars-example .rating__input--none:checked + .rating__label .rating__icon--none {
+  #half-stars-example .rating__input--none:checked + .rating__label .rating__icon--none,
+  .review_content_score .rating__input--none:checked + .rating__label .rating__icon--none{
     color: red;
   }
-  #half-stars-example .rating__input:checked ~ .rating__label .rating__icon--star {
+  #half-stars-example .rating__input:checked ~ .rating__label .rating__icon--star,
+  .review_content_score .rating__label .rating__icon--none{
     color: #ddd;
   }
   #half-stars-example .rating-group:hover .rating__label .rating__icon--star,
-  #half-stars-example .rating-group:hover .rating__label--half .rating__icon--star {
+  #half-stars-example .rating-group:hover .rating__label--half .rating__icon--star
+  .review_content_score .rating__label--half .rating__icon--star{
     color: #858796;
   }
   #half-stars-example .rating__input:hover ~ .rating__label .rating__icon--star,
