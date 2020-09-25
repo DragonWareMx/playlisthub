@@ -148,7 +148,7 @@
                 $control=true;
             @endphp
             @foreach ($playlists as $playlist)
-                @if ($followers[$i]>=5000)
+                @if ($followers[$i]==0)
                     <div id="{{$playlist['external_urls']['spotify']}}" class="div_playlist_modal" value="">
                         <div class="div_img_modal"><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
                         <div class="txt_row">{{$playlist['name']}}</div> 

@@ -87,6 +87,12 @@
     margin-top: 1%;
 }
 /* RESPONSIVE */
+@media(max-width:1074px){
+    .div_contenido_Codigo{
+        width: 100%;
+    }
+}
+
 @media (max-width:850px){
     .div_infoReferencias{
         width: 100%;
@@ -124,9 +130,6 @@
 }
 @media (max-width:500px){
     .txt-funcionamiento{
-        width: 100%;
-    }
-    .div_contenido_Codigo{
         width: 100%;
     }
 }

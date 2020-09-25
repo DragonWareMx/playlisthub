@@ -128,11 +128,7 @@
 <br>
 <div class="div_eliminarCuenta">
     <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-minus-circle" ></i>&nbsp;&nbsp;Eliminar cuenta</a>
-    @if($user->type == 'Músico')
-    <a href="{{route('perfil-musico')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
-    @else
-    <a href="{{route('perfil-curador')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
-    @endif
+    <a href="{{route('perfil')}}" style="color:#5C5C5C; text-decoration:none"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
 </div>
 <br>
 

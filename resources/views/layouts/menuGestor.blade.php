@@ -64,7 +64,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{route('perfil-musico')}}">Ver perfil</a> 
+            <a class="collapse-item" href="{{route('perfil')}}">Ver perfil</a> 
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
             <a class="collapse-item" href="{{route('administrar-cuenta')}}">Administrar cuenta</a>

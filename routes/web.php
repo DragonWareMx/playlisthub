@@ -29,7 +29,7 @@ Route::get('/tokens','OController@tokens')->name('tokens');
 Route::post('/relogin', function(){    Auth::logout();  return Redirect::to('login/spotify'); })->name('relogin');
 
 Route::get('/inicioM', 'musicoController@index')->name('inicio-musico');
-Route::get('/perfilM', 'musicoController@perfil')->name('perfil-musico');
+Route::get('/perfil','cuentaController@perfil')->name('perfil');
 Route::get('/musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
 
 Route::get('/inicioC', 'curadorController@index')->name('inicio-curador');

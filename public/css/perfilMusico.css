@@ -362,6 +362,26 @@
 
 
 /* RESPONSIVIDAD */
+@media(min-width:1400px){
+    .div_txtPM{
+        padding-top: 50px;
+        padding-left: 20px;
+        background-color: lightgreen;
+    }
+    .div_fotoPerfilM{
+        max-width:150px ;
+    }
+    .div_fotoPerfilM img{ 
+        padding:20px;
+    }
+    .div_CabeceraApartado a{
+        padding-top: 8px;
+        max-width: 200px;
+    }
+    .resize-btn-agregar{
+        max-width: 160px;
+    }
+}
 @media (max-width:1205px){
     .div_CabeceraApartado a{
         width: 25%;
