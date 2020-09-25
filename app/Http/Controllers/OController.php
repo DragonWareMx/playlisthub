@@ -13,6 +13,8 @@ use App\Playlist;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\camp_mail;
 
 class OController extends Controller
 {
@@ -420,7 +422,7 @@ class OController extends Controller
             if(substr($allPlay_id, 0, strpos($allPlay_id, "?"))){
                 $allPlay_id = substr($allPlay_id, 0, strpos($allPlay_id, "?"));
             }
-            $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/tracks?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=100';
+            $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/tracks?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=50';
             $conexion=curl_init();
             curl_setopt($conexion, CURLOPT_URL, $url);
             curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
@@ -517,7 +519,7 @@ class OController extends Controller
                 if(substr($allPlay_id, 0, strpos($allPlay_id, "?"))){
                     $allPlay_id = substr($allPlay_id, 0, strpos($allPlay_id, "?"));
                 }
-                $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/tracks?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=15';
+                $url='https://api.spotify.com/v1/playlists/'.$allPlay_id.'/a?access_token='.$access_token.'&fields=items(track(artists(id)))&limit=15';
                 $conexion=curl_init();
                 curl_setopt($conexion, CURLOPT_URL, $url);
                 curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
@@ -689,11 +691,14 @@ class OController extends Controller
         $camp->save();
         $user->tokens=$user->tokens-$cost;
         $user->save();
-        session()->forget('playlistsCosts');
-        session()->forget('selected_playlist');
-        session()->forget('playlist_cost');
-        session()->forget('link_song');
-        session()->flash('success',true);
+        $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
+        $curator=User::findOrFail($playlist->user->id);
+        Mail::to($curator->email)->send(new camp_mail($camp->id,$curator->name));
+        // session()->forget('playlistsCosts');
+        // session()->forget('selected_playlist');
+        // session()->forget('playlist_cost');
+        // session()->forget('link_song');
+        // session()->flash('success',true);
         return redirect('/campanas');
     }
     public function tokens()
