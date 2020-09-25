@@ -438,7 +438,8 @@ class ReviewController extends Controller
                                             ->where('reviews.playlist_id','!=','NULL')
                                             ->pluck('id')->toArray();
                 
-                if(in_array(request('camp_id'),$campsIds)){
+                //verifica que la campaña no haya realizado ya la review a la playlist
+                if(!in_array(request('camp_id'),$campsIds)){
                     try{
                         \DB::transaction(function() use($usuario)
                         {
@@ -480,6 +481,7 @@ class ReviewController extends Controller
                                             ->whereNull('reviews.playlist_id')
                                             ->pluck('id')->toArray();
 
+                //verifica que la campaña no haya recibido ya la review
                 if(!in_array(request('camp_id'),$campsIds)){
                     try{
                         \DB::transaction(function() use($usuario)
