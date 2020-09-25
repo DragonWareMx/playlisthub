@@ -794,7 +794,7 @@
     transition: ease-in-out 0.2s;
 }
 .table_row_o:hover{
-    cursor: hand;
+    cursor: pointer;
     border: 0.5px solid #8177F5;
     transition: ease 0.2s;
 }

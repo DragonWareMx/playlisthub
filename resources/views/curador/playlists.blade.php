@@ -47,7 +47,7 @@
         <div id="{{$playlist->id}}" class="table_row_o table_noBorder">
             <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
             <p class="p_responsivep">PLAYLIST</p>
-            <div class="txt_row_play_o">{{$playlist->name}}</div> 
+            <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
             <p class="p_responsivep">RANKING</p>
             <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
             <p class="p_responsivep">NIVEL</p>
@@ -68,8 +68,6 @@
             </div>
             <p class="p_responsivep">SEGUIDORES</p>
             <div class="txt_row_play_o">{{$playlist->followers->total}}</div> 
-            {{-- <p class="p_responsivep">GANANCIAS</p>
-            <div class="txt_row_play_o">${{$playlists_bd[$i]->profits}}</div> --}}
         </div>
     @php
         $i++;
@@ -92,8 +90,8 @@
            <div class="txt_row_responsive">CANCIÓN</div> 
            <div class="txt_row_head_o">PLAYLIST</div>
            <div class="txt_row_responsive">PLAYLIST</div> 
-           <div class="txt_row_head_o">ARTISTA</div> 
-           <div class="txt_row_responsive">ARTISTA</div>  
+           <div class="txt_row_head_o">MÚSICO</div> 
+           <div class="txt_row_responsive">MÚSICO</div>  
            <div class="txt_row_head_o">TOKENS</div>
            <div class="txt_row_responsive">TOKENS</div> 
            <div class="txt_row_head_o">ESTATUS</div> 
@@ -107,11 +105,12 @@
     <div class="table_row_o table_noBorder" style="border:none">
         <img class="img_playlist_o_match" src="{{$song->album->images[0]->url}}" alt=""> 
         <p class="p_responsivep">CANCIÓN</p>
-        <div class="txt_row_play_o">{{$song->name}}</div> 
-        <p class="p_responsivep">PLAYLIST</p>
-        <div class="txt_row_play_o">{{$plnames[$i]}}</div> 
-        <p class="p_responsivep">ARTISTA</p>
-        <div class="txt_row_play_o">{{$song->artists[0]->name}}</div>  
+        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->name}} </a> 
+        <p class="p_responsivep">PLAYLIST</p> 
+        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
+        <p class="p_responsivep">MÚSICO</p>
+        {{-- AQUI SERÁ EL LINK PARA EL PERFIL DEL MÚSICO --}}
+        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
         <p class="p_responsivep">TOKENS</p>
         <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
         <p class="p_responsivep">ESTATUS</p>
@@ -126,8 +125,8 @@
 </div>
 <!--MODAL de agregar playlist-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content" style="padding: 5%">
+    <div class="modal-dialog modal-lg" role="document" >
+      <div class="modal-content modalPlaylist" >
          
             <div class="modal_head">
                 <div class="div_30_a"></div>
@@ -142,18 +141,18 @@
             <hr class="hr_100_blue">
             
             <div class="txt_modal_center">Playlists que cumplen con los requisitos</div>
-            <div class="txt_modal_left">Selecciona la playlist que vas a agregar</div>
+            <div class="txt_modal_left">Selecciona la playlist que deseas agregar</div>
            
             @php
-                $i=0;
+                $i=0; 
                 $control=true;
             @endphp
             @foreach ($playlists as $playlist)
-                @if ($followers[$i]>500)
+                @if ($followers[$i]==0)
                     <div id="{{$playlist['external_urls']['spotify']}}" class="div_playlist_modal" value="">
-                        <div><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
+                        <div class="div_img_modal"><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
                         <div class="txt_row">{{$playlist['name']}}</div> 
-                        <div class="txt_row">{{$followers[$i]}}</div>
+                        <div class="txt_row">{{$followers[$i]}}&nbsp;seguidores</div>
                     </div>
                     @php
                         $control=false;
@@ -165,6 +164,7 @@
             @endforeach
             @if ($control)
             <div class="txt_modal_center">Lo sentimos, ninguna de tus playlists sin registrar tiene un número mayor a 500 seguidores</div>
+            
             @endif
                 <form action="{{Route('addPlaylist')}}" method="POST">
                     <input id="link_pl" type="text" required style="display: none" name="link">
@@ -178,7 +178,7 @@
             
       </div>
     </div>
-  </div>
+</div>
     
   <script>
       var click= false;
@@ -186,12 +186,14 @@
 
     //al dar click en el cancel del modal deja todo como estaba
     $('.btn_modal_cancel').on('click', function(){
-        $('.div_playlist_modal').css('border-color','#5C5C5C');
+        $('.div_playlist_modal').css('border-color',' #c0c0c0');
         $('#link_pl').val(null);
         click=false;
         control="";
     });
     //para seleccionar el div de la playlist que se elegira
+    //EL BORDE POR DEFECTO ES COLOR #c0c0c0-------------!!!!!!!!!!!!
+    //CUANDO SE SELECCIONA EL BORDE ES #8177F5 DE 2PX-------------!!!!!!!!!!!! 
     $('.div_playlist_modal').on('click', function () {
         if(click){
             if(control==this.id){
