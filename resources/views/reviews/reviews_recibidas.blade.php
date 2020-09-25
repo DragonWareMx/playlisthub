@@ -76,7 +76,11 @@
                     <div class="review_item">
                         {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
                         <div class="review_img">
-                            <img src="{{User::find($review->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @if(isset(User::find($review->user_id)->avatar))
+                                <img src="{{User::find($review->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @else
+                                <img src="{{ asset('/img/iconos/perfil.png') }}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @endif
                         </div>
 
                         {{-- CONTENIDO DE LA REVIEW --}}
@@ -178,7 +182,11 @@
                     <div class="review_item">
                         {{-- IMG PERFIL QUE HIZO LA REVIEW --}}
                         <div class="review_img">
-                            <img src="{{User::find($review->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @if(isset(User::find($review->user_id)->avatar))
+                                <img src="{{User::find($review->user_id)->avatar}}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @else
+                                <img src="{{ asset('/img/iconos/perfil.png') }}" alt="" style="object-fit:cover; border-radius:50%;">
+                            @endif
                         </div>
 
                         {{-- CONTENIDO DE LA REVIEW --}}
