@@ -598,7 +598,9 @@
         <div class="modal_title_tokens" >Compartir review</div>
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">
-            <img class="modal_compartir_facebook" src="img/iconos/facebook png.png">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}};src=sdkpreparse" target="_blank">
+                <img class="modal_compartir_facebook" src="img/iconos/facebook png.png">
+            </a>
             <img src="img/iconos/twt png.png">
         </div>
         <div class="div_tokens_botones">
