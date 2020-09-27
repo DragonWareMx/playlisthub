@@ -104,5 +104,6 @@ Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallbac
 
 //pagos
 Route::post('/tokens/payment','PaymentController@payment')->name('payment');
+Route::post('/tokens/payment/checkout','PaymentController@stripePay')->name('stripePay');
 
 Route::get('/home', 'HomeController@index');
