@@ -17,7 +17,8 @@
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.2",
-        "socialiteproviders/spotify": "^3.1"
+        "socialiteproviders/spotify": "^3.1",
+        "paypal/rest-api-sdk-php": "^1.14"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
