@@ -43,7 +43,7 @@
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
                                 {{-- NOMBRE DEL CURADOR --}}
-                                <div class="review_content_names_name autor"><a href="{{ route('perfil-curador-publico',$camp->playlist->user_id) }}" target="_blank">{{ $camp->playlist->user->name }}</a></div>
+                                <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $camp->playlist->user->name }}</a></div>
                                 {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}

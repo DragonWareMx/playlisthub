@@ -30,11 +30,10 @@ Route::post('/relogin', function(){    Auth::logout();  return Redirect::to('log
 
 Route::get('/inicioM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfil','cuentaController@perfil')->name('perfil');
-Route::get('/musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
-
+// Route::get('/musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
+Route::get('/usuario/{id}', 'cuentaController@perfilPublico')->name('perfil-publico');
 Route::get('/inicioC', 'curadorController@index')->name('inicio-curador');
-Route::get('/perfilC', 'curadorController@perfil')->name('perfil-curador');
-Route::get('/curador/{id}', 'curadorController@perfilPublico')->name('perfil-curador-publico');
+// Route::get('/curador/{id}', 'curadorController@perfilPublico')->name('perfil-curador-publico');
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');

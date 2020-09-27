@@ -14,32 +14,17 @@ class curadorController extends Controller
         return view ('curador.inicioCurador');
     } 
 
-    public function perfil()
-    {
-        try { 
-            $usuario = User::where('id',Auth::id())->get();
-        } catch(QueryException $ex){ 
-            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-        }
+    // public function perfilPublico($id)
+    // {
+    //     try { 
+    //         $usuario = User::where('spotify_id',$id)->get();
+    //     } catch(QueryException $ex){ 
+    //         return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+    //     }
 
-        if($usuario == null){
-            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-        }
-
-        return view ('curador.perfilCurador', ['usuario' => $usuario]);
-    }
-
-    public function perfilPublico($id)
-    {
-        try { 
-            $usuario = User::where('spotify_id',$id)->get();
-        } catch(QueryException $ex){ 
-            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-        }
-
-        if($usuario == null){
-            return view('errors.404', ['mensaje' => 'No se encontraron resultados']);
-        }
-        return view ('curador.PublicoperfilCurador', ['usuario' => $usuario]);
-    }
+    //     if($usuario == null){
+    //         return view('errors.404', ['mensaje' => 'No se encontraron resultados']);
+    //     }
+    //     return view ('curador.PublicoperfilCurador', ['usuario' => $usuario]);
+    // }
 }

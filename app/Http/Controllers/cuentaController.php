@@ -232,65 +232,6 @@ class cuentaController extends Controller
         curl_close($conexion2);
         $playlists=json_decode($playlists, true);
         
-
-        //for para mostrar en modal sólo las que no están registradas ya y las que sí son mismo id que owner
-        // $playlistsModal=[];
-        // $z=0;
-        // foreach ($playlists['items'] as $playlist2) {
-        //     $control=false;
-        //     foreach ($playlists_bd as $playlist2) {
-        //         if($playlist2['external_urls']['spotify']==$playlist2->link_playlist){
-        //             $control=true;
-        //             break;
-        //         }
-        //     }
-        //     if($control==false && $playlist2['owner']['id']==$user->spotify_id) {
-        //         $playlistsModal[$z]=$playlist2;
-        //         $z++;
-        //     }
-        // }
-        // $playlists=$playlistsModal;
-        
-        // //nos conectamos a la API para sacar los followers, sólo son para las del modal
-        // //-----revision
-        // $followers=[];
-        // $z=0;
-        // foreach($playlists as $playlist2){
-        //     $url2='https://api.spotify.com/v1/playlists/'.$playlist2['id'].'?access_token='.$access_token2;
-        //     $conexion2=curl_init();
-        //     curl_setopt($conexion2, CURLOPT_URL, $url2);
-        //     curl_setopt($conexion2, CURLOPT_HTTPGET, TRUE);
-        //     curl_setopt($conexion2, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        //     curl_setopt($conexion2, CURLOPT_RETURNTRANSFER, 1);
-        //     $playlistFollow= curl_exec($conexion2);
-        //     curl_close($conexion2);
-            
-        //     $playlistFollow=json_decode($playlistFollow);
-        //     $followers[$z]=$playlistFollow->followers->total;
-        //     $z++;
-        // }
-
-
-        // if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error)){
-        //     $error2=true;
-        // }
-       
-        // return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error2, 'followers'=>$followers, 
-         //'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
-         //'songs'=>$songs, 'plnames'=>$plnames]);
-
-
-
-
-
-
-
-
-
-
-
-
-
         //REVIWS
 
         //booleano que indica el tipo del usuario (true = musico, false = curador)
@@ -372,6 +313,306 @@ class cuentaController extends Controller
                 break;
         }
          
+    }
+    public function perfilPublico($idUser){
+        try { 
+            $usuario = User::where('spotify_id',$idUser)->get(); 
+            $newId=User::where('spotify_id',$idUser)->value('id');
+            // dd($newId);
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+        else{
+        //CAMPAÑAS
+        $hoy = Carbon::now();
+        $campsAct=Camp::with('playlist')->orderBy('id','desc')->where([
+            ['status', '=', 'espera'],
+            ['user_id', '=', $newId],
+        ])
+        ->orWhere([
+            ['end_date','>=',$hoy],
+            ['user_id', '=', $newId],
+        ])
+        ->limit(3)->get();
+        $campsAnt=Camp::orderBy('id','desc')->
+        where([
+            ['end_date','<',$hoy],
+            ['user_id', '=', $newId]
+        ])
+        ->limit(3)->get();
+        $i=0;
+        $access_token=session()->get('access_token');
+        $songsAct=[];
+        $playlistsAct=[];
+        $error=false;
+        foreach($campsAct as $camp){
+            //Se extrae el id de la canción 
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
+            if(substr($song_id, 0, strpos($song_id, "?"))){
+                $song_id = substr($song_id, 0, strpos($song_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/tracks/'.$song_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $song= curl_exec($conexion);
+            curl_close($conexion);
+            $song=json_decode($song);
+            $songsAct[$i]=$song;
+            //Se extrae el id de la playlist 
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlist= curl_exec($conexion);
+            curl_close($conexion);
+            $playlist=json_decode($playlist);
+            $playlistsAct[$i]=$playlist;
+            $i++;
+        }
+        $i=0;
+        $songsAnt=[];
+        $playlistsAnt=[];
+        foreach($campsAnt as $camp){
+            //Se extrae el id de la canción 
+            $song_id=trim($camp->link_song,);
+            $song_id=str_replace('https://open.spotify.com/track/','',$song_id);
+            if(substr($song_id, 0, strpos($song_id, "?"))){
+                $song_id = substr($song_id, 0, strpos($song_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/tracks/'.$song_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $song= curl_exec($conexion);
+            curl_close($conexion);
+            $song=json_decode($song);
+            $songsAnt[$i]=$song;
+            //Se extrae el id de la playlist 
+            $playlist_id=trim($camp->playlist->link_playlist,);
+            $playlist_id=str_replace('https://open.spotify.com/playlist/','',$playlist_id);
+            if(substr($playlist_id, 0, strpos($playlist_id, "?"))){
+                $playlist_id = substr($playlist_id, 0, strpos($playlist_id, "?"));
+            }
+            //Se hace la conexión con la api de spotify
+            $url='https://api.spotify.com/v1/playlists/'.$playlist_id.'?access_token='.$access_token;
+            $conexion=curl_init();
+            curl_setopt($conexion, CURLOPT_URL, $url);
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+            $playlist= curl_exec($conexion);
+            curl_close($conexion);
+            $playlist=json_decode($playlist);
+            $playlistsAnt[$i]=$playlist;
+            $i++;
+        }
+        if(isset($songsAct[0]->error)  || isset($playlistsAct[0]->error) || isset($songsAnt[0]->error) || isset($playlistsAnt[0]->error)){
+            $error=true;
+        }
+         
+        //PLAYLISTS
+        $id= $newId;
+        $error2=false;
+        $access_token2=session()->get('access_token');
+        $playlists_bd= Playlist::where('user_id',$id)->get();
+        $user= User::findOrFail($id);
+
+        //sacamos playlists para vista principal
+        $z=0;
+        $playlists_registradas=[];
+        foreach($playlists_bd as $playlist2)
+        {   
+            //se extrae el id de la playlist
+            $playlist_id2=trim($playlist2->link_playlist,);
+            $playlist_id2=str_replace('https://open.spotify.com/playlist/','',$playlist_id2);
+            if(substr($playlist_id2, 0, strpos($playlist_id2, "?"))){
+                $playlist_id2 = substr($playlist_id2, 0, strpos($playlist_id2, "?"));
+            }
+            //consultamos la playlist para sacar los datos
+            $url2='https://api.spotify.com/v1/playlists/'.$playlist_id2.'?access_token='.$access_token2;
+            $conexion2=curl_init();
+            curl_setopt($conexion2, CURLOPT_URL, $url2);
+            curl_setopt($conexion2, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion2, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion2, CURLOPT_RETURNTRANSFER, 1);
+            $playlistBD= curl_exec($conexion2);
+            curl_close($conexion2);
+            
+            $playlistBD=json_decode($playlistBD);
+            $playlists_registradas[$z]=$playlistBD;
+            $z++;
+        }
+        
+        //sacamos las canciones
+        $plSongs=[];
+        $z=0;
+        foreach ($playlists_bd as $playlist2) {
+            $plSongs[$z]=$playlist2->id;
+            $z++;
+        }
+
+        $songs= Camp::with('playlist')->whereIn('playlist_id',$plSongs)->orderBy('playlist_id','asc')->get();
+        
+        //usamos API para sacar los datos de las canciones
+        $songsSpoty=[];
+        $z=0;
+        foreach ($songs as $song2) {
+            //se extrae el id de la canción
+            $song_id2=trim($song2->link_song,);
+            $song_id2=str_replace('https://open.spotify.com/track/','',$song_id2);
+            if(substr($song_id2, 0, strpos($song_id2, "?"))){
+                $song_id2 = substr($song_id2, 0, strpos($song_id2, "?"));
+            }
+            //consultamos la canción para sacar los datos
+            $url2='https://api.spotify.com/v1/tracks/'.$song_id2.'?access_token='.$access_token2;
+            $conexion2=curl_init();
+            curl_setopt($conexion2, CURLOPT_URL, $url2);
+            curl_setopt($conexion2, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($conexion2, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($conexion2, CURLOPT_RETURNTRANSFER, 1);
+            $songsAux= curl_exec($conexion2);
+            curl_close($conexion2);
+            
+            $songsAux=json_decode($songsAux);
+            $songsSpoty[$z]=$songsAux;
+            $z++;
+        }
+        //sacamos los nombres de las playlists de las canciones
+        //encontramos la posición de las playlist que tienen esas canciones en el arreglo de pl registradas
+        $pos=[];
+        $z=0;
+        foreach ($songs as $song2) {
+            $j=0;
+            foreach ($plSongs as $pl) {
+                if($song2->playlist_id==$pl){
+                    $pos[$z]=$j;
+                    break;
+                }
+                $j++;
+            }
+            $z++;
+        }
+        //recorremos ese arreglo para sacar el nombre con el arreglo donde guardamos lo que nos entregó la API de las playlists
+        $plnames=[];
+        $z=0;
+        foreach ($pos as $posAct) {
+            $plnames[$z]=$playlists_registradas[$posAct]->name;
+            $z++;
+        }
+
+        //nos conectamos a API de spotify para sacar todas las playlists, esto es para modal
+        $url2='https://api.spotify.com/v1/me/playlists?access_token='.$access_token2;
+        $conexion2=curl_init();
+        curl_setopt($conexion2, CURLOPT_URL, $url2);
+        curl_setopt($conexion2, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion2, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion2, CURLOPT_RETURNTRANSFER, 1);
+        $playlists= curl_exec($conexion2);
+        curl_close($conexion2);
+        $playlists=json_decode($playlists, true);
+        
+        //REVIWS
+
+        //booleano que indica el tipo del usuario (true = musico, false = curador)
+        $tipo;
+        //verifica que tipo de usuario es
+        switch($usuario[0]->type){
+            case 'Músico':
+                $tipo = true;
+
+                //reviews de las campanas del usuario musico
+                $reviews = Review::whereHas('camp', function ($query) {
+                    return $query->where('user_id', '=', 1);
+                })->orderBy('date','desc')
+                ->whereNull('playlist_id')
+                ->get();
+
+                //reviews a playlists de curadores que el musico ha realizado
+                $realizadas = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
+                                            ->where('user_id', '=', 1)
+                                            ->get();
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+                 return view ('perfilPublico', ['usuario' => $usuario,'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error,'tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas),'playlists'=>$playlists, 'error'=>$error2, 
+                 'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
+                 'songs'=>$songs, 'plnames'=>$plnames]);
+                
+                break;
+            case 'Curador':
+                $tipo = false;
+                
+                //reviews de las playlists del usuario musico
+                $reviews = Review::whereHas('playlist', function ($query) {
+                    return $query->where('user_id', '=', 1);
+                })->orderBy('date','desc')
+                ->get();
+
+                //reviews a campañas de musicos que el curador ha realizado
+                $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->where('user_id', '=', 1)
+                                                ->whereNull('playlist_id')
+                                                ->get();
+
+                //obtenemos el promedio de las reviews y la cantidad de reviews
+                $total = 0;
+                $numReviews = 0;
+
+                if(count($reviews) > 0){
+                    foreach($reviews as $review){
+                        $total+=$review->rating;
+                        $numReviews++;
+                    }
+
+                    $calificacion = round($total/$numReviews,1);
+                }
+                else{
+                    $calificacion = 0;
+                }
+                 return view ('perfilPublico', ['usuario' => $usuario,'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error,'tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas),'playlists'=>$playlists, 'error'=>$error2, 
+                 'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
+                 'songs'=>$songs, 'plnames'=>$plnames]);
+                
+                break;
+            default:
+                return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+                break;
+        }
+        }
+
     }
     public function administrar()
     {
