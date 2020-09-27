@@ -74,28 +74,28 @@
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="direccionTarjeta" name="direccionTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="direccionTarjeta" name="direccionTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="direccionTarjeta" id="direccion" title="Dirección" data-title="Dirección"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="ciudadTarjeta" name="ciudadTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="ciudadTarjeta" name="ciudadTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="ciudadTarjeta" id="ciudad" title="Ciudad" data-title="Ciudad"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="estadoTarjeta" name="estadoTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="estadoTarjeta" name="estadoTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="estadoTarjeta" id="estado" title="Estado" data-title="Estado/Provincia"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="cpTarjeta" name="cpTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="cpTarjeta" name="cpTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="cpTarjeta" id="cp" title="Código Postal" data-title="Código Postal"></label>
                                 </div>
                             </div>
