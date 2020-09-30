@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
+    <link rel="stylesheet" type="text/css" href="/css/L.css">
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css"> 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
@@ -14,7 +15,7 @@
 @endsection
 
 @section('contenido') 
-@if (!$error)
+@if (!$error || !session()->get('expired'))
 <div class="div_CabeceraApartado" style="margin-top:40px">
     <div class="div_tituloApartado resize_tituloApartado">
         <p><img class="img_ico_title_o" src="img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlist activas</p>
@@ -47,7 +48,7 @@
         <div id="{{$playlist->id}}" class="table_row_o table_noBorder">
             <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
             <p class="p_responsivep">PLAYLIST</p>
-            <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
+            <a href="{{$playlist->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
             <p class="p_responsivep">RANKING</p>
             <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
             <p class="p_responsivep">NIVEL</p>
@@ -105,12 +106,12 @@
     <div class="table_row_o table_noBorder" style="border:none">
         <img class="img_playlist_o_match" src="{{$song->album->images[0]->url}}" alt=""> 
         <p class="p_responsivep">CANCIÓN</p>
-        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->name}} </a> 
+        <a href="{{$song->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->name}} </a> 
         <p class="p_responsivep">PLAYLIST</p> 
-        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
+        <a href="{{$pllinks[$i]}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
         <p class="p_responsivep">MÚSICO</p>
         {{-- AQUI SERÁ EL LINK PARA EL PERFIL DEL MÚSICO --}}
-        <a href=" # "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
+        <a href="{{$song->artists[0]->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
         <p class="p_responsivep">TOKENS</p>
         <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
         <p class="p_responsivep">ESTATUS</p>
@@ -148,8 +149,8 @@
                 $control=true;
             @endphp
             @foreach ($playlists as $playlist)
-                @if ($followers[$i]==0)
-                    <div id="{{$playlist['external_urls']['spotify']}}" class="div_playlist_modal" value="">
+                @if ($followers[$i]>=0)
+                    <div id="{{$playlist['id']}}" class="div_playlist_modal" value="">
                         <div class="div_img_modal"><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
                         <div class="txt_row">{{$playlist['name']}}</div> 
                         <div class="txt_row">{{$followers[$i]}}&nbsp;seguidores</div>
@@ -185,7 +186,7 @@
       var control;
 
     //al dar click en el cancel del modal deja todo como estaba
-    $('.btn_modal_cancel').on('click', function(){
+    $('.a_cancelarTokens').on('click', function(){
         $('.div_playlist_modal').css('border-color',' #c0c0c0');
         $('#link_pl').val(null);
         click=false;
@@ -197,14 +198,15 @@
     $('.div_playlist_modal').on('click', function () {
         if(click){
             if(control==this.id){
-                $(this).css('border-color','#5C5C5C');
+                $(this).css('border-color','#c0c0c0');
                 $('#link_pl').val(null);
                 click=false;
                 control="";
             }
             else{
-                $('#'+control+'').css('border-color','#5C5C5C');
                 $(this).css('border-color','#8177F5');
+                $(this).css('border-width','2px');
+                $('#'+control+"").css('border-color','#c0c0c0');
                 $('#link_pl').val(this.id);
                 control=this.id;
                 click=true;
@@ -212,6 +214,7 @@
         }
         else{
             $(this).css('border-color','#8177F5');
+            $(this).css('border-width','2px');
             $('#link_pl').val(this.id);
             control=this.id;
             click=true;
