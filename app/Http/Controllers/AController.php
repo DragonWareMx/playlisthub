@@ -16,7 +16,6 @@ class AController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function playlists(){
         $id= Auth::id();
         $error=false;
@@ -165,7 +164,6 @@ class AController extends Controller
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
         'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks]);
     }
-
     public function addPlaylist(){
         $id= Auth::id();
         $access_token=session()->get('access_token');
@@ -189,7 +187,7 @@ class AController extends Controller
             session()->flash('expired',true);
             return redirect()->back();
         }
-        
+
         foreach ($songs->items as $song) {
             if($i<20){
                 $viledruid=Artist::where('id_spotify',$song->track->artists[0]->id)->first();
@@ -229,7 +227,6 @@ class AController extends Controller
 
         return redirect()->route('playlists');
     }
-
     public function ranking(){
         $id= Auth::id();
         $error=false;
@@ -268,7 +265,6 @@ class AController extends Controller
 
         return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd]);
     }
-
     public function ganancias(){
         $id= Auth::id();
         $error=false;
