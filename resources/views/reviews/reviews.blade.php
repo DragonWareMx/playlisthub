@@ -598,9 +598,7 @@
         <div class="modal_title_tokens" >Compartir review</div>
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}};src=sdkpreparse" target="_blank">
-                <img class="modal_compartir_facebook" src="img/iconos/facebook png.png">
-            </a>
+                <img class="modal_compartir_facebook" src="img/iconos/facebook png.png" onclick="compartir_facebook()">
             <img src="img/iconos/twt png.png">
         </div>
         <div class="div_tokens_botones">
@@ -609,6 +607,52 @@
         </div>
     </div>
 </div>
+
+{{-- <div class="fb-share-button" data-href="https://playlisthub.io/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fplaylisthub.io%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div> --}}
+
+{{-- <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=1270718816596385&autoLogAppEvents=1" nonce="kT2BzMpV"></script> --}}
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1270718816596385',
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/es_LA/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+<script type="text/javascript">
+    function compartir_facebook() {
+        FB.ui(
+       {
+         method: 'share',
+         href: 'https://playlisthub.io/',
+         hashtag: '#playlisthub',
+         quote: 'La canción "Nombre de la cancion" del artista "Artista" obtuvo una calificacion de 3/5, puedes escucharla en https://open.spotify.com/track/2oIYhL6su6ZggkxrzFCGZZ?si=o-tugB6ySr-WOlRUfRNVyw',
+       },
+// Si quieres que salga una alerta
+        function(response) {
+            if (response && response.post_id) {
+                alert('He publicado en el muro');
+            } else {
+                alert('No he publicado');
+            }
+        }
+        );
+    }
+    </script>
+
 
 <script>
     function compartir(id) {
