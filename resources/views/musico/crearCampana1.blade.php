@@ -5,6 +5,10 @@
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
+
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 @endsection
 
 @section('menu')
@@ -39,6 +43,9 @@
                 <div id="crearCampana_50" class="campana_info_1">
                     <div class="vercampana_title_o">LINK DE SPOTIFY</div>
                     <input name="link" class="input_crearCampana" type="text" required>
+                    <div class="vercampana_title_o">¿A QUÉ ARTISTAS TE PARECES?</div>
+                    <input id="tags" name="artists" class="input_crearCampana" type="text" required
+                        placeholder="Máximo 5 artistas separados por una coma ( , )">
                     <div class="vercampana_title_o" style="display:flex">CÓDIGO DE REFERENCIA <h1 class="normalizar_letra">(Opcional)</h1></div>
                     <input name="code" class="input_crearCampana" type="text">
                 </div>
@@ -63,4 +70,41 @@
         </form>
     </div>
 @endif
+<script>
+    $(function() {
+      var availableTags = @json($arr_artists);
+      function split( val ) {
+        return val.split( /,\s*/ );
+      }
+      function extractLast( term ) {
+        return split( term ).pop();
+      }
+   
+      $( "#tags" )
+        .bind( "keydown", function( event ) {
+          if ( event.keyCode === $.ui.keyCode.TAB &&
+              $( this ).data( "ui-autocomplete" ).menu.active ) {
+            event.preventDefault();
+          }
+        })
+        .autocomplete({
+          minLength: 0,
+          source: function( request, response ) {
+            response( $.ui.autocomplete.filter(
+              availableTags, extractLast( request.term ) ) );
+          },
+          focus: function() {
+            return false;
+          },
+          select: function( event, ui ) {
+            var terms = split( this.value );
+            terms.pop();
+            terms.push( ui.item.value );
+            terms.push( "" );
+            this.value = terms.join( ", " );
+            return false;
+          }
+        });
+    });
+    </script>
 @endsection
