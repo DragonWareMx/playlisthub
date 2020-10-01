@@ -10,7 +10,9 @@
 @endsection
 
 @section('menu')
-    Perfil 
+@foreach ($usuario as $user)
+{{ $user -> name }}
+@endforeach
 @endsection
 
 @section('contenido') 
@@ -20,11 +22,13 @@
 @endphp
 
 @if (!$error)
-        <div class="div_CabeceraApartado">
+        <div class="div_CabeceraApartado"> 
             <div class="div_tituloApartado">
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
-        <a href="{{route('administrar-cuenta')}}" style="color: #8177F5"><i class="fas fa-cog"></i>&nbsp;&nbsp;Administrar tu cuenta</a>
+            {{-- CHECAR SI ES FAVORITO O NO, recargar la página cuando se marque o desmarque, poner un javascript para ocultar el btn --}}
+            <a href="#" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
+            {{-- <a href="#" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a> --}}
         </div>
         @foreach ($usuario as $user)
             <div class="div_infoPerfilM">
@@ -47,9 +51,8 @@
                 {{-- CAMPAÑAS --}}
                 <div class="div_CabeceraApartado" style="margin-top:40px">
                     <div class="div_tituloApartado resize_tituloApartado">
-                        <p><img class="img_ico_title_o" src="img/iconos/campanas.png" alt="">&nbsp;&nbsp;Campañas actuales</p>
+                        <p><img class="img_ico_title_o" src="/img/iconos/campanas.png" alt="">&nbsp;&nbsp;Campañas actuales</p>
                     </div>
-                    <a href="{{route('crearCampana1')}}" class="resize-btn-agregar"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
                 </div>
 
                 <div class="div_90_o">
@@ -71,13 +74,13 @@
                                         <div class="campanas_encabezado_artista_o">
                                             {{Str::limit($songsAct[$i]->artists[0]->name, 39)}}
                                         </div>
-                                        <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="img/iconos/sp white logo.png" alt=""></div>
+                                        <div style="width:100%; height:0px;"><img class="img_sp_logo_o" src="/img/iconos/sp white logo.png" alt=""></div>
                                     </div>
                                     <div class="background_o"></div>
                                     <div class="campana_title_o">TOKENS</div>
                                     <div class="campana_text_o">{{$camp->cost}}</div>
                                     <div class="campana_title_o">PLAYLIST</div>
-                                    <div class="campana_text_o"><a href="#" style="color: #5c5c5c" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
+                                    <div class="campana_text_o"><a href="#" style="color: #5C5C5C" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
                                     <div class="campana_title_o">FECHA DE TÉRMINO</div>
                                     @if ($camp->end_date)
                                         @php
@@ -131,7 +134,6 @@
                                     @else
                                         <div class="campana_text_o">Por determinar</div>
                                     @endif
-                                    <a class="a_campana_o" href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}">Más info.</a>
                                 </div>
                                 @php
                                     $i++;
@@ -141,7 +143,7 @@
                         <a class="a_derecha_o" href="{{Route('campanasActuales')}}">Ver más</a>
                     @else 
                         <div class="div_error_o">
-                            <div class="txt_error_o">No tienes campañas actuales.</div>
+                            <div class="txt_error_o">Sin campañas actuales.</div>
                         </div>
                     @endif
                 </div>
@@ -151,64 +153,69 @@
             {{-- PLAYLISTS --}}
             <div class="div_CabeceraApartado" style="margin-top:40px">
                 <div class="div_tituloApartado resize_tituloApartado">
-                    <p><img class="img_ico_title_o" src="img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlist activas</p>
+                    <p><img class="img_ico_title_o" src="/img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlist activas</p>
                 </div>
-                <a href="{{route('playlists')}}" class="resize-btn-agregar" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</a>
             </div>
             <div class="div_90_o">
-                <!--tabla playlists-->
-                <div class="div_content_o">
-                    <div class="table_head_o">
-                        <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
-                        <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
-                        <div class="txt_row_responsive">PLAYLIST</div> 
-                        <div class="txt_row_head_o">RANKING</div>
-                        <div class="txt_row_responsive">RANKING</div> 
-                        <div class="txt_row_head_o">NIVEL</div>
-                        <div class="txt_row_responsive">NIVEL</div> 
-                        <div class="txt_row_head_o">SEGUIDORES</div>
-                        <div class="txt_row_responsive">SEGUIDORES</div> 
-                        {{-- <div class="txt_row_head_o">GANANCIAS</div>
-                        <div class="txt_row_responsive">GANANCIAS</div>  --}}
-                    </div>
-                
-                <!--estos divs se crean con un foreach-->
-                @php
-                    $i=0;
-                @endphp
-                @foreach ($playlists_registradas as $playlist)
-                <hr class="hr_100_o">
-                    <div id="{{$playlist->id}}" class="table_row_o table_noBorder">
-                        <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
-                        <p class="p_responsivep">PLAYLIST</p>
-                        <a href=" {{$playlists_bd[$i]->link_playlist}} "  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
-                        <p class="p_responsivep">RANKING</p>
-                        <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
-                        <p class="p_responsivep">NIVEL</p>
-                        <div class="txt_row_play_o">
-                            @php
-                               if($playlist->followers->total<=5000) $nivel=1;
-                               if($playlist->followers->total>5000 && $playlist->followers->total<=15000) $nivel=2;
-                               if($playlist->followers->total>15000 && $playlist->followers->total<=20000) $nivel=3;
-                               if($playlist->followers->total>20000 && $playlist->followers->total<=30000) $nivel=4;
-                               if($playlist->followers->total>30000 && $playlist->followers->total<=50000) $nivel=5;
-                               if($playlist->followers->total>50000 && $playlist->followers->total<=60000) $nivel=6;
-                               if($playlist->followers->total>60000 && $playlist->followers->total<=70000) $nivel=7;
-                               if($playlist->followers->total>70000 && $playlist->followers->total<=80000) $nivel=8;
-                               if($playlist->followers->total>80000 && $playlist->followers->total<=90000) $nivel=9;
-                               if($playlist->followers->total>90000) $nivel=10;
-                            @endphp
-                            nivel {{$nivel}}
+                @if (sizeOf($playlists_registradas)>0)
+                    <!--tabla playlists-->
+                    <div class="div_content_o">
+                        <div class="table_head_o">
+                            <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
+                            <div class="txt_row_head_o">NOMBRE DE LA PLAYLIST</div>
+                            <div class="txt_row_responsive">PLAYLIST</div> 
+                            <div class="txt_row_head_o">RANKING</div>
+                            <div class="txt_row_responsive">RANKING</div> 
+                            <div class="txt_row_head_o">NIVEL</div>
+                            <div class="txt_row_responsive">NIVEL</div> 
+                            <div class="txt_row_head_o">SEGUIDORES</div>
+                            <div class="txt_row_responsive">SEGUIDORES</div> 
+                            {{-- <div class="txt_row_head_o">GANANCIAS</div>
+                            <div class="txt_row_responsive">GANANCIAS</div>  --}}
                         </div>
-                        <p class="p_responsivep">SEGUIDORES</p>
-                        <div class="txt_row_play_o">{{$playlist->followers->total}}</div> 
+                    
+                    <!--estos divs se crean con un foreach-->
+                    @php
+                        $i=0;
+                    @endphp
+                    @foreach ($playlists_registradas as $playlist)
+                    <hr class="hr_100_o">
+                        <div id="{{$playlist->id}}" class="table_row_o table_noBorder">
+                            <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
+                            <p class="p_responsivep">PLAYLIST</p>
+                            <a href=" {{$playlists_bd[$i]->link_playlist}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
+                            <p class="p_responsivep">RANKING</p>
+                            <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
+                            <p class="p_responsivep">NIVEL</p>
+                            <div class="txt_row_play_o">
+                                @php
+                                if($playlist->followers->total<=5000) $nivel=1;
+                                if($playlist->followers->total>5000 && $playlist->followers->total<=15000) $nivel=2;
+                                if($playlist->followers->total>15000 && $playlist->followers->total<=20000) $nivel=3;
+                                if($playlist->followers->total>20000 && $playlist->followers->total<=30000) $nivel=4;
+                                if($playlist->followers->total>30000 && $playlist->followers->total<=50000) $nivel=5;
+                                if($playlist->followers->total>50000 && $playlist->followers->total<=60000) $nivel=6;
+                                if($playlist->followers->total>60000 && $playlist->followers->total<=70000) $nivel=7;
+                                if($playlist->followers->total>70000 && $playlist->followers->total<=80000) $nivel=8;
+                                if($playlist->followers->total>80000 && $playlist->followers->total<=90000) $nivel=9;
+                                if($playlist->followers->total>90000) $nivel=10;
+                                @endphp
+                                nivel {{$nivel}}
+                            </div>
+                            <p class="p_responsivep">SEGUIDORES</p>
+                            <div class="txt_row_play_o">{{$playlist->followers->total}}</div> 
+                        </div>
+                    @php
+                        $i++;
+                    @endphp
+                    @endforeach
+                    
                     </div>
-                @php
-                    $i++;
-                @endphp
-                @endforeach
-                
+                @else
+                <div class="div_error_o">
+                    <div class="txt_error_o">Sin playlists actuales.</div>
                 </div>
+                @endif
             </div>
 
 
@@ -256,7 +263,7 @@
             
                     {{-- NUMERO DE REVIEWS --}}
                     <div class="review_calificacion_item review_calificacion_item_margin">
-                        <img class="img_review" src="img/iconos/user.png" alt="">
+                        <img class="img_review" src="/img/iconos/user.png" alt="">
                         <div class="p_review">{{ $numReviews }} en total</div>
                     </div>
                 </div>
@@ -289,7 +296,7 @@
                                         {{-- NOMBRES --}}
                                         <div class="review_content_names">
                                             {{-- NOMBRE DEL CURADOR --}}
-                                            <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$review->user->spotify_id])}}">{{ $review->user->name }}</a></div>
+                                            <div class="review_content_names_name autor">{{ $review->user->name }}</div>
                                             {{-- NOMBRE DE CANCION --}}
                                             <div class="review_content_names_name">
                                                 {{-- conexion con spotify --}}
@@ -382,7 +389,7 @@
                             @endforeach
                         @else
                             <div class="div_error_o">
-                                <div class="txt_error_o">No has recibido reviews aún.</div>
+                                <div class="txt_error_o">No ha recibido reviews aún.</div>
                             </div>
                         @endif
                     @else
@@ -400,7 +407,7 @@
                                         {{-- NOMBRES --}}
                                         <div class="review_content_names">
                                             {{-- NOMBRE DEL CURADOR --}}
-                                            <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$review->user->spotify_id])}}">{{ $review->user->name }}</a></div>
+                                            <div class="review_content_names_name autor">{{ $review->user->name }}</div>
                                             {{-- PLAYLIST --}}
                                             <div class="review_content_names_name">
                                                 {{-- conexion con spotify --}}
@@ -487,7 +494,7 @@
                             @endforeach
                         @else
                             <div class="div_error_o">
-                                <div class="txt_error_o">No has recibido reviews aún.</div>
+                                <div class="txt_error_o">No ha recibido reviews aún.</div>
                             </div>
                         @endif
                     @endif
@@ -502,10 +509,16 @@
             
             </div>
 
+            <br>
+            <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
+                <div class="div_contbtns">
+                    <a href="{{route('perfil')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+                </div>
+            </div>
+            <br>
 
 
-
-
+ 
         
 @else
     <div class="div_error_o">

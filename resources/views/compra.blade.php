@@ -24,7 +24,7 @@
         <!-- Used to display form errors. -->
         <div id="card-errors" role="alert"></div>
     </div> --}}
-    <form action="" id="payment-form" method="POST">
+    <form action="{{ route('stripePay') }}" id="payment-form" method="POST">
         @csrf
         <div class="container-fluid">
             <div class="row">
@@ -74,34 +74,32 @@
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="direccionTarjeta" name="direccionTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="direccionTarjeta" name="direccionTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="direccionTarjeta" id="direccion" title="Dirección" data-title="Dirección"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="ciudadTarjeta" name="ciudadTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="ciudadTarjeta" name="ciudadTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="ciudadTarjeta" id="ciudad" title="Ciudad" data-title="Ciudad"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="estadoTarjeta" name="estadoTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="estadoTarjeta" name="estadoTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="estadoTarjeta" id="estado" title="Estado" data-title="Estado/Provincia"></label>
                                 </div>
                             </div>
 
                             <div class="row row-p">
                                 <div class="field">
-                                    <input type="text" autocomplete="" id="cpTarjeta" name="cpTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
+                                    <input type="text" autocomplete="off" id="cpTarjeta" name="cpTarjeta" value="" onchange="this.setAttribute('value', this.value);" required>
                                     <label for="cpTarjeta" id="cp" title="Código Postal" data-title="Código Postal"></label>
                                 </div>
                             </div>
 
-                            
-                            {{-- TEL --}}
                             <div class="row row-p" style="display: block">
                                 <label for="card-element">
                                     <a href="https://stripe.com/mx" target="_blank"><img src="{{ asset('img/iconos/stripe-payment-logo.png') }}" width="50px" height="50px"></a> Tarjeta de crédito o débito 
@@ -206,7 +204,7 @@
         var style = {
         base: {
             color: '#32325d',
-            fontFamily: '"Karla", Helvetica, sans-serif',
+            fontFamily: '"Roboto", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
             fontSize: '16px',
             '::placeholder': {
@@ -246,10 +244,10 @@
 
         var options = {
             name: document.getElementById('nombreTarjeta').value,
-            address_line1: document.getElementById('calle').value+' '+document.getElementById('colonia').value ,
-            address_city: document.getElementById('ciudad').value,
-            address_state: document.getElementById('estado').value,
-            address_zip: document.getElementById('cp').value,
+            address_line1: document.getElementById('direccionTarjeta').value,
+            address_city: document.getElementById('ciudadTarjeta').value,
+            address_state: document.getElementById('estadoTarjeta').value,
+            address_zip: document.getElementById('cpTarjeta').value,
 
         }
 

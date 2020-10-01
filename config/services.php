@@ -35,4 +35,10 @@ return [
         'client_secret' => env('SPOTIFY_CLIENT_SECRET'),  
         'redirect' => env('SPOTIFY_REDIRECT_URI') 
       ],
+
+    'stripe'=> [
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
 ];

@@ -12,6 +12,13 @@
 @endsection
 
 @section('contenido')
+@if(session('status'))
+<div class="alert alert-danger" role="alert">
+    <ul>
+        <li>{{session('status')}}</li>
+    </ul>
+</div>
+@endif
 @if($errors->any())
     <div class="alert alert-danger" role="alert">
         <ul>

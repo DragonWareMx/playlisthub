@@ -7,10 +7,15 @@ use Illuminate\Database\QueryException;
 use App\User;
 use App\Playlist;
 use App\Camp;
+use App\Artist;
 use Auth;
 
 class AController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function playlists(){
         $id= Auth::id();
         $error=false;
@@ -95,9 +100,11 @@ class AController extends Controller
         }
         //recorremos ese arreglo para sacar el nombre con el arreglo donde guardamos lo que nos entregó la API de las playlists
         $plnames=[];
+        $pllinks=[];
         $i=0;
         foreach ($pos as $posAct) {
             $plnames[$i]=$playlists_registradas[$posAct]->name;
+            $pllinks[$i]=$playlists_registradas[$posAct]->external_urls->spotify;
             $i++;
         }
 
@@ -150,36 +157,76 @@ class AController extends Controller
         }
 
 
-        if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error)){
+        if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error) || isset($songsAux->error)){
             $error=true;
         }
-       
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
-        'songs'=>$songs, 'plnames'=>$plnames]);
+        'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks]);
     }
-
     public function addPlaylist(){
         $id= Auth::id();
         $access_token=session()->get('access_token');
         $link_playlist=request()->validate([
             'link'=>'required'
         ]);
+        
+        $url='https://api.spotify.com/v1/playlists/'.request('link').'/tracks?access_token='.$access_token;
+        $conexion=curl_init();
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $songs= curl_exec($conexion);
+        curl_close($conexion);
+        $songs=json_decode($songs);
+        $artist_playlist=[];
+        $i=0;    
+        
+        if(isset($songs->error)){
+            session()->flash('expired',true);
+            return redirect()->back();
+        }
+
+        foreach ($songs->items as $song) {
+            if($i<20){
+                $viledruid=Artist::where('id_spotify',$song->track->artists[0]->id)->first();
+                if(!$viledruid){
+                    try {
+                        $artista=new Artist();
+                        $artista->id_spotify=$song->track->artists[0]->id;
+                        $artista->name=$song->track->artists[0]->name;
+                        $artista->save();
+                        $artist_playlist[]=$artista->id;
+                        $i++;
+                    } catch (QueryException $ex) {
+                        return redirect()->back()->withErrors(['error' => 'ERROR: La playlist no se pudo guardar']);   
+                    }
+                }
+                else{
+                    $artist_playlist[]=$viledruid->id;
+                }
+            }
+        }
 
         try{
             $playlist=new Playlist();
             $playlist->tier='0';
             $playlist->profits='0';
-            $playlist->link_playlist=request('link');
+            $playlist->link_playlist='https://open.spotify.com/playlist/'.request('link');
             $playlist->user_id=$id;
             $playlist->save();
         }
         catch(QueryException $ex){
             return redirect()->back()->withErrors(['error' => 'ERROR: La playlist no se pudo guardar']);
         }
+
+        $playlist->artists()->sync($artist_playlist);
+
+       
+
         return redirect()->route('playlists');
     }
-
     public function ranking(){
         $id= Auth::id();
         $error=false;
@@ -218,7 +265,6 @@ class AController extends Controller
 
         return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd]);
     }
-
     public function ganancias(){
         $id= Auth::id();
         $error=false;

@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->date('birth_date');                         //Fecha de nacimiento del usuario
             $table->string('country', 200);                     //Pais de origen del usuario
 
+            $table->float('saldo')->nullable();
+            $table->date('last_login')->nullable();
             $table->unsignedSmallInteger('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
 
             $table->rememberToken();
