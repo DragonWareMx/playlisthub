@@ -472,6 +472,9 @@
                 </div>
             @endif
         @else
+            @php
+                $realizadasSongs = array();
+            @endphp
             @if (count($realizadas) > 0)
                 @foreach ($realizadas as $review)
                     {{-- REVIEW A LA CANCIÓN / VISTA DE CURADOR --}}
@@ -500,6 +503,12 @@
                                         $song= curl_exec($conexion);
                                         curl_close($conexion);
                                         $song=json_decode($song);
+
+                                        $array = array( 'id' => $review->camp->link_song,
+                                                        'name' => $song->name,
+                                                        'artist' => $song->artists[0]);
+
+                                        array_push($realizadasSongs, $array);
                                     @endphp
                                     <div class="m_r"><a href="{{ $review->camp->link_song }}" target="_blank">{{Str::limit($song->name, 48)}}</a></div>
                                 </div>
@@ -585,13 +594,6 @@
     @endif
 </div>
 
-<!-- BORRAR!!!!!!!!!!!!! 
-<button id="btnModal" class="a_agregar_o">
-    <img class="img_a_agregar_o" src="img/iconos/plus.png" alt="">
-    <div id="btnModal" class="txt_a_o">Comprar</div>
-</button>
--->
-
 <!-- Modal -->
 <div id="tvesModal" class="modalContainer" style="z-index: 999">
     <div class="modal-content" style="height: fit-content; max-width: 648px;">
@@ -603,15 +605,9 @@
         </div>
         <div class="div_tokens_botones">
             <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
-            <a class="a_comprarTokens" href="#">Compartir</a>
         </div>
     </div>
 </div>
-
-{{-- <div class="fb-share-button" data-href="https://playlisthub.io/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fplaylisthub.io%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div> --}}
-
-{{-- <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=1270718816596385&autoLogAppEvents=1" nonce="kT2BzMpV"></script> --}}
 
 <script>
     window.fbAsyncInit = function() {
@@ -633,67 +629,105 @@
   </script>
 
 <script type="text/javascript">
-    function compartir_facebook() {
-        FB.ui(
-       {
-         method: 'share',
-         href: 'https://playlisthub.io/',
-         hashtag: '#playlisthub',
-         quote: 'La canción "Nombre de la cancion" del artista "Artista" obtuvo una calificacion de 3/5, puedes escucharla en https://open.spotify.com/track/2oIYhL6su6ZggkxrzFCGZZ?si=o-tugB6ySr-WOlRUfRNVyw',
-       },
-// Si quieres que salga una alerta
-        function(response) {
-            if (response && response.post_id) {
-                alert('He publicado en el muro');
-            } else {
-                alert('No he publicado');
+    var realizadas = @json($realizadas);
+    var songs = @json($realizadasSongs);
+    var song = null;
+    var review = null;
+
+    var modal = document.getElementById("tvesModal");
+    var span = document.getElementsByClassName("close")[0];
+    var body = document.getElementsByTagName("body")[0];
+
+    $( document ).ready(function() {
+
+        span.onclick = function() {
+            modal.style.display = "none";
+
+            body.style.position = "inherit";
+            body.style.height = "auto";
+            body.style.overflow = "visible";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+                body.style.position = "inherit";
+                body.style.height = "auto";
+                body.style.overflow = "visible";
             }
         }
-        );
+    });
+
+
+    //obtiene los datos del review en base al id
+    function getReview(id){
+        var reviewG;
+
+        realizadas.forEach(reviewReal => {
+            if(reviewReal["id"] == id){
+                reviewG = reviewReal;
+                return false
+            }
+            else return true
+        });
+
+        return reviewG;
     }
-    </script>
 
+    //obtiene los datos de la cancion en base al id
+    function getSong(id){
+        var songG;
 
-<script>
+        songs.forEach(songR => {
+            if(songR["id"] == id){
+                songG = songR;
+                return false
+            }
+            else return true
+        });
+
+        return songG;
+    }
+
+    //boton compartir de cada review
     function compartir(id) {
         modal.style.display = "block";
 
         body.style.position = "static";
         body.style.height = "100%";
         body.style.overflow = "hidden";
+
+        review = getReview(id);
+        song = getSong(review["camp"]["link_song"]);
+        console.log(review["rating"]);
+        console.log(song["id"]);
+        console.log(song["name"]);
+        console.log(song["artist"]["name"]);
     }
-    if(document.getElementById("btnModal")){
-			var modal = document.getElementById("tvesModal");
-			var btn = document.getElementById("btnModal");
-			var span = document.getElementsByClassName("close")[0];
-			var body = document.getElementsByTagName("body")[0];
 
-			btn.onclick = function() {
-				modal.style.display = "block";
-
-				body.style.position = "static";
-				body.style.height = "100%";
-				body.style.overflow = "hidden";
-			}
-
-			span.onclick = function() {
-				modal.style.display = "none";
-
-				body.style.position = "inherit";
-				body.style.height = "auto";
-				body.style.overflow = "visible";
-			}
-
-			window.onclick = function(event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-
-					body.style.position = "inherit";
-					body.style.height = "auto";
-					body.style.overflow = "visible";
-				}
-			}
-		}
+    function compartir_facebook() {
+        if(review != null && song != null){
+            FB.ui(
+                {
+                    method: 'share',
+                    href: 'https://playlisthub.io/',
+                    hashtag: '#playlisthub',
+                    quote: 'Califiqué a la canción "'+ song["name"] +'" de "'+ song["artist"]["name"] +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita playlisthub para ganar dinero con tus playlists!',
+                },
+                // Si quieres que salga una alerta
+                function(response) {
+                    if (response && response.post_id) {
+                        alert('He publicado en el muro');
+                    } else {
+                        alert('No he publicado');
+                    }
+                    review = null;
+                    song = null;
+                }
+            );
+        }
+    }
 </script>
 
 <script>

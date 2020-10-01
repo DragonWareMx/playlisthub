@@ -41,6 +41,7 @@ class ReviewController extends Controller
                 $reviews = Review::whereHas('camp', function ($query) {
                     return $query->where('user_id', '=', Auth::id());
                 })->orderBy('date','desc')
+                ->orderBy('id','desc')
                 ->whereNull('playlist_id')
                 ->get();
 
@@ -78,6 +79,7 @@ class ReviewController extends Controller
 
                 //reviews a campañas de musicos que el curador ha realizado
                 $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->orderBy('id','desc')
                                                 ->where('user_id', '=', Auth::id())
                                                 ->whereNull('playlist_id')
                                                 ->get();
@@ -149,11 +151,13 @@ class ReviewController extends Controller
 
                 //reviews a campañas de musicos que el curador ha realizado
                 $realizadasN = Review::with('camp')->orderBy('date','desc')
+                                                ->orderBy('id','desc')
                                                 ->where('user_id', '=', Auth::id())
                                                 ->whereNull('playlist_id')
                                                 ->count();
 
                 $realizadas = Review::with('camp')->orderBy('date','desc')
+                                                ->orderBy('id','desc')
                                                 ->where('user_id', '=', Auth::id())
                                                 ->whereNull('playlist_id')
                                                 ->paginate(10);
@@ -196,6 +200,7 @@ class ReviewController extends Controller
                 $reviews = Review::whereHas('camp', function ($query) {
                     return $query->where('user_id', '=', Auth::id());
                 })->orderBy('date','desc')
+                ->orderBy('id','desc')
                 ->whereNull('playlist_id');
 
                 $reviewsn = $reviews;
@@ -227,7 +232,7 @@ class ReviewController extends Controller
                 //reviews de las playlists del usuario musico
                 $reviews = Review::whereHas('playlist', function ($query) {
                     return $query->where('user_id', '=', Auth::id());
-                })->orderBy('date','desc');
+                })->orderBy('date','desc')->orderBy('id','desc');
 
                 $reviewsn = $reviews;
 
@@ -296,6 +301,7 @@ class ReviewController extends Controller
                 ->with('review')
                 ->whereNotIn('id', $campsIds)
                 ->orderBy('start_date','desc')
+                ->orderBy('id','desc')
                 ->get();
 
                 return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps]);
@@ -317,6 +323,7 @@ class ReviewController extends Controller
                 })
                 ->whereNotIn('id', $campsIds)
                 ->orderBy('start_date','asc')
+                ->orderBy('id','desc')
                 ->get();
 
                 return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps]);

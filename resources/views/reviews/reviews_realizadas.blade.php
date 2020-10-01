@@ -166,6 +166,9 @@
                 </div>
             @endif
         @else
+            @php
+                $realizadasSongs = array();
+            @endphp 
             @if (count($realizadas) > 0)
                 @foreach ($realizadas as $review)
                     {{-- REVIEW A LA CANCIÓN / VISTA DE CURADOR --}}
@@ -194,6 +197,12 @@
                                         $song= curl_exec($conexion);
                                         curl_close($conexion);
                                         $song=json_decode($song);
+
+                                        $array = array( 'id' => $review->camp->link_song,
+                                                        'name' => $song->name,
+                                                        'artist' => $song->artists[0]);
+
+                                        array_push($realizadasSongs, $array);
                                     @endphp
                                     <div class="m_r"><a href="{{ $review->camp->link_song }}" target="_blank">{{Str::limit($song->name, 48)}}</a></div>
                                 </div>
@@ -244,6 +253,8 @@
                                     <a href="#" onclick="leermas({{$contador}})" id="leermasbtn{{$contador}}" class="btnLeerMas">leer más</a>
                                 @endif
                             </div>
+
+                            <a href="#" id="btnModal" onclick="compartir({{$review->id}})" class="btnLeerMas" style="float: right; font-size: 15px; margin-right:13px;margin-bottom:8px">Compartir</a>
                         </div>
                     </div>
 
@@ -272,6 +283,142 @@
     </div>
 </div>
 <br>
+
+<!-- Modal -->
+<div id="tvesModal" class="modalContainer" style="z-index: 999">
+    <div class="modal-content" style="height: fit-content; max-width: 648px;">
+        <div class="modal_title_tokens" >Compartir review</div>
+        <hr class="hr_modal_o"> 
+        <div class="modal_compartir">
+                <img class="modal_compartir_facebook" src="img/iconos/facebook png.png" onclick="compartir_facebook()">
+            <img src="img/iconos/twt png.png">
+        </div>
+        <div class="div_tokens_botones">
+            <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1270718816596385',
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/es_LA/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+<script type="text/javascript">
+    var realizadas = @json($realizadas);
+    var songs = @json($realizadasSongs);
+    var song = null;
+    var review = null;
+
+    var modal = document.getElementById("tvesModal");
+    var span = document.getElementsByClassName("close")[0];
+    var body = document.getElementsByTagName("body")[0];
+
+    $( document ).ready(function() {
+
+        span.onclick = function() {
+            modal.style.display = "none";
+
+            body.style.position = "inherit";
+            body.style.height = "auto";
+            body.style.overflow = "visible";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+                body.style.position = "inherit";
+                body.style.height = "auto";
+                body.style.overflow = "visible";
+            }
+        }
+    });
+
+
+    //obtiene los datos del review en base al id
+    function getReview(id){
+        var reviewG;
+
+        realizadas.data.forEach(reviewReal => {
+            if(reviewReal["id"] == id){
+                reviewG = reviewReal;
+                return false
+            }
+            else return true
+        });
+
+        return reviewG;
+    }
+
+    //obtiene los datos de la cancion en base al id
+    function getSong(id){
+        var songG;
+
+        songs.forEach(songR => {
+            if(songR["id"] == id){
+                songG = songR;
+                return false
+            }
+            else return true
+        });
+
+        return songG;
+    }
+
+    //boton compartir de cada review
+    function compartir(id) {
+        modal.style.display = "block";
+
+        body.style.position = "static";
+        body.style.height = "100%";
+        body.style.overflow = "hidden";
+
+        review = getReview(id);
+        song = getSong(review["camp"]["link_song"]);
+        console.log(review["rating"]);
+        console.log(song["id"]);
+        console.log(song["name"]);
+        console.log(song["artist"]["name"]);
+    }
+
+    function compartir_facebook() {
+        if(review != null && song != null){
+            FB.ui(
+                {
+                    method: 'share',
+                    href: 'https://playlisthub.io/',
+                    hashtag: '#playlisthub',
+                    quote: 'Califiqué a la canción "'+ song["name"] +'" de "'+ song["artist"]["name"] +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita playlisthub para ganar dinero con tus playlists!',
+                },
+                // Si quieres que salga una alerta
+                function(response) {
+                    if (response && response.post_id) {
+                        alert('He publicado en el muro');
+                    } else {
+                        alert('No he publicado');
+                    }
+                    review = null;
+                    song = null;
+                }
+            );
+        }
+    }
+</script>
 
 <script>
     function leermas(numero) {
