@@ -21,6 +21,11 @@
         ERROR: El link debe pertenecer a una canción registrada en Spotify
     </div>
 @endif
+@if (session()->get('badArtists'))
+    <div class="error_msg_o">
+        ¡Por favor selecciona artistas que aparezcan como opción!
+    </div>
+@endif
 @if (session()->get('unexpected'))
     <div class="error_msg_o">
         ERROR: Sucedió algo inesperado, por favor inténtalo de nuevo más tarde

@@ -398,11 +398,26 @@ class OController extends Controller
         $artists=trim($request->artists);
         $artists=explode(',',$artists);
         $i=0;
+        function elimina_acentos($text){
+            $text = htmlentities($text, ENT_QUOTES, 'UTF-8');
+            $text = strtolower($text);
+            $patron = array (
+                '/\+/' => '',
+                '/&agrave;/' => 'a','/&egrave;/' => 'e','/&igrave;/' => 'i','/&ograve;/' => 'o','/&ugrave;/' => 'u',
+                '/&aacute;/' => 'a','/&eacute;/' => 'e','/&iacute;/' => 'i','/&oacute;/' => 'o','/&uacute;/' => 'u',
+                '/&acirc;/' => 'a','/&ecirc;/' => 'e','/&icirc;/' => 'i','/&ocirc;/' => 'o','/&ucirc;/' => 'u',
+                '/&atilde;/' => 'a','/&etilde;/' => 'e','/&itilde;/' => 'i','/&otilde;/' => 'o','/&utilde;/' => 'u',
+                '/&auml;/' => 'a','/&euml;/' => 'e','/&iuml;/' => 'i','/&ouml;/' => 'o','/&uuml;/' => 'u',
+                '/&auml;/' => 'a','/&euml;/' => 'e','/&iuml;/' => 'i','/&ouml;/' => 'o','/&uuml;/' => 'u','/&aring;/' => 'a','/&ntilde;/' => 'n',
+            );
+            $text = preg_replace(array_keys($patron),array_values($patron),$text);
+            return $text;
+        }
         foreach($artists as $artist){
             if(empty($artist))
                 unset($artists[$i]);
             else
-                $artists[$i]=trim($artist);
+                $artists[$i]=elimina_acentos(trim($artist));
             $i++;
         }
         $artists=array_values($artists);
@@ -414,7 +429,7 @@ class OController extends Controller
         foreach($all_playlists as $all_playlist){
             $coincidencias=0;
             foreach($all_playlist->artists as $artist){
-                if(in_array($artist->name,$artists)){
+                if(in_array(elimina_acentos($artist->name),$artists)){
                     $coincidencias++;;
                     $cont=true;
                 }
@@ -470,6 +485,11 @@ class OController extends Controller
                     $i++;
                 }
             }
+        }
+        if(!$cont){
+            session()->flash('badArtists',true);
+            session()->forget('link_song');
+            return redirect('/crear-paso-1');
         }
         session()->put('playlistsCosts',$playlistsCosts);
         //ordena las playlists por orden de coincidencias 
