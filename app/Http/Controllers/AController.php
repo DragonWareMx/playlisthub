@@ -117,21 +117,25 @@ class AController extends Controller
         curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
         $playlists= curl_exec($conexion);
         curl_close($conexion);
-        $playlists=json_decode($playlists, true);
-        
+        $playlists=json_decode($playlists);
 
+        if(isset($playlists->error)){
+            session()->flash('expired',true);
+            return redirect()->back();
+        }
+        
         //for para mostrar en modal sólo las que no están registradas ya y las que sí son mismo id que owner
         $playlistsModal=[];
         $i=0;
-        foreach ($playlists['items'] as $playlist) {
+        foreach ($playlists->items as $playlist) {
             $control=false;
             foreach ($playlists_bd as $playlist2) {
-                if($playlist['external_urls']['spotify']==$playlist2->link_playlist){
+                if($playlist->external_urls->spotify==$playlist2->link_playlist){
                     $control=true;
                     break;
                 }
             }
-            if($control==false && $playlist['owner']['id']==$user->spotify_id) {
+            if($control==false && $playlist->owner->id==$user->spotify_id) {
                 $playlistsModal[$i]=$playlist;
                 $i++;
             }
@@ -142,7 +146,7 @@ class AController extends Controller
         $followers=[];
         $i=0;
         foreach($playlists as $playlist){
-            $url='https://api.spotify.com/v1/playlists/'.$playlist['id'].'?access_token='.$access_token;
+            $url='https://api.spotify.com/v1/playlists/'.$playlist->id.'?access_token='.$access_token;
             $conexion=curl_init();
             curl_setopt($conexion, CURLOPT_URL, $url);
             curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
@@ -155,14 +159,14 @@ class AController extends Controller
             $followers[$i]=$playlistFollow->followers->total;
             $i++;
         }
-
-
-        if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error) || isset($songsAux->error)){
+            if(isset($playlists->error) || isset($playlistFollow->error) || isset($playlistBD->error) || isset($songsAux->error)){
             $error=true;
-        }
+            }
+
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
         'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks]);
+        
     }
     public function addPlaylist(){
         $id= Auth::id();
@@ -270,7 +274,8 @@ class AController extends Controller
         $error=false;
         $access_token=session()->get('access_token');
         $playlists_bd= Playlist::where('user_id',$id)->orderBy('profits','desc')->get();
-    
+        $user= User::findOrFail($id);
+        $saldo= $user->saldo;
         //sacamos datos de playlists de API
         $i=0;
         $playlists=[];
@@ -304,7 +309,7 @@ class AController extends Controller
         }
 
         return view('curador.ganancias', ['playlists'=>$playlists, 'error'=>$error, 
-        'playlists_bd'=>$playlists_bd, 'total'=>$total]);
+        'playlists_bd'=>$playlists_bd, 'total'=>$total, 'saldo'=>$saldo]);
     }
 
 }

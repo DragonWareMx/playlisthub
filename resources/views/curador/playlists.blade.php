@@ -15,7 +15,7 @@
 @endsection
 
 @section('contenido') 
-@if (!$error || !session()->get('expired'))
+@if ($error==false || !session()->get('expired'))
 <div class="div_CabeceraApartado" style="margin-top:40px">
     <div class="div_tituloApartado resize_tituloApartado">
         <p><img class="img_ico_title_o" src="img/iconos/playlist.png" alt="">&nbsp;&nbsp;Playlist activas</p>
@@ -150,9 +150,9 @@
             @endphp
             @foreach ($playlists as $playlist)
                 @if ($followers[$i]>=0)
-                    <div id="{{$playlist['id']}}" class="div_playlist_modal" value="">
-                        <div class="div_img_modal"><img class="img_modal" src="{{$playlist['images']['0']['url']}}" alt=""></div>  
-                        <div class="txt_row">{{$playlist['name']}}</div> 
+                    <div id="{{$playlist->id}}" class="div_playlist_modal" value="">
+                        <div class="div_img_modal"><img class="img_modal" src="{{$playlist->images['0']->url}}" alt=""></div>  
+                        <div class="txt_row">{{$playlist->name}}</div> 
                         <div class="txt_row">{{$followers[$i]}}&nbsp;seguidores</div>
                     </div>
                     @php
