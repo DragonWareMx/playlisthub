@@ -465,22 +465,54 @@ class OController extends Controller
                 $item['followers']=$playlist->followers->total;
                 $total=$playlist->followers->total;
                 $cost=100;
-                if($total>=500 && $total<=5000) $cost=1;
-                if($total>=5001 && $total<15000) $cost=1;
-                if($total>=15001 && $total<=20000) $cost=1;
-                if($total>=20001 && $total<=30000) $cost=1;
-                if($total>=30001 && $total<=50000) $cost=2;
-                if($total>=50001 && $total<=60000) $cost=2;
-                if($total>=60001 && $total<=70000) $cost=3;
-                if($total>=70001 && $total<=80000) $cost=3;
-                if($total>=80001 && $total<=90000) $cost=4;
-                if($total>=90001) $cost=4;
+                $level=100;
+                if($total>=500 && $total<=5000){
+                    $cost=1;
+                    $level=1;
+                }
+                else if($total>=5001 && $total<15000){
+                    $cost=1;
+                    $level=2;
+                }
+                else if($total>=15001 && $total<=20000){
+                    $cost=1;
+                    $level=3;
+                }
+                else if($total>=20001 && $total<=30000){
+                    $cost=1;
+                    $level=4;
+                }
+                else if($total>=30001 && $total<=50000){
+                    $cost=2;
+                    $level=5;
+                }
+                else if($total>=50001 && $total<=60000){
+                    $cost=2;
+                    $level=6;
+                }
+                else if($total>=60001 && $total<=70000){
+                    $cost=3;
+                    $level=7;
+                }
+                else if($total>=70001 && $total<=80000){
+                    $cost=3;
+                    $level=8;
+                }
+                else if($total>=80001 && $total<=90000){
+                    $cost=4;
+                    $level=9;
+                }
+                else if($total>=90001){
+                    $cost=4;
+                    $level=10;
+                }
                 $item['cost']=$cost;
                 if($total>=500){
                     $playlists[$i]=$item;
                     $itemCost=[];
                     $itemCost['playlist']=$all_playlist->id;
                     $itemCost['cost']=$cost;
+                    $itemCost['level']=$level;
                     $playlistsCosts[$i]=$itemCost;
                     $i++;
                 }
@@ -512,6 +544,7 @@ class OController extends Controller
                 $cost=$playlistCost['cost'];
                 session()->put('selected_playlist',$playlistCost['playlist']);
                 session()->put('playlist_cost',$cost);
+                session()->put('playlist_level',$playlistCost['level']);
             }
         }
         $access_token=session()->get('access_token');
@@ -556,6 +589,7 @@ class OController extends Controller
     public function storeCamp(request $request){
         Gate::authorize('haveaccess','musico.perm');
         $cost=session()->get('playlist_cost');
+        $level=session()->get('playlist_level');
         $playlist_id=session()->get('selected_playlist');
         $user=User::findOrFail(Auth::id());
         if($user->tokens-$cost<0){
@@ -565,6 +599,7 @@ class OController extends Controller
         $camp=new Camp();
         $camp->start_date=Carbon::now();
         $camp->cost=$cost;
+        $camp->level=$level;
         $camp->link_song=session()->get('link_song');;
         $camp->user_id=Auth::id();
         $camp->playlist_id=$playlist_id;
@@ -575,11 +610,12 @@ class OController extends Controller
         $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
         $curator=User::findOrFail($playlist->user->id);
         Mail::to($curator->email)->send(new camp_mail($camp->id,$curator->name));
-        // session()->forget('playlistsCosts');
-        // session()->forget('selected_playlist');
-        // session()->forget('playlist_cost');
-        // session()->forget('link_song');
-        // session()->flash('success',true);
+        session()->forget('playlistsCosts');
+        session()->forget('selected_playlist');
+        session()->forget('playlist_cost');
+        session()->forget('playlist_level');
+        session()->forget('link_song');
+        session()->flash('success',true);
         return redirect('/campanas');
     }
     public function tokens()
