@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
+Route::patch('/favoritos/{id}', 'OController@favoritosUpdate')->name('favoritos-update');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
 Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');

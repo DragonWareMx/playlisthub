@@ -26,13 +26,26 @@
             <div class="div_tituloApartado">
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
+            @foreach ($usuario as $user)
             {{-- CHECAR SI ES FAVORITO O NO, recargar la página cuando se marque o desmarque, poner un javascript para ocultar el btn --}}
-            <a href="#" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
-            {{-- <a href="#" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a> --}}
+            @if($user->type=='Curador')
+                    @if($marcaFav == false) 
+                        <form action="{{route('favoritos-update',['id'=>$user->id])}}"  method="POST" enctype="multipart/form-data">
+                            @method("PATCH")
+                                    @csrf
+                                    
+                            <input class="" type="submit" value="Agregar a fav">
+                                    {{-- <a href="{{route('favoritos-update',['id'=>$user->id])}}" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a> --}}
+                        </form>
+                    
+                    
+                    @else
+                        <a href="{{route('favoritos-update',['id'=>$user->id])}}" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a>
+                    @endif
+            @endif
         </div>
-        @foreach ($usuario as $user)
             <div class="div_infoPerfilM">
-                <div class="div_fotoPerfilM">
+                <div class="div_fotoPerfilM"> 
                     <img src="{{$user->avatar}}">
                 </div>
                 <div class="div_txtPM"> 

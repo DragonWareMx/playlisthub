@@ -531,6 +531,16 @@ class cuentaController extends Controller
         curl_close($conexion2);
         $playlists=json_decode($playlists, true);
         
+        //FAVORITOS
+        $usuarioLoggeado=User::with('favorites')->findOrFail(Auth::id());
+        $marcaFav=false;
+        foreach($usuarioLoggeado->favorites as $favorite){
+            if($favorite->id == $idUser){
+                $marcaFav=true;
+            }
+                
+        }
+        // dd($marcaFav);
         //REVIWS
 
         //booleano que indica el tipo del usuario (true = musico, false = curador)
@@ -569,7 +579,7 @@ class cuentaController extends Controller
                 }
                  return view ('perfilPublico', ['usuario' => $usuario,'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error,'tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas),'playlists'=>$playlists, 'error'=>$error2, 
                  'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
-                 'songs'=>$songs, 'plnames'=>$plnames]);
+                 'songs'=>$songs, 'plnames'=>$plnames, 'marcaFav'=>$marcaFav]);
                 
                 break;
             case 'Curador':
@@ -604,7 +614,7 @@ class cuentaController extends Controller
                 }
                  return view ('perfilPublico', ['usuario' => $usuario,'campsAct'=>$campsAct,'songsAct'=>$songsAct,'playlistsAct'=>$playlistsAct,'campsAnt'=>$campsAnt,'songsAnt'=>$songsAnt,'playlistsAnt'=>$playlistsAnt,'error'=>$error,'tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas),'playlists'=>$playlists, 'error'=>$error2, 
                  'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
-                 'songs'=>$songs, 'plnames'=>$plnames]);
+                 'songs'=>$songs, 'plnames'=>$plnames, 'marcaFav'=>$marcaFav]);
                 
                 break;
             default:

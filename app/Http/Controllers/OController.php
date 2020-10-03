@@ -59,6 +59,44 @@ class OController extends Controller
         }
         return view ('musico.favoritos',['favs'=>$favs]);
     }
+
+    public function favoritosUpdate($idUser){
+        try { 
+            // $usuarioEx = User::where('spotify_id',$idUser)->get(); 
+            // $newId=User::where('spotify_id',$idUser)->value('id');
+            $usuarioEx = User::where('id',$idUser)->get();
+            $usuario = User::where('id',Auth::id())->get();
+            // dd($newId);
+        } catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null || $usuarioEx ==null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+        else{
+            $usuarioLoggeado=User::with('favorites')->findOrFail(Auth::id());
+            $marcaFav=false;
+            foreach($usuarioLoggeado->favorites as $favorite){
+                if($favorite->id == $idUser){
+                    $marcaFav=true;
+                }
+            }
+            if($marcaFav==false){
+                //MARCAR COMO FAVORITO (AGREGAR)
+                // $favorito=
+                $favorito->user_id=$usuario;
+                $favorito->favorite_id=$usuarioEx;
+                $favorito->save();
+            }
+            else{
+                //DESMARCAR COMO FAVORITO (ELIMINAR)
+
+            }
+            return view ('musico.favoritos',['favs'=>$favs]);
+        }
+    }
+
     public function campanas()
     {
         Gate::authorize('haveaccess','musico.perm');
