@@ -421,7 +421,7 @@ class OController extends Controller
             $i++;
         }
         $artists=array_values($artists);
-        $all_playlists=Playlist::with('artists')->get();
+        $all_playlists=Playlist::with('artists','user')->get();
         $playlists=[];
         $playlistsCosts=[];
         $i=0;
@@ -463,48 +463,55 @@ class OController extends Controller
                 $item['curator_id']=$all_playlist->user->id;
                 $item['curator_name']=$all_playlist->user->name;
                 $item['followers']=$playlist->followers->total;
+                $item['premium']=$all_playlist->user->premium;
                 $total=$playlist->followers->total;
                 $cost=100;
                 $level=100;
-                if($total>=500 && $total<=5000){
-                    $cost=1;
-                    $level=1;
+                if($all_playlist->user->premium == 0){
+                    if($total>=500 && $total<=5000){
+                        $cost=1;
+                        $level=1;
+                    }
+                    else if($total>=5001 && $total<15000){
+                        $cost=1;
+                        $level=2;
+                    }
+                    else if($total>=15001 && $total<=20000){
+                        $cost=1;
+                        $level=3;
+                    }
+                    else if($total>=20001 && $total<=30000){
+                        $cost=1;
+                        $level=4;
+                    }
+                    else if($total>=30001 && $total<=50000){
+                        $cost=2;
+                        $level=5;
+                    }
+                    else if($total>=50001 && $total<=60000){
+                        $cost=2;
+                        $level=6;
+                    }
+                    else if($total>=60001 && $total<=70000){
+                        $cost=3;
+                        $level=7;
+                    }
+                    else if($total>=70001 && $total<=80000){
+                        $cost=3;
+                        $level=8;
+                    }
+                    else if($total>=80001 && $total<=90000){
+                        $cost=4;
+                        $level=9;
+                    }
+                    else if($total>=90001){
+                        $cost=4;
+                        $level=10;
+                    }
                 }
-                else if($total>=5001 && $total<15000){
-                    $cost=1;
-                    $level=2;
-                }
-                else if($total>=15001 && $total<=20000){
-                    $cost=1;
-                    $level=3;
-                }
-                else if($total>=20001 && $total<=30000){
-                    $cost=1;
-                    $level=4;
-                }
-                else if($total>=30001 && $total<=50000){
-                    $cost=2;
-                    $level=5;
-                }
-                else if($total>=50001 && $total<=60000){
-                    $cost=2;
-                    $level=6;
-                }
-                else if($total>=60001 && $total<=70000){
-                    $cost=3;
-                    $level=7;
-                }
-                else if($total>=70001 && $total<=80000){
-                    $cost=3;
-                    $level=8;
-                }
-                else if($total>=80001 && $total<=90000){
-                    $cost=4;
-                    $level=9;
-                }
-                else if($total>=90001){
-                    $cost=4;
-                    $level=10;
+                else{
+                    $cost=5;
+                    $level=11;
                 }
                 $item['cost']=$cost;
                 if($total>=500){
