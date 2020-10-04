@@ -25,6 +25,23 @@ class PaymentController extends Controller
 {
     //
     private $apiContext;
+    private $packs= array(
+        0=> array(
+            "cantidad"=>10,
+            "descuento"=>0,
+            "total"=>100
+        ),
+        1=> array(
+            "cantidad"=>20,
+            "descuento"=>20,
+            "total"=>180
+        ),
+        2=> array(
+            "cantidad"=>30,
+            "descuento"=>30,
+            "total"=>270
+        )
+    );
 
     public function __construct()
     {
@@ -48,25 +65,25 @@ class PaymentController extends Controller
         //dd($request->all());
         $usuario=User::findOrFail(Auth::id());
         $content='Tokens';
-        $cantidad=session()->get('cantidad');
-        $total=$cantidad*10;
+        $pakcID=session()->get('packID');
+        $pack=$this->packs[$pakcID];
         try {
             $charge = Stripe::charges()->create([
-                'amount'=> $total,
+                'amount'=> $pack['total'],
                 'currency'=> 'USD',
                 'source' => $request->stripeToken,
                 'description'=>'Compra de tokens en Playlisthub',
                 'receipt_email'=> $usuario->email,
                 'metadata' => [
                     'contents'=>$content,
-                    'quantity'=>$cantidad,
+                    'quantity'=>$pack['cantidad'],
                 ],
             ]);
 
             //SUCCESSFUL
-            $usuario->tokens=$usuario->tokens+$cantidad;
+            $usuario->tokens=$usuario->tokens+$pack['cantidad'];
             $usuario->save();
-            session()->forget('cantidad');
+            session()->forget('packID');
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tokens')->with(compact('status'));
@@ -95,9 +112,9 @@ class PaymentController extends Controller
     }
     public function payment(Request $request){
         if($request->paytype=='stripe'){
-            $cantidad=$request->cantidad;
-            session()->put('cantidad',$cantidad);
-            return view('compra',['cantidad'=>$cantidad]);
+            $packID=$request->packID;
+            session()->put('packID',$packID);
+            return view('compra',['tokens'=>$this->packs[$packID]]);
         }
          // After Step 2
          $payer = new Payer();

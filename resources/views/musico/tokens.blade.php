@@ -32,7 +32,6 @@
     <div class="div_tituloApartado resize_tituloApartado">
         <p><img class="img_ico_title_o" src="img/iconos/tokens.png" alt="">&nbsp;&nbsp;Tus tokens</p>
     </div>
-    <a id="btnModal" class="resize-btn-agregar agregarToken_a" style="color: #8177F5"><i class="fas fa-plus"></i>&nbsp;&nbsp;Comprar</a>
 </div>
 <div class="div_90_o">
         @foreach ($usuario as $user)
@@ -46,16 +45,24 @@
     <div class="div_100_o">
         <div class="item_comprar_token">
             <div class="item_token_encabezado">10 TOKENS</div>
-            <div class="item_txt_black">$2375.00 pesos</div>
-            <div class="item_txt_black">Ahorras $124.25 pesos</div>
-            <div class="item_txt_gray">Promoción válida hasta la fecha 21-08-2020</div>
-            <button type="button" class="btn_comprar_token" >Comprar</button>
+            <div class="item_txt_black">$100.00 USD</div>
+            <div class="item_txt_black" style="visibility: hidden">Ahorras $0 USD</div>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
+            <button  data-pack="0" data-quantity="10" data-total="100" type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
-
+            <div class="item_token_encabezado">20 TOKENS</div>
+            <div class="item_txt_black">$180.00 USD</div>
+            <div class="item_txt_black">Ahorras $20.00 USD</div>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
+            <button data-pack="1" data-quantity="20" data-total="180"  type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
-
+            <div class="item_token_encabezado">30 TOKENS</div>
+            <div class="item_txt_black">$270.00 USD</div>
+            <div class="item_txt_black">Ahorras $30.00 USD</div>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
+            <button data-pack="2" data-quantity="30" data-total="270" type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
 
@@ -73,10 +80,9 @@
         <hr class="hr_modal_o">
         <div class="sel_cantidad_tokens">
             <div class="txt_cantidad_modal">Cantidad:</div>
-            <button type="button" class="modal_token_boton_cantidad" id="btnminus">-</button>
-            <input class="modal_token_input" type="number" name="cantidad" value="1" min="1" max="30" id="cantidad">
-            <button type="button" class="modal_token_boton_cantidad" id="btnplus">+</button>
-        </div>  
+            <input class="modal_token_input" type="number" name="cantidad" value="1" min="1" max="30" id="cantidad" readonly>
+        </div> 
+        <input type="hidden" id="packID" name="packID"> 
         <div class="txt_modal_izquierda">Seleccionar método de pago:</div>
         <div class="modal_metodos_pago">
             <label>
@@ -105,19 +111,11 @@
 
 
 <script>
-    if(document.getElementById("btnModal")){
+    if(document.getElementsByClassName("btn_comprar_token")){
 			var modal = document.getElementById("tvesModal");
-			var btn = document.getElementById("btnModal");
+			var btn = document.getElementsByClassName("btn_comprar_token");
 			var span = document.getElementsByClassName("close")[0];
 			var body = document.getElementsByTagName("body")[0];
-
-			btn.onclick = function() {
-				modal.style.display = "block";
-
-				body.style.position = "static";
-				body.style.height = "100%";
-				body.style.overflow = "hidden";
-			}
 
 			span.onclick = function() {
 				modal.style.display = "none";
@@ -140,6 +138,26 @@
 </script>
 
 <script>
+    $(document).ready(function(){
+        $('.btn_comprar_token').on('click',function(){
+            $('#tvesModal').css({
+                "display":"block",
+                "height":"100%",
+                "overflow":"hidden"
+            });
+            var boton=$(this);
+            var packID=boton.attr('data-pack');
+            var quantity=boton.attr('data-quantity');
+            var total=boton.attr('data-total');
+            $('#cantidad').val(quantity);
+            $('#packID').val(packID);
+            $('#precio').html('Total: $'+total+'.00 USD');
+
+        });
+    });
+</script>
+
+{{-- <script>
     $(document).ready(function(){ 
         var ntokens= $('#cantidad').val();
         var preciouni=10;
@@ -167,7 +185,7 @@
             $('#precio').html('Total: $'+precio+'.00 USD');
         });
     }); 
-</script>
+</script> --}}
 
 <script>
     // https://developer.mozilla.org/en-US/docs/Web/API/Performance/navigation
