@@ -8,7 +8,7 @@
 @endsection
 
 @section('menu')
-    Tokens
+    Tokensqwerasfdasdcas
 @endsection
 
 @section('contenido')
@@ -34,9 +34,7 @@
     </div>
 </div>
 <div class="div_90_o">
-        @foreach ($usuario as $user)
-            <div class="div_tokens_o"> {{$user->tokens}}&nbsp;tokens</div>
-        @endforeach 
+        
     <div class="ico_title_o">
         <img class="img_ico_title_o" src="img/iconos/buy.png" alt="">
         <div class="p_title_o">&nbsp;&nbsp;Paquetes de tokens disponibles para compra</div>
@@ -65,7 +63,7 @@
             <button data-pack="2" data-quantity="30" data-total="270" type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
-
+            <a href="{{ route('viledruid') }}">ASDIJASOIDHASLKDASJDL</a>
         </div>  
     </div>
 </div>
@@ -107,8 +105,8 @@
             
         </div>
     </form>
+    
 </div>  
-
 
 <script>
     if(document.getElementsByClassName("btn_comprar_token")){
