@@ -102,8 +102,13 @@ Route::get('/register/musico/spotify/callback','RegistroController@MusicoSpotyCa
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('/prueba',function(){
+    return view('musico.tokens2');
+});
+Route::get('/tokens/payment/test','PaymentController@test')->name('viledruid');
 //pagos
 Route::post('/tokens/payment','PaymentController@payment')->name('payment');
 Route::post('/tokens/payment/checkout','PaymentController@stripePay')->name('stripePay');
+Route::get('/tokens/payment/paypal','PaymentController@payPalStatus')->name('statusPayPal');
 
 Route::get('/home', 'HomeController@index');
