@@ -698,10 +698,6 @@
 
         review = getReview(id);
         song = getSong(review["camp"]["link_song"]);
-        console.log(review["rating"]);
-        console.log(song["id"]);
-        console.log(song["name"]);
-        console.log(song["artist"]["name"]);
     }
 
     function compartir_facebook() {
