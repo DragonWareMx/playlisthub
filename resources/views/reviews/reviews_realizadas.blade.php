@@ -47,6 +47,7 @@
             //contador para identificar los contenidos / sirve para el funcionamiento del boton leer mas
             $contador = 1;
             $contadorReal = 1;
+            $realizadasSongs = array();
         @endphp
 
         {{-- si el usuario es del tipo musico / si es falso entonces es de curador--}}
@@ -166,9 +167,6 @@
                 </div>
             @endif
         @else
-            @php
-                $realizadasSongs = array();
-            @endphp 
             @if (count($realizadas) > 0)
                 @foreach ($realizadas as $review)
                     {{-- REVIEW A LA CANCIÓN / VISTA DE CURADOR --}}

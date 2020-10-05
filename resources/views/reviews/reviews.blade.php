@@ -345,6 +345,7 @@
         @php
             //contador para identificar los contenidos / sirve para el funcionamiento del boton leer mas
             $contadorReal = 1;
+            $realizadasSongs = array();
         @endphp
 
         {{-- si el usuario es del tipo musico / si es falso entonces es de curador--}}
@@ -472,9 +473,6 @@
                 </div>
             @endif
         @else
-            @php
-                $realizadasSongs = array();
-            @endphp
             @if (count($realizadas) > 0)
                 @foreach ($realizadas as $review)
                     {{-- REVIEW A LA CANCIÓN / VISTA DE CURADOR --}}
@@ -600,8 +598,8 @@
         <div class="modal_title_tokens" >Compartir review</div>
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">
-                <img class="modal_compartir_facebook" src="img/iconos/facebook png.png" onclick="compartir_facebook()">
-            <img src="img/iconos/twt png.png">
+            <img class="modal_compartir_facebook" src="img/iconos/facebook png.png" onclick="compartir_facebook()">
+            <img src="img/iconos/twt png.png" onclick="compartir_twitter()">
         </div>
         <div class="div_tokens_botones">
             <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
@@ -728,6 +726,21 @@
             );
         }
     }
+
+    function compartir_twitter(){
+        var name = "sasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasd";
+        var url = "https://playlisthub.io/";
+        var text = 'Califiqué a la canción "'+ truncate(song["name"]) +'" de "'+ truncate(song["artist"]["name"]) +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita playlisthub para ganar dinero con tus playlists! \n#PlaylistHub\n';
+        window.open('http://twitter.com/share?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+
+    }
+
+    function truncate(input) {
+        if (input.length > 34) {
+            return input.substring(0, 34) + '...';
+        }
+        return input;
+    };
 </script>
 
 <script>
