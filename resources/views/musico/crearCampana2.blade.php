@@ -45,7 +45,11 @@
             <p class="p_responsivep">SEGUIDORES</p>
             <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
             <p class="p_responsivep">TOKENS</p>
-            <div class="txt_row_play_o"> {{$playlist['cost']}} </div>
+            @if($playlist['cost']==5 && $playlist['level']==11)
+                <div title="Playlist premium" class="txt_row_play_o" style="color:#b22222"> {{$playlist['cost']}} </div>
+            @else
+                <div  class="txt_row_play_o"> {{$playlist['cost']}} </div>
+            @endif
         </button> 
         @endforeach
         <div id="notEnoughTokens" class="txt_izquierda_o txt_italic_14" style="margin-top:40px;" hidden>Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}" target='_blank'>comprar tokens</a></div>

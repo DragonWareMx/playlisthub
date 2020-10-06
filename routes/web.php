@@ -31,10 +31,8 @@ Route::post('/relogin', function(){    Auth::logout();  return Redirect::to('log
 
 Route::get('/inicioM', 'musicoController@index')->name('inicio-musico');
 Route::get('/perfil','cuentaController@perfil')->name('perfil');
-// Route::get('/musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
 Route::get('/usuario/{id}', 'cuentaController@perfilPublico')->name('perfil-publico');
 Route::get('/inicioC', 'curadorController@index')->name('inicio-curador');
-// Route::get('/curador/{id}', 'curadorController@perfilPublico')->name('perfil-curador-publico');
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');
@@ -44,7 +42,6 @@ Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('co
 Route::patch('/contraseñaUpdate/{id}', 'cuentaController@contraseñaUpdateDo')->name('contraseña-updateDo');
 Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
 Route::patch('/correoUpdate/{id}', 'cuentaController@correoUpdateDo')->name('correo-updateDo');
-// Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
 Route::get('/fechaNacUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
 Route::patch('/fechaNacUpdate/{id}', 'cuentaController@fecNacUpdateDo')->name('fecNac-updateDo');
 Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');

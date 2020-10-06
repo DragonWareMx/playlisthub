@@ -798,21 +798,6 @@ class cuentaController extends Controller
         return redirect()->route('administrar-cuenta');
     }
 
-    // public function fotoUpdate()
-    // {
-    //     try { 
-    //         $usuario = User::where('id',Auth::id())->get();
-    //     } 
-    //     catch(QueryException $ex){ 
-    //         return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-    //     }
-
-    //     if($usuario == null){
-    //         return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
-    //     }
-
-    //     return view ('AdministrarCuenta.fotoUpdate', ['usuario' => $usuario]);
-    // }
 
     public function generoUpdate()
     {
