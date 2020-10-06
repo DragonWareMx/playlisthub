@@ -25,6 +25,23 @@ class PaymentController extends Controller
 {
     //
     private $apiContext;
+    private $packs= array(
+        0=> array(
+            "cantidad"=>10,
+            "descuento"=>0,
+            "total"=>100
+        ),
+        1=> array(
+            "cantidad"=>20,
+            "descuento"=>20,
+            "total"=>180
+        ),
+        2=> array(
+            "cantidad"=>30,
+            "descuento"=>45,
+            "total"=>255
+        )
+    );
 
     public function __construct()
     {
@@ -48,25 +65,25 @@ class PaymentController extends Controller
         //dd($request->all());
         $usuario=User::findOrFail(Auth::id());
         $content='Tokens';
-        $cantidad=session()->get('cantidad');
-        $total=$cantidad*10;
+        $pakcID=session()->get('packID');
+        $pack=$this->packs[$pakcID];
         try {
             $charge = Stripe::charges()->create([
-                'amount'=> $total,
+                'amount'=> $pack['total'],
                 'currency'=> 'USD',
                 'source' => $request->stripeToken,
                 'description'=>'Compra de tokens en Playlisthub',
                 'receipt_email'=> $usuario->email,
                 'metadata' => [
                     'contents'=>$content,
-                    'quantity'=>$cantidad,
+                    'quantity'=>$pack['cantidad'],
                 ],
             ]);
 
             //SUCCESSFUL
-            $usuario->tokens=$usuario->tokens+$cantidad;
+            $usuario->tokens=$usuario->tokens+$pack['cantidad'];
             $usuario->save();
-            session()->forget('cantidad');
+            session()->forget('packID');
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tokens')->with(compact('status'));
@@ -95,98 +112,40 @@ class PaymentController extends Controller
     }
     public function payment(Request $request){
         if($request->paytype=='stripe'){
-            $cantidad=$request->cantidad;
-            session()->put('cantidad',$cantidad);
-            return view('compra',['cantidad'=>$cantidad]);
+            $packID=$request->packID;
+            session()->put('packID',$packID);
+            return view('compra',['tokens'=>$this->packs[$packID]]);
         }
          // After Step 2
          $payer = new Payer();
          $payer->setPaymentMethod('paypal');
  
          //Parte para sacar los items del carrito y meterlos a paypal
-         $books=Book::get();
-         $contador=0;
+         $packID=$request->packID;
+         $packs=$this->packs[$packID];
+         session()->put('packID',$packID);
          $items=[];
-         foreach (session('cart') as $id => $details) {
-             foreach ($books as $libro) {
-                 if ($libro->id == $id) {
-                     if ($details['cantidadFisico'] > 0) {
-                         $items[$contador] = new Item();
-                         $items[$contador]->setName($libro->titulo.' (Físico - Preventa)') /** item name **/
-                                     ->setCurrency('MXN')
-                                     ->setQuantity($details['cantidadFisico'])
-                                     ->setPrice( number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "" ) ); 
-                         $contador++;
-                     }
-                     if ($details['cantidadDigital'] > 0) {
-                         $items[$contador] = new Item();
-                         $items[$contador]->setName($libro->titulo.' (Digital - Preventa)') /** item name **/
-                                     ->setCurrency('MXN')
-                                     ->setQuantity($details['cantidadDigital'])
-                                     ->setPrice(number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "" )); 
-                     }
-                 }
-             }
-             $contador++;
+         $items[0]=new Item();
+         $items[0]->setName('Paquete de '.$packs['cantidad'].' tokens')
+                    ->setCurrency('USD')
+                    ->setQuantity(1)
+                    ->setPrice($packs['cantidad'] * 10);
+         if($packs['descuento']>0){
+            $items[1]=new Item();
+            $items[1]->setName('Descuento')
+            ->setCurrency('USD')
+            ->setQuantity(1)
+            ->setPrice(-$packs['descuento']);
          }
-         //si tienen descuento de un codigo pasa esto
-         if($request->descuento > 0){
-             $items[$contador] = new Item();
-                         $items[$contador]->setName('Código promoción') /** item name **/
-                                     ->setCurrency('MXN')
-                                     ->setQuantity('1')
-                                     ->setPrice( '-'.$request->descuento); 
-                         
-         }
- 
          $item_list = new ItemList();
          $item_list->setItems($items);
          
-         //VARIABLES DE SESION
-         Session::put('email', $request->email);
-         Session::put('age', $request->age);
-         Session::put('genero', $request->genero);
-         Session::put('telefono', $request->tel);
-         Session::put('envio', $request->envio);
-         Session::put('referencias', $request->referencias);
-         Session::put('cuponId',$request->cuponId);
-         Session::put('descuento',$request->descuento);
-         //lista de paises
-         $country=[["AF","Afghanistan"],["AL","Albania"],["DZ","Algeria"],["DS","American Samoa"],["AD","Andorra"],["AO","Angola"],["AI","Anguilla"],["AQ","Antarctica"],["AG","Antigua and Barbuda"],["AR","Argentina"],["AM","Armenia"],["AW","Aruba"],["AU","Australia"],["AT","Austria"],["AZ","Azerbaijan"],["BS","Bahamas"],["BH","Bahrain"],["BD","Bangladesh"],["BB","Barbados"],["BY","Belarus"],["BE","Belgium"],["BZ","Belize"],["BJ","Benin"],["BM","Bermuda"],["BT","Bhutan"],["BO","Bolivia"],["BA","Bosnia and Herzegovina"],["BW","Botswana"],["BV","Bouvet Island"],["BR","Brazil"],["IO","British Indian Ocean Territory"],["BN","Brunei Darussalam"],["BG","Bulgaria"],["BF","Burkina Faso"],["BI","Burundi"],["KH","Cambodia"],["CM","Cameroon"],["CA","Canada"],["CV","Cape Verde"],["KY","Cayman Islands"],["CF","Central African Republic"],["TD","Chad"],["CL","Chile"],["CN","China"],["CX","Christmas Island"],["CC","Cocos (Keeling) Islands"],["CO","Colombia"],["KM","Comoros"],["CG","Congo"],["CK","Cook Islands"],["CR","Costa Rica"],["HR","Croatia (Hrvatska)"],["CU","Cuba"],["CY","Cyprus"],["CZ","Czech Republic"],["DK","Denmark"],["DJ","Djibouti"],["DM","Dominica"],["DO","Dominican Republic"],["TP","East Timor"],["EC","Ecuador"],["EG","Egypt"],["SV","El Salvador"],["GQ","Equatorial Guinea"],["ER","Eritrea"],["EE","Estonia"],["ET","Ethiopia"],["FK","Falkland Islands (Malvinas)"],["FO","Faroe Islands"],["FJ","Fiji"],["FI","Finland"],["FR","France"],["FX","France, Metropolitan"],["GF","French Guiana"],["PF","French Polynesia"],["TF","French Southern Territories"],["GA","Gabon"],["GM","Gambia"],["GE","Georgia"],["DE","Germany"],["GH","Ghana"],["GI","Gibraltar"],["GK","Guernsey"],["GR","Greece"],["GL","Greenland"],["GD","Grenada"],["GP","Guadeloupe"],["GU","Guam"],["GT","Guatemala"],["GN","Guinea"],["GW","Guinea-Bissau"],["GY","Guyana"],["HT","Haiti"],["HM","Heard and Mc Donald Islands"],["HN","Honduras"],["HK","Hong Kong"],["HU","Hungary"],["IS","Iceland"],["IN","India"],["IM","Isle of Man"],["ID","Indonesia"],["IR","Iran"],["IQ","Iraq"],["IE","Ireland"],["IL","Israel"],["IT","Italy"],["CI","Ivory Coast"],["JE","Jersey"],["JM","Jamaica"],["JP","Japan"],["JO","Jordan"],["KZ","Kazakhstan"],["KE","Kenya"],["KI","Kiribati"],["KP","North Korea"],["KR","South Korea"],["XK","Kosovo"],["KW","Kuwait"],["KG","Kyrgyzstan"],["LA","Lao"],["LV","Latvia"],["LB","Lebanon"],["LS","Lesotho"],["LR","Liberia"],["LY","Libyan Arab Jamahiriya"],["LI","Liechtenstein"],["LT","Lithuania"],["LU","Luxembourg"],["MO","Macau"],["MK","Macedonia"],["MG","Madagascar"],["MW","Malawi"],["MY","Malaysia"],["MV","Maldives"],["ML","Mali"],["MT","Malta"],["MH","Marshall Islands"],["MQ","Martinique"],["MR","Mauritania"],["MU","Mauritius"],["TY","Mayotte"],["MX","Mexico"],["FM","Micronesia, Federated States of"],["MD","Moldova, Republic of"],["MC","Monaco"],["MN","Mongolia"],["ME","Montenegro"],["MS","Montserrat"],["MA","Morocco"],["MZ","Mozambique"],["MM","Myanmar"],["NA","Namibia"],["NR","Nauru"],["NP","Nepal"],["NL","Netherlands"],["AN","Netherlands Antilles"],["NC","New Caledonia"],["NZ","New Zealand"],["NI","Nicaragua"],["NE","Niger"],["NG","Nigeria"],["NU","Niue"],["NF","Norfolk Island"],["MP","Northern Mariana Islands"],["NO","Norway"],["OM","Oman"],["PK","Pakistan"],["PW","Palau"],["PS","Palestine"],["PA","Panama"],["PG","Papua New Guinea"],["PY","Paraguay"],["PE","Peru"],["PH","Philippines"],["PN","Pitcairn"],["PL","Poland"],["PT","Portugal"],["PR","Puerto Rico"],["QA","Qatar"],["RE","Reunion"],["RO","Romania"],["RU","Russian Federation"],["RW","Rwanda"],["KN","Saint Kitts and Nevis"],["LC","Saint Lucia"],["VC","Saint Vincent and the Grenadines"],["WS","Samoa"],["SM","San Marino"],["ST","Sao Tome and Principe"],["SA","Saudi Arabia"],["SN","Senegal"],["RS","Serbia"],["SC","Seychelles"],["SL","Sierra Leone"],["SG","Singapore"],["SK","Slovakia"],["SI","Slovenia"],["SB","Solomon Islands"],["SO","Somalia"],["ZA","South Africa"],["GS","South Georgia South Sandwich Islands"],["ES","Spain"],["LK","Sri Lanka"],["SH","St. Helena"],["PM","St. Pierre and Miquelon"],["SD","Sudan"],["SR","Suriname"],["SJ","Svalbard and Jan Mayen Islands"],["SZ","Swaziland"],["SE","Sweden"],["CH","Switzerland"],["SY","Syrian Arab Republic"],["TW","Taiwan"],["TJ","Tajikistan"],["TZ","Tanzania"],["TH","Thailand"],["TG","Togo"],["TK","Tokelau"],["TO","Tonga"],["TT","Trinidad and Tobago"],["TN","Tunisia"],["TR","Turkey"],["TM","Turkmenistan"],["TC","Turks and Caicos Islands"],["TV","Tuvalu"],["UG","Uganda"],["UA","Ukraine"],["AE","United Arab Emirates"],["GB","United Kingdom"],["US","United States"],["UM","United States minor outlying islands"],["UY","Uruguay"],["UZ","Uzbekistan"],["VU","Vanuatu"],["VA","Vatican City State"],["VE","Venezuela"],["VN","Vietnam"],["VG","Virgin Islands (British)"],["VI","Virgin Islands (U.S.)"],["WF","Wallis and Futuna Islands"],["EH","Western Sahara"],["YE","Yemen"],["ZR","Zaire"],["ZM","Zambia"],["ZW","Zimbabwe"]];
-         $country_code="";
-         foreach ($country as $pais) {
-             if ($pais[1]==$request->country) {
-                 $country_code=$pais[0];
-             }
-         }
-         $shippingAddress = [
-             "recipient_name" => $request->fname." ".$request->lname,
-             "line1" => $request->calle." ".$request->numCasa, 
-             "line2" => $request->colonia,
-             "city" => $request->ciudad,
-             "country_code" => $country_code,
-             "postal_code" => $request->cp,
-             "state" => $request->state,
-             "phone" => $request->tel
-         ];
-         $item_list->setShippingAddress($shippingAddress);
- 
-         if($request->envio){
-             $envio=Tipoenvio::findOrFail($request->envio);
-             $details = new Details();
-             $details->setSubtotal($request->subtotal)
-                     ->setShipping($envio->costo);
-         }
- 
          $amount = new Amount();
-         $amount->setTotal($request->total);
-         $amount->setCurrency('MXN');
-         if($request->envio){
-             $amount->setDetails($details);
-         }
+         $amount->setTotal($packs['total']);
+         $amount->setCurrency('USD');
          $transaction = new Transaction();
          $transaction->setAmount($amount);
-         $transaction->setDescription('Compra en uno4cinco.com');
+         $transaction->setDescription('Compra de tokens en Playlisthub');
          $transaction->setItemList($item_list);
  
          $callbackurl=route('statusPayPal');
@@ -209,5 +168,39 @@ class PaymentController extends Controller
              
              echo $ex->getData();
          }
+    }
+
+    public function payPalStatus(Request $request){
+        $paymentId=$request->input('paymentId');
+        $payerId=$request->input('PayerID');
+        $token=$request->input('token');
+
+        if(!$paymentId || !$payerId || !$token){
+            $status="No se pudo proceder con el pago através de PayPal.";
+            return redirect()->route('tokens')->with(compact('status'));
+        }
+        $payment= Payment::get($paymentId,$this->apiContext);
+
+        $execution=new PaymentExecution();
+        $execution->setPayerId($payerId);
+
+        $result= $payment->execute($execution,$this->apiContext);
+
+        if($result->getState()=='approved'){
+            //se registra la venta en la BD en la tabla Sell
+            $usuario=User::findOrFail(Auth::id());
+            $pakcID=session()->get('packID');
+            $pack=$this->packs[$pakcID];
+            $usuario->tokens=$usuario->tokens+$pack['cantidad'];
+            $usuario->save();
+            session()->forget('packID');
+            
+            //Mail::to($sell->correo)->send(new SendMailable($sell->id));
+            
+            $status="Gracias! El pago a través de PayPal se ha procesado correctamente. Se te enviará un correo electrónico con los detalles de tu pedido.";
+            return redirect()->route('tokens')->with(compact('status'));
+        }
+            $status="Lo sentimos! El pago a través de PayPal no se pudo realizar.";
+            return redirect()->route('tokens')->with(compact('status'));
     }
 }
