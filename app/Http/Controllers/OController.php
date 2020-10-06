@@ -14,6 +14,7 @@ use App\Artist;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\camp_mail;
 
@@ -40,6 +41,7 @@ class OController extends Controller
             $item['id']=$favorite->id;
             $item['avatar']=$favorite->avatar;
             $item['name']=$favorite->name;
+            $item['idsp']=$favorite->spotify_id;
             $item['country']=$favorite->country;
             $item['playlists']=sizeOf($favorite->playlists);
             $total=0;
@@ -60,14 +62,13 @@ class OController extends Controller
         return view ('musico.favoritos',['favs'=>$favs]);
     }
 
-    public function favoritosUpdate($idUser){
+    public function favoritosUpdate($idUser, $idsp){
         try { 
-            // $usuarioEx = User::where('spotify_id',$idUser)->get(); 
-            // $newId=User::where('spotify_id',$idUser)->value('id');
+            
             $usuarioEx = User::where('id',$idUser)->get();
             $usuario = User::where('id',Auth::id())->first();
-            // dd($newId);
-        } catch(QueryException $ex){ 
+        } 
+        catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
 
@@ -90,7 +91,8 @@ class OController extends Controller
                 //DESMARCAR COMO FAVORITO (ELIMINAR)
                 $usuario->favorites()->detach($usuarioEx);
             }
-            return view ('inicio');
+            return redirect(route('perfil-publico',['id'=>$idsp]));
+            
         }
     }
 

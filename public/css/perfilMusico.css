@@ -397,6 +397,9 @@
     .div_CabeceraApartado a{
         width: 25%;
     }
+    .form_marFav a{
+        width: 100% !important;
+    }
     .div_txtPM{
         padding-left: 6%;
     }
@@ -518,6 +521,11 @@
         font-size: 14px;
     }
 }
+@media (max-width:560px){
+    .form_marFav {
+        width: 75%;
+    }
+}
 @media (max-width:550px){
     .div_fotoPerfilM img{ 
         width: 110px;
@@ -528,12 +536,13 @@
     }
 }
 /* @media(max-width:500px){
-    .resize-btn-agregar{
+     .resize-btn-agregar{
         padding-top: auto;
         padding-bottom: -5%;
         color: brown;
-    }
-} */
+    } 
+    
+}  */
 
 @media (max-width:460px){
     .txt-infoNombrePM{

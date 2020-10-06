@@ -54,7 +54,7 @@
                     @endfor
                 </div>
             </div>
-            <div class="div_width100_right"><a class="a_profile_o" href="#">Ver perfil</a></div>
+            <div class="div_width100_right"><a class="a_profile_o" href="{{route('perfil-publico',['id'=>$fav['idsp']])}}">Ver perfil</a></div>
         </div>
     @endforeach
 </div>

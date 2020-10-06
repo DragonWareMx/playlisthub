@@ -26,9 +26,9 @@
             <div class="div_tituloApartado">
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
-            @foreach ($usuario as $user)
+            @foreach ($usuario as $user) 
             @if($user->type=='Curador')
-                    <form action="{{route('favoritos-update',['id'=>$user->id])}}" class="form_marFav" name="form_marFav" id="form_marFav" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('favoritos-update',['id'=>$user->id, 'idsp'=>$user->spotify_id])}}" class="form_marFav" name="form_marFav" id="form_marFav" method="POST" enctype="multipart/form-data">
                         @method("PATCH")
                                 @csrf
                     @if($marcaFav == false) 
