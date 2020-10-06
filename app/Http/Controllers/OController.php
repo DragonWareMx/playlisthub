@@ -55,7 +55,7 @@ class OController extends Controller
                 $item['average']=0;
             }
             $favs[$i]=$item;
-            $i++;
+            $i++; 
         }
         return view ('musico.favoritos',['favs'=>$favs]);
     }
@@ -65,7 +65,7 @@ class OController extends Controller
             // $usuarioEx = User::where('spotify_id',$idUser)->get(); 
             // $newId=User::where('spotify_id',$idUser)->value('id');
             $usuarioEx = User::where('id',$idUser)->get();
-            $usuario = User::where('id',Auth::id())->get();
+            $usuario = User::where('id',Auth::id())->first();
             // dd($newId);
         } catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -84,16 +84,13 @@ class OController extends Controller
             }
             if($marcaFav==false){
                 //MARCAR COMO FAVORITO (AGREGAR)
-                // $favorito=
-                $favorito->user_id=$usuario;
-                $favorito->favorite_id=$usuarioEx;
-                $favorito->save();
-            }
+                $usuario->favorites()->attach($usuarioEx);
+            } 
             else{
                 //DESMARCAR COMO FAVORITO (ELIMINAR)
-
+                $usuario->favorites()->detach($usuarioEx);
             }
-            return view ('musico.favoritos',['favs'=>$favs]);
+            return view ('inicio');
         }
     }
 

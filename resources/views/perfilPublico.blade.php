@@ -27,21 +27,16 @@
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
             @foreach ($usuario as $user)
-            {{-- CHECAR SI ES FAVORITO O NO, recargar la página cuando se marque o desmarque, poner un javascript para ocultar el btn --}}
             @if($user->type=='Curador')
+                    <form action="{{route('favoritos-update',['id'=>$user->id])}}" class="form_marFav" name="form_marFav" id="form_marFav" method="POST" enctype="multipart/form-data">
+                        @method("PATCH")
+                                @csrf
                     @if($marcaFav == false) 
-                        <form action="{{route('favoritos-update',['id'=>$user->id])}}"  method="POST" enctype="multipart/form-data">
-                            @method("PATCH")
-                                    @csrf
-                                    
-                            <input class="" type="submit" value="Agregar a fav">
-                                    {{-- <a href="{{route('favoritos-update',['id'=>$user->id])}}" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a> --}}
-                        </form>
-                    
-                    
+                        <a href="#" onclick="document.getElementById('form_marFav').submit()" style="color: #8177F5;"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
                     @else
-                        <a href="{{route('favoritos-update',['id'=>$user->id])}}" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a>
+                        <a href="#" onclick="document.getElementById('form_marFav').submit()" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a>
                     @endif
+                    </form>
             @endif
         </div>
             <div class="div_infoPerfilM">

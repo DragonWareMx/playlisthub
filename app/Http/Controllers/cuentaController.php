@@ -533,14 +533,13 @@ class cuentaController extends Controller
         
         //FAVORITOS
         $usuarioLoggeado=User::with('favorites')->findOrFail(Auth::id());
+        
         $marcaFav=false;
         foreach($usuarioLoggeado->favorites as $favorite){
-            if($favorite->id == $idUser){
+            if($favorite->id == $newId){
                 $marcaFav=true;
             }
-                
         }
-        // dd($marcaFav);
         //REVIWS
 
         //booleano que indica el tipo del usuario (true = musico, false = curador)
