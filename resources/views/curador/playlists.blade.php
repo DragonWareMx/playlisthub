@@ -106,15 +106,15 @@
     <div class="table_row_o table_noBorder" style="border:none">
         <img class="img_playlist_o_match" src="{{$song->album->images[0]->url}}" alt=""> 
         <p class="p_responsivep">CANCIÓN</p>
-        <a href="{{$song->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->name}} </a> 
+        <a href="{{$song->external_urls->spotify}}" style="color: #5C5C5C" target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->name}} </a> 
         <p class="p_responsivep">PLAYLIST</p> 
         <a href="{{$pllinks[$i]}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
         <p class="p_responsivep">MÚSICO</p>
         {{-- AQUI SERÁ EL LINK PARA EL PERFIL DEL MÚSICO --}}
-        <a href="{{$song->artists[0]->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
+        <a href="{{$song->artists[0]->external_urls->spotify}}" style="color: #5C5C5C" target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
         <p class="p_responsivep">TOKENS</p>
         <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
-        <p class="p_responsivep">ESTATUS</p>
+        <p class="p_responsivep">ESTATUS</p> 
         <div class="txt_row_play_o">{{$songs[$i]->status}}</div> 
     </div>
         @php

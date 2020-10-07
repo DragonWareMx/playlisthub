@@ -59,7 +59,7 @@
         <p class="p_responsivep">GANANCIAS</p>
         <div class="txt_row_play_o">$ {{$playlists_bd[$i]->profits}}</div> 
         <p class="p_responsivep">PLAYLIST</p>
-        <div class="txt_row_play_o">{{$playlist->name}}</div> 
+        <a href="#"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
         <p class="p_responsivep">RANKING</p>
         <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
         <p class="p_responsivep">SEGUIDORES</p>
