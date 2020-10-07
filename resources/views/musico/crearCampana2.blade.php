@@ -36,6 +36,19 @@
         </div>
         <hr class="hr_100_o" style="margin-top:0px;">
         @foreach ($playlists as $playlist)
+        @if($playlist['cost']==5 && $playlist['level']==11)
+            <button title="Playlist premium" id="{{$playlist['id']}}" class="table_row_o" onclick="selectPlaylist(this.id,{{$playlist['cost']}},{{$user->tokens}},{{$playlist['curator_id']}})">
+                <img class="img_playlist_o" src="{{$playlist['image']}}" alt=""> 
+                <p class="p_responsivep">PLAYLIST</p>
+                <a href=" {{$playlist['url']}} "  target="_blank" style="color:#b22222 !important" class="txt_row_play_o a_row_play_o"> {{$playlist['name']}} </a> 
+                <p class="p_responsivep">CURADOR</p>
+                <div class="txt_row_play_o"> {{$playlist['curator_name']}} </div> 
+                <p class="p_responsivep">SEGUIDORES</p>
+                <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
+                <p class="p_responsivep">TOKENS</p>
+                <div class="txt_row_play_o" style="color:#b22222"> {{$playlist['cost']}} </div>
+            </button> 
+        @else
         <button id="{{$playlist['id']}}" class="table_row_o" onclick="selectPlaylist(this.id,{{$playlist['cost']}},{{$user->tokens}},{{$playlist['curator_id']}})">
             <img class="img_playlist_o" src="{{$playlist['image']}}" alt=""> 
             <p class="p_responsivep">PLAYLIST</p>
@@ -45,12 +58,9 @@
             <p class="p_responsivep">SEGUIDORES</p>
             <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
             <p class="p_responsivep">TOKENS</p>
-            @if($playlist['cost']==5 && $playlist['level']==11)
-                <div title="Playlist premium" class="txt_row_play_o" style="color:#b22222"> {{$playlist['cost']}} </div>
-            @else
-                <div  class="txt_row_play_o"> {{$playlist['cost']}} </div>
-            @endif
+            <div  class="txt_row_play_o"> {{$playlist['cost']}} </div>
         </button> 
+        @endif
         @endforeach
         <div id="notEnoughTokens" class="txt_izquierda_o txt_italic_14" style="margin-top:40px;" hidden>Numero de tokens insuficientes <a class="a_comprar_o" href="{{Route('tokens')}}" target='_blank'>comprar tokens</a></div>
         <div id="enoughTokens" class="crearCampana_botones"> {{-- botones_margin_subir --}}
