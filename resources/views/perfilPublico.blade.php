@@ -148,7 +148,6 @@
                                 @endphp
                             @endforeach
                         </div>
-                        <a class="a_derecha_o" href="{{Route('campanasActuales')}}">Ver más</a>
                     @else 
                         <div class="div_error_o">
                             <div class="txt_error_o">Sin campañas actuales.</div>
@@ -178,8 +177,6 @@
                             <div class="txt_row_responsive">NIVEL</div> 
                             <div class="txt_row_head_o">SEGUIDORES</div>
                             <div class="txt_row_responsive">SEGUIDORES</div> 
-                            {{-- <div class="txt_row_head_o">GANANCIAS</div>
-                            <div class="txt_row_responsive">GANANCIAS</div>  --}}
                         </div>
                     
                     <!--estos divs se crean con un foreach-->
