@@ -39,7 +39,7 @@
                             $dia=$separa[2];
                         @endphp
                         {{$dia}}&nbsp;-
-                        @switch($mes)
+                        @switch($mes) 
                             @case('01')Enero @break
                             @case('02')Febrero @break
                             @case('03') Marzo @break
@@ -59,10 +59,10 @@
                 <div class="campana_info_2">
                     <div class="vercampana_title_o">TOKENS</div>
                     <div class="vercampana_txt_o">{{$camp->cost}}</div>
-                    <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div>
-                    <div class="vercampana_txt_o">{{$playlist->name}}</div>
+                    <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div> 
+                    <div class="vercampana_txt_o"><a href="#" style="color: #8177F5;" target="blank">{{$playlist->name}}</a></div>
                     <div class="vercampana_title_o">NOMBRE DEL CURADOR</div>
-                    <div class="vercampana_txt_o">{{Str::limit($camp->playlist->user->name,27)}}</div>
+                    <div class="vercampana_txt_o"><a href="#" style="color: #8177F5;" target="blank">{{Str::limit($camp->playlist->user->name,27)}}</a></div>
                     <div class="vercampana_title_o">FECHA DE TERMINO</div>
                     <div class="vercampana_txt_o">
                         @if ($camp->end_date)
