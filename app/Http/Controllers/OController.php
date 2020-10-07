@@ -551,6 +551,7 @@ class OController extends Controller
                     $level=11;
                 }
                 $item['cost']=$cost;
+                $item['level']=$level;
                 if($total>=500){
                     $playlists[$i]=$item;
                     $itemCost=[];
