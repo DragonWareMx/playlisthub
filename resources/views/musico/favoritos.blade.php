@@ -3,7 +3,8 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
-    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">    
+    <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/Reviews.css">      
 @endsection
 
 @section('menu')
@@ -32,26 +33,29 @@
             <div class="item_text_o display_flex_o">
                 {{$fav['average']}}&nbsp;&nbsp;
                 <div class="stars_favoritos_o">
-                    @php
-                        $total=$fav['average'];
-                    @endphp
-                    @for ($i = 0; $i < 5; $i++)
-                        @if ($total>=1)
-                            <img class="favs_star_o" src="img/iconos/star review.png" alt="">
-                            @php
-                              $total--;  
-                            @endphp
-                        @else 
-                            @if ($total<1 && $total>=0.5)
-                                <img class="favs_star_o" src="img/iconos/star review 2.png" alt="">
+                    <div class="review_content_score">
+                        @php
+                            $total = $fav['average'];
+                        @endphp 
+                        @for ($i = 0; $i < 5; $i++)
+                            @if ($total>=1)
+                            <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                 @php
-                                $total-=$total;  
+                                $total--;  
                                 @endphp
                             @else 
-                                <img class="favs_star_o" src="img/iconos/reviews.png" alt="">
+                                @if ($total<1 && $total>=0.5)
+                                    <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                    <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                    @php
+                                    $total-=$total;  
+                                    @endphp
+                                @else 
+                                <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--none fa fa-star"></i></label>
+                                @endif
                             @endif
-                        @endif
-                    @endfor
+                        @endfor
+                    </div>
                 </div>
             </div>
             <div class="div_width100_right"><a class="a_profile_o" href="{{route('perfil-publico',['id'=>$fav['idsp']])}}">Ver perfil</a></div>
