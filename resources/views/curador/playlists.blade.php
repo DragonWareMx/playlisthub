@@ -111,7 +111,7 @@
         <a href="{{$pllinks[$i]}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
         <p class="p_responsivep">MÚSICO</p>
         {{-- AQUI SERÁ EL LINK PARA EL PERFIL DEL MÚSICO --}}
-        <a href="{{$song->artists[0]->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
+        <a href="{{route('perfil-publico', ['id' => $songs[$i]->user_id])}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$songs[$i]->user->name}} </a> 
         <p class="p_responsivep">TOKENS</p>
         <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
         <p class="p_responsivep">ESTATUS</p>
