@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
 use App\Permission\Traits\UserTrait;
+use Illuminate\Support\Facades\Crypt;
 
 
 class User extends Authenticatable
@@ -40,6 +41,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function getSaldoAttribute($value) {
+        try{
+            return Crypt::decryptString($value);
+        }catch(\Exception $e){
+            return $value;
+        }
+    }
+
+    public function getTokensAttribute($value) {
+        try{
+            return Crypt::decryptString($value);
+        }catch(\Exception $e){
+            return $value;
+        }
+    }
+
+    public function setSaldoAttribute($value) {
+        $this->attributes['saldo'] = Crypt::encryptString($value);
+    }
+
+    public function setTokensAttribute($value) {
+        $this->attributes['tokens'] = Crypt::encryptString($value);
+    }
+
     //Curadores favoritos del musico
     public function favorites()
     {

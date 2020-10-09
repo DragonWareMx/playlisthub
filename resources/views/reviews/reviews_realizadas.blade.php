@@ -289,7 +289,7 @@
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">
                 <img class="modal_compartir_facebook" src="img/iconos/facebook png.png" onclick="compartir_facebook()">
-            <img src="img/iconos/twt png.png">
+            <img src="img/iconos/twt png.png" onclick="compartir_twitter()">
         </div>
         <div class="div_tokens_botones">
             <a class="a_cancelarTokens close" style="color: #8177F5 !important;">Cancelar</a>
@@ -388,10 +388,6 @@
 
         review = getReview(id);
         song = getSong(review["camp"]["link_song"]);
-        console.log(review["rating"]);
-        console.log(song["id"]);
-        console.log(song["name"]);
-        console.log(song["artist"]["name"]);
     }
 
     function compartir_facebook() {
@@ -405,16 +401,26 @@
                 },
                 // Si quieres que salga una alerta
                 function(response) {
-                    if (response && response.post_id) {
-                        alert('He publicado en el muro');
-                    } else {
-                        alert('No he publicado');
-                    }
                     review = null;
                     song = null;
                 }
             );
         }
+    }
+
+    function compartir_twitter(){
+        var name = "sasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasd";
+        var url = "https://playlisthub.io/";
+        var text = 'Califiqué a la canción "'+ truncate(song["name"]) +'" de "'+ truncate(song["artist"]["name"]) +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita #PlaylistHub para ganar dinero con tus playlists! \n';
+        window.open('http://twitter.com/share?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+
+    }
+
+    function truncate(input) {
+        if (input.length > 34) {
+            return input.substring(0, 34) + '...';
+        }
+        return input;
     }
 </script>
 

@@ -711,11 +711,6 @@
                 },
                 // Si quieres que salga una alerta
                 function(response) {
-                    if (response && response.post_id) {
-                        alert('He publicado en el muro');
-                    } else {
-                        alert('No he publicado');
-                    }
                     review = null;
                     song = null;
                 }
@@ -726,7 +721,7 @@
     function compartir_twitter(){
         var name = "sasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasd";
         var url = "https://playlisthub.io/";
-        var text = 'Califiqué a la canción "'+ truncate(song["name"]) +'" de "'+ truncate(song["artist"]["name"]) +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita playlisthub para ganar dinero con tus playlists! \n#PlaylistHub\n';
+        var text = 'Califiqué a la canción "'+ truncate(song["name"]) +'" de "'+ truncate(song["artist"]["name"]) +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita #PlaylistHub para ganar dinero con tus playlists!\n';
         window.open('http://twitter.com/share?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 
     }
@@ -736,7 +731,7 @@
             return input.substring(0, 34) + '...';
         }
         return input;
-    };
+    }
 </script>
 
 <script>
