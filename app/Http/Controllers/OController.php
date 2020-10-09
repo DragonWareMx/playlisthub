@@ -382,6 +382,7 @@ class OController extends Controller
         }
         return view ('musico.crearCampana1',['arr_artists'=>$arr_artists]);
     }
+
     public function recrearCampana2()
     {
         Gate::authorize('haveaccess','musico.perm');
@@ -632,29 +633,31 @@ class OController extends Controller
         return view ('musico.crearCampana3',['data'=>$data]);
     }
     public function storeCamp(request $request){
-        Gate::authorize('haveaccess','musico.perm');
-        $cost=session()->get('playlist_cost');
-        $level=session()->get('playlist_level');
-        $playlist_id=session()->get('selected_playlist');
-        $user=User::findOrFail(Auth::id());
-        if($user->tokens-$cost<0){
-            session()->flash('unexpected',true);
-            return redirect('/crear-paso-1');
-        }
-        $camp=new Camp();
-        $camp->start_date=Carbon::now();
-        $camp->cost=$cost;
-        $camp->level=$level;
-        $camp->link_song=session()->get('link_song');;
-        $camp->user_id=Auth::id();
-        $camp->playlist_id=$playlist_id;
-        $camp->status='espera';
-        $camp->save();
-        $user->tokens=$user->tokens-$cost;
-        $user->save();
-        $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
-        $curator=User::findOrFail($playlist->user->id);
-        Mail::to($curator->email)->send(new camp_mail($camp->id,$curator->name));
+        DB::transaction(function ($request) {
+            Gate::authorize('haveaccess','musico.perm');
+            $cost=session()->get('playlist_cost');
+            $level=session()->get('playlist_level');
+            $playlist_id=session()->get('selected_playlist');
+            $user=User::findOrFail(Auth::id());
+            if($user->tokens-$cost<0){
+                session()->flash('unexpected',true);
+                return redirect('/crear-paso-1');
+            }
+            $camp=new Camp();
+            $camp->start_date=Carbon::now();
+            $camp->cost=$cost;
+            $camp->level=$level;
+            $camp->link_song=session()->get('link_song');;
+            $camp->user_id=Auth::id();
+            $camp->playlist_id=$playlist_id;
+            $camp->status='espera';
+            $camp->save();
+            $user->tokens=$user->tokens-$cost;
+            $user->save();
+            $user=User::where('id',99)->get();
+            $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
+            $curator=User::findOrFail($playlist->user->id);
+        });
         session()->forget('playlistsCosts');
         session()->forget('selected_playlist');
         session()->forget('playlist_cost');

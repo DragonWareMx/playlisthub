@@ -42,7 +42,7 @@
                         <div class="campana_title_o">TOKENS</div>
                         <div class="campana_text_o">{{$camp->cost}}</div>
                         <div class="campana_title_o">PLAYLIST</div>
-                        <div class="campana_text_o"><a href="#" style="color: #5C5C5C" target="blank">{{Str::limit($playlistsAnt[$i]->name, 45)}}</a></div>
+                        <div class="campana_text_o"><a href="{{$playlistsAnt[$i]->external_urls->spotify}}" style="color: #5C5C5C" target="blank">{{Str::limit($playlistsAnt[$i]->name, 45)}}</a></div>
                         <div class="campana_title_o">FECHA DE TÉRMINO</div>
                         @php
                             $separa=explode("-",$camp->end_date);
