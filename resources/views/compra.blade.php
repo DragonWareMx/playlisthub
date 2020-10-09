@@ -144,15 +144,15 @@
                                                 <img src="{{ asset('/img/logos/ico-playlist.png') }}" style="border-radius: 50%;border:1px solid #8177f5; ">
                                             </div>
                                             <div class="producto-cell contenido-producto">
-                                                <p>{{ $cantidad }}</p>
+                                                <p>{{ $tokens['cantidad'] }}</p>
                                             </div>
                                             <div class="producto-cell contenido-producto">
                                                 <p>Tokens</b></p>
                                             </div>
                                             <div class="producto-cell contenido-producto-sm">
-                                                <p>${{ number_format($cantidad*10, 2 , ".", "," ) }}</p>
+                                                <p>${{ number_format($tokens['cantidad']*10, 2 , ".", "," ) }}</p>
                                                 @php
-                                                    $total += $cantidad*10;
+                                                    $total += $tokens['cantidad']*10;
                                                 @endphp
                                             </div>
                                         </div>
@@ -162,11 +162,11 @@
                                 <div class="producto-table">
                                     <div class="producto-row">
                                         <div class="totales" id="subtotalHTML" style="display: none;">
-                                            <p>Subtotal</p><p id="subtotal">${{ number_format($total, 2 , ".", "," ) }}</p>
+                                            <p>Subtotal</p><p id="subtotal">${{ number_format($total, 2 , ".", "," ) }} USD</p>
                                         </div>
                                         
                                         <div class="totales" id="cuponHTML" style="display: none;">
-                                            <p>Cupón de descuento</p><p id="cuponDescuento">${{ number_format(0, 2 , ".", "," ) }}</p>
+                                            <p>Descuento</p><p id="cuponDescuento">${{ number_format(0, 2 , ".", "," ) }}</p>
                                         </div>
                                         <div class="totales">
                                             <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }} USD</p>
@@ -188,8 +188,6 @@
             
         </div>
     </form>
-
-
 
 <script>
     (function(){
@@ -290,5 +288,18 @@
         form.submit();
         }
     })();
+</script>
+
+<script>
+    $(document).ready(function(){
+        var descuento= <?php echo $tokens['descuento']; ?>;
+        var total= <?php echo $tokens['total']; ?>;
+        if(descuento>0){
+            $('#subtotalHTML').css('display','flex');
+            $('#cuponHTML').css('display','flex');
+            $('#cuponDescuento').html("-$"+ descuento.toFixed(2) + " USD");
+            $('#total').html("$"+ total.toFixed(2) + " USD");
+        }
+    });
 </script>
 @endsection

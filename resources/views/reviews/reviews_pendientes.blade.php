@@ -160,8 +160,8 @@
                         <div class="review_content">
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
-                                {{-- NOMBRE DEL MUSICO --}}
-                                <div class="review_content_names_name autor"><a href="{{ route('perfil-musico-publico',$camp->user_id) }}" target="_blank">{{ $camp->user->name }}</a></div>
+                                {{-- NOMBRE DEL MUSICO --}} 
+                                <div class="review_content_names_name autor"><a href="{{ route('perfil-publico',$camp->user_id) }}" target="_blank">{{ $camp->user->name }}</a></div>
                                 
                                 {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">

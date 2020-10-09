@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/favoritos', 'OController@favoritos')->name('favoritos');
+Route::patch('/favoritos/{id}/{idsp}', 'OController@favoritosUpdate')->name('favoritos-update');
 Route::get('/campanas', 'OController@campanas')->name('campanas');
 Route::get('/campanas-actuales', 'OController@campanasActuales')->name('campanasActuales');
 Route::get('/campanas-antiguas', 'OController@campanasAntiguas')->name('campanasAntiguas');
@@ -28,12 +29,11 @@ Route::post('/create-store-step','OController@storeCamp')->name('storeCamp');
 Route::get('/tokens','OController@tokens')->name('tokens');
 Route::post('/relogin', function(){    Auth::logout();  return Redirect::to('login/spotify'); })->name('relogin');
 
-Route::get('/inicioM', 'musicoController@index')->name('inicio-musico');
+
 Route::get('/perfil','cuentaController@perfil')->name('perfil');
-// Route::get('/musico/{id}', 'musicoController@perfilPublico')->name('perfil-musico-publico');
 Route::get('/usuario/{id}', 'cuentaController@perfilPublico')->name('perfil-publico');
 Route::get('/inicioC', 'curadorController@index')->name('inicio-curador');
-// Route::get('/curador/{id}', 'curadorController@perfilPublico')->name('perfil-curador-publico');
+Route::get('/inicioM', 'musicoController@index')->name('inicio-musico');
 
 /*--------------------------ADMINISTRACION DE LA CUENTA-------------------*/
 Route::get('/administrar-cuenta', 'cuentaController@administrar')->name('administrar-cuenta');
@@ -43,7 +43,6 @@ Route::get('/contraseñaUpdate', 'cuentaController@contraseñaUpdate')->name('co
 Route::patch('/contraseñaUpdate/{id}', 'cuentaController@contraseñaUpdateDo')->name('contraseña-updateDo');
 Route::get('/correoUpdate', 'cuentaController@correoUpdate')->name('correo-update');
 Route::patch('/correoUpdate/{id}', 'cuentaController@correoUpdateDo')->name('correo-updateDo');
-// Route::get('/fotoUpdate', 'cuentaController@fotoUpdate')->name('foto-update');
 Route::get('/fechaNacUpdate', 'cuentaController@fecNacUpdate')->name('fecNac-update');
 Route::patch('/fechaNacUpdate/{id}', 'cuentaController@fecNacUpdateDo')->name('fecNac-updateDo');
 Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-update');
@@ -101,8 +100,13 @@ Route::get('/register/musico/spotify/callback','RegistroController@MusicoSpotyCa
 Route::get('login/spotify', 'Auth\LoginController@redirectToProvider')->name('login-spotify');
 Route::get('login/spotify/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('/prueba',function(){
+    return view('musico.tokens2');
+});
+Route::get('/tokens/payment/test','PaymentController@test')->name('viledruid');
 //pagos
 Route::post('/tokens/payment','PaymentController@payment')->name('payment');
 Route::post('/tokens/payment/checkout','PaymentController@stripePay')->name('stripePay');
+Route::get('/tokens/payment/paypal','PaymentController@payPalStatus')->name('statusPayPal');
 
 Route::get('/home', 'HomeController@index');

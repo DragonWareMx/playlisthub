@@ -26,13 +26,21 @@
             <div class="div_tituloApartado">
                 <p><i class="fas fa-user-circle" style="color:#5C5C5C"></i>&nbsp;&nbsp;Datos generales</p>
             </div>
-            {{-- CHECAR SI ES FAVORITO O NO, recargar la página cuando se marque o desmarque, poner un javascript para ocultar el btn --}}
-            <a href="#" style="color: #8177F5"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
-            {{-- <a href="#" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a> --}}
+            @foreach ($usuario as $user) 
+            @if($user->type=='Curador')
+                    <form action="{{route('favoritos-update',['id'=>$user->id, 'idsp'=>$user->spotify_id])}}" class="form_marFav" name="form_marFav" id="form_marFav" method="POST" enctype="multipart/form-data">
+                        @method("PATCH")
+                                @csrf
+                    @if($marcaFav == false) 
+                        <a href="#" onclick="document.getElementById('form_marFav').submit()" style="color: #8177F5;"><i class="fas fa-heart" style="color: #bebebe"></i>&nbsp;&nbsp;Añadir a favoritos</a>
+                    @else
+                        <a href="#" onclick="document.getElementById('form_marFav').submit()" style="color: #8177F5"><i class="fas fa-heart"></i>&nbsp;&nbsp;Eliminar de favoritos</a>
+                    @endif
+                    </form>
+            @endif
         </div>
-        @foreach ($usuario as $user)
             <div class="div_infoPerfilM">
-                <div class="div_fotoPerfilM">
+                <div class="div_fotoPerfilM"> 
                     <img src="{{$user->avatar}}">
                 </div>
                 <div class="div_txtPM"> 
@@ -140,7 +148,6 @@
                                 @endphp
                             @endforeach
                         </div>
-                        <a class="a_derecha_o" href="{{Route('campanasActuales')}}">Ver más</a>
                     @else 
                         <div class="div_error_o">
                             <div class="txt_error_o">Sin campañas actuales.</div>
@@ -170,8 +177,6 @@
                             <div class="txt_row_responsive">NIVEL</div> 
                             <div class="txt_row_head_o">SEGUIDORES</div>
                             <div class="txt_row_responsive">SEGUIDORES</div> 
-                            {{-- <div class="txt_row_head_o">GANANCIAS</div>
-                            <div class="txt_row_responsive">GANANCIAS</div>  --}}
                         </div>
                     
                     <!--estos divs se crean con un foreach-->
@@ -512,7 +517,7 @@
             <br>
             <div class="div_eliminarCuenta" style="display: flex; justify-content:right">
                 <div class="div_contbtns">
-                    <a href="{{route('perfil')}}" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
+                    <a href="javascript:history.back(-1);" style="color:#5C5C5C; text-decoration:none;float: right;"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</a>
                 </div>
             </div>
             <br>

@@ -20,10 +20,13 @@
     </div>
 </div>
 <div class="div_90_o">
-    {{-- <div class="div_tokens_o"> --}}
     <div class="div_content_o">
-        <p class="txt_total">$ {{$total}} de ganancias totales</p>
+        <p class="txt_total">${{$total}} dolares de ganancias totales</p>
+        @if($saldo!=null)
         <p class="txt_content_ganancias">Tienes un saldo de ${{$saldo}}, para poder hacer el cobro debes llegar a la cantidad de 10 dolares</p>
+        @else
+        <p class="txt_content_ganancias">Tienes un saldo de 0, para poder hacer el cobro debes llegar a la cantidad de 10 dolares</p>
+        @endif
     </div>
 </div>
 <div class="div_CabeceraApartado" >

@@ -14,6 +14,7 @@ use App\Artist;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\camp_mail;
 
@@ -40,6 +41,7 @@ class OController extends Controller
             $item['id']=$favorite->id;
             $item['avatar']=$favorite->avatar;
             $item['name']=$favorite->name;
+            $item['idsp']=$favorite->spotify_id;
             $item['country']=$favorite->country;
             $item['playlists']=sizeOf($favorite->playlists);
             $total=0;
@@ -55,10 +57,45 @@ class OController extends Controller
                 $item['average']=0;
             }
             $favs[$i]=$item;
-            $i++;
+            $i++; 
         }
         return view ('musico.favoritos',['favs'=>$favs]);
     }
+
+    public function favoritosUpdate($idUser, $idsp){
+        try { 
+            
+            $usuarioEx = User::where('id',$idUser)->get();
+            $usuario = User::where('id',Auth::id())->first();
+        } 
+        catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null || $usuarioEx ==null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+        else{
+            $usuarioLoggeado=User::with('favorites')->findOrFail(Auth::id());
+            $marcaFav=false;
+            foreach($usuarioLoggeado->favorites as $favorite){
+                if($favorite->id == $idUser){
+                    $marcaFav=true;
+                }
+            }
+            if($marcaFav==false){
+                //MARCAR COMO FAVORITO (AGREGAR)
+                $usuario->favorites()->attach($usuarioEx);
+            } 
+            else{
+                //DESMARCAR COMO FAVORITO (ELIMINAR)
+                $usuario->favorites()->detach($usuarioEx);
+            }
+            return redirect(route('perfil-publico',['id'=>$idsp]));
+            
+        }
+    }
+
     public function campanas()
     {
         Gate::authorize('haveaccess','musico.perm');
@@ -345,6 +382,7 @@ class OController extends Controller
         }
         return view ('musico.crearCampana1',['arr_artists'=>$arr_artists]);
     }
+
     public function recrearCampana2()
     {
         Gate::authorize('haveaccess','musico.perm');
@@ -398,15 +436,30 @@ class OController extends Controller
         $artists=trim($request->artists);
         $artists=explode(',',$artists);
         $i=0;
+        function elimina_acentos($text){
+            $text = htmlentities($text, ENT_QUOTES, 'UTF-8');
+            $text = strtolower($text);
+            $patron = array (
+                '/\+/' => '',
+                '/&agrave;/' => 'a','/&egrave;/' => 'e','/&igrave;/' => 'i','/&ograve;/' => 'o','/&ugrave;/' => 'u',
+                '/&aacute;/' => 'a','/&eacute;/' => 'e','/&iacute;/' => 'i','/&oacute;/' => 'o','/&uacute;/' => 'u',
+                '/&acirc;/' => 'a','/&ecirc;/' => 'e','/&icirc;/' => 'i','/&ocirc;/' => 'o','/&ucirc;/' => 'u',
+                '/&atilde;/' => 'a','/&etilde;/' => 'e','/&itilde;/' => 'i','/&otilde;/' => 'o','/&utilde;/' => 'u',
+                '/&auml;/' => 'a','/&euml;/' => 'e','/&iuml;/' => 'i','/&ouml;/' => 'o','/&uuml;/' => 'u',
+                '/&auml;/' => 'a','/&euml;/' => 'e','/&iuml;/' => 'i','/&ouml;/' => 'o','/&uuml;/' => 'u','/&aring;/' => 'a','/&ntilde;/' => 'n',
+            );
+            $text = preg_replace(array_keys($patron),array_values($patron),$text);
+            return $text;
+        }
         foreach($artists as $artist){
             if(empty($artist))
                 unset($artists[$i]);
             else
-                $artists[$i]=trim($artist);
+                $artists[$i]=elimina_acentos(trim($artist));
             $i++;
         }
         $artists=array_values($artists);
-        $all_playlists=Playlist::with('artists')->get();
+        $all_playlists=Playlist::with('artists','user')->get();
         $playlists=[];
         $playlistsCosts=[];
         $i=0;
@@ -414,7 +467,7 @@ class OController extends Controller
         foreach($all_playlists as $all_playlist){
             $coincidencias=0;
             foreach($all_playlist->artists as $artist){
-                if(in_array($artist->name,$artists)){
+                if(in_array(elimina_acentos($artist->name),$artists)){
                     $coincidencias++;;
                     $cont=true;
                 }
@@ -448,28 +501,73 @@ class OController extends Controller
                 $item['curator_id']=$all_playlist->user->id;
                 $item['curator_name']=$all_playlist->user->name;
                 $item['followers']=$playlist->followers->total;
+                $item['premium']=$all_playlist->user->premium;
                 $total=$playlist->followers->total;
                 $cost=100;
-                if($total>=500 && $total<=5000) $cost=1;
-                if($total>=5001 && $total<15000) $cost=1;
-                if($total>=15001 && $total<=20000) $cost=1;
-                if($total>=20001 && $total<=30000) $cost=1;
-                if($total>=30001 && $total<=50000) $cost=2;
-                if($total>=50001 && $total<=60000) $cost=2;
-                if($total>=60001 && $total<=70000) $cost=3;
-                if($total>=70001 && $total<=80000) $cost=3;
-                if($total>=80001 && $total<=90000) $cost=4;
-                if($total>=90001) $cost=4;
+                $level=100;
+                if($all_playlist->user->premium == 0){
+                    if($total>=500 && $total<=5000){
+                        $cost=1;
+                        $level=1;
+                    }
+                    else if($total>=5001 && $total<15000){
+                        $cost=1;
+                        $level=2;
+                    }
+                    else if($total>=15001 && $total<=20000){
+                        $cost=1;
+                        $level=3;
+                    }
+                    else if($total>=20001 && $total<=30000){
+                        $cost=1;
+                        $level=4;
+                    }
+                    else if($total>=30001 && $total<=50000){
+                        $cost=2;
+                        $level=5;
+                    }
+                    else if($total>=50001 && $total<=60000){
+                        $cost=2;
+                        $level=6;
+                    }
+                    else if($total>=60001 && $total<=70000){
+                        $cost=3;
+                        $level=7;
+                    }
+                    else if($total>=70001 && $total<=80000){
+                        $cost=3;
+                        $level=8;
+                    }
+                    else if($total>=80001 && $total<=90000){
+                        $cost=4;
+                        $level=9;
+                    }
+                    else if($total>=90001){
+                        $cost=4;
+                        $level=10;
+                    }
+                }
+                else{
+                    $cost=5;
+                    $level=11;
+                }
                 $item['cost']=$cost;
+                $item['level']=$level;
                 if($total>=500){
                     $playlists[$i]=$item;
                     $itemCost=[];
                     $itemCost['playlist']=$all_playlist->id;
                     $itemCost['cost']=$cost;
+                    $itemCost['level']=$level;
                     $playlistsCosts[$i]=$itemCost;
                     $i++;
                 }
             }
+        }
+        if(!$cont){
+            session()->flash('badArtists',true);
+            session()->forget('link_song');
+            return redirect('/crear-paso-1');
         }
         session()->put('playlistsCosts',$playlistsCosts);
         //ordena las playlists por orden de coincidencias 
@@ -492,6 +590,7 @@ class OController extends Controller
                 $cost=$playlistCost['cost'];
                 session()->put('selected_playlist',$playlistCost['playlist']);
                 session()->put('playlist_cost',$cost);
+                session()->put('playlist_level',$playlistCost['level']);
             }
         }
         $access_token=session()->get('access_token');
@@ -534,32 +633,37 @@ class OController extends Controller
         return view ('musico.crearCampana3',['data'=>$data]);
     }
     public function storeCamp(request $request){
-        Gate::authorize('haveaccess','musico.perm');
-        $cost=session()->get('playlist_cost');
-        $playlist_id=session()->get('selected_playlist');
-        $user=User::findOrFail(Auth::id());
-        if($user->tokens-$cost<0){
-            session()->flash('unexpected',true);
-            return redirect('/crear-paso-1');
-        }
-        $camp=new Camp();
-        $camp->start_date=Carbon::now();
-        $camp->cost=$cost;
-        $camp->link_song=session()->get('link_song');;
-        $camp->user_id=Auth::id();
-        $camp->playlist_id=$playlist_id;
-        $camp->status='espera';
-        $camp->save();
-        $user->tokens=$user->tokens-$cost;
-        $user->save();
-        $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
-        $curator=User::findOrFail($playlist->user->id);
-        Mail::to($curator->email)->send(new camp_mail($camp->id,$curator->name));
-        // session()->forget('playlistsCosts');
-        // session()->forget('selected_playlist');
-        // session()->forget('playlist_cost');
-        // session()->forget('link_song');
-        // session()->flash('success',true);
+        DB::transaction(function ($request) {
+            Gate::authorize('haveaccess','musico.perm');
+            $cost=session()->get('playlist_cost');
+            $level=session()->get('playlist_level');
+            $playlist_id=session()->get('selected_playlist');
+            $user=User::findOrFail(Auth::id());
+            if($user->tokens-$cost<0){
+                session()->flash('unexpected',true);
+                return redirect('/crear-paso-1');
+            }
+            $camp=new Camp();
+            $camp->start_date=Carbon::now();
+            $camp->cost=$cost;
+            $camp->level=$level;
+            $camp->link_song=session()->get('link_song');;
+            $camp->user_id=Auth::id();
+            $camp->playlist_id=$playlist_id;
+            $camp->status='espera';
+            $camp->save();
+            $user->tokens=$user->tokens-$cost;
+            $user->save();
+            $user=User::where('id',99)->get();
+            $playlist=Playlist::with('user')->findOrFail(session()->get('selected_playlist'));
+            $curator=User::findOrFail($playlist->user->id);
+        });
+        session()->forget('playlistsCosts');
+        session()->forget('selected_playlist');
+        session()->forget('playlist_cost');
+        session()->forget('playlist_level');
+        session()->forget('link_song');
+        session()->flash('success',true);
         return redirect('/campanas');
     }
     public function tokens()
