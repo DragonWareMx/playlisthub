@@ -28,9 +28,9 @@ class CreateUsersTable extends Migration
             $table->date('birth_date');                         //Fecha de nacimiento del usuario
             $table->string('country', 200);                     //Pais de origen del usuario
 
-            $table->float('saldo')->nullable();
+            $table->string('saldo')->nullable();
             $table->date('last_login')->nullable();
-            $table->unsignedSmallInteger('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
+            $table->string('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
             $table->tinyInteger('premium')->default(0);         // identifica si el usuario es premium, 0 no premium, 1 sí premium
 
             $table->rememberToken();

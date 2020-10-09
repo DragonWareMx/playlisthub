@@ -516,30 +516,53 @@ class ReviewController extends Controller
                             $camp->save();
 
                             //se le suma el dinero al curador
+                            //cada token cuesta 10 dólares
+                            $saldo = 0;
+
                             switch($camp->level){
                                 case 1:
+                                    $saldo = ($camp->cost * 0.1)*10; //10% del costo, costo de 1 token
                                     break;
                                 case 2:
+                                    $saldo = ($camp->cost * 0.2)*10; //20% del costo, costo de 1 token
                                     break;
                                 case 3:
+                                    $saldo = ($camp->cost * 0.3)*10; //30% del costo, costo de 1 token
                                     break;
                                 case 4:
+                                    $saldo = ($camp->cost * 0.4)*10; //40% del costo, costo de 1 token
                                     break;
                                 case 5:
+                                    $saldo = ($camp->cost * 0.3)*10; //30% del costo, costo de 2 tokens
                                     break;
                                 case 6:
+                                    $saldo = ($camp->cost * 0.4)*10; //40% del costo, costo de 2 tokens
                                     break;
                                 case 7:
+                                    $saldo = ($camp->cost * 0.35)*10; //35% del costo, costo de 3 tokens
                                     break;
                                 case 8:
+                                    $saldo = ($camp->cost * 0.45)*10; //45% del costo, costo de 3 tokens
                                     break;
                                 case 9:
+                                    $saldo = ($camp->cost * 0.45)*10; //45% del costo, costo de 4 tokens
                                     break;
                                 case 10:
+                                    $saldo = ($camp->cost * 0.55)*10; //55% del costo, costo de 4 tokens
                                     break;
                                 case 11:
+                                    $saldo = ($camp->cost * 0.70)*10; //70% del costo, costo de 5 tokens
                                     break;
                             }
+
+                            $user = User::find($usuario[0]->id);
+
+                            if(isset($usuario->saldo))
+                                $user->saldo += $saldo;
+                            else
+                                $user->saldo = $saldo;
+
+                            $user->save();
 
                             session()->flash('success',true);
                         });
