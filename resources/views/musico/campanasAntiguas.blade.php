@@ -31,7 +31,7 @@
                         -o-background-size: cover;
                         -webkit-background-size: cover;">
                             <div class="campanas_encabezado_cancion_o">
-                                {{Str::limit($songsAnt[$i]->name, 39)}}
+                                <a href="{{$camp->link_song}}" style="color: white;" target="blank">{{Str::limit($songsAnt[$i]->name, 39)}}</a>
                             </div>
                             <div class="campanas_encabezado_artista_o">
                                 {{Str::limit($songsAnt[$i]->artists[0]->name, 39)}}

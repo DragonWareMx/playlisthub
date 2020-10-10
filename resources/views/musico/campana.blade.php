@@ -62,7 +62,7 @@
                     <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div> 
                     <div class="vercampana_txt_o"><a href="{{$playlist->external_urls->spotify}}" style="color: #8177F5;" target="blank">{{$playlist->name}}</a></div>
                     <div class="vercampana_title_o">NOMBRE DEL CURADOR</div>
-                    <div class="vercampana_txt_o"><a href="{{route('perfil-publico',['id'=>$camp->playlist->user->spotify_id])}}" style="color: #8177F5;" target="blank">{{Str::limit($camp->playlist->user->name,27)}}</a></div>
+                    <div class="vercampana_txt_o"><a href="{{route('perfil-publico',['id'=>$camp->playlist->user->spotify_id])}}" style="color: #8177F5;" >{{Str::limit($camp->playlist->user->name,27)}}</a></div>
                     <div class="vercampana_title_o">FECHA DE TERMINO</div>
                     <div class="vercampana_txt_o">
                         @if ($camp->end_date)

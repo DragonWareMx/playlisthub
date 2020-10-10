@@ -77,7 +77,7 @@
                                     <div class="campana_title_o">TOKENS</div>
                                     <div class="campana_text_o">{{$camp->cost}}</div>
                                     <div class="campana_title_o">PLAYLIST</div>
-                                    <div class="campana_text_o"><a href="#" style="color: #5c5c5c" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
+                                    <div class="campana_text_o"><a href="{{$playlistsAct[$i]->external_urls->spotify}}" style="color: #5c5c5c" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
                                     <div class="campana_title_o">FECHA DE TÉRMINO</div>
                                     @if ($camp->end_date)
                                         @php

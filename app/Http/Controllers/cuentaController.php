@@ -337,13 +337,13 @@ class cuentaController extends Controller
             ['end_date','>=',$hoy],
             ['user_id', '=', $newId],
         ])
-        ->limit(3)->get();
+        ->get();
         $campsAnt=Camp::orderBy('id','desc')->
         where([
             ['end_date','<',$hoy],
             ['user_id', '=', $newId]
         ])
-        ->limit(3)->get();
+        ->get();
         $i=0;
         $access_token=session()->get('access_token');
         $songsAct=[];
@@ -543,6 +543,7 @@ class cuentaController extends Controller
         //REVIWS
 
         //booleano que indica el tipo del usuario (true = musico, false = curador)
+        // $newId=User::where('spotify_id',$idUser)->value('id');
         $tipo;
         //verifica que tipo de usuario es
         switch($usuario[0]->type){
