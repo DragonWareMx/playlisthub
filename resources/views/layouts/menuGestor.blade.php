@@ -50,7 +50,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('home') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
-          <span style="padding-left: 10px">Inicio</span>
+          <span>Inicio</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -59,7 +59,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Perfil</span>
+          <span>Perfil</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -78,7 +78,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Campañas</span>
+          <span>Campañas</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -96,7 +96,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('favoritos') }}">           
             <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Favoritos</span>
+          <span>Favoritos</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -106,7 +106,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Reviews</span>
+          <span>Reviews</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -123,7 +123,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('referencias')}}">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Referencias</span>
+          <span>Referencias</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -134,7 +134,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="{{route ('playlists')}}">             
             <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
-            <span style="padding-left: 10px">Playlists</span>
+            <span>Playlists</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -143,7 +143,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('ranking') }}">           
             <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Ranking</span>
+          <span>Ranking</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -152,7 +152,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('ganancias')}}">
             <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Ganancias</span>
+          <span>Ganancias</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -161,7 +161,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Reviews</span>
+          <span>Reviews</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">

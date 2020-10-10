@@ -21,6 +21,23 @@ class ReviewController extends Controller
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
 
+        //verifica que el token no haya expirado
+        $access_token=session()->get('access_token');
+        $conexion=curl_init();
+        $url='https://api.spotify.com/v1/me?access_token='.$access_token;
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $token= curl_exec($conexion);
+        curl_close($conexion);
+        $token=json_decode($token);
+
+        $error = false;
+
+        if(isset($token->error))
+            $error = true;
+
         //obtenemos el usuario que inicio sesion
         try { 
             $usuario = User::where('id',Auth::id())->get();
@@ -66,7 +83,7 @@ class ReviewController extends Controller
                     $calificacion = 0;
                 }
 
-                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas),'error'=>$error]);
                 break;
             case 'Curador':
                 $tipo = false;
@@ -100,7 +117,7 @@ class ReviewController extends Controller
                     $calificacion = 0;
                 }
                 
-                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas)]);
+                return view('reviews.reviews',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>count($realizadas), 'error'=>$error]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -115,6 +132,23 @@ class ReviewController extends Controller
         $usuario = null;
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
+
+        //verifica que el token no haya expirado
+        $access_token=session()->get('access_token');
+        $conexion=curl_init();
+        $url='https://api.spotify.com/v1/me?access_token='.$access_token;
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $token= curl_exec($conexion);
+        curl_close($conexion);
+        $token=json_decode($token);
+
+        $error = false;
+
+        if(isset($token->error))
+            $error = true;
 
         //obtenemos el usuario que inicio sesion
         try { 
@@ -144,7 +178,7 @@ class ReviewController extends Controller
                 $total = 0;
                 $numReviews = 0;
 
-                return view('reviews.reviews_realizadas',['tipo'=>$tipo, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>$realizadasN]);
+                return view('reviews.reviews_realizadas',['tipo'=>$tipo, 'numReviews'=>$numReviews, 'realizadas'=>$realizadas,'nrealizadas'=>$realizadasN, 'error'=>$error]);
                 break;
             case 'Curador':
                 $tipo = false;
@@ -162,14 +196,12 @@ class ReviewController extends Controller
                                                 ->whereNull('playlist_id')
                                                 ->paginate(10);
                 
-                return view('reviews.reviews_realizadas',['tipo'=>$tipo, 'realizadas'=>$realizadas,'nrealizadas'=>$realizadasN]);
+                return view('reviews.reviews_realizadas',['tipo'=>$tipo, 'realizadas'=>$realizadas,'nrealizadas'=>$realizadasN, 'error'=>$error]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
                 break;
         }
-
-        return view('reviews.reviews',['tipo'=>$tipo]);
     }
 
     //pagina principal de las reviews musico/curador
@@ -179,6 +211,23 @@ class ReviewController extends Controller
         $usuario = null;
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
+
+        //verifica que el token no haya expirado
+        $access_token=session()->get('access_token');
+        $conexion=curl_init();
+        $url='https://api.spotify.com/v1/me?access_token='.$access_token;
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $token= curl_exec($conexion);
+        curl_close($conexion);
+        $token=json_decode($token);
+
+        $error = false;
+
+        if(isset($token->error))
+            $error = true;
 
         //obtenemos el usuario que inicio sesion
         try { 
@@ -224,7 +273,7 @@ class ReviewController extends Controller
                     $calificacion = 0;
                 }
 
-                return view('reviews.reviews_recibidas',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews]);
+                return view('reviews.reviews_recibidas',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'error'=>$error]);
                 break;
             case 'Curador':
                 $tipo = false;
@@ -255,14 +304,12 @@ class ReviewController extends Controller
                     $calificacion = 0;
                 }
                 
-                return view('reviews.reviews_recibidas',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews]);
+                return view('reviews.reviews_recibidas',['tipo'=>$tipo, 'reviews'=> $reviews, 'calificacion'=>$calificacion, 'numReviews'=>$numReviews, 'error'=>$error]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
                 break;
         }
-
-        return view('reviews.reviews',['tipo'=>$tipo]);
     }
 
     //reviews pendientes musico/curador
@@ -272,6 +319,23 @@ class ReviewController extends Controller
         $usuario = null;
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
+
+        //verifica que el token no haya expirado
+        $access_token=session()->get('access_token');
+        $conexion=curl_init();
+        $url='https://api.spotify.com/v1/me?access_token='.$access_token;
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $token= curl_exec($conexion);
+        curl_close($conexion);
+        $token=json_decode($token);
+
+        $error = false;
+
+        if(isset($token->error))
+            $error = true;
 
         //obtenemos el usuario que inicio sesion
         try { 
@@ -304,7 +368,7 @@ class ReviewController extends Controller
                 ->orderBy('id','desc')
                 ->get();
 
-                return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps]);
+                return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps, 'error'=>$error]);
                 break;
             case 'Curador':
                 $tipo = false;
@@ -326,7 +390,7 @@ class ReviewController extends Controller
                 ->orderBy('id','desc')
                 ->get();
 
-                return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps]);
+                return view('reviews.reviews_pendientes',['tipo'=>$tipo,'camps'=>$camps, 'error'=>$error]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
@@ -345,6 +409,23 @@ class ReviewController extends Controller
         $usuario = null;
         //booleano que indica el tipo del usuario (true = musico, false = curador)
         $tipo;
+
+        //verifica que el token no haya expirado
+        $access_token=session()->get('access_token');
+        $conexion=curl_init();
+        $url='https://api.spotify.com/v1/me?access_token='.$access_token;
+        curl_setopt($conexion, CURLOPT_URL, $url);
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, 1);
+        $token= curl_exec($conexion);
+        curl_close($conexion);
+        $token=json_decode($token);
+
+        $error = false;
+
+        if(isset($token->error))
+            $error = true;
 
         //obtenemos el usuario que inicio sesion
         try { 
@@ -380,7 +461,7 @@ class ReviewController extends Controller
                     return view('errors.404', ['mensaje' => 'Esta campaña ya realizó una review.']);
                 }
                 
-                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp]);
+                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp, 'error'=>$error]);
                 break;
             case 'Curador':
                 $tipo = false;
@@ -403,7 +484,7 @@ class ReviewController extends Controller
                     return view('errors.404', ['mensaje' => 'Esta campaña ya realizó una review.']);
                 }
                 
-                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp]);
+                return view('reviews.reviews_realizar',['tipo'=>$tipo,'camp'=>$camp, 'error'=>$error]);
                 break;
             default:
                 return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);

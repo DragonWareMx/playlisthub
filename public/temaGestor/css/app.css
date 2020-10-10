@@ -13666,6 +13666,10 @@ a:focus * {
     position:  relative !important;
     left: 0px !important;
   }
+
+  .sidebar .nav-item .nav-link span{
+    padding-left: 0px !important;
+  }
 }
 
 .logo-movil{
@@ -13703,7 +13707,11 @@ a:focus * {
 
 }
   
+.sidebar .nav-item .nav-link span{
+  padding-left: 10px;
+}
 
 .sidebar.toggled .nav-item .nav-link span{
   padding-left: 0px !important;
 }
+

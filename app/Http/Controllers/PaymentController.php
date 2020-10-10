@@ -33,13 +33,13 @@ class PaymentController extends Controller
         ),
         1=> array(
             "cantidad"=>20,
-            "descuento"=>20,
-            "total"=>180
+            "descuento"=>10,
+            "total"=>190
         ),
         2=> array(
             "cantidad"=>30,
-            "descuento"=>45,
-            "total"=>255
+            "descuento"=>30,
+            "total"=>270
         )
     );
 
