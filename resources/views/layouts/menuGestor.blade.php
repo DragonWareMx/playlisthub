@@ -39,9 +39,9 @@
     <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion menu-lateral" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#c96dd8">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#8177F5">
         <div class="sidebar-brand-icon" style="margin-left:auto;margin-right:auto ">
-          <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" >
+          <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" > 
         </div>
       </a>
       <br>
@@ -50,7 +50,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('home') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
-          <span style="padding-left: 10px">Inicio</span>
+          <span>Inicio</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -59,7 +59,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Perfil</span>
+          <span>Perfil</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -78,7 +78,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Campañas</span>
+          <span>Campañas</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -96,7 +96,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('favoritos') }}">           
             <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Favoritos</span>
+          <span>Favoritos</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -106,7 +106,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Reviews</span>
+          <span>Reviews</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -123,7 +123,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('referencias')}}">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Referencias</span>
+          <span>Referencias</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -134,7 +134,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="{{route ('playlists')}}">             
             <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
-            <span style="padding-left: 10px">Playlists</span>
+            <span>Playlists</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -143,7 +143,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('ranking') }}">           
             <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Ranking</span>
+          <span>Ranking</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -152,7 +152,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('ganancias')}}">
             <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Ganancias</span>
+          <span>Ganancias</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
@@ -161,7 +161,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
-          <span style="padding-left: 10px">Reviews</span>
+          <span>Reviews</span>
         </a>
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <div id="collapseReviews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -198,7 +198,7 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="
         background-color: transparent;
-    background-image: linear-gradient(70deg, #c96dd8 12%, #3023ae 93%);
+    background-image: linear-gradient(70deg, #8177F5 12%, #8177F5 93%);
         ">
 
           <!-- Sidebar Toggle (Topbar) -->
@@ -210,19 +210,19 @@
           <ul class="navbar-nav ml-auto mr-4">
 
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <li class="nav-item dropdown no-arrow mx-1"> 
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{-- <i class="fas fa-bell fa-fw"></i> --}}
-                <img src="{{ asset('/img/iconos/bell.png') }}" width="20px" height="16px">
+                <img src="{{ asset('/img/iconos/whitebell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
-                <span class="badge badge-counter" style="color: black">1</span>
+                <span class="badge badge-counter" style="color: white">1</span>
                 {{-- @else 
                 <span class="badge badge-danger badge-counter">{{$nnoti}}</span>
                 @endif --}}
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
-                <h6 class="dropdown-header" style="background-color:#181A2C">
+                <h6 class="dropdown-header" style="background-color:#181A2C; border:none !important">
                   Notificaciones
                 </h6>
                 
@@ -256,7 +256,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center"> {{auth()->user()->name}} <br> <strong>{{auth()->user()->type}}</strong> </span>
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center; color:white !important"> {{auth()->user()->name}} <br> <strong>{{auth()->user()->type}}</strong> </span>
                 <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{auth()->user()->avatar}}">
               </a>
               <!-- Dropdown - User Information -->

@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="div_90_o">
-
+    @if (sizeOf($playlists_registradas)>0)
     <div class="div_content_o">
         <div class="table_head_o">
             <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
@@ -73,6 +73,11 @@
     @endforeach
         
     </div>
+    @else 
+        <div class="div_error_o">
+            <div class="txt_error_o">No tienes playlists activas.</div>
+        </div>
+    @endif
 </div>
 @else
         <div class="div_error_o">
