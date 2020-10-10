@@ -593,6 +593,11 @@ class ReviewController extends Controller
                                 $camp->status = "aceptado";
                             else
                                 $camp->status = "rechazado";
+
+                            //se agrega fecha de termino de la campaña
+                            $endDate = Carbon::now()->addDays(14)->format('Y-m-d H:i:s');
+
+                            $camp->end_date = $endDate;
                         
                             $camp->save();
 
