@@ -3,6 +3,7 @@
 @section('importOwl')
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
+    <link rel="stylesheet" type="text/css" href="/css/L.css">
     <link rel="stylesheet" type="text/css" href="/css/reviews.css">
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
 @endsection
@@ -17,7 +18,17 @@
     use Carbon\Carbon;
     use App\User;
 @endphp
-
+@if ($error)
+    <div class="div_error_o">
+        <form action="{{route('relogin')}}" method="POST">
+            @csrf
+            <div class="txt_error_o">Tu token de acceso ha expirado, por favor presiona el siguiente botón.</div>
+            <button type="submit" id="a_error_o" class="inicio-spotybtn">
+                <img src="http://127.0.0.1:8000/img/iconos/sp white.png">  
+            </button>
+        </form>
+    </div>
+@else
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -409,4 +420,5 @@
         document.getElementById('caracteres_escritos').innerHTML = "caracteres: "+element.value.length;
     }
 </script>
+@endif
 @endsection
