@@ -42,6 +42,15 @@
         @if($tipo)
             @if (count($camps) > 0)
                 @foreach ($camps as $camp)
+                    @php
+                        $date = Carbon::parse($camp->end_date);
+                        $dateNow = Carbon::now();
+                        
+                        //si la fecha actual es anterior a la de termino no se muestra
+                        if($dateNow < $date){
+                            continue;
+                        }
+                    @endphp
                     {{-- REVIEW A LA PLAYLIST / VISTA DE MÚSICO --}}
                     <div class="review_item">
 
