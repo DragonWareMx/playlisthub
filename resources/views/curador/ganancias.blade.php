@@ -55,7 +55,12 @@
     @foreach ($playlists as $playlist)
     <hr class="hr_100_o">
     <div class="table_row_o table_noBorder">
-        <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt=""> 
+        @if ($playlist->images[0]->url)
+        <img class="img_playlist_o" src="{{$playlist->images[0]->url}}" alt="">     
+        @else
+        <img class="img_playlist_o" src="{{asset('img/logos/logo.png')}}" alt="">
+        @endif
+        
         <p class="p_responsivep">GANANCIAS</p>
         <div class="txt_row_play_o">$ {{$playlists_bd[$i]->profits}}</div> 
         <p class="p_responsivep">PLAYLIST</p>
