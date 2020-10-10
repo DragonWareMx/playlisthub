@@ -111,7 +111,7 @@
         <a href="{{$pllinks[$i]}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$plnames[$i]}} </a> 
         <p class="p_responsivep">MÚSICO</p>
         {{-- AQUI SERÁ EL LINK PARA EL PERFIL DEL MÚSICO --}}
-        <a href="{{$song->artists[0]->external_urls->spotify}}" style="color: #5C5C5C" target="_blank" class="txt_row_play_o a_row_play_o"> {{$song->artists[0]->name}} </a> 
+        <a href="{{route('perfil-publico', ['id' => $songs[$i]->user->spotify_id])}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$songs[$i]->user->name}} </a> 
         <p class="p_responsivep">TOKENS</p>
         <div class="txt_row_play_o">{{$songs[$i]->cost}}</div>
         <p class="p_responsivep">ESTATUS</p> 
@@ -149,7 +149,7 @@
                 $control=true;
             @endphp
             @foreach ($playlists as $playlist)
-                @if ($followers[$i]=5000)
+                @if ($followers[$i]>=500)
                     <div id="{{$playlist->id}}" class="div_playlist_modal" value="">
                         <div class="div_img_modal"><img class="img_modal" src="{{$playlist->images['0']->url}}" alt=""></div>  
                         <div class="txt_row">{{$playlist->name}}</div> 

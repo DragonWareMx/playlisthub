@@ -56,7 +56,9 @@
                 nivel {{$nivel}}
             </div>
             <p class="p_responsivep">PLAYLIST</p>
-            <a href="#"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a> 
+            <div class="txt_row_play_o">
+                <a href="{{$playlist->external_urls->spotify}}"  target="_blank" class="txt_row_play_o a_row_play_o"> {{$playlist->name}} </a>             
+            </div>
             <p class="p_responsivep">RANKING</p> 
             <div class="txt_row_play_o">{{$playlists_bd[$i]->tier}}</div> 
             <p class="p_responsivep">SEGUIDORES</p>
