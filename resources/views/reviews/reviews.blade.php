@@ -606,7 +606,7 @@
 
 <!-- Modal -->
 <div id="tvesModal" class="modalContainer" style="z-index: 999">
-    <div class="modal-content" style="height: fit-content; max-width: 648px;">
+    <div class="modal-content" style="height: fit-content;height: -moz-max-content; max-width: 648px;">
         <div class="modal_title_tokens" >Compartir review</div>
         <hr class="hr_modal_o"> 
         <div class="modal_compartir">

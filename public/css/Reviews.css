@@ -632,6 +632,13 @@
     }
 }
 
+@media(max-width:469px){
+    .modal_compartir .modal_compartir_facebook {
+        margin-right: 0px;
+        margin-bottom: 47px;
+    }
+}
+
 @media(max-width:440px){
     .review_calificacion .review_calificacion_item a{
         font-size: 14px;
