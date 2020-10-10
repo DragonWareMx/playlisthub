@@ -210,12 +210,12 @@
           <ul class="navbar-nav ml-auto mr-4">
 
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <li class="nav-item dropdown no-arrow mx-1"> 
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{-- <i class="fas fa-bell fa-fw"></i> --}}
-                <img src="{{ asset('/img/iconos/bell.png') }}" width="20px" height="16px">
+                <img src="{{ asset('/img/iconos/whitebell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
-                <span class="badge badge-counter" style="color: black">1</span>
+                <span class="badge badge-counter" style="color: white">1</span>
                 {{-- @else 
                 <span class="badge badge-danger badge-counter">{{$nnoti}}</span>
                 @endif --}}
@@ -256,7 +256,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center"> {{auth()->user()->name}} <br> <strong>{{auth()->user()->type}}</strong> </span>
+                <span class="mr-4 d-none d-lg-inline small username" style="text-align: center; color:white !important"> {{auth()->user()->name}} <br> <strong>{{auth()->user()->type}}</strong> </span>
                 <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{auth()->user()->avatar}}">
               </a>
               <!-- Dropdown - User Information -->

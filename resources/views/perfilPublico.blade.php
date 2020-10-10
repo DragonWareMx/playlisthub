@@ -19,6 +19,7 @@
 @php
     use Carbon\Carbon;
     use App\User;
+    use Illuminate\Support\Facades\Crypt;
 @endphp
 
 @if (!$error)
