@@ -26,7 +26,6 @@ class OController extends Controller
     }
     public function favoritos()
     {
-        Gate::authorize('haveaccess','musico.perm');
         $user=User::with('favorites')->findOrFail(Auth::id());
         $favorites=[];
         $i=0;
@@ -63,6 +62,7 @@ class OController extends Controller
     }
 
     public function favoritosUpdate($idUser, $idsp){
+        Gate::authorize('haveaccess','musico.perm');
         try { 
             
             $usuarioEx = User::where('id',$idUser)->get();

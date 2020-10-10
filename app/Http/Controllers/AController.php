@@ -8,6 +8,7 @@ use App\User;
 use App\Playlist;
 use App\Camp;
 use App\Artist;
+use Illuminate\Support\Facades\Gate;
 use Auth;
 
 class AController extends Controller
@@ -17,6 +18,7 @@ class AController extends Controller
         $this->middleware('auth');
     }
     public function playlists(){
+        Gate::authorize('haveaccess','curador.perm');
         $id= Auth::id();
         $error=false;
         $access_token=session()->get('access_token');
@@ -169,6 +171,7 @@ class AController extends Controller
         
     }
     public function addPlaylist(){
+        Gate::authorize('haveaccess','curador.perm');
         $id= Auth::id();
         $access_token=session()->get('access_token');
         $link_playlist=request()->validate([
@@ -232,6 +235,7 @@ class AController extends Controller
         return redirect()->route('playlists');
     }
     public function ranking(){
+        Gate::authorize('haveaccess','curador.perm');
         $id= Auth::id();
         $error=false;
         $access_token=session()->get('access_token');
@@ -270,6 +274,7 @@ class AController extends Controller
         return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd]);
     }
     public function ganancias(){
+        Gate::authorize('haveaccess','curador.perm');
         $id= Auth::id();
         $error=false;
         $access_token=session()->get('access_token');
