@@ -39,9 +39,9 @@
     <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion menu-lateral" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#c96dd8">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#8177F5">
         <div class="sidebar-brand-icon" style="margin-left:auto;margin-right:auto ">
-          <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" >
+          <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" > 
         </div>
       </a>
       <br>
@@ -198,7 +198,7 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="
         background-color: transparent;
-    background-image: linear-gradient(70deg, #c96dd8 12%, #3023ae 93%);
+    background-image: linear-gradient(70deg, #8177F5 12%, #8177F5 93%);
         ">
 
           <!-- Sidebar Toggle (Topbar) -->
@@ -222,7 +222,7 @@
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
-                <h6 class="dropdown-header" style="background-color:#181A2C">
+                <h6 class="dropdown-header" style="background-color:#181A2C; border:none !important">
                   Notificaciones
                 </h6>
                 
