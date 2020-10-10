@@ -17,6 +17,7 @@
 @php
     use Carbon\Carbon;
     use App\User;
+    use Illuminate\Support\Facades\Crypt;
 @endphp
 
 @if (!$error)
@@ -77,7 +78,7 @@
                                     <div class="campana_title_o">TOKENS</div>
                                     <div class="campana_text_o">{{$camp->cost}}</div>
                                     <div class="campana_title_o">PLAYLIST</div>
-                                    <div class="campana_text_o"><a href="#" style="color: #5c5c5c" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
+                                    <div class="campana_text_o"><a href="{{$playlistsAct[$i]->external_urls->spotify}}" style="color: #5c5c5c" target="blank">{{Str::limit($playlistsAct[$i]->name, 45)}}</a></div>
                                     <div class="campana_title_o">FECHA DE TÉRMINO</div>
                                     @if ($camp->end_date)
                                         @php
@@ -157,6 +158,7 @@
             </div>
             <div class="div_90_o">
                 <!--tabla playlists-->
+                @if (sizeOf($playlists_registradas)>0)
                 <div class="div_content_o">
                     <div class="table_head_o">
                         <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
@@ -209,6 +211,11 @@
                 @endforeach
                 
                 </div>
+                @else 
+                    <div class="div_error_o">
+                        <div class="txt_error_o">No tienes playlists activas.</div>
+                    </div>
+                @endif
             </div>
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 use App\User;
 use Auth;
 use App\Camp;
@@ -337,13 +338,13 @@ class cuentaController extends Controller
             ['end_date','>=',$hoy],
             ['user_id', '=', $newId],
         ])
-        ->limit(3)->get();
+        ->get();
         $campsAnt=Camp::orderBy('id','desc')->
         where([
             ['end_date','<',$hoy],
             ['user_id', '=', $newId]
         ])
-        ->limit(3)->get();
+        ->get();
         $i=0;
         $access_token=session()->get('access_token');
         $songsAct=[];
@@ -543,22 +544,23 @@ class cuentaController extends Controller
         //REVIWS
 
         //booleano que indica el tipo del usuario (true = musico, false = curador)
+        
+        // dd($newId);
         $tipo;
         //verifica que tipo de usuario es
         switch($usuario[0]->type){
             case 'Músico':
                 $tipo = true;
-
                 //reviews de las campanas del usuario musico
-                $reviews = Review::whereHas('camp', function ($query) {
-                    return $query->where('user_id', '=', 1);
+                $reviews = Review::whereHas('camp', function ($query) use($newId) {
+                    return $query->where('user_id', '=', $newId);
                 })->orderBy('date','desc')
                 ->whereNull('playlist_id')
                 ->get();
 
                 //reviews a playlists de curadores que el musico ha realizado
                 $realizadas = Review::where('playlist_id','!=',"NULL")->orderBy('date','desc')
-                                            ->where('user_id', '=', 1)
+                                            ->where('user_id', '=', $newId)
                                             ->get();
 
                 //obtenemos el promedio de las reviews y la cantidad de reviews
@@ -583,16 +585,15 @@ class cuentaController extends Controller
                 break;
             case 'Curador':
                 $tipo = false;
-                
                 //reviews de las playlists del usuario musico
-                $reviews = Review::whereHas('playlist', function ($query) {
-                    return $query->where('user_id', '=', 1);
+                $reviews = Review::whereHas('playlist', function ($query) use($newId) {
+                    return $query->where('user_id', '=', $newId);
                 })->orderBy('date','desc')
                 ->get();
 
                 //reviews a campañas de musicos que el curador ha realizado
                 $realizadas = Review::with('camp')->orderBy('date','desc')
-                                                ->where('user_id', '=', 1)
+                                                ->where('user_id', '=', $newId)
                                                 ->whereNull('playlist_id')
                                                 ->get();
 

@@ -24,6 +24,7 @@
 </div>
 <div class="div_90_o">
     <!--tabla playlists-->
+    @if (sizeOf($playlists_registradas)>0)
     <div class="div_content_o">
         <div class="table_head_o">
             <div class="img_playlist_o_2" style="margin-bottom:0px"></div>
@@ -81,6 +82,11 @@
     @endforeach
     
     </div>
+    @else 
+        <div class="div_error_o">
+            <div class="txt_error_o">No tienes playlists activas.</div>
+        </div>
+    @endif
 </div>
 <div class="div_CabeceraApartado" >
     <div class="div_tituloApartado resize_tituloApartado">
@@ -89,6 +95,7 @@
     <a href="{{route('reviewsPendientes')}}" class="resize-btn-agregar btn-solicitudesC">Solicitudes</a>
 </div>  
 <div class="div_90_o"> 
+    @if (sizeOf($songsSpoty)>0)
     <div class="div_content_o">
         <div class="table_head_o">
             {{-- <div class="img_playlist_o_2" style="margin-bottom:0px"></div> --}}
@@ -133,6 +140,11 @@
     @endforeach
     
     </div>
+    @else 
+        <div class="div_error_o">
+            <div class="txt_error_o">No tienes matchs aún.</div>
+        </div>
+    @endif
 </div>
 <!--MODAL de agregar playlist-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >

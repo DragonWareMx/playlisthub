@@ -13666,6 +13666,10 @@ a:focus * {
     position:  relative !important;
     left: 0px !important;
   }
+
+  .sidebar .nav-item .nav-link span{
+    padding-left: 0px !important;
+  }
 }
 
 .logo-movil{
@@ -13695,14 +13699,19 @@ a:focus * {
 }
 
 .menu-lateral{
-  background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2ffff 100%) !important;
-  border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1;
-  -webkit-box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
-    -moz-box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
-    box-shadow:inset -1px 1px 5px 1px rgb(201, 188, 188);
+  background: radial-gradient(50% 50% at 50% 50%, #f2f1ff 0%, #f2f1ff 100%) !important;
+  /* border-image: linear-gradient(to bottom, #c96dd8 1%, #d3c9c9 100%) 1; */
+  -webkit-box-shadow:inset 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:inset 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow:inset 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+
 }
   
+.sidebar .nav-item .nav-link span{
+  padding-left: 10px;
+}
 
 .sidebar.toggled .nav-item .nav-link span{
   padding-left: 0px !important;
 }
+

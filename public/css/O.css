@@ -832,9 +832,9 @@
     text-align: justify;
 }
 .error_msg_o{
-    width: 80%;
+    width: 100%;
     background-color: #e41425c5;
-    border: 2px solid #fd0015da;
+    border: 2px solid #e41425c5;
     border-radius: 5px;
     color: #FFFFFF;
     padding: 5px;
