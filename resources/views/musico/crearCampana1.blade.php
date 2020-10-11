@@ -20,16 +20,25 @@
     <div class="error_msg_o">
         ERROR: El link debe pertenecer a una canción registrada en Spotify
     </div>
+    {{session()->forget('badLink')}}
 @endif
 @if (session()->get('badArtists'))
     <div class="error_msg_o">
         ¡Por favor selecciona artistas que aparezcan como opción!
     </div>
+    {{session()->forget('badArtists')}}
+@endif
+@if (session()->get('fail'))
+    <div class="error_msg_o">
+        Lo sentimos ha ocurrido un error, por favor vuelve a intentarlo más tarde.
+    </div>
+    {{session()->forget('fail')}}
 @endif
 @if (session()->get('unexpected'))
     <div class="error_msg_o">
         ERROR: Sucedió algo inesperado, por favor inténtalo de nuevo más tarde
     </div>
+    {{session()->forget('unexpected')}}
 @endif
 @if (!session()->get('expiredToken'))
     <div class="div_CabeceraApartado" style="margin-top:40px">
@@ -51,8 +60,6 @@
                     <div class="vercampana_title_o">¿A QUÉ ARTISTAS TE PARECES?</div>
                     <input id="tags" name="artists" class="input_crearCampana" type="text" required
                         placeholder="Máximo 5 artistas separados por una coma ( , )">
-                    <div class="vercampana_title_o" style="display:flex">CÓDIGO DE REFERENCIA <h1 class="normalizar_letra">(Opcional)</h1></div>
-                    <input name="code" class="input_crearCampana" type="text">
                 </div>
                 <div id="crearCampana_50" class="campana_info_3">
                     {{-- <img class="campana_info_4_img" src="img/iconos/spotify-img.png" alt=""> --}}
@@ -74,6 +81,7 @@
             </button>
         </form>
     </div>
+    {{session()->forget('expiredToken')}}
 @endif
 <script>
     $(function() {

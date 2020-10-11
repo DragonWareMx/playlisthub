@@ -16,6 +16,7 @@
     <div class="success_msg_o">
         ¡Campaña creada con éxito!
     </div>
+    {{session()->forget('success')}}
 @endif
     @if (!$error)
         <div class="div_CabeceraApartado" style="margin-top:40px">

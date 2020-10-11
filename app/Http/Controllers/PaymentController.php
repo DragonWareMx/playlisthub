@@ -107,7 +107,7 @@ class PaymentController extends Controller
             else{
                 $status='Error! '.$e->getMessage();
             }
-            return redirect()->back()->with(compact('status'));
+            return redirect()->route('tokens')->with(compact('status')); 
         }        
     }
     public function payment(Request $request){
