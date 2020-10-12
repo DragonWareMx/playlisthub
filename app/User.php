@@ -88,6 +88,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Playlist');
     }
 
+    //referencias usadas
+    public function references()
+    {
+        return $this->hasMany('App\Users_reference');
+    }
+
      /**
      * Send the password reset notification.
      *
