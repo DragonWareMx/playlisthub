@@ -88,10 +88,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Playlist');
     }
 
-    //referencias usadas
     public function references()
     {
-        return $this->hasMany('App\Users_reference');
+      return $this->belongsToMany('User', 'users_references', 'user_id', 'referenced_id');
+    }
+    
+    // Same table, self referencing, but change the key order
+    public function theFriends()
+    {
+      return $this->belongsToMany('User', 'users_references', 'referenced_id', 'user_id');
     }
 
      /**
