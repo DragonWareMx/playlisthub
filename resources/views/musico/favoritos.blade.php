@@ -18,6 +18,7 @@
     </div>
 </div>
 <div class="div_90_o">
+    @if (sizeOf($favs)>0)
     @foreach ($favs as $fav)
         <div class="div_item_fav_o">
             <div class="div_profile_image_o">
@@ -61,6 +62,11 @@
             <div class="div_width100_right"><a class="a_profile_o" href="{{route('perfil-publico',['id'=>$fav['idsp']])}}">Ver perfil</a></div>
         </div>
     @endforeach
+    @else
+    <div class="div_error_o">
+        <div class="txt_error_o">No tienes curadores favoritos aún.</div>
+    </div>
+    @endif
 </div>
     
 @endsection

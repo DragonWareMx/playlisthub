@@ -95,7 +95,7 @@
     <a href="{{route('reviewsPendientes')}}" class="resize-btn-agregar btn-solicitudesC">Solicitudes</a>
 </div>  
 <div class="div_90_o"> 
-    @if (sizeOf($songsSpoty)>0)
+    @if (sizeOf($songsSpoty)>0) 
     <div class="div_content_o">
         <div class="table_head_o">
             {{-- <div class="img_playlist_o_2" style="margin-bottom:0px"></div> --}}

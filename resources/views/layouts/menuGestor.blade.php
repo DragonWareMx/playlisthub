@@ -212,13 +212,10 @@
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1"> 
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{-- <i class="fas fa-bell fa-fw"></i> --}}
+                
                 <img src="{{ asset('/img/iconos/whitebell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
                 <span class="badge badge-counter" style="color: white">1</span>
-                {{-- @else 
-                <span class="badge badge-danger badge-counter">{{$nnoti}}</span>
-                @endif --}}
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
@@ -244,10 +241,10 @@
                       <i class="fas fa-concierge-bell text-white"></i>
                     </div>
                   </div>
-                  <div>
+                  {{-- <div>
                     <div class="small text-gray-500">13/07/2020</div>
                     <span class="font-weight-bold">Nuevo pedido registrado: <br> Orden #1</span>
-                  </div>
+                  </div> --}}
                 </a>
                 
               </div>
