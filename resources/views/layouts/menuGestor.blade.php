@@ -46,8 +46,7 @@
       </a>
       <br>
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+      <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}" style="margin-top:25px">
         <a class="nav-link" href="{{ route('home') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
           <span>Inicio</span>
@@ -56,7 +55,6 @@
       </li>
       
       <li class="nav-item">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
           <span>Perfil</span>
@@ -75,7 +73,6 @@
 
       @if (auth()->user()->type == 'Músico')
       <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/campanas.png') }}" width="18px" height="18px" >
           <span>Campañas</span>
@@ -93,7 +90,6 @@
       </li>
 
       <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('favoritos') }}">           
             <img src="{{ asset('/img/iconos/fav.png') }}" width="18px" height="18px" >
           <span>Favoritos</span>
@@ -103,7 +99,6 @@
 
       {{-- REVIEWS --}}
       <li class="nav-item {{ Request::path() ==  'reviews' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
           <span>Reviews</span>
@@ -120,7 +115,6 @@
       </li>
 
       <li class="nav-item ">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('referencias')}}">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
           <span>Referencias</span>
@@ -131,7 +125,6 @@
 
       @if (auth()->user()->type == 'Curador')
       <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="{{route ('playlists')}}">             
             <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
             <span>Playlists</span>
@@ -140,7 +133,6 @@
       </li>
 
       <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link" href="{{ route('ranking') }}">           
             <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
           <span>Ranking</span>
@@ -149,7 +141,6 @@
       </li>
       {{-- GANANCIAS --}}
       <li class="nav-item ">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
             <a class="nav-link" href="{{route('ganancias')}}">
             <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="18px" >
           <span>Ganancias</span>
@@ -158,7 +149,6 @@
       </li>
       {{-- REVIEWS --}}
       <li class="nav-item {{ Request::path() ==  'reviews' ? 'active' : ''  }}">
-        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReviews" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/reviews.png') }}" width="18px" height="18px" >
           <span>Reviews</span>
@@ -173,9 +163,8 @@
       </li>
       @endif
 
-      <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
+      <div class="text-center d-none d-md-inline" style="margin-top: 25px">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 

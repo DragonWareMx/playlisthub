@@ -11578,7 +11578,8 @@ a:focus {
 
 .sidebar-dark .nav-item.active .barra-active {
   visibility: visible !important;
-  border-top: 1.5px solid #8177F5 !important;
+  border-top: 1px solid #8177F5 !important;
+  color: #8177F5;
 }
 
 .sidebar-dark .nav-item.active .nav-link i {
