@@ -15,27 +15,32 @@ html,body{
     flex-wrap: wrap;
 }
 
+.div_contenidoFooter{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
 .footer-logos-derecha{
-    margin-left: 8px;
+    margin-left: auto;
+    margin-right: auto;
     text-decoration: none;
 }
 .footer-logos-izquierda{
-    margin-right: 8px;
     margin-left: auto;
+    margin-right: auto;
     text-decoration: none;
 }
 
 .footer-left{
     width: 50% !important;
     display: flex;
-    
     margin-top: 10px;
 }
 
 .footer-right{
     width: 50% !important;
     display: flex;
-    
     margin-top: 10px;
 }
 
@@ -44,10 +49,9 @@ html,body{
     font-style: normal;
     font-size: 16px;
     line-height: 19px;
-    text-align: center;
-    margin-left: 0px;
-    margin-right: 0px;
     color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
 }
 .small-txt{
     font-size: 14px;
@@ -67,10 +71,13 @@ html,body{
 }
 
 .encabezado td{
-    width: 50%;
     padding-left: 7vh;
     padding-right: 7vh;
     padding-top: 1vh;
+}
+
+.encabezado td:first-child{
+    width: 20%;
 }
 
 .encabezado td img{
@@ -132,25 +139,33 @@ html,body{
         padding-top: 1.5vh;
     }
 
+    .encabezado td:nth-child(2){
+        padding: 2%;
+    }
+
     .encabezado td img{
         width: 168px;
         height: 59.2px;
     }
 
     .login-button{
-        width: 101.6px;
-        height: 36.8px;
         font-size: 16px;
         line-height: 19px;
     }
 }
-
-@media screen and (max-width: 465px){
+@media screen and (max-width: 500px){
     .login-button{
-        line-height: 14px;
-        font-size: 12px;
-        width: 76.2px;
-        height: 27.6px;
+        font-size: 14px;
+        width: auto;
+        
+    }
+    .login-button:nth-child(2){
+        border: none !important;
+        border-radius: 0px !important;
+    }
+    .active{
+        color: #8177F5;
+        font-weight: bold;
     }
 }
 
@@ -158,13 +173,6 @@ html,body{
     .encabezado td img{
         width: 126px;
         height: 44.4px;
-    }
-
-    .login-button{
-        line-height: 12px;
-        font-size: 10px;
-        width: 68.58px;
-        height: 24.84px;
     }
 
     .button-cuadro-form{
@@ -287,7 +295,6 @@ html,body{
     margin-left: auto;
     margin-right: auto;
 }
-
 .form-element input{
     width: 80%;
     height: 34px;
@@ -380,7 +387,7 @@ html,body{
     border-radius: 5px;
     margin-top: 8px;
     cursor: pointer;
-    margin-left: 35px;
+    margin-left: 0px;
     margin-right: 0px;
 }
 
@@ -474,7 +481,7 @@ html,body{
     background: #FFFFFF;
     border: 1px solid #8177F5;
     box-sizing: border-box;
-    width: 40%;
+    width: 45%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -596,12 +603,35 @@ html,body{
 .button-cuadro-form{
     margin-top:-25px
 }
+@media (max-width: 830px){
+    .div_contenidoFooter{
+        width: 80%;
+    }
+    .cuadro-formulario-login{
+        width: 80%;
+    }
+}
+@media (max-width: 600px){
+    .div_contenidoFooter{
+        width: 100%;
+    }
+    .footer-main{
+        padding: 4%;
+    }
+    
+}
+
+@media(max-width:500px){
+    .cuadro-formulario-login{
+        width: 90%;
+    }
+    .button-cuadro-form{
+        display: none;
+    }
+}
 
 @media screen and (max-width: 541px){
     .cuadro-formulario{
-        width: 90%;
-    }
-    .cuadro-formulario-login{
         width: 90%;
     }
     .inicio-sesionbtn, .inicio-spotybtn{
@@ -657,9 +687,9 @@ html,body{
         width: 100%;
     }
 
-    .cuadro-formulario-login{
+    /* .cuadro-formulario-login{
         width: 70%;
-    }
+    } */
 }
 @media (max-width:600px){
     .footer-text{

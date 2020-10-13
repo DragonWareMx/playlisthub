@@ -35,7 +35,7 @@
             <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
             <form class="login-form" action="">
                 <div class="form-element">
-                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
+                    <span style="width: 100% !important;">INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
                     <p class="texto-inicio-sesion error"> 
                         @if($errors->any())

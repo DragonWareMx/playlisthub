@@ -47,7 +47,7 @@
                 <input type="hidden" name="spotify_id" value="{{$user->id}}">
                 <input type="hidden" name="avatar" value="{{$user->images[0]->url}}">
                 <div class="form-element">
-                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
+                    <span style="width: 100% !important;">INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
                     <p class="texto-inicio-sesion">Sesión iniciada con éxito</p>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="espacio-inter"></div>
                 <div class="form-element">
                     <span>GÉNERO</span>
-                    <select name="genero" id="genero" required>
+                    <select name="genero" id="genero" style="width: 84%" required>
                         <option value="">Selecciona una opción</option>
                         <option value="m">Hombre</option>
                         <option value="f">Mujer</option>
@@ -90,7 +90,7 @@
                 <div class="espacio-inter"></div>
                 <div class="form-element">
                     <span>PAÍS</span>
-                    <select id="country" name="country" required>
+                    <select id="country" name="country" style="width: 84%" required>
                         <option value="">Selecciona una opción</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Bolivia">Bolivia</option>

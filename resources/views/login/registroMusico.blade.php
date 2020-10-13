@@ -35,7 +35,7 @@
             <p class="form-text">Registrate aquí para que tu música sea escuchada por los curadores de playlist y creadores de contenido</p>
             <form class="login-form" action="">
                 <div class="form-element">
-                    <span>INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
+                    <span style="width: 100% !important;">INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{route('regMusicianSpoty')}}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>
                     <p class="texto-inicio-sesion error">
                         @if($errors->any())
