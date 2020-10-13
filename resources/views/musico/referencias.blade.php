@@ -23,7 +23,11 @@
             Código único
         </div>
         <div class="div_codigo">
-            0124789248885
+            @if (!$reference)
+                Para activar tu código de referencia, primero es necesario haber realizado una compra de tokens.
+            @else 
+                {{$reference}}
+            @endif
         </div>
         <div class="div_alert_codigo">
             Este código es único e irrepetible
@@ -34,9 +38,11 @@
         <p class="txt-codigoValor"> 25 veces </p>
         <p class="txt-codigoParametro"> NÚMERO DE TOKENS GRATIS ASIGNADOS </p>
         <p class="txt-codigoValor"> 18 tokens </p>
-        <p class="txt-codigoParametro"> DESCUENTOS PROPORCIONADOS </p>
-        <p class="txt-codigoValor"> 0 </p>
     </div>
 </div>
-<p class="txt-funcionamiento">Texto especifico de cómo funciona el sistema de referencias lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+
+<p class="txt-funcionamiento">Activa tu código de referencia realizando una primera compra, una vez que esté activo puedes compartirlo con tus amigos. Tus beneficios: cada vez que TRES amigos tuyos usen el código 
+    para comprar tokens en Playlisthub, tú obtendrás un token extra. Ellos también ganan: si usan un código de referencia obtendrán un 10% de descuento 
+    en cualquier paquete que elijan.</p>
+
 @endsection

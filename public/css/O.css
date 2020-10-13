@@ -708,7 +708,7 @@
     background: #FFFFFF;
     border-radius: 5px;
     width: 915px;
-    height: 463px;
+    height: 500px;
     font-family: Roboto;
 }
 .modal_title_tokens{
@@ -1156,7 +1156,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 705px;
-        height: 470px;
+        height: 570px;
     }
     .txt_modal_izquierda{
         margin-top: 15px;
@@ -1389,7 +1389,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 550px;
-        height: 510px;
+        height: 610px;
     }
 }
 @media(max-width:660px){
@@ -1593,7 +1593,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 450px;
-        height: 600px;
+        height: 700px;
     }
     .modal_metodos_pago{
         flex-wrap: wrap;
@@ -1703,7 +1703,7 @@
     .modalContainer .modal-content {
         margin-top: 100px;
         width: 300px;
-        height: 650px;
+        height: 750px;
     }
     
 }
@@ -1845,3 +1845,21 @@ cursor: pointer;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
 }
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+ 

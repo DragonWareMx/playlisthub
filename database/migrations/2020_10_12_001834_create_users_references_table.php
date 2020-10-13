@@ -18,6 +18,7 @@ class CreateUsersReferencesTable extends Migration
             $table->foreignId('user_id',)->references('id')->on('users')->onDelete('cascade');        //id del usuario que usa la referencia
             $table->foreignId('referenced_id',)->references('id')->on('users')->onDelete('cascade');//id del usuario referenciado
             $table->timestamps();
+            $table->unique(["user_id", "referenced_id"], 'user_referenced_unique');
         });
     }
 
@@ -29,5 +30,8 @@ class CreateUsersReferencesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users_references');
+        Schema::table('users_references', function (Blueprint $table) {
+            $table->dropUnique('user_referenced_unique');
+          });
     }
 }

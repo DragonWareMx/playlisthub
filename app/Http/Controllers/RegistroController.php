@@ -167,6 +167,7 @@ class RegistroController extends Controller
         $user->roles()->sync(['3']);
 
         session()->forget('user');
+        auth()->login($user);
         return redirect()->route('home');
     }
 
@@ -290,10 +291,13 @@ class RegistroController extends Controller
         $user->country=$request->country;
         $user->type='Músico';
         $user->tokens=0;
+        $user->reference="PLH".$request->spotify_id;
+        $user->ref_active=0;
         $user->save();
         $user->roles()->sync(['2']);
 
         session()->forget('user');
+        auth()->login($user);
         return redirect()->route('home');
     }
 

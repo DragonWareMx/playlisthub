@@ -29,16 +29,19 @@ class PaymentController extends Controller
         0=> array(
             "cantidad"=>10,
             "descuento"=>0,
+            "descuentoRef"=>10,
             "total"=>100
         ),
         1=> array(
             "cantidad"=>20,
             "descuento"=>10,
+            "descuentoRef"=>20,
             "total"=>190
         ),
         2=> array(
             "cantidad"=>30,
             "descuento"=>30,
+            "descuentoRef"=>30,
             "total"=>270
         )
     );
@@ -82,6 +85,7 @@ class PaymentController extends Controller
 
             //SUCCESSFUL
             $usuario->tokens=$usuario->tokens+$pack['cantidad'];
+            $usuario->ref_active=1;
             $usuario->save();
             session()->forget('packID');
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
@@ -111,6 +115,7 @@ class PaymentController extends Controller
         }        
     }
     public function payment(Request $request){
+        dd($request->all());
         if($request->paytype=='stripe'){
             $packID=$request->packID;
             session()->put('packID',$packID);
@@ -192,6 +197,7 @@ class PaymentController extends Controller
             $pakcID=session()->get('packID');
             $pack=$this->packs[$pakcID];
             $usuario->tokens=$usuario->tokens+$pack['cantidad'];
+            $usuario->ref_active=1;
             $usuario->save();
             session()->forget('packID');
             

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\camp_mail;
+use App\Users_reference;
 
 class OController extends Controller
 {
@@ -684,6 +685,28 @@ class OController extends Controller
 
         try { 
             $usuario = User::where('id',Auth::id())->get();
+            $referencias = User::whereNotNull('reference')->where('ref_active',1)->get();
+            $references=[];
+            foreach($referencias as $ref){
+                if($ref->id != auth()->user()->id){
+                    $item=[];
+                    $item['user']=$ref->id;
+                    $item['code']=$ref->reference;
+                    $references[]=$item;
+                }
+            } 
+            $usados=Users_reference::where('user_id',auth()->user()->id)->get();
+            foreach($usados as $usado){
+                $i=0;
+                foreach($references as $ref){
+                    if($ref['user'] == $usado->referenced_id ){
+                        unset($references[$i] );  
+                    }
+                    $i++;
+                }
+                $references=array_values($references);
+            }
+            $references=array_values($references);
         } catch(QueryException $ex){ 
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
@@ -691,6 +714,6 @@ class OController extends Controller
         if($usuario == null){
             return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
         }
-        return view ('musico.tokens', ['usuario'=>$usuario]);
+        return view ('musico.tokens', ['usuario'=>$usuario,'ref'=>$references]);
     }
 }

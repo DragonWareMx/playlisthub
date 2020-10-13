@@ -134,6 +134,12 @@ class musicoController extends Controller
     } 
 
     public function referencias(){
-        return view('musico.referencias');
+        $referencia=User::findOrFail(auth()->user()->id);
+        $active=$referencia->ref_active;
+        $referencia=$referencia->reference;
+        if($active==0){
+            $referencia=null;
+        }
+        return view('musico.referencias',['reference'=>$referencia]);
     }
 }

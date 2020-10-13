@@ -90,7 +90,7 @@ class User extends Authenticatable
 
     public function references()
     {
-      return $this->belongsToMany('User', 'users_references', 'user_id', 'referenced_id');
+      return $this->belongsToMany('App\User', 'users_references', 'user_id', 'referenced_id');
     }
     
     // Same table, self referencing, but change the key order

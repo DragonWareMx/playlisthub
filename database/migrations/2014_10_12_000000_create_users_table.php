@@ -32,7 +32,8 @@ class CreateUsersTable extends Migration
             $table->date('last_login')->nullable();
             $table->string('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
             $table->tinyInteger('premium')->default(0);         // identifica si el usuario es premium, 0 no premium, 1 sí premium
-            $table->string('reference')->nullable();
+            $table->string('reference')->unique()->nullable();
+            $table->tinyInteger('ref_active')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

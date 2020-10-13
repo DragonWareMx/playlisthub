@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 @endsection
 
 @section('menu')
@@ -48,21 +49,21 @@
             <div class="item_txt_black">$100.00 USD</div>
             <div class="item_txt_black" style="visibility: hidden">Ahorras $0 USD</div>
             <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button  data-pack="0" data-quantity="10" data-total="100" type="button" class="btn_comprar_token" >Comprar</button>
+            <button  data-pack="0" data-quantity="10" data-total="100" data-ref="90" type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
             <div class="item_token_encabezado">20 TOKENS</div>
-            <div class="item_txt_black">$180.00 USD</div>
-            <div class="item_txt_black">Ahorras $20.00 USD</div>
+            <div class="item_txt_black">$190.00 USD</div>
+            <div class="item_txt_black">Ahorras $10.00 USD</div>
             <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button data-pack="1" data-quantity="20" data-total="180"  type="button" class="btn_comprar_token" >Comprar</button>
+            <button data-pack="1" data-quantity="20" data-total="190" data-ref="170"  type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
             <div class="item_token_encabezado">30 TOKENS</div>
-            <div class="item_txt_black">$255.00 USD</div>
-            <div class="item_txt_black">Ahorras $45.00 USD</div>
+            <div class="item_txt_black">$270.00 USD</div>
+            <div class="item_txt_black">Ahorras $30.00 USD</div>
             <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button data-pack="2" data-quantity="30" data-total="270" type="button" class="btn_comprar_token" >Comprar</button>
+            <button data-pack="2" data-quantity="30" data-total="270" data-ref="240" type="button" class="btn_comprar_token" >Comprar</button>
         </div>
         <div class="item_comprar_token">
 
@@ -95,10 +96,19 @@
             <img class="modal_img_pago2" src="img/iconos/paypal.png">
             </label>
         </div>
+        <div class="txt_modal_izquierda">Ingresa el código de referencia:</div>
+        <div class="div_tokens_botones" style="margin-bottom: 10px">
+            <input type="text" name="code" id="code" class="modal_token_input" style="border: 1px solid gray;margin: 5px 0px 5px 0px">
+            <button class="a_comprarTokens" type="button" onclick="comprobar()">Validar</button>      
+        </div>
+        <input type="hidden" name="descuento" id="descuento" value="">
+        <input type="hidden" name="precioRef" id="precioRef" value="">
         <div class="modal_txt_mensaje">
-            Mensaje de seguridad de compra o tiempo en lo que tarda en reflejarse, etc lorem ipsum dolor sit amet consectetur adipiscing 
-            elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum 
-            dolor sit amet consectetur adipiscing elit.
+            Para brindarte un mejor servicio y la mayor seguridad, Playlisthub utiliza Paypal y Stripe 
+            como plataformas de procesamiento de pago. Si tienes alguna duda al respecto puedes visitar sus 
+            sitios oficiales en 
+            <a href="https://www.paypal.com/mx/home" target="_blank" style="color: blueviolet">https://www.paypal.com/mx/home</a> y 
+            <a href="https://stripe.com/mx" target="_blank" style="color: blueviolet">https://stripe.com/mx</a> 
         </div>
         <div class="modal_tokens_total" id="precio">Total: $10.00 USD</div>
         <div class="div_tokens_botones">
@@ -138,17 +148,44 @@
 </script>
 
 <script>
+    var cupones=@json($ref);
+    function comprobar(){
+        var referencia = document.getElementById('code').value;
+        var bool=false;
+        cupones.forEach(cupon => {
+            if(cupon["code"] == referencia){
+                bool=true;
+            }            
+        });
+        if(bool){
+            var total= document.getElementById('precioRef').value;
+            document.getElementById('descuento').value='true';
+            var precio = document.getElementById('precio');
+            precio.innerHTML= 'Total: $'+total+'.00 USD';
+            bootbox.alert("Referencia válida, se te aplicó un descuento del 10% en tu compra.");
+        }
+        else{
+            bootbox.alert("Referencia inválida, por favor prueba con otra.");
+        }
+    }
+
+</script>
+
+<script>
     $(document).ready(function(){
         $('.btn_comprar_token').on('click',function(){
             $('#tvesModal').css({
-                "display":"block",
-                "height":"100%",
-                "overflow":"hidden"
+                "display":"block"
             });
+            $('html, body').css('overflow', 'hidden');
+            $('html, body').css('position', 'static');  
+            $('html, body').css('height', '100%'); 
             var boton=$(this);
             var packID=boton.attr('data-pack');
             var quantity=boton.attr('data-quantity');
             var total=boton.attr('data-total');
+            var totalRef=boton.attr('data-ref');
+            $('#precioRef').val(totalRef);
             $('#cantidad').val(quantity);
             $('#packID').val(packID);
             $('#precio').html('Total: $'+total+'.00 USD');
