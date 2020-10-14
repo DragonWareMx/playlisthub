@@ -100,7 +100,7 @@
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
                                 {{-- NOMBRE DEL CURADOR --}}
-                                <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $review->user->name }}</a></div>
+                                <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$review->user->spotify_id])}}" target="_blank">{{ $review->user->name }}</a></div>
                                 {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}
@@ -206,7 +206,7 @@
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
                                 {{-- NOMBRE DEL CURADOR --}}
-                                <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $review->user->name }}</a></div>
+                                <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$review->user->spotify_id])}}" target="_blank">{{ $review->user->name }}</a></div>
                                 {{-- PLAYLIST --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}
