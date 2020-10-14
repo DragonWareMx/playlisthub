@@ -292,13 +292,19 @@
 
 <script>
     $(document).ready(function(){
-        var descuento= <?php echo $tokens['descuento']; ?>;
-        var total= <?php echo $tokens['total']; ?>;
-        if(descuento>0){
+        var desRef= <?php echo $desRef; ?>;
+        var tokens=@json($tokens);
+        if(tokens['descuento']>0  && desRef==0){
             $('#subtotalHTML').css('display','flex');
             $('#cuponHTML').css('display','flex');
-            $('#cuponDescuento').html("-$"+ descuento.toFixed(2) + " USD");
-            $('#total').html("$"+ total.toFixed(2) + " USD");
+            $('#cuponDescuento').html("-$"+ tokens['descuento'].toFixed(2) + " USD");
+            $('#total').html("$"+ tokens['total'].toFixed(2) + " USD");
+        }
+        if(desRef==1){
+            $('#subtotalHTML').css('display','flex');
+            $('#cuponHTML').css('display','flex');
+            $('#cuponDescuento').html("-$"+ tokens['descuentoRef'].toFixed(2) + " USD");
+            $('#total').html("$"+ tokens['totalRef'].toFixed(2) + " USD");
         }
     });
 </script>

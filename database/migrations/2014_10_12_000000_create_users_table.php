@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('premium')->default(0);         // identifica si el usuario es premium, 0 no premium, 1 sí premium
             $table->string('reference')->unique()->nullable();
             $table->tinyInteger('ref_active')->nullable();
+            $table->string('ref_payed')->default(0);
 
             $table->rememberToken();
             $table->timestamps();

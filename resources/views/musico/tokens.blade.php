@@ -98,7 +98,7 @@
         </div>
         <div class="txt_modal_izquierda">Ingresa el código de referencia:</div>
         <div class="div_tokens_botones" style="margin-bottom: 10px">
-            <input type="text" name="code" id="code" class="modal_token_input" style="border: 1px solid gray;margin: 5px 0px 5px 0px">
+            <input type="text" name="code" id="code" class="modal_token_input" style="border: 1px solid gray;margin: 5px 0px 5px 0px" autocomplete="off">
             <button class="a_comprarTokens" type="button" onclick="comprobar()">Validar</button>      
         </div>
         <input type="hidden" name="descuento" id="descuento" value="">
@@ -162,9 +162,12 @@
             document.getElementById('descuento').value='true';
             var precio = document.getElementById('precio');
             precio.innerHTML= 'Total: $'+total+'.00 USD';
+            var campo=document.getElementById('code');
+            campo.readOnly=true;
             bootbox.alert("Referencia válida, se te aplicó un descuento del 10% en tu compra.");
         }
         else{
+
             bootbox.alert("Referencia inválida, por favor prueba con otra.");
         }
     }

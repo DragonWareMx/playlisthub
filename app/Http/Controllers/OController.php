@@ -683,7 +683,9 @@ class OController extends Controller
     {
         Gate::authorize('haveaccess','musico.perm');
 
-        try { 
+        try {
+            session()->forget("descuento");
+            session()->forget("referenced_id"); 
             $usuario = User::where('id',Auth::id())->get();
             $referencias = User::whereNotNull('reference')->where('ref_active',1)->get();
             $references=[];

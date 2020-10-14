@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Users_reference;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
@@ -30,18 +31,21 @@ class PaymentController extends Controller
             "cantidad"=>10,
             "descuento"=>0,
             "descuentoRef"=>10,
+            "totalRef"=>90,
             "total"=>100
         ),
         1=> array(
             "cantidad"=>20,
             "descuento"=>10,
             "descuentoRef"=>20,
+            "totalRef"=>180,
             "total"=>190
         ),
         2=> array(
             "cantidad"=>30,
             "descuento"=>30,
-            "descuentoRef"=>30,
+            "descuentoRef"=>60,
+            "totalRef"=>240,
             "total"=>270
         )
     );
@@ -70,9 +74,15 @@ class PaymentController extends Controller
         $content='Tokens';
         $pakcID=session()->get('packID');
         $pack=$this->packs[$pakcID];
+        if(session()->get('descuento')=='true'){
+            $total=$pack['totalRef'];
+        }
+        else{
+            $total=$pack['total'];
+        }
         try {
             $charge = Stripe::charges()->create([
-                'amount'=> $pack['total'],
+                'amount'=> $total,
                 'currency'=> 'USD',
                 'source' => $request->stripeToken,
                 'description'=>'Compra de tokens en Playlisthub',
@@ -86,7 +96,22 @@ class PaymentController extends Controller
             //SUCCESSFUL
             $usuario->tokens=$usuario->tokens+$pack['cantidad'];
             $usuario->ref_active=1;
+            $user_refer=new Users_reference();
+            $user_refer->user_id=$usuario->id;
+            $user_refer->referenced_id=session()->get("referenced_id");
+            $user_refer->save();
             $usuario->save();
+            //ver si se le tiene que dar otro token gratis
+            $cantRef=Users_reference::where('referenced_id',session()->get("referenced_id"))->get();
+            $cantRef=count($cantRef);
+            $referenciador=User::findOrFail(session()->get("referenced_id"));
+            $dif= $cantRef - ($referenciador->ref_payed * 3);
+            if($dif>=3){
+                $referenciador->tokens=$referenciador->tokens+1;
+                $referenciador->ref_payed=$referenciador->ref_payed+1;
+                $referenciador->save();
+            }
+
             session()->forget('packID');
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
@@ -115,11 +140,38 @@ class PaymentController extends Controller
         }        
     }
     public function payment(Request $request){
-        dd($request->all());
+        if($request->descuento == "true"){
+            $codigo=$request->code;
+            $dueno=User::where('reference',$codigo)->first();
+            if(!$dueno){
+                $status="Hubo un error al intentar procesar ese código de referencia, por favor intentalo más tarde.";
+                return redirect()->route('tokens')->with(compact('status'));
+            }
+            $mismo=User::findOrFail(auth()->user()->id);
+            if($mismo->reference==$codigo){
+                $status="Hubo un error al intentar procesar ese código de referencia, por favor intentalo más tarde.";
+                return redirect()->route('tokens')->with(compact('status'));
+            }
+            $codigo=Users_reference::where('user_id',$mismo->id)->where('referenced_id',$dueno->id)->first();
+            if(!$codigo){
+                session()->put("descuento","true");
+                session()->put("referenced_id",$dueno->id);
+            }else{
+                $status="Hubo un error al intentar procesar ese código de referencia, por favor intentalo más tarde.";
+                return redirect()->route('tokens')->with(compact('status'));
+            }
+        }
+
         if($request->paytype=='stripe'){
             $packID=$request->packID;
             session()->put('packID',$packID);
-            return view('compra',['tokens'=>$this->packs[$packID]]);
+            if(session()->get('descuento')){
+                $descuento=1;
+            }
+            else{
+                $descuento=0;
+            }
+            return view('compra',['tokens'=>$this->packs[$packID],'desRef'=>$descuento]);
         }
          // After Step 2
          $payer = new Payer();
