@@ -46,7 +46,11 @@
       </a>
       <br>
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item {{ Request::path() ==  'prueba' ? 'active' : ''  }}" style="margin-top:25px">
+      <li class="nav-item 
+      @if (Request::path() ==  'inicioM' || Request::path() ==  'inicioC')
+          active
+      @endif
+      " style="margin-top:25px">
         <a class="nav-link" href="{{ route('home') }}">
             <img src="{{ asset('/img/iconos/inicio.png') }}" width="18px" height="19px" >
           <span>Inicio</span>
@@ -54,7 +58,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
       
-      <li class="nav-item">
+      <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
           <span>Perfil</span>
@@ -114,7 +118,7 @@
           </div>
       </li>
 
-      <li class="nav-item ">
+      <li class="nav-item {{ Request::path() ==  'referencias' ? 'active' : ''  }}">
             <a class="nav-link" href="{{route('referencias')}}">
             <img src="{{ asset('/img/iconos/referencias.png') }}" width="18px" height="18px" >
           <span>Referencias</span>
@@ -124,7 +128,7 @@
       @endif
 
       @if (auth()->user()->type == 'Curador')
-      <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">
+      <li class="nav-item {{ Request::path() ==  'playlists' ? 'active' : ''  }}">
         <a class="nav-link collapsed" href="{{route ('playlists')}}">             
             <img src="{{ asset('/img/iconos/playlist.png') }}" width="18px" height="18px" >
             <span>Playlists</span>
@@ -132,7 +136,7 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>
 
-      <li class="nav-item {{ Request::path() ==  'favoritos' ? 'active' : ''  }}">
+      <li class="nav-item {{ Request::path() ==  'ranking' ? 'active' : ''  }}">
         <a class="nav-link" href="{{ route('ranking') }}">           
             <img src="{{ asset('/img/iconos/ranking.png') }}" width="18px" height="18px" >
           <span>Ranking</span>

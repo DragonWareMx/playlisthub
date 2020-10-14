@@ -180,7 +180,6 @@
             $('#tvesModal').css({
                 "display":"block"
             });
-            $('html, body').css('overflow', 'hidden');
             $('html, body').css('position', 'static');  
             $('html, body').css('height', '100%'); 
             var boton=$(this);
