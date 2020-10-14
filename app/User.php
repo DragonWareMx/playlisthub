@@ -45,7 +45,8 @@ class User extends Authenticatable
         try{
             return Crypt::decryptString($value);
         }catch(\Exception $e){
-            return $value;
+            //mandar correo
+            return "0";
         }
     }
 
@@ -53,7 +54,7 @@ class User extends Authenticatable
         try{
             return Crypt::decryptString($value);
         }catch(\Exception $e){
-            return $value;
+            return "0";
         }
     }
 

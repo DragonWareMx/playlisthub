@@ -74,7 +74,7 @@
                         {{-- NOMBRES --}}
                         <div class="review_content_names">
                             {{-- NOMBRE DEL CURADOR --}}
-                            <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $camp->playlist->user->name }}</a></div>
+                            <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$camp->user->spotify_id])}}" target="_blank">{{ $camp->playlist->user->name }}</a></div>
                             {{-- NOMBRE DE CANCION --}}
                             <div class="review_content_names_name">
                                 <div class="m_r"><a href="{{route('campana', ['token'=>Str::random(150),'id'=>$camp->id,'index'=>Str::random(150)])}}" style="color: #8177F5;" target="_blank">Ver campaña</a></div>
@@ -211,7 +211,7 @@
                         {{-- NOMBRES --}}
                         <div class="review_content_names">
                             {{-- NOMBRE DEL MUSICO --}}
-                            <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $camp->user->name }}</a></div>
+                            <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$camp->user->spotify_id])}}" target="_blank">{{ $camp->user->name }}</a></div>
                                 
                             {{-- NOMBRE DE CANCION --}}
                             <div class="review_content_names_name">

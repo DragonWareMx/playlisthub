@@ -11,7 +11,7 @@ class Camp extends Model
         try{
             return Crypt::decryptString($value);
         }catch(\Exception $e){
-            return $value;
+            return "0";
         }
     }
 
@@ -19,7 +19,7 @@ class Camp extends Model
         try{
             return Crypt::decryptString($value);
         }catch(\Exception $e){
-            return $value;
+            return "0";
         }
     }
 
