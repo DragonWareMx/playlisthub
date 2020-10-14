@@ -14,6 +14,10 @@ use Auth;
 class ReviewController extends Controller
 {
     //pagina principal de las reviews musico/curador
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function reviews()
     {
         //variables

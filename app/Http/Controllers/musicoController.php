@@ -11,10 +11,16 @@ use App\Genre;
 use App\Review;
 use App\Genre_Playlist;
 use App\Playlist;
+use App\Users_reference;
 use Carbon\Carbon;
 
 class musicoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         try { 
@@ -135,11 +141,14 @@ class musicoController extends Controller
 
     public function referencias(){
         $referencia=User::findOrFail(auth()->user()->id);
+        $tokens=$referencia->ref_payed;
         $active=$referencia->ref_active;
         $referencia=$referencia->reference;
         if($active==0){
             $referencia=null;
         }
-        return view('musico.referencias',['reference'=>$referencia]);
+        $cantRef=Users_reference::where('referenced_id',auth()->user()->id)->get();
+        $cantRef=count($cantRef);
+        return view('musico.referencias',['reference'=>$referencia,'cantRef'=>$cantRef,'tokens'=>$tokens]);
     }
 }

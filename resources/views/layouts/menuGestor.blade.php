@@ -39,7 +39,7 @@
     <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion menu-lateral" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco" style="background-color:#8177F5">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}" style="background-color:#8177F5">
         <div class="sidebar-brand-icon" style="margin-left:auto;margin-right:auto ">
           <img src="{{asset('img/logos/logo.png')}}" class="imgMenuGestor" > 
         </div>
@@ -200,14 +200,14 @@
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1"> 
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{-- <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 
                 <img src="{{ asset('/img/iconos/whitebell.png') }}" width="20px" height="16px">
                 <!-- Counter - Alerts -->
                 <span class="badge badge-counter" style="color: white">1</span>
-              </a>
+              </a> --}}
               <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
+              {{-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
                 <h6 class="dropdown-header" style="background-color:#181A2C; border:none !important">
                   Notificaciones
                 </h6>
@@ -230,13 +230,9 @@
                       <i class="fas fa-concierge-bell text-white"></i>
                     </div>
                   </div>
-                  {{-- <div>
-                    <div class="small text-gray-500">13/07/2020</div>
-                    <span class="font-weight-bold">Nuevo pedido registrado: <br> Orden #1</span>
-                  </div> --}}
                 </a>
                 
-              </div>
+              </div> --}}
             </li>
             
             <!-- Nav Item - User Information -->

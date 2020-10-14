@@ -63,10 +63,7 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-Route::get('/inicio',function(){
-    return view('inicio');
-})->name('home')->middleware('auth');
-
+Route::get('/inicio', 'OController@inicio')->name('home')->middleware('auth');
 
 /*---------------- REVIEWS MUSICO/CURADOR ----------------*/
 //pagina principal

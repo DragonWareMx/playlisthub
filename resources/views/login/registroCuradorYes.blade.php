@@ -45,7 +45,13 @@
             <form class="login-form" id="register-form" action="{{ route('registerCurator') }}" method="POST">
                 @csrf
                 <input type="hidden" name="spotify_id" value="{{$user->id}}">
-                <input type="hidden" name="avatar" value="{{$user->images[0]->url}}">
+                <input type="hidden" name="avatar" value="
+                @if (isset($user->images[0]->url))
+                {{$user->images[0]->url}}
+                @else
+                https://cdn.pixabay.com/photo/2016/04/07/22/09/note-1314942_960_720.png
+                @endif
+                ">
                 <div class="form-element">
                     <span style="width: 100% !important;">INICIA SESIÓN CON TU CUENTA DE SPOTIFY (Obligatorio)</span>
                     <a href="{{ route('regCuradorSpoty') }}" class="button-spoty"> <img src="{{ asset('/img/iconos/spotify.png')}}"></a>

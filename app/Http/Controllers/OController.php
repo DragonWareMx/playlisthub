@@ -718,4 +718,13 @@ class OController extends Controller
         }
         return view ('musico.tokens', ['usuario'=>$usuario,'ref'=>$references]);
     }
+
+    public function inicio(){
+        if(auth()->user()->type=='Músico'){
+            return redirect()->route('inicio-musico');
+        }
+        if(auth()->user()->type=='Curador'){
+            return redirect()->route('inicio-curador');
+        }
+    }
 }

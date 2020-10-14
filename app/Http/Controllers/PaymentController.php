@@ -37,8 +37,8 @@ class PaymentController extends Controller
         1=> array(
             "cantidad"=>20,
             "descuento"=>10,
-            "descuentoRef"=>20,
-            "totalRef"=>180,
+            "descuentoRef"=>30,
+            "totalRef"=>170,
             "total"=>190
         ),
         2=> array(
@@ -92,27 +92,30 @@ class PaymentController extends Controller
                     'quantity'=>$pack['cantidad'],
                 ],
             ]);
-
             //SUCCESSFUL
             $usuario->tokens=$usuario->tokens+$pack['cantidad'];
             $usuario->ref_active=1;
-            $user_refer=new Users_reference();
-            $user_refer->user_id=$usuario->id;
-            $user_refer->referenced_id=session()->get("referenced_id");
-            $user_refer->save();
             $usuario->save();
-            //ver si se le tiene que dar otro token gratis
-            $cantRef=Users_reference::where('referenced_id',session()->get("referenced_id"))->get();
-            $cantRef=count($cantRef);
-            $referenciador=User::findOrFail(session()->get("referenced_id"));
-            $dif= $cantRef - ($referenciador->ref_payed * 3);
-            if($dif>=3){
-                $referenciador->tokens=$referenciador->tokens+1;
-                $referenciador->ref_payed=$referenciador->ref_payed+1;
-                $referenciador->save();
+            if(session()->get('descuento')=='true'){
+                //solo si hubo referencia
+                $user_refer=new Users_reference();
+                $user_refer->user_id=$usuario->id;
+                $user_refer->referenced_id=session()->get("referenced_id");
+                $user_refer->save();
+                //ver si se le tiene que dar otro token gratis
+                $cantRef=Users_reference::where('referenced_id',session()->get("referenced_id"))->get();
+                $cantRef=count($cantRef);
+                $referenciador=User::findOrFail(session()->get("referenced_id"));
+                $dif= $cantRef - ($referenciador->ref_payed * 3);
+                if($dif>=3){
+                    $referenciador->tokens=$referenciador->tokens+1;
+                    $referenciador->ref_payed=$referenciador->ref_payed+1;
+                    $referenciador->save();
+                }
             }
-
             session()->forget('packID');
+            session()->forget("descuento");
+            session()->forget("referenced_id"); 
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tokens')->with(compact('status'));
@@ -187,18 +190,30 @@ class PaymentController extends Controller
                     ->setCurrency('USD')
                     ->setQuantity(1)
                     ->setPrice($packs['cantidad'] * 10);
-         if($packs['descuento']>0){
+         if($packs['descuento']>0 && !session()->get('descuento')){
             $items[1]=new Item();
             $items[1]->setName('Descuento')
             ->setCurrency('USD')
             ->setQuantity(1)
             ->setPrice(-$packs['descuento']);
          }
+         if($packs['descuento']>0 && session()->get('descuento')){
+            $items[1]=new Item();
+            $items[1]->setName('Descuento')
+            ->setCurrency('USD')
+            ->setQuantity(1)
+            ->setPrice(-$packs['descuentoRef']);
+         }
          $item_list = new ItemList();
          $item_list->setItems($items);
          
          $amount = new Amount();
-         $amount->setTotal($packs['total']);
+         if(session()->get('descuento')=='true'){
+            $amount->setTotal($packs['totalRef']);
+         }
+         else{
+            $amount->setTotal($packs['total']);
+         }
          $amount->setCurrency('USD');
          $transaction = new Transaction();
          $transaction->setAmount($amount);
@@ -249,10 +264,28 @@ class PaymentController extends Controller
             $pakcID=session()->get('packID');
             $pack=$this->packs[$pakcID];
             $usuario->tokens=$usuario->tokens+$pack['cantidad'];
-            $usuario->ref_active=1;
             $usuario->save();
+            if(session()->get('descuento')=='true'){
+                //solo si hubo referencia
+                $user_refer=new Users_reference();
+                $user_refer->user_id=$usuario->id;
+                $user_refer->referenced_id=session()->get("referenced_id");
+                $user_refer->save();
+                //ver si se le tiene que dar otro token gratis
+                $cantRef=Users_reference::where('referenced_id',session()->get("referenced_id"))->get();
+                $cantRef=count($cantRef);
+                $referenciador=User::findOrFail(session()->get("referenced_id"));
+                $dif= $cantRef - ($referenciador->ref_payed * 3);
+                if($dif>=3){
+                    $referenciador->tokens=$referenciador->tokens+1;
+                    $referenciador->ref_payed=$referenciador->ref_payed+1;
+                    $referenciador->save();
+                }
+            }
+
             session()->forget('packID');
-            
+            session()->forget("descuento");
+            session()->forget("referenced_id"); 
             //Mail::to($sell->correo)->send(new SendMailable($sell->id));
             
             $status="Gracias! El pago a través de PayPal se ha procesado correctamente. Se te enviará un correo electrónico con los detalles de tu pedido.";

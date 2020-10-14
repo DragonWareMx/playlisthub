@@ -35,9 +35,17 @@
     </div>
     <div class="div_infoReferencias">
         <p class="txt-codigoParametro"> NÚMERO DE VECES UTILIZADO </p>
-        <p class="txt-codigoValor"> 25 veces </p>
+        <p class="txt-codigoValor">{{$cantRef}} @if ($cantRef==1)
+            vez
+            @else
+            veces
+        @endif  </p>
         <p class="txt-codigoParametro"> NÚMERO DE TOKENS GRATIS ASIGNADOS </p>
-        <p class="txt-codigoValor"> 18 tokens </p>
+        <p class="txt-codigoValor">{{$tokens}} @if ($tokens==1)
+            token
+            @else
+            tokens
+        @endif </p>
     </div>
 </div>
 
