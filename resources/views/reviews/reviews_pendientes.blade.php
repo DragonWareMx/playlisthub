@@ -43,8 +43,8 @@
             @if (count($camps) > 0)
                 @foreach ($camps as $camp)
                     @php
-                        $date = Carbon::parse($camp->end_date);
-                        $dateNow = Carbon::now();
+                        $date = Carbon::parse($camp->end_date)->toDateString();
+                        $dateNow = Carbon::now()->toDateString();
                         
                         //si la fecha actual es anterior a la de termino no se muestra
                         if($dateNow < $date){
@@ -68,7 +68,7 @@
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
                                 {{-- NOMBRE DEL CURADOR --}}
-                                <div class="review_content_names_name autor"><a href="#" target="_blank">{{ $camp->playlist->user->name }}</a></div>
+                                <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$camp->user->spotify_id])}}" target="_blank">{{ $camp->playlist->user->name }}</a></div>
                                 {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">
                                     {{-- conexion con spotify --}}
@@ -182,7 +182,7 @@
                             {{-- NOMBRES --}}
                             <div class="review_content_names">
                                 {{-- NOMBRE DEL MUSICO --}} 
-                                <div class="review_content_names_name autor"><a href="{{ route('perfil-publico',$camp->user_id) }}" target="_blank">{{ $camp->user->name }}</a></div>
+                                <div class="review_content_names_name autor"><a href="{{route('perfil-publico',['id'=>$camp->user->spotify_id])}}" target="_blank">{{ $camp->user->name }}</a></div>
                                 
                                 {{-- NOMBRE DE CANCION --}}
                                 <div class="review_content_names_name">

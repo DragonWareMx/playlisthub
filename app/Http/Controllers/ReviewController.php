@@ -362,6 +362,7 @@ class ReviewController extends Controller
 
                 //Obtiene las campañas que ya fueron aceptadas que aun no hacen una review a la playlist
                 $camps = Camp::where([['user_id', '=', Auth::id()],['status','=','aceptado'],])
+                ->orWhere('status','=','rechazado')
                 ->with('review')
                 ->whereNotIn('id', $campsIds)
                 ->orderBy('start_date','desc')
@@ -589,13 +590,18 @@ class ReviewController extends Controller
                             //actualizamos el estatus de la campaña
                             $camp = Camp::find(request('camp_id'));
 
-                            if(request('estatus') == "true")
-                                $camp->status = "aceptado";
-                            else
-                                $camp->status = "rechazado";
+                            $endDate;
 
-                            //se agrega fecha de termino de la campaña
-                            $endDate = Carbon::now()->addDays(14)->format('Y-m-d H:i:s');
+                            if(request('estatus') == "true"){
+                                $camp->status = "aceptado";
+                                //se agrega fecha de termino de la campaña
+                                $endDate = Carbon::now()->addDays(14)->format('Y-m-d H:i:s');
+                            }
+                            else{
+                                $camp->status = "rechazado";
+                                //se agrega fecha de termino de la campaña
+                                $endDate = Carbon::now()->format('Y-m-d H:i:s');
+                            }
 
                             $camp->end_date = $endDate;
                         
