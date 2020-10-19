@@ -21,6 +21,7 @@
     <p class="txt-descAjustes">EDITAR FOTO DE PERFIL</p>
 
     <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_fotoPerfilM">
             <img src="/img/unnamed.jpg" alt="Imagen" id="imagenPrevisualizacion"> 

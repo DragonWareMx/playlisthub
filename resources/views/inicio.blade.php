@@ -40,7 +40,7 @@
   <div class="card-body img-fluid body_Inicio">
     <p style="width: 100%">La fecha de hoy es: <?php echo date("d/m/Y"); ?></p>
     <form name="form_reloj" style="width: 100%">
-      <input class="reloj" style="outline: none" type="text" name="reloj" readonly class="camposNR" >
+      <input class="reloj" style="outline: none" type="text" name="reloj" readonly class="camposNR" > 
     </form> 
   </div>
 </div>

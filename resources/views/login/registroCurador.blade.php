@@ -43,7 +43,7 @@
                                 {{$error}}
                             @endforeach
                         @endif    
-                    </p>
+                    </p> 
                 </div>
                 <div class="espacio-inter" style="margin-top: 1px"></div>
                 <p class="msg-spoty-denied">
