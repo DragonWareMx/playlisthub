@@ -424,8 +424,8 @@
         var name = "sasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasdsasdasdasdasdsadasdasdasd";
         var url = "https://playlisthub.io/";
         var text = 'Califiqué a la canción "'+ truncate(song["name"]) +'" de "'+ truncate(song["artist"]["name"]) +'" con '+ review["rating"] +'/5.0 estrellas. Te recomiendo escucharla en: '+ song["id"]+'\n ¡Visita #PlaylistHub para ganar dinero con tus playlists! \n';
-        window.open('http://twitter.com/share?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
-
+        window.open('https://twitter.com/share?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+ 
     }
 
     function truncate(input) {
