@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/css/perfilMusico.css">
     <link rel="stylesheet" type="text/css" href="/css/O.css">
     <link rel="stylesheet" type="text/css" href="/css/L.css">
-    <link rel="stylesheet" type="text/css" href="/css/reviews.css">
+    <link rel="stylesheet" type="text/css" href="/css/Reviews.css">
     <link rel="stylesheet" type="text/css" href="/css/A.css">
 @endsection
 
