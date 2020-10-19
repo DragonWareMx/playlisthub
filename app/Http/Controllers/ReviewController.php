@@ -660,6 +660,15 @@ class ReviewController extends Controller
 
                             $user->save();
 
+                            $playlist = Playlist::find($camp->playlist_id);
+
+                            if(isset($playlist->profits))
+                                $playlist->profits += $saldo;
+                            else
+                                $playlist->profits = $saldo;
+
+                            $playlist->save();
+
                             session()->flash('success',true);
                         });
                     }
