@@ -15,11 +15,11 @@
         <table class="encabezado">
             <tr>
                 <td align="left">
-                    <img src="{{ asset('/img/logos/logo.png') }}">
+                    <a href="{{route('login')}}"><img src="{{ asset('/img/logos/logo.png') }}"></a>
                 </td>
                 <td align="right">
                     <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
-                    <button onclick="location.href='{{route('register')}}';" class="login-button active">Registrarme</button>
+                    <button onclick="location.href='{{route('register')}}';" class="login-button active button-registrarme">Registrarme</button>
                 </td>
             </tr>
         </table>
@@ -29,8 +29,8 @@
 
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button class="login-button active">Músico</button>
-                <button onclick="location.href='{{route('register')}}'" class="login-button noactive">Curador</button>
+                <button class="login-button active button-selecters">Músico</button>
+                <button onclick="location.href='{{route('register')}}'" class="login-button noactive button-selecters">Curador</button>
             </div>
             <p class="form-text">Registrate aquí para que tu música sea escuchada por los curadores de playlist y creadores de contenido</p>
             <form class="login-form" action="">

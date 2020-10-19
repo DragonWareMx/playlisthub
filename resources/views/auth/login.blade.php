@@ -15,11 +15,11 @@
         <table class="encabezado" >
             <tr>
                 <td align="left">
-                    <img onclick="location.href='{{route('home')}}';" src="{{ asset('/img/logos/logo.png') }}">
+                    <a href="{{route('login')}}"><img onclick="location.href='{{route('home')}}';" src="{{ asset('/img/logos/logo.png') }}"></a>
                 </td>
                 <td align="right">
                     <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
-                    <button onclick="location.href='{{route('register')}}';" class="login-button active">Registrarme</button>
+                    <button onclick="location.href='{{route('register')}}';" class="login-button active button-registrarme">Registrarme</button>
                 </td>
             </tr>
         </table>
@@ -27,7 +27,7 @@
         <p class="login-text2">Bienvenido de nuevo</p>
 
         <div class="cuadro-formulario-login">
-            <div class="button-cuadro-form" style="width:100%; align-content:center; height:50px">
+            <div class="button-cuadro-form button-login-purple" style="width:100%; align-content:center; height:50px">
                 <img class="login-button active" src="{{ asset('/img/logos/logo-white.png') }}" alt="" 
                 style="background-color: #8177F5;cursor:default; ">
             </div>

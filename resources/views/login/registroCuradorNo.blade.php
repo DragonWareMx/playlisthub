@@ -15,11 +15,11 @@
         <table class="encabezado">
             <tr>
                 <td align="left">
-                    <img src="{{ asset('/img/logos/logo.png') }}">
+                    <a href="{{route('login')}}"><img src="{{ asset('/img/logos/logo.png') }}"></a>
                 </td>
                 <td align="right">
                     <button onclick="location.href='{{route('login')}}';" class="login-button">Ingresar</button>
-                    <button onclick="location.href='{{route('register')}}';" class="login-button active">Registrarme</button>
+                    <button onclick="location.href='{{route('register')}}';" class="login-button active button-registrarme">Registrarme</button>
                 </td>
             </tr>
         </table>
@@ -29,8 +29,8 @@
 
         <div class="cuadro-formulario">
             <div class="button-cuadro-form" style="width:100%; align-content:center;">
-                <button onclick="location.href='{{route('register2')}}'" class="login-button noactive">Músico</button>
-                <button class="login-button active">Curador</button>
+                <button onclick="location.href='{{route('register2')}}'" class="login-button noactive button-selecters">Músico</button>
+                <button class="login-button active button-selecters">Curador</button>
             </div>
             <p class="form-text">Monetiza tu playlist de spotify y ayuda a miles de músicos independientes a promocionar su música</p>
             <form class="login-form" action="">

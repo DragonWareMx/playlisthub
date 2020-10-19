@@ -159,13 +159,14 @@ html,body{
         width: auto;
         
     }
-    .login-button:nth-child(2){
+    .button-registrarme{
         border: none !important;
         border-radius: 0px !important;
-    }
-    .active{
         color: #8177F5;
         font-weight: bold;
+    }
+    .button-selecters{
+        width:100px ;
     }
 }
 
@@ -618,14 +619,12 @@ html,body{
     .footer-main{
         padding: 4%;
     }
-    
-}
 
 @media(max-width:500px){
     .cuadro-formulario-login{
         width: 90%;
     }
-    .button-cuadro-form{
+    .button-login-purple{
         display: none;
     }
 }
