@@ -48,6 +48,8 @@
             <p class="p_responsivep">NIVEL</p>
             <div class="txt_row_play_o">
                 @php
+                  if($user->premium == 1) $nivel="Premium";
+                   else{
                    if($playlist->followers->total<=5000) $nivel=1;
                    if($playlist->followers->total>5000 && $playlist->followers->total<=15000) $nivel=2;
                    if($playlist->followers->total>15000 && $playlist->followers->total<=20000) $nivel=3;
@@ -58,6 +60,7 @@
                    if($playlist->followers->total>70000 && $playlist->followers->total<=80000) $nivel=8;
                    if($playlist->followers->total>80000 && $playlist->followers->total<=90000) $nivel=9;
                    if($playlist->followers->total>90000) $nivel=10;
+                   }
                 @endphp
                 nivel {{$nivel}}
             </div>

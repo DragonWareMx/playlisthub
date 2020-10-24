@@ -167,7 +167,7 @@ class AController extends Controller
 
         return view('curador.playlists', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
-        'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks]);
+        'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks, 'user'=>$user]);
         
     }
     public function addPlaylist(){
@@ -240,6 +240,7 @@ class AController extends Controller
         $error=false;
         $access_token=session()->get('access_token');
         $playlists_bd= Playlist::where('user_id',$id)->orderBy('tier','desc')->get();
+        $user= User::findOrFail($id);
 
         //sacamos datos de playlists de API
         $i=0;
@@ -271,7 +272,7 @@ class AController extends Controller
             $error=true;
         }
 
-        return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd]);
+        return view('curador.ranking', ['playlists'=>$playlists, 'error'=>$error, 'playlists_bd'=>$playlists_bd, 'user'=>$user]);
     }
     public function ganancias(){
         Gate::authorize('haveaccess','curador.perm');

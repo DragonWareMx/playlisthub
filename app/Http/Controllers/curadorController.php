@@ -203,6 +203,6 @@ class curadorController extends Controller
         return view('curador.inicioCurador', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
         'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks, 'playlists2'=>$playlists2, 
-        'playlists_bd2'=>$playlists_bd2, 'total'=>$total, 'saldo'=>$saldo]);
+        'playlists_bd2'=>$playlists_bd2, 'total'=>$total, 'saldo'=>$saldo, 'user'=>$user]);
     } 
 }
