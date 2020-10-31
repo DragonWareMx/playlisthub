@@ -662,6 +662,7 @@ class cuentaController extends Controller
 
     public function paypalUpdate()
     {
+        Gate::authorize('haveaccess','curador.perm');
         try { 
             $usuario = User::where('id',Auth::id())->get();
         } 
@@ -697,7 +698,7 @@ class cuentaController extends Controller
     }
 
     public function paypalUpdateDo($id){
-
+        Gate::authorize('haveaccess','curador.perm');
         $data=request()->validate([
             'link'=>'required'
         ]);
