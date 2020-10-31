@@ -26,7 +26,16 @@
         @else
         <p class="txt_content_ganancias">Tienes un saldo de 0, para poder hacer el cobro debes llegar a la cantidad de 10 dolares</p>
         @endif
+        @if ($saldo>=10)
+        <div style="float:left; border: 0.3px solid #c0c0c0; padding: 5px; border-radius: 5px; ">
+            <a href="{{Route('charge')}}" style="Font-family:'Roboto'; Font-size: 13px; sans-serif; color: #819df8">
+                <i class="fas fa-wallet"></i>&nbsp;&nbsp;Solicitar pago
+            </a>        
+        </div>
+        @endif
+        
     </div>
+    
 </div>
 
 <div class="div_CabeceraApartado" style="margin-top:40px">

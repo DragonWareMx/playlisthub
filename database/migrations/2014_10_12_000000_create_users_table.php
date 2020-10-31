@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('paypal')->nullable();
 
             $table->string('spotify_id')->unique();            //id del prefil de spotify
             $table->string('avatar');                          //foto de perfil 
@@ -31,7 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('saldo')->nullable();
             $table->date('last_login')->nullable();
             $table->string('tokens')->nullable(); //Numero de tokens que un musico ha comprado/que el curador ha ganado
-            $table->tinyInteger('premium')->default(0);         // identifica si el usuario es premium, 0 no premium, 1 sí premium
+            $table->tinyInteger('premium')->default(0);  // identifica si el usuario es premium, 0 no premium, 1 sí premium  
+            $table->tinyInteger('solicitud')->default(0);// identifica si el usuario curador solicita pago     
             $table->string('reference')->unique()->nullable();
             $table->tinyInteger('ref_active')->nullable();
             $table->string('ref_payed')->default(0);

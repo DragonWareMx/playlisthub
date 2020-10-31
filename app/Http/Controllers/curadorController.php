@@ -25,6 +25,7 @@ class curadorController extends Controller
         $playlists_bd2= Playlist::where('user_id',$id)->orderBy('profits','desc')->get();
         $user= User::findOrFail($id);
         $saldo= $user->saldo;
+        $paypal= $user->paypal;
         //sacamos datos de playlists de API
         $i=0;
         $playlists2=[];
@@ -203,6 +204,6 @@ class curadorController extends Controller
         return view('curador.inicioCurador', ['playlists'=>$playlists, 'error'=>$error, 'followers'=>$followers, 
         'playlists_registradas'=>$playlists_registradas, 'playlists_bd'=>$playlists_bd, 'songsSpoty'=>$songsSpoty, 
         'songs'=>$songs, 'plnames'=>$plnames, 'pllinks'=>$pllinks, 'playlists2'=>$playlists2, 
-        'playlists_bd2'=>$playlists_bd2, 'total'=>$total, 'saldo'=>$saldo, 'user'=>$user]);
+        'playlists_bd2'=>$playlists_bd2, 'total'=>$total, 'saldo'=>$saldo, 'paypal'=>$paypal, 'user'=>$user]);
     } 
 }

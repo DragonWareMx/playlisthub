@@ -234,6 +234,23 @@ class AController extends Controller
 
         return redirect()->route('playlists');
     }
+    public function charge(){
+        Gate::authorize('haveaccess','curador.perm');
+        $id= Auth::id();
+        $user= User::findOrFail($id);
+        
+        try {
+            $user->solicitud=1;
+        } 
+        catch (QueryException $ex) {
+            return redirect()->back()->withErrors(['error' => 'ERROR: no se pudo realizar la solicitud']);
+        }
+
+        $user->save();
+
+        return redirect()->route('ganancias');
+    }
+
     public function ranking(){
         Gate::authorize('haveaccess','curador.perm');
         $id= Auth::id();
@@ -282,6 +299,7 @@ class AController extends Controller
         $playlists_bd= Playlist::where('user_id',$id)->orderBy('profits','desc')->get();
         $user= User::findOrFail($id);
         $saldo= $user->saldo;
+        $paypal=$user->paypal;
         //sacamos datos de playlists de API
         $i=0;
         $playlists=[];
@@ -315,7 +333,7 @@ class AController extends Controller
         }
 
         return view('curador.ganancias', ['playlists'=>$playlists, 'error'=>$error, 
-        'playlists_bd'=>$playlists_bd, 'total'=>$total, 'saldo'=>$saldo]);
+        'playlists_bd'=>$playlists_bd, 'total'=>$total, 'saldo'=>$saldo, 'paypal'=>$paypal]);
     }
 
 }
