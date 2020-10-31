@@ -49,6 +49,8 @@ Route::get('/generoUpdate', 'cuentaController@generoUpdate')->name('genero-updat
 Route::patch('/generoUpdate/{id}', 'cuentaController@generoUpdateDo')->name('genero-updateDo');
 Route::get('/paisUpdate', 'cuentaController@paisUpdate')->name('pais-update');
 Route::patch('/paisUpdate/{id}', 'cuentaController@paisUpdateDo')->name('pais-updateDo');
+Route::get('/paypalUpdate', 'cuentaController@paypalUpdate')->name('paypal-update');
+Route::patch('/paypalUpdate/{id}', 'cuentaController@paypalUpdateDo')->name('paypal-updateDo');
 Route::delete('/deleteUser/{id}' , 'cuentaController@userDelete')->name('delete-user');
 
 Route::get('/referencias', 'musicoController@referencias')->name('referencias');

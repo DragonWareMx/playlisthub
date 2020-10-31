@@ -100,6 +100,22 @@
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
     </a>
+    @if ($user->type='Curador')
+        <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('paypal-update')}}">
+            <div class="div_Ajustes_item">
+                <div class="div_Ajustes_name">
+                LINK DE PayPal.Me  (ejemplo : PayPal.Me/cuenta)
+                </div>
+                <div class="div_Ajustes_valor">
+                    {{ $user->paypal }}
+                    @if (!$user->paypal)
+                        Da clic aquí para asignar tu link de PayPal.Me
+                    @endif
+                </div>
+                <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
+            </div>
+        </a>
+    @endif
 
 </div>
 
