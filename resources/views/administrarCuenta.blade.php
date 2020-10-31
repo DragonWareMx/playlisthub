@@ -100,7 +100,7 @@
             <div><i class="fas fa-chevron-right" style="font-size: 14px;"></i></div>
         </div>
     </a>
-    @if ($user->type='Curador')
+    @if ($user->type=='Curador')
         <a style="text-decoration-color: none; text-decoration:none; color:#858796" href="{{route('paypal-update')}}">
             <div class="div_Ajustes_item">
                 <div class="div_Ajustes_name">

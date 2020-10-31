@@ -669,7 +669,7 @@ class OController extends Controller
             return redirect('/campanas');
         }
         catch(QueryException $ex){
-            dd($ex);
+            
             session()->forget('playlistsCosts');
             session()->forget('selected_playlist');
             session()->forget('playlist_cost');
