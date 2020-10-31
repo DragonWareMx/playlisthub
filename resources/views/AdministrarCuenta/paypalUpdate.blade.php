@@ -11,6 +11,7 @@
 @endsection
 
 @section('contenido')
+
 @if($errors->any())
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -23,21 +24,22 @@
 
 <div class="div_CabeceraApartado">
     <div class="div_tituloApartado">
-        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Correo electrónico</p>
+        <p><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Link de PayPal.Me</p>
     </div>
 </div>
 
 <div class="div_Ajustes">
-    <p class="txt-descAjustes">EDITAR CORREO ELECTRÓNICO</p>
+    <p class="txt-descAjustes">EDITAR LINK</p>
     @foreach ($usuario as $user)
-    <form action="{{ route('correo-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+    
+    <form action="{{ route('paypal-updateDo', ['id'=>$user->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
         @method("PATCH")
-        @csrf
+                @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">
-        CORREO
-        </div>  
-        <input type="email" name="correo" class="input_Ajustes_valor" id="correo" value="{{$user ->email}}" required>
+        LINK
+        </div>
+        <input type="text" name="link" class="input_Ajustes_valor" id="link" placeholder="Paypal.Me/micuenta" value="{{ $user->paypal }}" required>
     </div>
     <div class="div_btnsUpdate">
         <div class="div_contbtns">
@@ -48,6 +50,7 @@
     </form>
     @endforeach
 </div>
+
 
 
 @endsection

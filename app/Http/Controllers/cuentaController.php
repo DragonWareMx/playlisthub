@@ -660,6 +660,22 @@ class cuentaController extends Controller
         return view ('AdministrarCuenta.nombreUpdate', ['usuario' => $usuario]);
     }
 
+    public function paypalUpdate()
+    {
+        try { 
+            $usuario = User::where('id',Auth::id())->get();
+        } 
+        catch(QueryException $ex){ 
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        if($usuario == null){
+            return view('errors.404', ['mensaje' => 'No fue posible conectarse con la base de datos']);
+        }
+
+        return view ('AdministrarCuenta.paypalUpdate', ['usuario' => $usuario]);
+    }
+
     public function nombreUpdateDo($id){
 
         $data=request()->validate([
@@ -670,6 +686,26 @@ class cuentaController extends Controller
              {
                 $user=User::findOrFail($id);
                 $user->name=request('nombre');
+                $user->save();
+
+             });
+        }
+        catch(QueryException $ex){
+             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos']);
+        }
+        return redirect()->route('administrar-cuenta');
+    }
+
+    public function paypalUpdateDo($id){
+
+        $data=request()->validate([
+            'link'=>'required'
+        ]);
+        try{
+             DB::transaction(function() use ($id)
+             {
+                $user=User::findOrFail($id);
+                $user->paypal=request('link');
                 $user->save();
 
              });
