@@ -60,7 +60,7 @@ Route::get('/ranking', 'AController@ranking')->name('ranking');
 Route::get('/ganancias', 'AController@ganancias')->name('ganancias');
 Route::get('/playlists', 'AController@playlists')->name('playlists');
 Route::post('/addPlaylist','AController@addPlaylist')->name('addPlaylist');
-Route::post('/charge', 'AController@charge')->name('charge');
+Route::post('/charge', 'AController@charge')->name('charge'); 
 
 
 //Rutas de ADMINISTRADOR

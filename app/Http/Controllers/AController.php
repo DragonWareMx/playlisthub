@@ -340,23 +340,21 @@ class AController extends Controller
         //Gate::authorize('haveaccess','admin.perm');
         $users= User::where('premium', '1')->orderby('id', 'desc')->get();
 
-        return view('Administrador.premium', ['users'=>$users]);
+        return view('Administrador.premium', ['users'=>$users]);  
     }
 
     public function addPrem(Request $request){
         //Gate::authorize('haveaccess','admin.perm');
         $mail=request('correo');
-        $user= User::findOrFail($mail);
-        
+        $user= User::where('email',$mail)->first();
         try {
             $user->premium=1;
         } 
         catch (QueryException $ex) {
             return redirect()->back()->withErrors(['error' => 'ERROR: no se pudo procesar la solicitud']);
         }
-
         $user->save();
-        $status="El usuario "+$user->name+" ahora es un curador premium";
+        $status="El usuario ".$user->name." ahora es un curador premium";
             return redirect()->route('premium')->with(compact('status'));
     }
    
