@@ -26,7 +26,7 @@
 <div class="div_Ajustes">
     <p class="txt-descAjustes">AGREGAR CURADOR PREMIUM</p>
     
-    <form action="{{ route('addPremium') }}" style="width:100%;" method="POST" enctype="multipart/form-data">
+    <form action="{{Route('addPrem')}}" style="width:100%;" method="post" enctype="multipart/form-data">
         @csrf
     <div class="div_Ajustes_itemUP">
         <div class="div_Ajustes_name">

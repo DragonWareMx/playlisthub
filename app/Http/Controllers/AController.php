@@ -343,7 +343,7 @@ class AController extends Controller
         return view('Administrador.premium', ['users'=>$users]);
     }
 
-    public function addPremium(){
+    public function addPrem(Request $request){
         //Gate::authorize('haveaccess','admin.perm');
         $mail=request('correo');
         $user= User::findOrFail($mail);
