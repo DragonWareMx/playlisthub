@@ -247,8 +247,8 @@ class AController extends Controller
         }
 
         $user->save();
-
-        return redirect()->route('ganancias');
+        $status="Tu solicitud fue recibida exitosamente. Tu pago será procesado pronto";
+            return redirect()->route('ganancias')->with(compact('status'));
     }
 
     public function ranking(){

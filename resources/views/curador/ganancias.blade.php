@@ -13,6 +13,13 @@
 @endsection
 
 @section('contenido')
+@if(session('status'))
+<div class="alert " style="background-color: rgb(126, 223, 126); color: black" role="alert">
+    <ul>
+        <li>{{session('status')}}</li>
+    </ul>
+</div>
+@endif
 @if (!$error)
 <div class="div_CabeceraApartado" style="margin-top:40px">
     <div class="div_tituloApartado">
@@ -32,9 +39,11 @@
     <p class="txt_content_ganancias">IMPORTANTE: Ve a <a href="{{Route('administrar-cuenta')}}">administrar cuenta</a> y agrega tu link de paypal para poder solicitar tu pago</p>
         @else
         <div style="float:left; border: 0.3px solid #c0c0c0; padding: 5px; border-radius: 5px; ">
-            <a href="{{Route('charge')}}" style="Font-family:'Roboto'; Font-size: 13px; sans-serif; color: #819df8">
-                <i class="fas fa-wallet"></i>&nbsp;&nbsp;Solicitar pago
-            </a>        
+            <form action="{{Route('charge')}}" method="post">
+                @csrf
+                <button style="border:none; Font-family:'Roboto'; Font-size: 13px; sans-serif; color: #819df8"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Solicitar pago
+                </button>
+            </form>   
         </div>
         @endif
     @endif
