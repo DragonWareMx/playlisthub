@@ -59,6 +59,13 @@
       </li>
       
       <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
+        @if (auth()->user()->type == 'Administrador')
+        <a class="nav-link" href="{{route('administrar-cuenta')}}">
+            <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="19px" >
+          <span>Perfil</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+        @else
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
             <img src="{{ asset('/img/iconos/perfil.png') }}" width="18px" height="18px" >
           <span>Perfil</span>
@@ -72,8 +79,27 @@
             <a class="collapse-item" href="{{route('administrar-cuenta')}}">Administrar cuenta</a>
             </div>
         </div>
+        @endif
       </li>
       
+      @if (auth()->user()->type == 'Administrador')
+      <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
+        <a class="nav-link" href="{{route('administrar-cuenta')}}">
+            <img src="{{ asset('/img/iconos/user.png') }}" width="18px" height="19px" >
+          <span>Premium</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+      </li>  
+
+      <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
+        <a class="nav-link" href="{{route('administrar-cuenta')}}">
+            <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="19px" >
+          <span>Solicitudes</span>
+        </a>
+        <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
+      </li>  
+      @endif
+
 
       @if (auth()->user()->type == 'Músico')
       <li class="nav-item {{ Request::path() ==  'campanas' ? 'active' : ''  }}">

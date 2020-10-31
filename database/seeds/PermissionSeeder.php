@@ -18,7 +18,7 @@ class PermissionSeeder extends Seeder
             'name'=>'Administrador',
             'slug'=>'admin',
             'description'=>'Administrador',
-            'full-access'=>'yes'
+            'full-access'=>'no'
         ]);
         $rolMusico=Role::create([
             'name'=>'Músico',
@@ -44,6 +44,7 @@ class PermissionSeeder extends Seeder
         $permission_all=[];
         $permission_mus=[];
         $permission_cur=[];
+        $permission_adm=[];
 
 
         ///////////////permisos para Usuarios//////////////////////////////////////////////////////////////////////////
@@ -63,8 +64,15 @@ class PermissionSeeder extends Seeder
         $permission_all[]=$permission->id;
         $permission_mus[]=$permission->id;
 
+        $permission=Permission::create([
+            'name'=>'Admin',
+            'slug'=>'admin.perm',
+            'description'=>'El usuario es un Admin'
+        ]); 
+        $permission_all[]=$permission->id;
+        $permission_adm[]=$permission->id; 
 
-        $rolAdmin->permissions()->sync($permission_all);
+        $rolAdmin->permissions()->sync($permission_adm);
         $rolCurador->permissions()->sync($permission_cur);
         $rolMusico->permissions()->sync($permission_mus);
     }

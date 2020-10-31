@@ -726,5 +726,8 @@ class OController extends Controller
         if(auth()->user()->type=='Curador'){
             return redirect()->route('inicio-curador');
         }
+        if(auth()->user()->type=='Administrador'){
+            return view('inicio');
+        }
     }
 }
