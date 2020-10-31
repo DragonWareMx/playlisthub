@@ -62,6 +62,11 @@ Route::get('/playlists', 'AController@playlists')->name('playlists');
 Route::post('/addPlaylist','AController@addPlaylist')->name('addPlaylist');
 Route::post('/charge', 'AController@charge')->name('charge');
 
+
+//Rutas de ADMINISTRADOR
+Route::get('/premium', 'AController@premium')->name('premium');
+Route::post('/addPremium','AController@addPremium')->name('addPremium');
+
 Route::get('/', function () {
     return redirect()->route('home');
 });

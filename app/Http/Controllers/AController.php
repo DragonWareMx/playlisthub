@@ -336,4 +336,29 @@ class AController extends Controller
         'playlists_bd'=>$playlists_bd, 'total'=>$total, 'saldo'=>$saldo, 'paypal'=>$paypal]);
     }
 
+    public function premium(){
+        //Gate::authorize('haveaccess','admin.perm');
+        $users= User::where('premium', '1')->orderby('id', 'desc')->get();
+
+        return view('Administrador.premium', ['users'=>$users]);
+    }
+
+    public function addPremium(){
+        //Gate::authorize('haveaccess','admin.perm');
+        $mail=request('correo');
+        $user= User::findOrFail($mail);
+        
+        try {
+            $user->premium=1;
+        } 
+        catch (QueryException $ex) {
+            return redirect()->back()->withErrors(['error' => 'ERROR: no se pudo procesar la solicitud']);
+        }
+
+        $user->save();
+        $status="El usuario "+$user->name+" ahora es un curador premium";
+            return redirect()->route('premium')->with(compact('status'));
+    }
+   
 }
+    

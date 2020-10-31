@@ -84,7 +84,7 @@
       
       @if (auth()->user()->type == 'Administrador')
       <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
-        <a class="nav-link" href="{{route('administrar-cuenta')}}">
+        <a class="nav-link" href="{{route('premium')}}">
             <img src="{{ asset('/img/iconos/user.png') }}" width="18px" height="19px" >
           <span>Premium</span>
         </a>
