@@ -115,3 +115,6 @@ Route::post('/tokens/payment/checkout','PaymentController@stripePay')->name('str
 Route::get('/tokens/payment/paypal','PaymentController@payPalStatus')->name('statusPayPal');
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/admin/solicitudes','AdminController@index')->name('solicitudes');
+Route::patch('/admin/solicitudes/update','AdminController@patch')->name('updateSolicitudes');

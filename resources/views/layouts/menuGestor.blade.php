@@ -83,7 +83,7 @@
       </li>
       
       @if (auth()->user()->type == 'Administrador')
-      <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
+      <li class="nav-item {{ Request::path() ==  'premium' ? 'active' : ''  }} ">
         <a class="nav-link" href="{{route('premium')}}">
             <img src="{{ asset('/img/iconos/user.png') }}" width="18px" height="19px" >
           <span>Premium</span>
@@ -91,8 +91,8 @@
         <hr class="sidebar-divider barra-active" style="margin-top: 0; margin-bottom: 0;visibility:hidden">
       </li>  
 
-      <li class="nav-item {{ Request::path() ==  'perfil' ? 'active' : ''  }} ">
-        <a class="nav-link" href="{{route('administrar-cuenta')}}">
+      <li class="nav-item {{ Request::path() ==  'admin/solicitudes' ? 'active' : ''  }} ">
+        <a class="nav-link" href="{{route('solicitudes')}}">
             <img src="{{ asset('/img/iconos/ganancias.png') }}" width="18px" height="19px" >
           <span>Solicitudes</span>
         </a>
