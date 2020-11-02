@@ -66,6 +66,7 @@ Route::post('/charge', 'AController@charge')->name('charge');
 //Rutas de ADMINISTRADOR
 Route::get('/premium', 'AController@premium')->name('premium');
 Route::post('/addPrem','AController@addPrem')->name('addPrem');
+Route::patch('/updatePremium', 'AController@updatePremium')->name('updatePremium');
 
 Route::get('/', function () {
     return redirect()->route('home');

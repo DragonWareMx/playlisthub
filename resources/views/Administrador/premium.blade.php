@@ -22,6 +22,14 @@
     </ul>
 </div>
 @endif
+@if(session('error'))
+<div class="alert " style="background-color: red; color: white" role="alert">
+    <ul>
+        <li>{{session('error')}}</li>
+    </ul>
+</div>
+@endif
+
 
 <div class="div_Ajustes">
     <p class="txt-descAjustes">AGREGAR CURADOR PREMIUM</p>
@@ -62,8 +70,8 @@
             <div class="txt_row_responsive">MAIL</div> 
             <div class="txt_row_head_o">SALDO</div>
             <div class="txt_row_responsive">SALDO</div> 
-            <div class="txt_row_head_o">PAYPAL</div>
-            <div class="txt_row_responsive">PAYPAL</div> 
+            <div class="txt_row_head_o">ELIMINAR</div>
+            <div class="txt_row_responsive">ELIMINAR</div> 
             {{-- <div class="txt_row_head_o">GANANCIAS</div>
             <div class="txt_row_responsive">GANANCIAS</div>  --}}
         </div>
@@ -87,8 +95,15 @@
             <div class="txt_row_play_o">
                 $ {{$user->saldo}}
             </div>
-            <p class="p_responsivep">PAYPAL</p>
-            <div class="txt_row_play_o">{{$user->paypal}}</div> 
+            <p class="p_responsivep">ELIMINAR</p>
+            <div class="txt_row_play_o">
+                <form action="{{ route('updatePremium') }}" method="post" class="txt_row_play_o">
+                    @method('patch')
+                    @csrf
+                    <input type="hidden" name="idUser" value="{{$user->id}}">
+                    <button class="a_continuar_o" style="float:none; margin:0px auto 0px auto" >ELIMINAR</button>
+                </form>
+            </div> 
         </div>
     @endforeach
     

@@ -337,24 +337,45 @@ class AController extends Controller
     }
 
     public function premium(){
-        //Gate::authorize('haveaccess','admin.perm');
+        Gate::authorize('haveaccess','admin.perm');
         $users= User::where('premium', '1')->orderby('id', 'desc')->get();
 
         return view('Administrador.premium', ['users'=>$users]);  
     }
 
     public function addPrem(Request $request){
-        //Gate::authorize('haveaccess','admin.perm');
+        Gate::authorize('haveaccess','admin.perm');
         $mail=request('correo');
         $user= User::where('email',$mail)->first();
         try {
-            $user->premium=1;
+            if($user && $user->type=='Curador'){
+                $user->premium=1;
+                $user->save();
+                $status="El usuario ".$user->name." ahora es un curador premium";
+                    return redirect()->route('premium')->with(compact('status'));
+            }
+            else {
+                $error="No existe un usuario curador registrado con el correo ".$mail;
+                    return redirect()->route('premium')->with(compact('error'));
+            }
+        } 
+        catch (QueryException $ex) {
+            return redirect()->back()->withErrors(['error' => 'ERROR: no se pudo procesar la solicitud']);
+        }
+       
+    }
+    public function updatePremium(Request $request){
+        Gate::authorize('haveaccess','admin.perm');
+        $id= request('idUser');
+        $user= User::findOrFail($id);
+        try {
+            $user->premium=0;
         } 
         catch (QueryException $ex) {
             return redirect()->back()->withErrors(['error' => 'ERROR: no se pudo procesar la solicitud']);
         }
         $user->save();
-        $status="El usuario ".$user->name." ahora es un curador premium";
+        $status="El usuario ".$user->name." ya no es un curador Premium";
             return redirect()->route('premium')->with(compact('status'));
     }
    
