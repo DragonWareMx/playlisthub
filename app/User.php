@@ -46,7 +46,7 @@ class User extends Authenticatable
             return Crypt::decryptString($value);
         }catch(\Exception $e){
             //mandar correo
-            return $value;
+            return '0';
         }
     }
 
