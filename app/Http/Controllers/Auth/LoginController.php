@@ -55,18 +55,19 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        if($request->error){
-            return redirect()->route('login')->withErrors(['msg'=> 'Hubo un error al autentificarse con Spotify. Por favor vuelva a intentarlo.']);
+        if ($request->error) {
+            return redirect()->route('login')->withErrors(['msg' => 'Hubo un error al autentificarse con Spotify. Por favor vuelva a intentarlo.']);
         }
 
         $userSocialite = Socialite::driver('spotify')->user();
-        Session::put('access_token',$userSocialite->token);
-        $user=User::where('spotify_id',$userSocialite->getId())->first();
-        if($user){
+        Session::put('access_token', $userSocialite->token);
+        $user = User::where('spotify_id', $userSocialite->getId())->first();
+        if ($user) {
+            $user->avatar = $userSocialite->avatar;
+            $user->save();
             auth()->login($user);
             return redirect()->route('home');
-        }
-        else{
+        } else {
             return redirect()->route('login')->withErrors(['msg' => 'La cuenta de Spotify con la que intentas ingresar no se encuentra registrada.']);
         }
     }
