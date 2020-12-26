@@ -378,6 +378,11 @@ class AController extends Controller
         $status="El usuario ".$user->name." ya no es un curador Premium";
             return redirect()->route('premium')->with(compact('status'));
     }
+    public function usuarios(Request $request){
+        Gate::authorize('haveaccess', 'admin.perm');
+        $users= User::get();
+        return view('Administrador.usuarios', ['users'=>$users]);
+    }
    
 }
     

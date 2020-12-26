@@ -67,6 +67,8 @@ Route::post('/charge', 'AController@charge')->name('charge');
 Route::get('/premium', 'AController@premium')->name('premium');
 Route::post('/addPrem','AController@addPrem')->name('addPrem');
 Route::patch('/updatePremium', 'AController@updatePremium')->name('updatePremium');
+Route::get('/usuarios', 'AController@usuarios')->name('usuarios');
+
 
 Route::get('/', function () {
     return redirect()->route('home');
