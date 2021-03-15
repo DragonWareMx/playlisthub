@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use App\User;
 use App\Camp;
+use App\Playlist;
 use App\Review;
 use Auth;
 
