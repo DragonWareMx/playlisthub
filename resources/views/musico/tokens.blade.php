@@ -48,22 +48,22 @@
             <div class="item_token_encabezado">10 TOKENS</div>
             <div class="item_txt_black">$100.00 USD</div>
             <div class="item_txt_black" style="visibility: hidden">Ahorras $0 USD</div>
-            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button  data-pack="0" data-quantity="10" data-total="100" data-ref="90" type="button" class="btn_comprar_token" >Comprar</button>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2021</div>
+            <button  data-pack="0" data-quantity="10" data-total="100" data-ref="90" type="button" class="btn_comprar_token" style="background-color:gray; text-decoration:none" disabled>Comprar</button>
         </div>
         <div class="item_comprar_token">
             <div class="item_token_encabezado">20 TOKENS</div>
             <div class="item_txt_black">$190.00 USD</div>
             <div class="item_txt_black">Ahorras $10.00 USD</div>
-            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button data-pack="1" data-quantity="20" data-total="190" data-ref="170"  type="button" class="btn_comprar_token" >Comprar</button>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2021</div>
+            <button data-pack="1" data-quantity="20" data-total="190" data-ref="170"  type="button" class="btn_comprar_token" style="background-color:gray; text-decoration:none" disabled>Comprar</button>
         </div>
         <div class="item_comprar_token">
             <div class="item_token_encabezado">30 TOKENS</div>
             <div class="item_txt_black">$270.00 USD</div>
             <div class="item_txt_black">Ahorras $30.00 USD</div>
-            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2020</div>
-            <button data-pack="2" data-quantity="30" data-total="270" data-ref="240" type="button" class="btn_comprar_token" >Comprar</button>
+            <div class="item_txt_gray">Promoción válida hasta la fecha 31-12-2021</div>
+            <button data-pack="2" data-quantity="30" data-total="270" data-ref="240" type="button" class="btn_comprar_token" style="background-color:gray; text-decoration:none" disabled>Comprar</button>
         </div>
         <div class="item_comprar_token">
 

@@ -365,13 +365,6 @@
   <!-- Custom scripts for all pages-->
   <script src="{{asset('temaGestor/js/sb-admin-2.js')}}"></script>
 
-  <!-- Page level plugins -->
-  <script src="{{asset('temaGestor/vendor/chart.js/Chart.min.js')}}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{asset('temaGestor/js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{asset('temaGestor/js/demo/chart-pie-demo.js')}}"></script>
-
   <!-- El de tablas de pedidos-->
   <script src="{{asset('temaGestor/js/demo/datatables-demo.js')}}"></script>
   <script src="{{asset('temaGestor/vendor/datatables/jquery.dataTables.js')}}"></script>

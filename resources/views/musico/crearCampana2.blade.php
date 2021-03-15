@@ -58,7 +58,7 @@
             <p class="p_responsivep">SEGUIDORES</p>
             <div class="txt_row_play_o"> {{$playlist['followers']}} </div>
             <p class="p_responsivep">TOKENS</p>
-            <div  class="txt_row_play_o"> {{$playlist['cost']}} </div>
+            <div  class="txt_row_play_o">  <strong>GRATIS POR TIEMPO LIMITADO</strong> <br> <div style="text-decoration:line-through;text-decoration-color: red;">Costo: {{$playlist['costPrint']}}</div></div>
         </button> 
         @endif
         @endforeach

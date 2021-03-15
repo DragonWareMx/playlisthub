@@ -60,7 +60,7 @@
         </div>
         <div class="campana_info_2">
             <div class="vercampana_title_o">TOKENS</div>
-            <div class="vercampana_txt_o">{{$data['tokens']}}</div>
+            <div class="vercampana_txt_o">GRATIS</div>
             <div class="vercampana_title_o">NOMBRE DE LA PLAYLIST</div>
             <a href="{{$data['playlist_url']}}" target="_blank" class="vercampana_a_o">{{Str::limit($data['playlist_name'],27)}}</a>
             <div class="vercampana_title_o">NOMBRE DEL CURADOR</div>

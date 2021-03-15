@@ -509,52 +509,63 @@ class OController extends Controller
                 $level=100;
                 if($all_playlist->user->premium == 0){
                     if($total>=500 && $total<=5000){
-                        $cost=1;
+                        $cost=0;
                         $level=1;
                     }
                     else if($total>=5001 && $total<15000){
-                        $cost=1;
+                        $cost=0;
+                        $costPrint=1;
                         $level=2;
                     }
                     else if($total>=15001 && $total<=20000){
-                        $cost=1;
+                        $cost=0;
+                        $costPrint=1;
                         $level=3;
                     }
                     else if($total>=20001 && $total<=30000){
-                        $cost=1;
+                        $cost=0;
+                        $costPrint=1;
                         $level=4;
                     }
                     else if($total>=30001 && $total<=50000){
-                        $cost=2;
+                        $cost=0;
+                        $costPrint=2;
                         $level=5;
                     }
                     else if($total>=50001 && $total<=60000){
-                        $cost=2;
+                        $cost=0;
+                        $costPrint=2;
                         $level=6;
                     }
                     else if($total>=60001 && $total<=70000){
-                        $cost=3;
+                        $cost=0;
+                        $costPrint=3;
                         $level=7;
                     }
                     else if($total>=70001 && $total<=80000){
-                        $cost=3;
+                        $cost=0;
+                        $costPrint=3;
                         $level=8;
                     }
                     else if($total>=80001 && $total<=90000){
-                        $cost=4;
+                        $cost=0;
+                        $costPrint=4;
                         $level=9;
                     }
                     else if($total>=90001){
-                        $cost=4;
+                        $cost=0;
+                        $costPrint=4;
                         $level=10;
                     }
                 }
                 else{
-                    $cost=5;
+                    $cost=0;
+                    $costPrint=5;
                     $level=11;
                 }
                 $item['cost']=$cost;
                 $item['level']=$level;
+                $item['costPrint']=$costPrint;
                 if($total>=500){
                     $playlists[$i]=$item;
                     $itemCost=[];
