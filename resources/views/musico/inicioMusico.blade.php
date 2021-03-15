@@ -23,6 +23,11 @@
         </ul>
     </div>
 @endif
+<div class="alert alert-success" role="alert">
+    <ul>
+        <li>¡Por tiempo limitado todas las campañas gratis!</li>
+    </ul>
+</div>
 @if (!$error)
         <div class="div_CabeceraApartado" style="margin-top:40px">
             <div class="div_tituloApartado resize_tituloApartado">
