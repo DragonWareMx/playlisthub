@@ -470,7 +470,7 @@ class OController extends Controller
             $coincidencias=0;
             foreach($all_playlist->artists as $artist){
                 if(in_array(elimina_acentos($artist->name),$artists)){
-                    $coincidencias++;;
+                    $coincidencias++;
                     $cont=true;
                 }
             }
@@ -506,10 +506,12 @@ class OController extends Controller
                 $item['premium']=$all_playlist->user->premium;
                 $total=$playlist->followers->total;
                 $cost=100;
+                $costPrint=100;
                 $level=100;
                 if($all_playlist->user->premium == 0){
                     if($total>=500 && $total<=5000){
                         $cost=0;
+                        $costPrint=0;
                         $level=1;
                     }
                     else if($total>=5001 && $total<15000){
